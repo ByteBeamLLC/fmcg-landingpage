@@ -1,9 +1,17 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { User } from "lucide-react";
+import { User, ArrowRight } from "lucide-react";
+import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
 import takhleesLogo from "@assets/takhlees_logo_1759326324559.webp";
 import carrefourLogo from "@assets/hd-carrefour-logo-transparent-background-701751694712996tfxv01icjr_1759326333428.png";
 import infoquestLogo from "@assets/FinalLogoB-1024x141_1759326348970.png";
+
+const clients = [
+  { id: "takhlees", name: "Takhlees", logo: takhleesLogo },
+  { id: "carrefour", name: "Carrefour", logo: carrefourLogo },
+  { id: "infoquest", name: "InfoQuest", logo: infoquestLogo },
+];
 
 export default function SocialProof() {
   const [ref, inView] = useInView({
@@ -45,31 +53,37 @@ export default function SocialProof() {
           </p>
         </motion.div>
 
-        {/* Client Logos */}
+        {/* Client Logos with Links */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap items-center justify-center gap-12 mb-16"
+          className="grid md:grid-cols-3 gap-8 mb-16"
         >
-          <img
-            src={takhleesLogo}
-            alt="Takhlees Logo"
-            className="h-12 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-            data-testid="logo-takhlees"
-          />
-          <img
-            src={carrefourLogo}
-            alt="Carrefour Logo"
-            className="h-16 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-            data-testid="logo-carrefour"
-          />
-          <img
-            src={infoquestLogo}
-            alt="InfoQuest Logo"
-            className="h-10 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-            data-testid="logo-infoquest"
-          />
+          {clients.map((client, index) => (
+            <Link key={client.id} href={`/case-study/${client.id}`}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                className="bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer group"
+                data-testid={`client-card-${client.id}`}
+              >
+                <img
+                  src={client.logo}
+                  alt={`${client.name} Logo`}
+                  className="h-16 mx-auto mb-4 grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 object-contain"
+                  data-testid={`logo-${client.id}`}
+                />
+                <div className="text-center">
+                  <Button variant="ghost" className="group-hover:text-primary" data-testid={`button-view-case-study-${client.id}`}>
+                    View Case Study
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </div>
+              </motion.div>
+            </Link>
+          ))}
         </motion.div>
 
         {/* Stats Banner */}
