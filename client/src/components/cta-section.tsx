@@ -5,8 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Calendar, Mail, Phone, Globe } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useMutation } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
 
 export default function CTASection() {
   const [ref, inView] = useInView({
@@ -15,6 +18,7 @@ export default function CTASection() {
   });
 
   const { toast } = useToast();
+  const [showCalendly, setShowCalendly] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -24,21 +28,37 @@ export default function CTASection() {
     message: "",
   });
 
+  const createLeadMutation = useMutation({
+    mutationFn: async (data: typeof formData) => {
+      return await apiRequest("POST", "/api/leads", data);
+    },
+    onSuccess: () => {
+      toast({
+        title: "Thank you for your interest!",
+        description: "We've received your information. Our team will contact you within 24 hours to schedule your demo.",
+      });
+      setFormData({
+        fullName: "",
+        email: "",
+        company: "",
+        phone: "",
+        skuRange: "",
+        message: "",
+      });
+      setShowCalendly(true);
+    },
+    onError: () => {
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or contact us directly at tech@bytebeam.co",
+        variant: "destructive",
+      });
+    },
+  });
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real application, this would send the data to a backend API
-    toast({
-      title: "Thank you for your interest!",
-      description: "Our team will contact you shortly to schedule your demo.",
-    });
-    setFormData({
-      fullName: "",
-      email: "",
-      company: "",
-      phone: "",
-      skuRange: "",
-      message: "",
-    });
+    createLeadMutation.mutate(formData);
   };
 
   const handleChange = (field: string, value: string) => {
@@ -146,13 +166,67 @@ export default function CTASection() {
                 type="submit"
                 className="bg-white text-primary hover:bg-gray-100 w-full md:w-auto text-lg animate-pulse"
                 size="lg"
+                disabled={createLeadMutation.isPending}
                 data-testid="button-submit-demo-request"
               >
                 <Calendar className="mr-2 h-5 w-5" />
-                Schedule Your Demo
+                {createLeadMutation.isPending ? "Submitting..." : "Schedule Your Demo"}
               </Button>
             </form>
           </div>
+
+          {/* Calendar Booking Modal */}
+          <Dialog open={showCalendly} onOpenChange={setShowCalendly}>
+            <DialogContent className="max-w-4xl h-[85vh] flex flex-col">
+              <DialogHeader>
+                <DialogTitle className="text-2xl">Schedule Your ByteBeam Demo</DialogTitle>
+                <DialogDescription className="text-base">
+                  Choose a convenient time to discuss how ByteBeam can accelerate your product approvals
+                </DialogDescription>
+              </DialogHeader>
+              <div className="flex-1 min-h-0">
+                <div className="w-full h-full bg-muted/30 rounded-lg flex items-center justify-center">
+                  <div className="text-center p-8 max-w-md">
+                    <Calendar className="w-16 h-16 mx-auto mb-4 text-primary" />
+                    <h3 className="text-xl font-bold mb-2">Calendar Booking Ready</h3>
+                    <p className="text-muted-foreground mb-6">
+                      We've received your demo request. Our team will contact you within 24 hours to schedule a personalized demo.
+                    </p>
+                    <div className="bg-white dark:bg-card p-4 rounded-lg mb-4">
+                      <h4 className="font-semibold mb-2">What happens next?</h4>
+                      <ul className="space-y-2 text-sm text-left">
+                        <li className="flex items-start gap-2">
+                          <span className="text-accent mt-1">✓</span>
+                          <span>Our team reviews your compliance needs</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-accent mt-1">✓</span>
+                          <span>We'll send you a calendar invite</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-accent mt-1">✓</span>
+                          <span>Personalized demo tailored to your SKU range</span>
+                        </li>
+                      </ul>
+                    </div>
+                    <Button
+                      onClick={() => setShowCalendly(false)}
+                      className="w-full"
+                      data-testid="button-close-calendar-modal"
+                    >
+                      Got it, thanks!
+                    </Button>
+                    <p className="text-sm text-muted-foreground mt-4">
+                      Need immediate help?{" "}
+                      <a href="mailto:tech@bytebeam.co" className="text-primary font-semibold hover:underline">
+                        Contact us
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </DialogContent>
+          </Dialog>
 
           <div className="flex flex-wrap items-center justify-center gap-8 text-white/80">
             <a
