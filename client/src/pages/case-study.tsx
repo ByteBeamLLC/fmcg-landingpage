@@ -205,13 +205,14 @@ const caseStudies = {
 
 export default function CaseStudy() {
   const [, params] = useRoute("/case-study/:id");
-  const caseStudy = params?.id ? caseStudies[params.id as keyof typeof caseStudies] : null;
-
-  if (!caseStudy) {
+  
+  // Only allow Takhlees case study to be viewed
+  if (!params?.id || params.id !== "takhlees") {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Case Study Not Found</h1>
+          <p className="text-muted-foreground mb-6">This case study is not available.</p>
           <Link href="/">
             <Button>Return Home</Button>
           </Link>
@@ -219,6 +220,8 @@ export default function CaseStudy() {
       </div>
     );
   }
+  
+  const caseStudy = caseStudies.takhlees;
 
   return (
     <div className="min-h-screen">

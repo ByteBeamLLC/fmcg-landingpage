@@ -70,52 +70,35 @@ export default function Footer() {
             <h4 className="font-bold mb-4">Company</h4>
             <ul className="space-y-2 text-white/70">
               <li>
-                <a href="#" className="hover:text-white transition-colors" data-testid="footer-link-about">
+                <a href="/about" className="hover:text-white transition-colors" data-testid="footer-link-about">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors" data-testid="footer-link-case-studies">
+                <button
+                  onClick={() => scrollToSection("case-studies")}
+                  className="hover:text-white transition-colors"
+                  data-testid="footer-link-case-studies"
+                >
                   Case Studies
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors" data-testid="footer-link-blog">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors" data-testid="footer-link-careers">
-                  Careers
-                </a>
+                </button>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-bold mb-4">Regional Presence</h4>
-            <ul className="space-y-2 text-white/70">
-              <li className="flex items-center gap-2">
-                <MapPin size={16} />
-                <span>GCC</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <MapPin size={16} />
-                <span>European Union</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <MapPin size={16} />
-                <span>Lebanon</span>
-              </li>
-            </ul>
-            <div className="mt-4">
-              <p className="text-sm text-white/70">
-                20 Wenlock Road
-                <br />
-                London, England
-                <br />
-                N1 7GU
-              </p>
+            <h4 className="font-bold mb-4">Head Office</h4>
+            <div className="flex items-start gap-2 text-white/70">
+              <MapPin size={16} className="mt-1" />
+              <div>
+                <p className="text-sm">
+                  20 Wenlock Road
+                  <br />
+                  London, England
+                  <br />
+                  N1 7GU
+                </p>
+              </div>
             </div>
           </div>
         </div>
