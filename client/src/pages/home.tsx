@@ -9,6 +9,7 @@ import SocialProof from "@/components/social-proof";
 import ResourcesSection from "@/components/resources-section";
 import CTASection from "@/components/cta-section";
 import Footer from "@/components/footer";
+import LiveChatWidget from "@/components/live-chat-widget";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <ResourcesSection />
       <CTASection />
       <Footer />
+      <LiveChatWidget />
     </div>
   );
 }
