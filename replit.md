@@ -1,14 +1,18 @@
-# ByteBeam - AI-Powered FMCG Label Compliance & Localization
+# ByteBeam - AI-Powered Knowledge Work Automation Platform
 
 ## Overview
 
-ByteBeam is an AI-powered platform designed to automate FMCG (Fast-Moving Consumer Goods) label compliance and localization for products entering the GCC market. The application streamlines the process of extracting product information from artwork, translating content to Arabic, validating against local regulations, and generating compliant labels and submission forms. The platform targets food retailers, FMCG brands, and distributors importing products into Gulf Cooperation Council countries.
+ByteBeam is an AI-powered platform that automates document-based knowledge work processes requiring expert analysis. The platform automates any workflow involving document processing, data extraction, reasoning decisions, and content generation across multiple industries.
 
-The application is built as a full-stack web application with a React-based frontend and an Express.js backend, following a monorepo structure with shared schema definitions.
+**Core Offering - FMCG Compliance Agent:**
+The FMCG Agent automates label compliance and localization for products entering GCC markets. It extracts product information from artwork, translates content to Arabic, validates against local regulations, and generates compliant labels and submission forms for food retailers, FMCG brands, and distributors.
+
+The application is built as a full-stack web application with a React-based frontend and Express.js backend, featuring a dark theme design and modern animations.
 
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+Design preference: Dark theme with abstract, platform-relevant visuals.
 
 ## System Architecture
 

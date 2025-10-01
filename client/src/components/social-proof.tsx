@@ -8,9 +8,9 @@ import carrefourLogo from "@assets/hd-carrefour-logo-transparent-background-7017
 import infoquestLogo from "@assets/FinalLogoB-1024x141_1759326348970.png";
 
 const clients = [
-  { id: "takhlees", name: "Takhlees", logo: takhleesLogo },
-  { id: "carrefour", name: "Carrefour", logo: carrefourLogo },
-  { id: "infoquest", name: "InfoQuest", logo: infoquestLogo },
+  { id: "takhlees", name: "Takhlees", logo: takhleesLogo, hasCaseStudy: true, category: "Services Partner" },
+  { id: "carrefour", name: "Carrefour", logo: carrefourLogo, hasCaseStudy: false, category: "F&B Retailer" },
+  { id: "infoquest", name: "InfoQuest", logo: infoquestLogo, hasCaseStudy: false, category: "Automation Client" },
 ];
 
 export default function SocialProof() {
@@ -47,9 +47,9 @@ export default function SocialProof() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Trusted by Leading FMCG Companies</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Selected Partners and Clients</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Join food retailers and FMCG brands accelerating their market entry
+            Automating compliance and knowledge work processes across industries
           </p>
         </motion.div>
 
@@ -60,30 +60,41 @@ export default function SocialProof() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="grid md:grid-cols-3 gap-8 mb-16"
         >
-          {clients.map((client, index) => (
-            <Link key={client.id} href={`/case-study/${client.id}`}>
+          {clients.map((client, index) => {
+            const CardContent = (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-                className="bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer group"
+                className={`bg-card border-2 border-border rounded-xl p-8 shadow-lg transition-all duration-300 ${client.hasCaseStudy ? 'hover:shadow-2xl hover:border-primary cursor-pointer' : ''} group`}
                 data-testid={`client-card-${client.id}`}
               >
                 <img
                   src={client.logo}
                   alt={`${client.name} Logo`}
-                  className="h-16 mx-auto mb-4 grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 object-contain"
+                  className={`h-16 mx-auto mb-4 transition-all duration-300 object-contain ${client.hasCaseStudy ? 'grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100' : 'opacity-70'}`}
                   data-testid={`logo-${client.id}`}
                 />
                 <div className="text-center">
-                  <Button variant="ghost" className="group-hover:text-primary" data-testid={`button-view-case-study-${client.id}`}>
-                    View Case Study
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </Button>
+                  <div className="text-xs text-muted-foreground mb-2">{client.category}</div>
+                  {client.hasCaseStudy && (
+                    <Button variant="ghost" className="group-hover:text-primary" data-testid={`button-view-case-study-${client.id}`}>
+                      View Case Study
+                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  )}
                 </div>
               </motion.div>
-            </Link>
-          ))}
+            );
+
+            return client.hasCaseStudy ? (
+              <Link key={client.id} href={`/case-study/${client.id}`}>
+                {CardContent}
+              </Link>
+            ) : (
+              <div key={client.id}>{CardContent}</div>
+            );
+          })}
         </motion.div>
 
         {/* Stats Banner */}
@@ -94,7 +105,7 @@ export default function SocialProof() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-              className="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+              className="bg-card border-2 border-border rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
               data-testid={`stat-card-${index}`}
             >
               <div className="inline-block bg-accent text-white px-6 py-3 rounded-full font-bold font-display text-3xl mb-4">

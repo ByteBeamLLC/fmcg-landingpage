@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { X, Check } from "lucide-react";
+import { Check, Package } from "lucide-react";
 
 export default function VisualDemo() {
   const [ref, inView] = useInView({
@@ -9,7 +9,7 @@ export default function VisualDemo() {
   });
 
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-background">
       <div className="container-custom">
         <motion.div
           ref={ref}
@@ -33,30 +33,40 @@ export default function VisualDemo() {
               transition={{ duration: 0.6 }}
             >
               <div className="text-center mb-4">
-                <span className="inline-block px-4 py-2 bg-destructive/10 text-destructive rounded-full font-semibold">
-                  Before: Original Artwork
+                <span className="inline-block px-4 py-2 bg-muted text-muted-foreground rounded-full font-semibold">
+                  Before: Raw Artwork
                 </span>
               </div>
-              <div className="bg-white rounded-2xl shadow-lg p-8">
-                <div className="border-2 border-dashed border-muted rounded-lg p-6 bg-muted/20">
-                  <div className="text-center text-muted-foreground mb-4">
-                    <i className="fas fa-image text-6xl mb-2"></i>
-                    <div className="font-semibold">Raw Product Packaging</div>
+              <div className="bg-card border-2 border-border rounded-2xl shadow-lg p-8">
+                {/* Abstract Almond Milk Packaging */}
+                <div className="relative bg-gradient-to-br from-muted via-muted/50 to-muted rounded-2xl p-8 min-h-[400px] flex items-center justify-center overflow-hidden">
+                  {/* Abstract Package Shape */}
+                  <div className="relative z-10">
+                    <div className="w-32 h-48 bg-card/80 backdrop-blur-sm rounded-2xl border-2 border-border shadow-xl mx-auto mb-6 flex flex-col items-center justify-center p-4">
+                      <Package className="text-muted-foreground mb-2" size={48} />
+                      <div className="text-xs text-center text-muted-foreground">
+                        <div className="font-bold mb-1">Almond Milk</div>
+                        <div className="text-[10px]">Original Packaging</div>
+                      </div>
+                    </div>
+                    
+                    {/* Issues/Gaps */}
+                    <div className="space-y-2 text-sm">
+                      <div className="bg-card/60 backdrop-blur-sm border border-destructive/30 p-3 rounded-lg">
+                        <div className="text-destructive font-semibold text-xs">Missing Arabic Translation</div>
+                      </div>
+                      <div className="bg-card/60 backdrop-blur-sm border border-destructive/30 p-3 rounded-lg">
+                        <div className="text-destructive font-semibold text-xs">Non-GCC Format</div>
+                      </div>
+                      <div className="bg-card/60 backdrop-blur-sm border border-destructive/30 p-3 rounded-lg">
+                        <div className="text-destructive font-semibold text-xs">No NRV Calculations</div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="space-y-2 text-sm">
-                    <div className="bg-white p-2 rounded">Product Name (English only)</div>
-                    <div className="bg-white p-2 rounded">Nutrition Panel (Imperial units)</div>
-                    <div className="bg-white p-2 rounded">Ingredient list (No Arabic)</div>
-                    <div className="bg-white p-2 rounded text-destructive flex items-center gap-2">
-                      <X size={16} /> No NRV calculations
-                    </div>
-                    <div className="bg-white p-2 rounded text-destructive flex items-center gap-2">
-                      <X size={16} /> No Halal certification info
-                    </div>
-                    <div className="bg-white p-2 rounded text-destructive flex items-center gap-2">
-                      <X size={16} /> Not GCC compliant
-                    </div>
-                  </div>
+
+                  {/* Abstract Background Elements */}
+                  <div className="absolute top-4 left-4 w-16 h-16 bg-destructive/10 rounded-full blur-xl" />
+                  <div className="absolute bottom-4 right-4 w-24 h-24 bg-destructive/10 rounded-full blur-xl" />
                 </div>
               </div>
             </motion.div>
@@ -72,7 +82,7 @@ export default function VisualDemo() {
                   After: ByteBeam Processing
                 </span>
               </div>
-              <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-accent">
+              <div className="bg-card rounded-2xl shadow-lg p-8 border-2 border-accent">
                 <div className="mb-4 pb-4 border-b border-border">
                   <div className="flex items-center justify-between">
                     <h4 className="font-bold text-lg">Premium Almond Milk</h4>
