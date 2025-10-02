@@ -76,11 +76,11 @@ export default function HowItWorks() {
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               className={`grid md:grid-cols-2 gap-12 items-center ${
-                index % 2 === 1 ? "md:flex-row-reverse" : ""
+                index % 2 === 0 ? "md:flex-row-reverse" : ""
               }`}
               data-testid={`how-it-works-step-${index}`}
             >
-              <div className={index % 2 === 1 ? "md:order-2" : ""}>
+              <div className={index % 2 === 0 ? "md:order-2" : ""}>
                 <div className={`${step.iconBg} rounded-2xl p-8 flex items-center justify-center h-96`}>
                   <div className="text-center">
                     <step.icon size={96} className="mx-auto mb-4" />
@@ -110,7 +110,7 @@ export default function HowItWorks() {
                   </div>
                 </div>
               </div>
-              <div className={index % 2 === 1 ? "md:order-1" : ""}>
+              <div className={index % 2 === 0 ? "md:order-1" : ""}>
                 <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-primary/70 text-white flex items-center justify-center text-2xl font-bold font-display mb-6">
                   {step.number}
                 </div>

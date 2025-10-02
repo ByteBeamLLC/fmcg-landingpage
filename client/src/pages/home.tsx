@@ -4,9 +4,7 @@ import PainPoints from "@/components/pain-points";
 import IndustrySolutions from "@/components/industry-solutions";
 import HowItWorks from "@/components/how-it-works";
 import CoreCapabilities from "@/components/core-capabilities";
-import VisualDemo from "@/components/visual-demo";
 import SocialProof from "@/components/social-proof";
-import ResourcesSection from "@/components/resources-section";
 import CTASection from "@/components/cta-section";
 import Footer from "@/components/footer";
 import LiveChatWidget from "@/components/live-chat-widget";
@@ -20,9 +18,7 @@ export default function Home() {
       <IndustrySolutions />
       <HowItWorks />
       <CoreCapabilities />
-      <VisualDemo />
       <SocialProof />
-      <ResourcesSection />
       <CTASection />
       <Footer />
       <LiveChatWidget />

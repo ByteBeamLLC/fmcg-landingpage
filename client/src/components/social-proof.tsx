@@ -1,16 +1,14 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { User, ArrowRight } from "lucide-react";
-import { Link } from "wouter";
-import { Button } from "@/components/ui/button";
+import { User } from "lucide-react";
 import takhleesLogo from "@assets/takhlees_logo_1759326324559.webp";
 import carrefourLogo from "@assets/hd-carrefour-logo-transparent-background-701751694712996tfxv01icjr_1759326333428.png";
 import infoquestLogo from "@assets/FinalLogoB-1024x141_1759326348970.png";
 
 const clients = [
-  { id: "takhlees", name: "Takhlees", logo: takhleesLogo, hasCaseStudy: true, category: "Services Partner" },
-  { id: "carrefour", name: "Carrefour", logo: carrefourLogo, hasCaseStudy: false, category: "F&B Retailer" },
-  { id: "infoquest", name: "InfoQuest", logo: infoquestLogo, hasCaseStudy: false, category: "Automation Client" },
+  { id: "takhlees", name: "Takhlees", logo: takhleesLogo, category: "Services Partner" },
+  { id: "carrefour", name: "Carrefour", logo: carrefourLogo, category: "F&B Retailer" },
+  { id: "infoquest", name: "InfoQuest", logo: infoquestLogo, category: "Automation Client" },
 ];
 
 export default function SocialProof() {
@@ -47,54 +45,39 @@ export default function SocialProof() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Selected Partners and Clients</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">How We Worked With</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Automating compliance and knowledge work processes across industries
+            Trusted by leading organizations to automate compliance and knowledge work
           </p>
         </motion.div>
 
-        {/* Client Logos with Links */}
+        {/* Client Logos */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="grid md:grid-cols-3 gap-8 mb-16"
         >
-          {clients.map((client, index) => {
-            const CardContent = (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-                className={`bg-card border-2 border-border rounded-xl p-8 shadow-lg transition-all duration-300 ${client.hasCaseStudy ? 'hover:shadow-2xl hover:border-primary cursor-pointer' : ''} group`}
-                data-testid={`client-card-${client.id}`}
-              >
-                <img
-                  src={client.logo}
-                  alt={`${client.name} Logo`}
-                  className={`h-16 mx-auto mb-4 transition-all duration-300 object-contain ${client.hasCaseStudy ? 'grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100' : 'opacity-70'}`}
-                  data-testid={`logo-${client.id}`}
-                />
-                <div className="text-center">
-                  <div className="text-xs text-muted-foreground mb-2">{client.category}</div>
-                  {client.hasCaseStudy && (
-                    <Button variant="ghost" className="group-hover:text-primary" data-testid={`button-view-case-study-${client.id}`}>
-                      View Case Study
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  )}
-                </div>
-              </motion.div>
-            );
-
-            return client.hasCaseStudy ? (
-              <Link key={client.id} href={`/case-study/${client.id}`}>
-                {CardContent}
-              </Link>
-            ) : (
-              <div key={client.id}>{CardContent}</div>
-            );
-          })}
+          {clients.map((client, index) => (
+            <motion.div
+              key={client.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+              className="bg-card border-2 border-border rounded-xl p-8 shadow-lg"
+              data-testid={`client-card-${client.id}`}
+            >
+              <img
+                src={client.logo}
+                alt={`${client.name} Logo`}
+                className="h-16 mx-auto mb-4 object-contain opacity-70"
+                data-testid={`logo-${client.id}`}
+              />
+              <div className="text-center">
+                <div className="text-xs text-muted-foreground">{client.category}</div>
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
 
         {/* Stats Banner */}
@@ -119,6 +102,7 @@ export default function SocialProof() {
 
         {/* Testimonial */}
         <motion.div
+          id="testimonial"
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.6 }}
