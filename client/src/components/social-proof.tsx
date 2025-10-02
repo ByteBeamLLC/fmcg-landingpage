@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { User } from "lucide-react";
 import takhleesLogo from "@assets/takhlees_logo_1759326324559.webp";
-import carrefourLogo from "@assets/hd-carrefour-logo-transparent-background-701751694712996tfxv01icjr_1759326333428.png";
+import carrefourLogo from "@assets/carrefour_1759413703784.png";
 import infoquestLogo from "@assets/infoquest-logo-black_1759405455898.png";
 
 const clients = [
@@ -70,7 +70,7 @@ export default function SocialProof() {
               <img
                 src={client.logo}
                 alt={`${client.name} Logo`}
-                className="h-16 mx-auto mb-4 object-contain opacity-70"
+                className={`${client.id === 'carrefour' ? 'h-24 opacity-100' : 'h-16 opacity-70'} mx-auto mb-4 object-contain`}
                 data-testid={`logo-${client.id}`}
               />
               <div className="text-center">

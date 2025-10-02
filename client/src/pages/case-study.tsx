@@ -5,7 +5,7 @@ import { ArrowLeft, CheckCircle2, TrendingUp, Users, Clock, FileCheck } from "lu
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import takhleesLogo from "@assets/takhlees_logo_1759326324559.webp";
-import carrefourLogo from "@assets/hd-carrefour-logo-transparent-background-701751694712996tfxv01icjr_1759326333428.png";
+import carrefourLogo from "@assets/carrefour_1759413703784.png";
 import infoquestLogo from "@assets/FinalLogoB-1024x141_1759326348970.png";
 
 const caseStudies = {
