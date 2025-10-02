@@ -236,7 +236,7 @@ export default function Hero() {
             <motion.img
               src={beverageImg}
               alt="Beverage Product"
-              className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-[19rem] md:-translate-x-[20.25rem] w-28 md:w-36 opacity-80 pointer-events-none z-10 floating-product-3d"
+              className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-[15.5rem] md:-translate-x-[16rem] w-28 md:w-36 opacity-80 pointer-events-none z-10 floating-product-3d"
               animate={{
                 y: [0, -20, 0],
                 rotate: [0, 5, 0],
