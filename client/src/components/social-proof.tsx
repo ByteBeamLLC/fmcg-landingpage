@@ -3,7 +3,7 @@ import { useInView } from "react-intersection-observer";
 import { User } from "lucide-react";
 import takhleesLogo from "@assets/takhlees_logo_1759326324559.webp";
 import carrefourLogo from "@assets/hd-carrefour-logo-transparent-background-701751694712996tfxv01icjr_1759326333428.png";
-import infoquestLogo from "@assets/FinalLogoB-1024x141_1759326348970.png";
+import infoquestLogo from "@assets/infoquest-logo-black_1759405455898.png";
 
 const clients = [
   { id: "takhlees", name: "Takhlees", logo: takhleesLogo, category: "Services Partner" },
