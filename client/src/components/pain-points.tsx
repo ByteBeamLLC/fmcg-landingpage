@@ -1,8 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Scale, MapPin, RefreshCw, Users, Shield, Clock } from "lucide-react";
-import chipsImg from "@assets/food_1759397164769.png";
-import detergentImg from "@assets/cleaning-2_1759397164769.png";
 
 const painPoints = [
   {
@@ -56,7 +54,7 @@ export default function PainPoints() {
   });
 
   return (
-    <section id="solutions" className="section-padding bg-white relative overflow-hidden">
+    <section id="solutions" className="section-padding bg-white">
       <div className="container-custom">
         <motion.div
           ref={ref}
@@ -94,39 +92,6 @@ export default function PainPoints() {
           ))}
         </div>
       </div>
-
-      {/* Floating 3D Product Objects */}
-      <motion.img
-        src={chipsImg}
-        alt="Food Product"
-        className="absolute top-24 left-12 w-28 md:w-36 opacity-60 pointer-events-none hidden lg:block floating-product-3d"
-        animate={{
-          y: [0, -18, 0],
-          rotate: [0, -5, 0],
-        }}
-        transition={{
-          duration: 4.2,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        data-testid="floating-product-chips"
-      />
-      <motion.img
-        src={detergentImg}
-        alt="Cleaning Product"
-        className="absolute top-1/3 right-16 w-32 md:w-40 opacity-65 pointer-events-none hidden lg:block floating-product-3d"
-        animate={{
-          y: [0, 20, 0],
-          rotate: [0, 8, 0],
-        }}
-        transition={{
-          duration: 4.8,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 0.8,
-        }}
-        data-testid="floating-product-detergent"
-      />
     </section>
   );
 }

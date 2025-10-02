@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import beverageImg from "@assets/beverage_1759397164769.png";
 import cleaningSprayImg from "@assets/cleaning-1_1759397164769.png";
 import cosmeticImg from "@assets/cosmetic_1759397164769.png";
+import chipsImg from "@assets/food_1759397164769.png";
+import detergentImg from "@assets/cleaning-2_1759397164769.png";
 
 export default function Hero() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -230,6 +232,86 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative"
           >
+            {/* Floating 3D Product Objects around visualization */}
+            <motion.img
+              src={beverageImg}
+              alt="Beverage Product"
+              className="absolute -top-12 right-0 w-28 md:w-36 opacity-80 pointer-events-none z-10 floating-product-3d"
+              animate={{
+                y: [0, -20, 0],
+                rotate: [0, 5, 0],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              data-testid="floating-product-beverage"
+            />
+            <motion.img
+              src={cleaningSprayImg}
+              alt="Cleaning Product"
+              className="absolute -bottom-16 left-8 w-32 md:w-40 opacity-75 pointer-events-none z-10 floating-product-3d"
+              animate={{
+                y: [0, 18, 0],
+                rotate: [0, -8, 0],
+              }}
+              transition={{
+                duration: 5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.5,
+              }}
+              data-testid="floating-product-cleaning-spray"
+            />
+            <motion.img
+              src={cosmeticImg}
+              alt="Cosmetic Product"
+              className="absolute -top-8 left-4 w-24 md:w-28 opacity-70 pointer-events-none z-10 floating-product-3d"
+              animate={{
+                y: [0, -15, 0],
+                rotate: [0, 10, 0],
+              }}
+              transition={{
+                duration: 4.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1,
+              }}
+              data-testid="floating-product-cosmetic"
+            />
+            <motion.img
+              src={chipsImg}
+              alt="Food Product"
+              className="absolute -bottom-12 right-4 w-28 md:w-32 opacity-65 pointer-events-none z-10 floating-product-3d"
+              animate={{
+                y: [0, -18, 0],
+                rotate: [0, -5, 0],
+              }}
+              transition={{
+                duration: 4.2,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1.5,
+              }}
+              data-testid="floating-product-chips"
+            />
+            <motion.img
+              src={detergentImg}
+              alt="Cleaning Product"
+              className="absolute top-8 right-2 w-28 md:w-36 opacity-70 pointer-events-none z-10 floating-product-3d"
+              animate={{
+                y: [0, 20, 0],
+                rotate: [0, 8, 0],
+              }}
+              transition={{
+                duration: 4.8,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.8,
+              }}
+              data-testid="floating-product-detergent"
+            />
             <div className="relative h-[500px] flex items-center justify-center overflow-hidden">
               {/* Background */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/20 to-primary/20 rounded-3xl backdrop-blur-3xl" />
@@ -388,54 +470,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Floating 3D Product Objects */}
-      <motion.img
-        src={beverageImg}
-        alt="Beverage Product"
-        className="absolute top-20 right-10 w-32 md:w-40 opacity-80 pointer-events-none hidden md:block floating-product-3d"
-        animate={{
-          y: [0, -20, 0],
-          rotate: [0, 5, 0],
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        data-testid="floating-product-beverage"
-      />
-      <motion.img
-        src={cleaningSprayImg}
-        alt="Cleaning Product"
-        className="absolute top-1/2 left-8 w-28 md:w-36 opacity-70 pointer-events-none hidden md:block floating-product-3d"
-        animate={{
-          y: [0, 15, 0],
-          rotate: [0, -8, 0],
-        }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 0.5,
-        }}
-        data-testid="floating-product-cleaning-spray"
-      />
-      <motion.img
-        src={cosmeticImg}
-        alt="Cosmetic Product"
-        className="absolute bottom-32 right-20 w-24 md:w-32 opacity-75 pointer-events-none hidden md:block floating-product-3d"
-        animate={{
-          y: [0, -15, 0],
-          rotate: [0, 10, 0],
-        }}
-        transition={{
-          duration: 4.5,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1,
-        }}
-        data-testid="floating-product-cosmetic"
-      />
     </section>
   );
 }
