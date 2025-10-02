@@ -13,6 +13,7 @@ The application is built as a full-stack web application with a React-based fron
 
 Preferred communication style: Simple, everyday language.
 Design preference: Dark theme with abstract, platform-relevant visuals.
+Content strategy: Follow V7 Labs approach - simple headlines, visual storytelling, concrete examples, minimal text. Show, don't tell.
 
 ## System Architecture
 
@@ -37,7 +38,12 @@ Design preference: Dark theme with abstract, platform-relevant visuals.
 **Component Structure:**
 - Atomic design pattern with reusable UI components in `/client/src/components/ui`
 - Page-level components for major sections (Hero, Pain Points, Industry Solutions, etc.)
-- Single-page application structure with home page as the primary entry point
+- Multi-page application structure with home page and platform landing page
+- Platform page (`/platform`) features simplified hero section with:
+  - Rotating industry headlines (Healthcare, Insurance, FMCG, Finance)
+  - Interactive 3-step visual workflow showing document processing
+  - Simple, non-technical messaging following V7 Labs content strategy
+  - Animated document files and progress indicators
 - Component composition using Radix UI primitives for accessibility
 
 **State Management:**

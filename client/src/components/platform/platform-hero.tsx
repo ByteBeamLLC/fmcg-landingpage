@@ -14,6 +14,13 @@ export default function PlatformHero() {
     "Finance"
   ];
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   const workflowSteps = [
     {
       files: ["Patient_Records.pdf", "Discharge_Summary.pdf", "Lab_Results.pdf"],
@@ -103,7 +110,7 @@ export default function PlatformHero() {
                 Book a Demo
               </Button>
               <Button
-                onClick={handleBookDemo}
+                onClick={() => scrollToSection("use-cases")}
                 variant="outline"
                 className="border-2 border-white/30 text-white hover:bg-white/10 text-lg px-8 backdrop-blur-sm"
                 size="lg"
