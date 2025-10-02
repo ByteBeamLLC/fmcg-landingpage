@@ -24,7 +24,8 @@ export default function AIWorkflowVisualization() {
 
   return (
     <div className="relative w-full h-[500px] bg-gradient-to-br from-blue-950/40 to-purple-950/40 rounded-2xl border border-white/10 backdrop-blur-xl overflow-hidden">
-      <AnimatePresence mode="wait">
+      {/* Remove mode="wait" to allow overlapping animations for smooth cross-fade */}
+      <AnimatePresence>
         {/* Stage 0: Document Ingestion */}
         {stage === 0 && (
           <motion.div
@@ -32,8 +33,8 @@ export default function AIWorkflowVisualization() {
             className="absolute inset-0 flex items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.6 }}
+            exit={{ opacity: 0, transition: { duration: 0.8 } }}
+            transition={{ duration: 0.8 }}
           >
             <div className="relative">
               {/* Documents flowing in */}
@@ -57,6 +58,7 @@ export default function AIWorkflowVisualization() {
                     x: [-150 + i * 150, 0, 0, 0],
                     scale: [0.8, 1, 1, 0.7]
                   }}
+                  exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.8 } }}
                   transition={{ 
                     duration: 3,
                     times: [0, 0.4, 0.7, 1],
@@ -70,12 +72,12 @@ export default function AIWorkflowVisualization() {
                 </motion.div>
               ))}
 
-              {/* Central collection point - this persists to next stage */}
+              {/* Central collection point - transitions to extraction */}
               <motion.div
                 className="w-32 h-32 rounded-full border-4 border-dashed border-blue-400/40 flex items-center justify-center"
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 0.6 }}
-                exit={{ scale: 1.2, opacity: 0 }}
+                exit={{ scale: 1.5, opacity: 0, transition: { duration: 0.8 } }}
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
                 <Database className="w-12 h-12 text-blue-400" />
@@ -91,17 +93,17 @@ export default function AIWorkflowVisualization() {
             className="absolute inset-0 flex items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.6 }}
+            exit={{ opacity: 0, transition: { duration: 0.8 } }}
+            transition={{ duration: 0.8 }}
           >
             <div className="relative w-full h-full flex items-center justify-center">
-              {/* Central document appears from Stage 0 */}
+              {/* Central document emerges from Stage 0 */}
               <motion.div
                 className="absolute"
-                initial={{ scale: 0.7, opacity: 0 }}
+                initial={{ scale: 0.5, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.5, opacity: 0 }}
-                transition={{ duration: 0.6 }}
+                exit={{ scale: 0.3, opacity: 0, transition: { duration: 0.8 } }}
+                transition={{ duration: 0.8 }}
               >
                 <div className="w-24 h-32 bg-gradient-to-br from-blue-400 to-blue-500 rounded-lg shadow-lg flex items-center justify-center">
                   <FileText className="w-12 h-12 text-white" />
@@ -132,7 +134,7 @@ export default function AIWorkflowVisualization() {
                       opacity: 1, 
                       scale: 1 
                     }}
-                    exit={{ opacity: 0, scale: 0 }}
+                    exit={{ scale: 0.5, opacity: 0, transition: { duration: 0.8 } }}
                     transition={{ 
                       duration: 1.2, 
                       delay: 0.8 + i * 0.15,
@@ -165,7 +167,7 @@ export default function AIWorkflowVisualization() {
                       strokeDasharray="5,5"
                       initial={{ pathLength: 0, opacity: 0 }}
                       animate={{ pathLength: 1, opacity: 0.3 }}
-                      exit={{ opacity: 0 }}
+                      exit={{ opacity: 0, transition: { duration: 0.8 } }}
                       transition={{ duration: 0.8, delay: 0.8 + i * 0.15 }}
                     />
                   );
@@ -182,16 +184,16 @@ export default function AIWorkflowVisualization() {
             className="absolute inset-0 flex items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.6 }}
+            exit={{ opacity: 0, transition: { duration: 0.8 } }}
+            transition={{ duration: 0.8 }}
           >
             <div className="relative w-full h-full">
-              {/* Brain center - morphs from extracted data */}
+              {/* Brain center - emerges from extracted data */}
               <motion.div
                 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-                initial={{ scale: 0, opacity: 0 }}
+                initial={{ scale: 0.5, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.8, opacity: 0 }}
+                exit={{ scale: 0.8, opacity: 0, transition: { duration: 0.8 } }}
                 transition={{ duration: 0.8 }}
               >
                 <div className="w-24 h-24 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full shadow-lg flex items-center justify-center relative">
@@ -203,6 +205,7 @@ export default function AIWorkflowVisualization() {
                       className="absolute inset-0 border-4 border-purple-400 rounded-full"
                       initial={{ scale: 1, opacity: 0.6 }}
                       animate={{ scale: 2, opacity: 0 }}
+                      exit={{ opacity: 0, transition: { duration: 0.8 } }}
                       transition={{
                         duration: 2,
                         delay: i * 0.7,
@@ -227,7 +230,7 @@ export default function AIWorkflowVisualization() {
                   style={{ left: node.x, top: node.y }}
                   initial={{ scale: 0, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
-                  exit={{ scale: 0, opacity: 0 }}
+                  exit={{ scale: 0.3, opacity: 0, transition: { duration: 0.8 } }}
                   transition={{ duration: 0.6, delay: 1 + i * 0.3 }}
                 >
                   <div className="w-20 h-20 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-lg shadow-lg flex items-center justify-center">
@@ -257,7 +260,7 @@ export default function AIWorkflowVisualization() {
                     strokeWidth="3"
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 0.6 }}
-                    exit={{ opacity: 0 }}
+                    exit={{ opacity: 0, transition: { duration: 0.8 } }}
                     transition={{ duration: 1, delay: 1.5 + i * 0.2 }}
                   />
                 ))}
@@ -273,17 +276,17 @@ export default function AIWorkflowVisualization() {
             className="absolute inset-0 flex items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.6 }}
+            exit={{ opacity: 0, transition: { duration: 0.8 } }}
+            transition={{ duration: 0.8 }}
           >
             <div className="relative w-full h-full flex items-center justify-center">
               {/* Central brain continues from Stage 2 */}
               <motion.div
                 className="absolute"
-                initial={{ scale: 0.8 }}
-                animate={{ scale: 1 }}
-                exit={{ scale: 0.8, opacity: 0 }}
-                transition={{ duration: 0.6 }}
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.8, opacity: 0, transition: { duration: 0.8 } }}
+                transition={{ duration: 0.8 }}
               >
                 <div className="w-20 h-20 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-full shadow-lg flex items-center justify-center">
                   <Brain className="w-10 h-10 text-white" />
@@ -295,7 +298,7 @@ export default function AIWorkflowVisualization() {
                 className="absolute top-20 left-1/2 -translate-x-1/2"
                 initial={{ y: -50, opacity: 0, scale: 0.5 }}
                 animate={{ y: 0, opacity: 1, scale: 1 }}
-                exit={{ y: -30, opacity: 0 }}
+                exit={{ y: -30, opacity: 0, transition: { duration: 0.8 } }}
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
                 <div className="w-28 h-24 bg-gradient-to-br from-green-400 to-green-500 rounded-lg shadow-lg flex flex-col items-center justify-center text-white p-3">
@@ -309,7 +312,7 @@ export default function AIWorkflowVisualization() {
                 className="absolute bottom-20 left-1/2 -translate-x-1/2"
                 initial={{ y: 50, opacity: 0, scale: 0.5 }}
                 animate={{ y: 0, opacity: 1, scale: 1 }}
-                exit={{ y: 30, opacity: 0 }}
+                exit={{ y: 30, opacity: 0, transition: { duration: 0.8 } }}
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
                 <div className="w-28 h-24 bg-gradient-to-br from-cyan-400 to-cyan-500 rounded-lg shadow-lg flex flex-col items-center justify-center text-white p-3">
@@ -336,6 +339,7 @@ export default function AIWorkflowVisualization() {
                       pathLength: [0, 1],
                       opacity: [0, 0.8, 0]
                     }}
+                    exit={{ opacity: 0, transition: { duration: 0.8 } }}
                     transition={{ 
                       duration: 1.5,
                       delay: 1.2 + i * 0.4,
@@ -360,6 +364,7 @@ export default function AIWorkflowVisualization() {
                       pathLength: [0, 1],
                       opacity: [0, 0.8, 0]
                     }}
+                    exit={{ opacity: 0, transition: { duration: 0.8 } }}
                     transition={{ 
                       duration: 1.5,
                       delay: 1.5 + i * 0.4,
@@ -380,17 +385,17 @@ export default function AIWorkflowVisualization() {
             className="absolute inset-0 flex items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.6 }}
+            exit={{ opacity: 0, transition: { duration: 0.8 } }}
+            transition={{ duration: 0.8 }}
           >
             <div className="relative w-full h-full flex flex-col items-center justify-center">
               {/* Decision brain from Stage 3 */}
               <motion.div
                 className="mb-8"
-                initial={{ scale: 0.8, y: -20 }}
-                animate={{ scale: 1, y: 0 }}
-                exit={{ scale: 0, y: -50, opacity: 0 }}
-                transition={{ duration: 0.6 }}
+                initial={{ scale: 0.8, y: -20, opacity: 0 }}
+                animate={{ scale: 1, y: 0, opacity: 1 }}
+                exit={{ scale: 0.5, y: -50, opacity: 0, transition: { duration: 0.8 } }}
+                transition={{ duration: 0.8 }}
               >
                 <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full shadow-lg flex items-center justify-center">
                   <span className="text-3xl">🤔</span>
@@ -413,7 +418,7 @@ export default function AIWorkflowVisualization() {
                       opacity: option.active ? 1 : 0.4, 
                       scale: option.active ? 1.1 : 0.9
                     }}
-                    exit={{ y: 50, opacity: 0 }}
+                    exit={{ y: 30, opacity: 0, transition: { duration: 0.8 } }}
                     transition={{ duration: 0.8, delay: 1 + i * 0.3 }}
                   >
                     <span className="text-4xl mb-2">{option.icon}</span>
@@ -427,7 +432,7 @@ export default function AIWorkflowVisualization() {
                 className="mt-8"
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                exit={{ y: 20, opacity: 0 }}
+                exit={{ y: 15, opacity: 0, transition: { duration: 0.8 } }}
                 transition={{ duration: 0.6, delay: 2.5 }}
               >
                 <div className="bg-green-500/20 border-2 border-green-400 rounded-full px-6 py-3">
@@ -445,16 +450,16 @@ export default function AIWorkflowVisualization() {
             className="absolute inset-0 flex items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.6 }}
+            exit={{ opacity: 0, transition: { duration: 0.8 } }}
+            transition={{ duration: 0.8 }}
           >
             <div className="relative w-full h-full flex items-center justify-center">
               {/* Central generator - builds from Stage 4 decision */}
               <motion.div
                 className="absolute"
-                initial={{ scale: 0 }}
-                animate={{ scale: [0, 1.2, 1] }}
-                exit={{ scale: 0, opacity: 0 }}
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: [0, 1.2, 1], opacity: 1 }}
+                exit={{ scale: 0.5, opacity: 0, transition: { duration: 0.8 } }}
                 transition={{ duration: 0.8 }}
               >
                 <div className="w-24 h-24 bg-gradient-to-br from-green-500 to-green-600 rounded-full shadow-lg flex items-center justify-center relative">
@@ -466,6 +471,7 @@ export default function AIWorkflowVisualization() {
                       className="absolute inset-0 border-4 border-green-400 rounded-full"
                       initial={{ scale: 1, opacity: 0.6 }}
                       animate={{ scale: 2, opacity: 0 }}
+                      exit={{ opacity: 0, transition: { duration: 0.8 } }}
                       transition={{
                         duration: 1.5,
                         delay: i * 0.75,
@@ -490,7 +496,7 @@ export default function AIWorkflowVisualization() {
                     style={{ left: output.x - 50, top: output.y - 50 }}
                     initial={{ scale: 0, opacity: 0, x: 300 - output.x + 50, y: 250 - output.y + 50 }}
                     animate={{ scale: 1, opacity: 1, x: 0, y: 0 }}
-                    exit={{ scale: 0, opacity: 0 }}
+                    exit={{ scale: 0.5, opacity: 0, transition: { duration: 0.8 } }}
                     transition={{ duration: 1, delay: output.delay, ease: "easeOut" }}
                   >
                     <div className={`w-24 h-24 ${output.bgColor} rounded-lg shadow-lg flex flex-col items-center justify-center text-white`}>
@@ -501,6 +507,7 @@ export default function AIWorkflowVisualization() {
                         className="absolute -top-2 -right-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-lg"
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
+                        exit={{ scale: 0, opacity: 0, transition: { duration: 0.8 } }}
                         transition={{ duration: 0.3, delay: output.delay + 0.8 }}
                       >
                         <span className="text-white text-lg font-bold">✓</span>
@@ -528,7 +535,7 @@ export default function AIWorkflowVisualization() {
                     strokeDasharray="5,5"
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 0.5 }}
-                    exit={{ opacity: 0 }}
+                    exit={{ opacity: 0, transition: { duration: 0.8 } }}
                     transition={{ duration: 0.8, delay: 0.5 + i * 0.2 }}
                   />
                 ))}
@@ -538,15 +545,15 @@ export default function AIWorkflowVisualization() {
         )}
       </AnimatePresence>
 
-      {/* Stage Labels */}
+      {/* Stage Labels - also with overlapping cross-fade */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           <motion.div
             key={stage}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.4 }}
+            exit={{ opacity: 0, y: -10, transition: { duration: 0.8 } }}
+            transition={{ duration: 0.8 }}
             className="bg-black/40 backdrop-blur-md border border-white/20 rounded-full px-6 py-3"
           >
             <p className="text-white font-semibold text-sm">
