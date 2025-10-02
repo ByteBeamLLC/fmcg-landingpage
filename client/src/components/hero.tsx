@@ -2,6 +2,9 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Calendar, Package, FileText, Languages, Calculator, Eye, CheckCircle, Radio, Zap } from "lucide-react";
 import { useState, useEffect } from "react";
+import beverageImg from "@assets/beverage_1759397164769.png";
+import cleaningSprayImg from "@assets/cleaning-1_1759397164769.png";
+import cosmeticImg from "@assets/cosmetic_1759397164769.png";
 
 export default function Hero() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -167,7 +170,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="gradient-overlay text-white section-padding pt-32">
+    <section className="gradient-overlay text-white section-padding pt-32 relative overflow-hidden">
       <div className="container-custom">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -384,6 +387,55 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
+
+      {/* Floating 3D Product Objects */}
+      <motion.img
+        src={beverageImg}
+        alt="Beverage Product"
+        className="absolute top-20 right-10 w-32 md:w-40 opacity-80 pointer-events-none hidden md:block floating-product-3d"
+        animate={{
+          y: [0, -20, 0],
+          rotate: [0, 5, 0],
+        }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        data-testid="floating-product-beverage"
+      />
+      <motion.img
+        src={cleaningSprayImg}
+        alt="Cleaning Product"
+        className="absolute top-1/2 left-8 w-28 md:w-36 opacity-70 pointer-events-none hidden md:block floating-product-3d"
+        animate={{
+          y: [0, 15, 0],
+          rotate: [0, -8, 0],
+        }}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 0.5,
+        }}
+        data-testid="floating-product-cleaning-spray"
+      />
+      <motion.img
+        src={cosmeticImg}
+        alt="Cosmetic Product"
+        className="absolute bottom-32 right-20 w-24 md:w-32 opacity-75 pointer-events-none hidden md:block floating-product-3d"
+        animate={{
+          y: [0, -15, 0],
+          rotate: [0, 10, 0],
+        }}
+        transition={{
+          duration: 4.5,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 1,
+        }}
+        data-testid="floating-product-cosmetic"
+      />
     </section>
   );
 }

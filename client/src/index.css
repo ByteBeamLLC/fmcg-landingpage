@@ -117,4 +117,10 @@
   .container-custom {
     @apply max-w-7xl mx-auto px-6 lg:px-8;
   }
+
+  .floating-product-3d {
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
 }
