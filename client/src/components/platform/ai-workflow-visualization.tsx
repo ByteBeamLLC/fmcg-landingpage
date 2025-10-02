@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import { FileText, Database, Globe, Brain, FileCheck, Zap } from "lucide-react";
+import { FileText, Database, Globe, Brain, FileCheck, Zap, Type, BarChart3, Image, Table2, Hash, MapPin, Lightbulb, X, Check } from "lucide-react";
 
 export default function AIWorkflowVisualization() {
   const [stage, setStage] = useState(0);
@@ -112,13 +112,14 @@ export default function AIWorkflowVisualization() {
 
               {/* Data extraction - pieces flying out */}
               {[
-                { icon: "📝", label: "Text", angle: 0, bgColor: "bg-gradient-to-br from-blue-400 to-blue-500" },
-                { icon: "📊", label: "Data", angle: 60, bgColor: "bg-gradient-to-br from-purple-400 to-purple-500" },
-                { icon: "📷", label: "Images", angle: 120, bgColor: "bg-gradient-to-br from-green-400 to-green-500" },
-                { icon: "📋", label: "Tables", angle: 180, bgColor: "bg-gradient-to-br from-cyan-400 to-cyan-500" },
-                { icon: "🔢", label: "Numbers", angle: 240, bgColor: "bg-gradient-to-br from-indigo-400 to-indigo-500" },
-                { icon: "📌", label: "Key Points", angle: 300, bgColor: "bg-gradient-to-br from-pink-400 to-pink-500" },
+                { Icon: Type, label: "Text", angle: 0, bgColor: "bg-gradient-to-br from-blue-400 to-blue-500" },
+                { Icon: BarChart3, label: "Data", angle: 60, bgColor: "bg-gradient-to-br from-purple-400 to-purple-500" },
+                { Icon: Image, label: "Images", angle: 120, bgColor: "bg-gradient-to-br from-green-400 to-green-500" },
+                { Icon: Table2, label: "Tables", angle: 180, bgColor: "bg-gradient-to-br from-cyan-400 to-cyan-500" },
+                { Icon: Hash, label: "Numbers", angle: 240, bgColor: "bg-gradient-to-br from-indigo-400 to-indigo-500" },
+                { Icon: MapPin, label: "Key Points", angle: 300, bgColor: "bg-gradient-to-br from-pink-400 to-pink-500" },
               ].map((item, i) => {
+                const ItemIcon = item.Icon;
                 const radius = 140;
                 const x = Math.cos((item.angle * Math.PI) / 180) * radius;
                 const y = Math.sin((item.angle * Math.PI) / 180) * radius;
@@ -142,7 +143,7 @@ export default function AIWorkflowVisualization() {
                     }}
                   >
                     <div className={`w-16 h-16 ${item.bgColor} rounded-lg shadow-lg flex flex-col items-center justify-center text-white`}>
-                      <span className="text-2xl">{item.icon}</span>
+                      <ItemIcon className="w-6 h-6" />
                       <span className="text-[10px] mt-1 font-medium">{item.label}</span>
                     </div>
                   </motion.div>
@@ -219,14 +220,14 @@ export default function AIWorkflowVisualization() {
 
               {/* Data nodes */}
               {[
-                { x: 150, y: 120, label: "Context" },
-                { x: 450, y: 120, label: "Patterns" },
-                { x: 120, y: 380, label: "Insights" },
-                { x: 480, y: 380, label: "Relations" },
+                { x: 100, y: 80, label: "Context" },
+                { x: 380, y: 80, label: "Patterns" },
+                { x: 80, y: 320, label: "Insights" },
+                { x: 400, y: 320, label: "Relations" },
               ].map((node, i) => (
                 <motion.div
                   key={`node-${i}`}
-                  className="absolute"
+                  className="absolute -translate-x-1/2 -translate-y-1/2"
                   style={{ left: node.x, top: node.y }}
                   initial={{ scale: 0, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
@@ -245,10 +246,10 @@ export default function AIWorkflowVisualization() {
               {/* Connecting lines */}
               <svg className="absolute inset-0 w-full h-full" viewBox="0 0 600 500">
                 {[
-                  [150, 120, 300, 250],
-                  [450, 120, 300, 250],
-                  [120, 380, 300, 250],
-                  [480, 380, 300, 250],
+                  [100, 80, 300, 250],
+                  [380, 80, 300, 250],
+                  [80, 320, 300, 250],
+                  [400, 320, 300, 250],
                 ].map((line, i) => (
                   <motion.line
                     key={`connect-${i}`}
@@ -398,33 +399,36 @@ export default function AIWorkflowVisualization() {
                 transition={{ duration: 0.8 }}
               >
                 <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full shadow-lg flex items-center justify-center">
-                  <span className="text-3xl">🤔</span>
+                  <Lightbulb className="w-10 h-10 text-white" />
                 </div>
               </motion.div>
 
               {/* Options */}
               <div className="flex gap-8 items-center">
                 {[
-                  { label: "Option A", active: false, icon: "❌", bgColor: "bg-gradient-to-br from-gray-400 to-gray-500" },
-                  { label: "Option B", active: true, icon: "✓", bgColor: "bg-gradient-to-br from-green-400 to-green-500" },
-                  { label: "Option C", active: false, icon: "❌", bgColor: "bg-gradient-to-br from-gray-400 to-gray-500" },
-                ].map((option, i) => (
-                  <motion.div
-                    key={`option-${i}`}
-                    className={`w-28 h-28 rounded-lg shadow-lg flex flex-col items-center justify-center ${option.bgColor}`}
-                    initial={{ y: 50, opacity: 0, scale: 0.8 }}
-                    animate={{ 
-                      y: 0, 
-                      opacity: option.active ? 1 : 0.4, 
-                      scale: option.active ? 1.1 : 0.9
-                    }}
-                    exit={{ y: 30, opacity: 0, transition: { duration: 0.8 } }}
-                    transition={{ duration: 0.8, delay: 1 + i * 0.3 }}
-                  >
-                    <span className="text-4xl mb-2">{option.icon}</span>
-                    <p className="text-white text-sm font-bold">{option.label}</p>
-                  </motion.div>
-                ))}
+                  { label: "Option A", active: false, Icon: X, bgColor: "bg-gradient-to-br from-gray-400 to-gray-500" },
+                  { label: "Option B", active: true, Icon: Check, bgColor: "bg-gradient-to-br from-green-400 to-green-500" },
+                  { label: "Option C", active: false, Icon: X, bgColor: "bg-gradient-to-br from-gray-400 to-gray-500" },
+                ].map((option, i) => {
+                  const OptionIcon = option.Icon;
+                  return (
+                    <motion.div
+                      key={`option-${i}`}
+                      className={`w-28 h-28 rounded-lg shadow-lg flex flex-col items-center justify-center ${option.bgColor}`}
+                      initial={{ y: 50, opacity: 0, scale: 0.8 }}
+                      animate={{ 
+                        y: 0, 
+                        opacity: option.active ? 1 : 0.4, 
+                        scale: option.active ? 1.1 : 0.9
+                      }}
+                      exit={{ y: 30, opacity: 0, transition: { duration: 0.8 } }}
+                      transition={{ duration: 0.8, delay: 1 + i * 0.3 }}
+                    >
+                      <OptionIcon className="w-12 h-12 text-white mb-2" />
+                      <p className="text-white text-sm font-bold">{option.label}</p>
+                    </motion.div>
+                  );
+                })}
               </div>
 
               {/* Best path indicator */}
@@ -484,17 +488,17 @@ export default function AIWorkflowVisualization() {
 
               {/* Outputs generating */}
               {[
-                { icon: FileCheck, label: "Report", x: 120, y: 200, bgColor: "bg-gradient-to-br from-blue-400 to-blue-500", delay: 1 },
-                { icon: Database, label: "Database", x: 480, y: 200, bgColor: "bg-gradient-to-br from-purple-400 to-purple-500", delay: 1.3 },
-                { icon: FileText, label: "Document", x: 300, y: 380, bgColor: "bg-gradient-to-br from-green-400 to-green-500", delay: 1.6 },
+                { icon: FileCheck, label: "Report", x: 100, y: 180, bgColor: "bg-gradient-to-br from-blue-400 to-blue-500", delay: 1 },
+                { icon: Database, label: "Database", x: 400, y: 180, bgColor: "bg-gradient-to-br from-purple-400 to-purple-500", delay: 1.3 },
+                { icon: FileText, label: "Document", x: 250, y: 340, bgColor: "bg-gradient-to-br from-green-400 to-green-500", delay: 1.6 },
               ].map((output, i) => {
                 const Icon = output.icon;
                 return (
                   <motion.div
                     key={`output-${i}`}
-                    className="absolute"
-                    style={{ left: output.x - 50, top: output.y - 50 }}
-                    initial={{ scale: 0, opacity: 0, x: 300 - output.x + 50, y: 250 - output.y + 50 }}
+                    className="absolute -translate-x-1/2 -translate-y-1/2"
+                    style={{ left: output.x, top: output.y }}
+                    initial={{ scale: 0, opacity: 0, x: 300 - output.x, y: 250 - output.y }}
                     animate={{ scale: 1, opacity: 1, x: 0, y: 0 }}
                     exit={{ scale: 0.5, opacity: 0, transition: { duration: 0.8 } }}
                     transition={{ duration: 1, delay: output.delay, ease: "easeOut" }}
@@ -510,7 +514,7 @@ export default function AIWorkflowVisualization() {
                         exit={{ scale: 0, opacity: 0, transition: { duration: 0.8 } }}
                         transition={{ duration: 0.3, delay: output.delay + 0.8 }}
                       >
-                        <span className="text-white text-lg font-bold">✓</span>
+                        <Check className="w-5 h-5 text-white" />
                       </motion.div>
                     </div>
                   </motion.div>
@@ -520,9 +524,9 @@ export default function AIWorkflowVisualization() {
               {/* Generation lines */}
               <svg className="absolute inset-0 w-full h-full" viewBox="0 0 600 500">
                 {[
-                  [300, 250, 120, 200],
-                  [300, 250, 480, 200],
-                  [300, 250, 300, 380],
+                  [300, 250, 100, 180],
+                  [300, 250, 400, 180],
+                  [300, 250, 250, 340],
                 ].map((line, i) => (
                   <motion.line
                     key={`gen-line-${i}`}
@@ -556,15 +560,13 @@ export default function AIWorkflowVisualization() {
             transition={{ duration: 0.8 }}
             className="bg-black/40 backdrop-blur-md border border-white/20 rounded-full px-6 py-3"
           >
-            <p className="text-white font-semibold text-sm">
-              {[
-                "📄 Ingesting Documents",
-                "🔍 Extracting Knowledge",
-                "🧠 Deep Analysis",
-                "🌐 Researching Context",
-                "💡 Reasoning & Deciding",
-                "⚡ Generating Outputs"
-              ][stage]}
+            <p className="text-white font-semibold text-sm flex items-center gap-2">
+              {stage === 0 && <><FileText className="w-4 h-4" /> Ingesting Documents</>}
+              {stage === 1 && <><Database className="w-4 h-4" /> Extracting Knowledge</>}
+              {stage === 2 && <><Brain className="w-4 h-4" /> Deep Analysis</>}
+              {stage === 3 && <><Globe className="w-4 h-4" /> Researching Context</>}
+              {stage === 4 && <><Lightbulb className="w-4 h-4" /> Reasoning & Deciding</>}
+              {stage === 5 && <><Zap className="w-4 h-4" /> Generating Outputs</>}
             </p>
           </motion.div>
         </AnimatePresence>
