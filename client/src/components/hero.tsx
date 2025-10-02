@@ -376,8 +376,9 @@ export default function Hero() {
                         {/* Text */}
                         <div className="flex-1">
                           <div className={`
-                            font-bold text-white mb-1
+                            font-bold mb-1
                             ${isActive ? 'text-2xl' : 'text-base'}
+                            ${step.id === 0 ? 'bg-gradient-to-r from-black to-blue-900 bg-clip-text text-transparent' : 'text-white'}
                             transition-all duration-700
                           `}>
                             {step.title}
