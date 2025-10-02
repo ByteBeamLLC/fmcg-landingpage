@@ -272,7 +272,7 @@ export default function Hero() {
                       <div className={`
                         flex items-center gap-4 px-6 py-5 rounded-2xl border-2 
                         ${isActive 
-                          ? 'bg-white/20 border-white shadow-2xl backdrop-blur-xl' 
+                          ? 'bg-white/20 border-transparent shadow-2xl backdrop-blur-xl' 
                           : 'bg-white/5 border-white/20 backdrop-blur-sm'
                         }
                         transition-all duration-700
