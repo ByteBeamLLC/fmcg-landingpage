@@ -45,7 +45,7 @@ export default function SocialProof() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">How We Worked With</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Who We Worked With</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Trusted by leading organizations to automate compliance and knowledge work
           </p>
@@ -70,7 +70,7 @@ export default function SocialProof() {
               <img
                 src={client.logo}
                 alt={`${client.name} Logo`}
-                className="h-16 mx-auto mb-4 object-contain opacity-70"
+                className={`h-16 mx-auto mb-4 object-contain ${client.id === 'infoquest' ? 'opacity-100 brightness-0' : 'opacity-70'}`}
                 data-testid={`logo-${client.id}`}
               />
               <div className="text-center">
