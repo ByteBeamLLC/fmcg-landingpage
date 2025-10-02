@@ -399,7 +399,7 @@ export default function Hero() {
                             className="flex-shrink-0"
                             data-testid={`checkmark-step-${step.id}`}
                           >
-                            <CheckCircle className="text-accent" size={24} />
+                            <CheckCircle className="text-white" size={24} />
                           </motion.div>
                         )}
                       </div>
@@ -464,7 +464,7 @@ export default function Hero() {
                   ease: "easeInOut",
                   delay: 1,
                 }}
-                className="absolute bottom-20 left-10 w-3 h-3 bg-accent rounded-full blur-sm"
+                className="absolute bottom-20 left-10 w-3 h-3 bg-white rounded-full blur-sm"
               />
             </div>
           </motion.div>

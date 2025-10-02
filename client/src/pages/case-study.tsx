@@ -304,7 +304,7 @@ export default function CaseStudy() {
             </div>
             <div>
               <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                <CheckCircle2 className="text-accent" size={32} />
+                <CheckCircle2 className="text-primary" size={32} />
                 The Solution
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
@@ -320,10 +320,10 @@ export default function CaseStudy() {
               {caseStudy.features.map((feature, index) => (
                 <div
                   key={index}
-                  className="flex items-start gap-3 p-4 bg-muted/30 rounded-lg"
+                  className="flex items-start gap-3 p-4 bg-muted rounded-lg"
                   data-testid={`feature-${index}`}
                 >
-                  <CheckCircle2 className="text-accent flex-shrink-0 mt-1" size={20} />
+                  <CheckCircle2 className="text-primary flex-shrink-0 mt-1" size={20} />
                   <span>{feature}</span>
                 </div>
               ))}
@@ -348,7 +348,7 @@ export default function CaseStudy() {
           </div>
 
           {/* Testimonial */}
-          <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl p-12 relative">
+          <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-12 relative">
             <div className="absolute top-8 left-8 text-primary text-6xl opacity-20">
               "
             </div>
