@@ -70,7 +70,7 @@ export default function SocialProof() {
               <img
                 src={client.logo}
                 alt={`${client.name} Logo`}
-                className={`h-16 mx-auto mb-4 object-contain ${client.id === 'infoquest' ? 'opacity-100 brightness-0' : 'opacity-70'}`}
+                className="h-16 mx-auto mb-4 object-contain opacity-70"
                 data-testid={`logo-${client.id}`}
               />
               <div className="text-center">
