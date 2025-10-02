@@ -74,12 +74,12 @@ function UploadAnimation() {
         {files.map((file, index) => (
           <div
             key={index}
-            className="flex items-center gap-3 bg-white/50 dark:bg-white/10 rounded-lg p-3"
+            className="flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-lg p-3 shadow-sm border border-border/50"
           >
             <file.icon size={24} className="text-primary flex-shrink-0" />
             <div className="flex-1 min-w-0">
-              <div className="text-sm font-medium truncate">{file.name}</div>
-              <div className="relative h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full mt-1 overflow-hidden">
+              <div className="text-sm font-medium truncate text-foreground">{file.name}</div>
+              <div className="relative h-1.5 bg-muted rounded-full mt-1 overflow-hidden">
                 <motion.div
                   animate={{ 
                     width: ["0%", "100%", "100%", "0%"],
@@ -206,11 +206,11 @@ function ReviewAnimation() {
       <div className="text-2xl font-bold mb-6">Ready for Submission</div>
       
       <div className="space-y-4 w-full max-w-sm">
-        <div className="bg-white/50 dark:bg-white/10 rounded-lg p-4">
+        <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-border/50">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <FileText className="text-primary" size={24} />
-              <span className="font-medium">Submission Forms</span>
+              <span className="font-medium text-foreground">Submission Forms</span>
             </div>
             <motion.div
               animate={{
@@ -229,11 +229,11 @@ function ReviewAnimation() {
           </div>
         </div>
 
-        <div className="bg-white/50 dark:bg-white/10 rounded-lg p-4">
+        <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-border/50">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <Image className="text-primary" size={24} />
-              <span className="font-medium">Market Labels</span>
+              <span className="font-medium text-foreground">Market Labels</span>
             </div>
             <motion.div
               animate={{
@@ -264,7 +264,7 @@ export default function HowItWorks() {
   });
 
   return (
-    <section id="how-it-works" className="section-padding bg-white dark:bg-gray-900">
+    <section id="how-it-works" className="section-padding bg-white">
       <div className="container-custom">
         <motion.div
           ref={ref}
