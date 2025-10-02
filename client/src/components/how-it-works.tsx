@@ -48,9 +48,9 @@ const steps = [
 
 function UploadAnimation() {
   const files = [
-    { icon: FileText, name: "product-label.pdf", delay: 0 },
-    { icon: Image, name: "packaging.jpg", delay: 1 },
-    { icon: FileSpreadsheet, name: "ingredients.xlsx", delay: 2 },
+    { icon: FileText, name: "Organic-Granola-Bar.pdf", delay: 0 },
+    { icon: FileText, name: "Premium-Coffee-8901234567890.pdf", delay: 1 },
+    { icon: FileText, name: "Natural-Juice-Blend.pdf", delay: 2 },
   ];
 
   return (
