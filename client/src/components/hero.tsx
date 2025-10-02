@@ -1,14 +1,84 @@
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import { Calendar, FileText, Languages, ShieldCheck, Zap } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Calendar, Package, FileText, Languages, Calculator, Eye, CheckCircle, Radio, Zap } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function Hero() {
+  const [currentStep, setCurrentStep] = useState(0);
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
+
+  const steps = [
+    {
+      id: 0,
+      icon: Package,
+      title: "Product Label",
+      description: "Upload packaging",
+      color: "from-blue-500 to-blue-600",
+      iconColor: "text-blue-400"
+    },
+    {
+      id: 1,
+      icon: FileText,
+      title: "Extract Data",
+      description: "AI reads all info",
+      color: "from-purple-500 to-purple-600",
+      iconColor: "text-purple-400"
+    },
+    {
+      id: 2,
+      icon: Languages,
+      title: "Translate",
+      description: "English → Arabic",
+      color: "from-pink-500 to-pink-600",
+      iconColor: "text-pink-400"
+    },
+    {
+      id: 3,
+      icon: Calculator,
+      title: "Calculate",
+      description: "Nutrition values",
+      color: "from-orange-500 to-orange-600",
+      iconColor: "text-orange-400"
+    },
+    {
+      id: 4,
+      icon: Eye,
+      title: "Detect",
+      description: "Halal & certifications",
+      color: "from-green-500 to-green-600",
+      iconColor: "text-green-400"
+    },
+    {
+      id: 5,
+      icon: CheckCircle,
+      title: "Generate",
+      description: "Compliant label",
+      color: "from-teal-500 to-teal-600",
+      iconColor: "text-teal-400"
+    },
+    {
+      id: 6,
+      icon: Radio,
+      title: "Monitor",
+      description: "Track rule changes",
+      color: "from-indigo-500 to-indigo-600",
+      iconColor: "text-indigo-400"
+    }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentStep((prev) => (prev + 1) % steps.length);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="gradient-overlay text-white section-padding pt-32">
@@ -23,10 +93,10 @@ export default function Hero() {
               Beyond Buzz. Real Impact.
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              Accelerate GCC Product Approvals in Days, Not Months
+              Turn Any Product Label Into GCC-Compliant Labels
             </h1>
             <p className="text-xl mb-8 text-white/90 leading-relaxed">
-              ByteBeam's AI agent automates FMCG label compliance and localization for imported products. Extract, translate, and validate against local regulations—bringing hundreds of new SKUs to market faster.
+              AI extracts data, translates to Arabic, validates regulations, and creates compliant labels in minutes.
             </p>
             <div className="flex flex-wrap gap-4">
               <Button
@@ -50,7 +120,7 @@ export default function Hero() {
             </div>
             <div className="mt-12 flex flex-wrap gap-8">
               <div>
-                <div className="text-4xl font-bold font-display" data-testid="stat-skus-processed">1K+</div>
+                <div className="text-4xl font-bold font-display" data-testid="stat-skus-processed">10K+</div>
                 <div className="text-white/80">SKUs Processed</div>
               </div>
               <div>
@@ -59,87 +129,113 @@ export default function Hero() {
               </div>
               <div>
                 <div className="text-4xl font-bold font-display" data-testid="stat-knowledge-work">60%</div>
-                <div className="text-white/80">Knowledge Work Accelerated</div>
+                <div className="text-white/80">Work Accelerated</div>
               </div>
             </div>
           </motion.div>
 
+          {/* Animated Process Flow Visualization */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative"
           >
-            {/* Abstract Platform Visualization */}
             <div className="relative h-[500px] flex items-center justify-center">
-              {/* Background Gradient Mesh */}
+              {/* Background */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/20 to-primary/20 rounded-3xl backdrop-blur-3xl" />
               
-              {/* Animated Workflow Nodes */}
-              <div className="relative z-10 flex flex-col gap-8 items-center">
-                {/* Extract Node */}
-                <motion.div
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                  className="flex items-center gap-4"
-                >
-                  <div className="bg-white/20 dark:bg-white/10 backdrop-blur-xl rounded-2xl p-8 shadow-2xl border border-white/30">
-                    <FileText className="text-white" size={48} />
-                  </div>
-                  <div className="text-white">
-                    <div className="font-bold text-lg">Extract</div>
-                    <div className="text-white/70 text-sm">Product Data</div>
-                  </div>
-                </motion.div>
+              {/* Step Flow Container */}
+              <div className="relative z-10 w-full max-w-md">
+                {/* All Steps Display */}
+                <div className="flex flex-col gap-4">
+                  {steps.map((step, index) => {
+                    const isActive = index === currentStep;
+                    const isPast = index < currentStep;
+                    const StepIcon = step.icon;
+                    
+                    return (
+                      <motion.div
+                        key={step.id}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ 
+                          opacity: isActive ? 1 : isPast ? 0.6 : 0.3,
+                          x: 0,
+                          scale: isActive ? 1.05 : 1
+                        }}
+                        transition={{ 
+                          duration: 0.5,
+                          delay: index * 0.05
+                        }}
+                        className="relative"
+                        data-testid={`step-${step.id}`}
+                      >
+                        <div className={`
+                          flex items-center gap-4 p-4 rounded-xl border-2 
+                          ${isActive 
+                            ? 'bg-white/20 border-white shadow-2xl backdrop-blur-xl' 
+                            : 'bg-white/5 border-white/20 backdrop-blur-sm'
+                          }
+                          transition-all duration-500
+                        `}>
+                          {/* Icon */}
+                          <div className={`
+                            flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center
+                            bg-gradient-to-br ${step.color}
+                            ${isActive ? 'shadow-lg' : ''}
+                            transition-all duration-500
+                          `}>
+                            <StepIcon className="text-white" size={28} />
+                          </div>
+                          
+                          {/* Text */}
+                          <div className="flex-1">
+                            <div className="font-bold text-white text-lg">{step.title}</div>
+                            <div className="text-white/80 text-sm">{step.description}</div>
+                          </div>
 
-                {/* Connection Line */}
-                <motion.div
-                  initial={{ scaleY: 0 }}
-                  animate={{ scaleY: 1 }}
-                  transition={{ duration: 0.6, delay: 0.6 }}
-                  className="w-1 h-12 bg-gradient-to-b from-white/50 to-white/20"
-                />
+                          {/* Active Indicator */}
+                          {isActive && (
+                            <motion.div
+                              initial={{ scale: 0 }}
+                              animate={{ scale: 1 }}
+                              className="flex-shrink-0 w-3 h-3 bg-white rounded-full"
+                            />
+                          )}
 
-                {/* Translate Node */}
-                <motion.div
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, delay: 0.8 }}
-                  className="flex items-center gap-4"
-                >
-                  <div className="text-white text-right">
-                    <div className="font-bold text-lg">Translate</div>
-                    <div className="text-white/70 text-sm">To Arabic</div>
-                  </div>
-                  <div className="bg-white/20 dark:bg-white/10 backdrop-blur-xl rounded-2xl p-8 shadow-2xl border border-white/30">
-                    <Languages className="text-white" size={48} />
-                  </div>
-                </motion.div>
+                          {/* Checkmark for completed */}
+                          {isPast && (
+                            <motion.div
+                              initial={{ scale: 0, opacity: 0 }}
+                              animate={{ scale: 1, opacity: 1 }}
+                              className="flex-shrink-0"
+                            >
+                              <CheckCircle className="text-accent" size={20} />
+                            </motion.div>
+                          )}
+                        </div>
 
-                {/* Connection Line */}
-                <motion.div
-                  initial={{ scaleY: 0 }}
-                  animate={{ scaleY: 1 }}
-                  transition={{ duration: 0.6, delay: 1 }}
-                  className="w-1 h-12 bg-gradient-to-b from-white/50 to-white/20"
-                />
+                        {/* Connection Line */}
+                        {index < steps.length - 1 && (
+                          <div className="ml-10 w-0.5 h-4 bg-gradient-to-b from-white/40 to-white/20" />
+                        )}
+                      </motion.div>
+                    );
+                  })}
+                </div>
 
-                {/* Validate Node */}
-                <motion.div
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, delay: 1.2 }}
-                  className="flex items-center gap-4"
-                >
-                  <div className="bg-gradient-to-br from-accent to-accent/70 backdrop-blur-xl rounded-2xl p-8 shadow-2xl border border-accent/50">
-                    <ShieldCheck className="text-white" size={48} />
-                  </div>
-                  <div className="text-white">
-                    <div className="font-bold text-lg">Validate</div>
-                    <div className="text-white/70 text-sm">GCC Compliance</div>
-                  </div>
-                </motion.div>
+                {/* Progress Indicator */}
+                <div className="mt-6 flex justify-center gap-2">
+                  {steps.map((step) => (
+                    <div
+                      key={step.id}
+                      className={`
+                        h-1.5 rounded-full transition-all duration-500
+                        ${currentStep === step.id ? 'w-8 bg-white' : 'w-1.5 bg-white/30'}
+                      `}
+                    />
+                  ))}
+                </div>
               </div>
 
               {/* Floating Particles */}
