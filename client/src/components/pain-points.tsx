@@ -65,7 +65,7 @@ export default function PainPoints() {
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">FMCG Challenges We Solve</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Eliminate bottlenecks in your compliance and localization workflow
+            Eliminate bottlenecks in your compliance and localization workflow across different categories
           </p>
         </motion.div>
 

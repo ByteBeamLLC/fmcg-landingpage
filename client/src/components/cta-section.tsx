@@ -10,7 +10,7 @@ export default function CTASection() {
   });
 
   const handleBookDemo = () => {
-    window.open("https://calendly.com/bytebeam-demo", "_blank");
+    window.open("https://calendar.app.google/gcPf1yWT3eznR8uc7", "_blank");
   };
 
   return (
@@ -35,7 +35,7 @@ export default function CTASection() {
             data-testid="button-book-demo"
           >
             <Calendar className="mr-2 h-5 w-5" />
-            Book a Demo on Calendly
+            Book a Demo
           </Button>
 
           <div className="flex flex-wrap items-center justify-center gap-8 text-white/90">

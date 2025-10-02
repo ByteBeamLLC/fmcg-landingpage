@@ -21,8 +21,8 @@ export default function About() {
     threshold: 0.1,
   });
 
-  const scrollToContact = () => {
-    window.location.href = "/#contact";
+  const handleGetInTouch = () => {
+    window.open("https://calendar.app.google/gcPf1yWT3eznR8uc7", "_blank");
   };
 
   return (
@@ -160,7 +160,7 @@ export default function About() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
-                onClick={scrollToContact}
+                onClick={handleGetInTouch}
                 className="bg-white text-primary hover:bg-gray-100 dark:bg-white dark:text-primary dark:hover:bg-gray-100 text-lg"
                 size="lg"
                 data-testid="button-get-in-touch"

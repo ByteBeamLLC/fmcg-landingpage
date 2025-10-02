@@ -26,7 +26,6 @@ export default function Navigation() {
   };
 
   const navLinks = [
-    { label: "Solutions", id: "solutions" },
     { label: "How It Works", id: "how-it-works" },
     { label: "Capabilities", id: "capabilities" },
     { label: "Clients", id: "clients" },

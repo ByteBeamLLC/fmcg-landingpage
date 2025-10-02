@@ -1,7 +1,6 @@
 import Navigation from "@/components/navigation";
 import Hero from "@/components/hero";
 import PainPoints from "@/components/pain-points";
-import IndustrySolutions from "@/components/industry-solutions";
 import HowItWorks from "@/components/how-it-works";
 import CoreCapabilities from "@/components/core-capabilities";
 import SocialProof from "@/components/social-proof";
@@ -15,7 +14,6 @@ export default function Home() {
       <Navigation />
       <Hero />
       <PainPoints />
-      <IndustrySolutions />
       <HowItWorks />
       <CoreCapabilities />
       <SocialProof />
