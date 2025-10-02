@@ -38,7 +38,7 @@ export default function SocialProof() {
   ];
 
   return (
-    <section id="clients" className="section-padding bg-muted/30">
+    <section id="clients" className="section-padding bg-muted">
       <div className="container-custom">
         <motion.div
           ref={ref}
@@ -108,7 +108,7 @@ export default function SocialProof() {
               className="bg-card border-2 border-border rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
               data-testid={`stat-card-${index}`}
             >
-              <div className="inline-block bg-accent text-white px-6 py-3 rounded-full font-bold font-display text-3xl mb-4">
+              <div className="inline-block bg-primary text-white px-6 py-3 rounded-full font-bold font-display text-3xl mb-4">
                 {stat.value}
               </div>
               <div className="text-xl font-bold mb-2">{stat.label}</div>

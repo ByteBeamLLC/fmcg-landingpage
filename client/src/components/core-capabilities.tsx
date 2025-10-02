@@ -66,7 +66,7 @@ export default function CoreCapabilities() {
   });
 
   return (
-    <section id="capabilities" className="section-padding bg-muted/30">
+    <section id="capabilities" className="section-padding bg-white">
       <div className="container-custom">
         <motion.div
           ref={ref}

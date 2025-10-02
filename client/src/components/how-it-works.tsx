@@ -28,7 +28,7 @@ const steps = [
       "Validation: Restricted ingredients, certification requirements",
     ],
     icon: Bot,
-    iconBg: "bg-secondary text-white",
+    iconBg: "bg-primary text-white",
   },
   {
     number: 3,
@@ -42,7 +42,7 @@ const steps = [
       "Audit trail for compliance documentation",
     ],
     icon: FileCheck,
-    iconBg: "bg-accent/10 text-accent",
+    iconBg: "bg-primary/10 text-primary",
   },
 ];
 
@@ -99,10 +99,10 @@ export default function HowItWorks() {
                     )}
                     {step.number === 3 && (
                       <div className="mt-4 flex justify-center gap-2">
-                        <span className="px-3 py-1 bg-accent text-white rounded-full text-sm font-semibold">
+                        <span className="px-3 py-1 bg-primary text-white rounded-full text-sm font-semibold">
                           ✓ Forms Generated
                         </span>
-                        <span className="px-3 py-1 bg-accent text-white rounded-full text-sm font-semibold">
+                        <span className="px-3 py-1 bg-primary text-white rounded-full text-sm font-semibold">
                           ✓ Labels Created
                         </span>
                       </div>
@@ -119,7 +119,7 @@ export default function HowItWorks() {
                 <ul className="space-y-3">
                   {step.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-3">
-                      <i className="fas fa-check-circle text-accent mt-1"></i>
+                      <i className="fas fa-check-circle text-primary mt-1"></i>
                       <span>{feature}</span>
                     </li>
                   ))}

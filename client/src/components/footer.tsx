@@ -10,27 +10,27 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-secondary text-white py-12">
+    <footer className="bg-muted text-foreground py-12 border-t border-border">
       <div className="container-custom">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
             <img
               src={bytebeamLogo}
               alt="ByteBeam Logo"
-              className="h-8 mb-4 brightness-0 invert"
+              className="h-8 mb-4"
               data-testid="footer-logo"
             />
-            <p className="text-white/70 mb-4">AI agents for automating complex, repetitive knowledge work.</p>
-            <p className="text-sm text-white/50">Beyond Buzz. Real Impact.</p>
+            <p className="text-muted-foreground mb-4">AI agents for automating complex, repetitive knowledge work.</p>
+            <p className="text-sm text-muted-foreground">Beyond Buzz. Real Impact.</p>
           </div>
 
           <div>
             <h4 className="font-bold mb-4">Solutions</h4>
-            <ul className="space-y-2 text-white/70">
+            <ul className="space-y-2 text-muted-foreground">
               <li>
                 <button
                   onClick={() => scrollToSection("solutions")}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-primary transition-colors"
                   data-testid="footer-link-trade-compliance"
                 >
                   Trade Compliance
@@ -39,7 +39,7 @@ export default function Footer() {
               <li>
                 <button
                   onClick={() => scrollToSection("solutions")}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-primary transition-colors"
                   data-testid="footer-link-label-localization"
                 >
                   Label Localization
@@ -48,7 +48,7 @@ export default function Footer() {
               <li>
                 <button
                   onClick={() => scrollToSection("solutions")}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-primary transition-colors"
                   data-testid="footer-link-food-beverage"
                 >
                   Food & Beverage
@@ -57,7 +57,7 @@ export default function Footer() {
               <li>
                 <button
                   onClick={() => scrollToSection("solutions")}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-primary transition-colors"
                   data-testid="footer-link-cosmetics"
                 >
                   Cosmetics
@@ -68,16 +68,16 @@ export default function Footer() {
 
           <div>
             <h4 className="font-bold mb-4">Company</h4>
-            <ul className="space-y-2 text-white/70">
+            <ul className="space-y-2 text-muted-foreground">
               <li>
-                <a href="/about" className="hover:text-white transition-colors" data-testid="footer-link-about">
+                <a href="/about" className="hover:text-primary transition-colors" data-testid="footer-link-about">
                   About Us
                 </a>
               </li>
               <li>
                 <button
                   onClick={() => scrollToSection("case-studies")}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-primary transition-colors"
                   data-testid="footer-link-case-studies"
                 >
                   Case Studies
@@ -88,7 +88,7 @@ export default function Footer() {
 
           <div>
             <h4 className="font-bold mb-4">Head Office</h4>
-            <div className="flex items-start gap-2 text-white/70">
+            <div className="flex items-start gap-2 text-muted-foreground">
               <MapPin size={16} className="mt-1" />
               <div>
                 <p className="text-sm">
@@ -103,13 +103,13 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-white/50 text-sm">© 2024 ByteBeam. All rights reserved.</p>
+        <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-muted-foreground text-sm">© 2024 ByteBeam. All rights reserved.</p>
           <div className="flex gap-4">
-            <a href="#" className="text-white/50 hover:text-white transition-colors text-sm" data-testid="footer-link-privacy">
+            <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm" data-testid="footer-link-privacy">
               Privacy Policy
             </a>
-            <a href="#" className="text-white/50 hover:text-white transition-colors text-sm" data-testid="footer-link-terms">
+            <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm" data-testid="footer-link-terms">
               Terms of Service
             </a>
           </div>

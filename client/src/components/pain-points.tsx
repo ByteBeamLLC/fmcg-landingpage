@@ -84,7 +84,7 @@ export default function PainPoints() {
               </div>
               <h3 className="text-2xl font-bold mb-4">{point.title}</h3>
               <p className="text-muted-foreground mb-6">{point.description}</p>
-              <div className="flex items-center gap-2 text-accent font-semibold">
+              <div className="flex items-center gap-2 font-semibold" style={{ color: 'hsl(142, 71%, 46%)' }}>
                 <i className="fas fa-check-circle"></i>
                 <span>{point.feature}</span>
               </div>

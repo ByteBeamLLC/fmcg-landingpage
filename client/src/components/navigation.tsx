@@ -45,7 +45,14 @@ export default function Navigation() {
       <div className="container-custom">
         <div className="flex items-center justify-between py-4">
           <div className="flex items-center gap-3">
-            <img src={bytebeamLogo} alt="ByteBeam Logo" className="h-8" data-testid="logo-bytebeam" />
+            <img 
+              src={bytebeamLogo} 
+              alt="ByteBeam Logo" 
+              className={`h-8 transition-all duration-300 ${
+                isScrolled ? "" : "brightness-0 invert"
+              }`}
+              data-testid="logo-bytebeam" 
+            />
           </div>
 
           {/* Desktop Navigation */}
@@ -54,7 +61,11 @@ export default function Navigation() {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="text-foreground hover:text-primary transition-colors font-medium"
+                className={`transition-colors font-medium ${
+                  isScrolled 
+                    ? "text-foreground hover:text-primary" 
+                    : "text-white hover:text-white/80"
+                }`}
                 data-testid={`nav-link-${link.id}`}
               >
                 {link.label}
@@ -71,7 +82,9 @@ export default function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-foreground"
+            className={`md:hidden transition-colors ${
+              isScrolled ? "text-foreground" : "text-white"
+            }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             data-testid="button-mobile-menu"
           >

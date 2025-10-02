@@ -9,7 +9,7 @@ const industries = [
     id: "food",
     icon: Utensils,
     title: "Food & Beverage",
-    gradient: "from-accent to-accent/70",
+    gradient: "from-primary to-primary/70",
     features: [
       "Automated nutritional fact calculations (NRV, per serving)",
       "Halal certification detection for meat/animal-derived ingredients",
@@ -100,7 +100,7 @@ export default function IndustrySolutions() {
     : industries.filter(ind => ind.id === selectedCategory);
 
   return (
-    <section className="section-padding bg-muted/30">
+    <section className="section-padding bg-muted">
       <div className="container-custom">
         <motion.div
           ref={ref}
@@ -121,7 +121,7 @@ export default function IndustrySolutions() {
             <TabsTrigger value="all" className="data-[state=active]:bg-primary data-[state=active]:text-white" data-testid="filter-all">
               All Categories
             </TabsTrigger>
-            <TabsTrigger value="food" className="data-[state=active]:bg-accent data-[state=active]:text-white" data-testid="filter-food">
+            <TabsTrigger value="food" className="data-[state=active]:bg-primary data-[state=active]:text-white" data-testid="filter-food">
               <Utensils className="w-4 h-4 mr-2" />
               Food & Beverage
             </TabsTrigger>
@@ -163,7 +163,7 @@ export default function IndustrySolutions() {
                     <ul className="space-y-3 mb-6">
                       {industry.features.map((feature, idx) => (
                         <li key={idx} className="flex items-start gap-3">
-                          <i className="fas fa-check text-accent mt-1"></i>
+                          <i className="fas fa-check text-primary mt-1"></i>
                           <span className="text-muted-foreground">{feature}</span>
                         </li>
                       ))}

@@ -83,7 +83,7 @@ export default function About() {
       </section>
 
       {/* Values Section */}
-      <section className="section-padding bg-muted/50">
+      <section className="section-padding bg-muted">
         <div className="container-custom">
           <motion.div
             ref={valuesRef}
@@ -116,8 +116,8 @@ export default function About() {
                 className="bg-card border-2 border-border rounded-xl p-8 text-center"
                 data-testid="value-card-expertise"
               >
-                <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Zap className="w-8 h-8 text-accent" />
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Zap className="w-8 h-8 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold mb-4">Domain Expertise</h3>
                 <p className="text-muted-foreground">

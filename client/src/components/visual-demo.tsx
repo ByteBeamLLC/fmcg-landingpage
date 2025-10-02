@@ -78,15 +78,15 @@ export default function VisualDemo() {
               transition={{ duration: 0.6 }}
             >
               <div className="text-center mb-4">
-                <span className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-full font-semibold">
+                <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full font-semibold">
                   After: ByteBeam Processing
                 </span>
               </div>
-              <div className="bg-card rounded-2xl shadow-lg p-8 border-2 border-accent">
+              <div className="bg-card rounded-2xl shadow-lg p-8 border-2 border-primary">
                 <div className="mb-4 pb-4 border-b border-border">
                   <div className="flex items-center justify-between">
                     <h4 className="font-bold text-lg">Premium Almond Milk</h4>
-                    <span className="px-3 py-1 bg-accent text-white rounded-full text-xs font-bold">
+                    <span className="px-3 py-1 bg-primary text-white rounded-full text-xs font-bold">
                       ✓ COMPLIANT
                     </span>
                   </div>
@@ -128,16 +128,16 @@ export default function VisualDemo() {
                 </div>
 
                 <div className="flex flex-wrap gap-2">
-                  <span className="px-2 py-1 bg-accent/20 text-accent text-xs rounded font-semibold flex items-center gap-1">
+                  <span className="px-2 py-1 bg-primary/20 text-primary text-xs rounded font-semibold flex items-center gap-1">
                     <Check size={12} /> NRV Calculated
                   </span>
-                  <span className="px-2 py-1 bg-accent/20 text-accent text-xs rounded font-semibold flex items-center gap-1">
+                  <span className="px-2 py-1 bg-primary/20 text-primary text-xs rounded font-semibold flex items-center gap-1">
                     <Check size={12} /> Bilingual
                   </span>
-                  <span className="px-2 py-1 bg-accent/20 text-accent text-xs rounded font-semibold flex items-center gap-1">
+                  <span className="px-2 py-1 bg-primary/20 text-primary text-xs rounded font-semibold flex items-center gap-1">
                     <Check size={12} /> GCC Format
                   </span>
-                  <span className="px-2 py-1 bg-accent/20 text-accent text-xs rounded font-semibold flex items-center gap-1">
+                  <span className="px-2 py-1 bg-primary/20 text-primary text-xs rounded font-semibold flex items-center gap-1">
                     <Check size={12} /> Ready to Submit
                   </span>
                 </div>

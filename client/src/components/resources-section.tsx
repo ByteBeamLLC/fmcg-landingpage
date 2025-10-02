@@ -86,15 +86,11 @@ export default function ResourcesSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-gradient-to-br from-muted/30 to-muted/10 rounded-xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border-2 border-border"
+              className="bg-card rounded-xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border-2 border-border"
               data-testid={`resource-card-${resource.id}`}
             >
               <div className="flex items-start gap-4 mb-6">
-                <div className={`p-4 rounded-lg ${
-                  resource.id === "calculator" 
-                    ? "bg-accent text-white" 
-                    : "bg-primary text-white"
-                }`}>
+                <div className="p-4 rounded-lg bg-primary text-white">
                   <resource.icon size={32} />
                 </div>
                 <div className="flex-1">
