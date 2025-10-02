@@ -222,8 +222,8 @@ export default function AIWorkflowVisualization() {
               {[
                 { x: 100, y: 80, label: "Context" },
                 { x: 380, y: 80, label: "Patterns" },
-                { x: 80, y: 320, label: "Insights" },
-                { x: 400, y: 320, label: "Relations" },
+                { x: 80, y: 280, label: "Insights" },
+                { x: 400, y: 280, label: "Relations" },
               ].map((node, i) => (
                 <motion.div
                   key={`node-${i}`}
@@ -248,8 +248,8 @@ export default function AIWorkflowVisualization() {
                 {[
                   [100, 80, 300, 250],
                   [380, 80, 300, 250],
-                  [80, 320, 300, 250],
-                  [400, 320, 300, 250],
+                  [80, 280, 300, 250],
+                  [400, 280, 300, 250],
                 ].map((line, i) => (
                   <motion.line
                     key={`connect-${i}`}
@@ -312,7 +312,7 @@ export default function AIWorkflowVisualization() {
               {/* Internal Knowledge - bottom */}
               <motion.div
                 className="absolute left-1/2 -translate-x-1/2"
-                style={{ top: '320px' }}
+                style={{ top: '280px' }}
                 initial={{ y: 50, opacity: 0, scale: 0.5 }}
                 animate={{ y: 0, opacity: 1, scale: 1 }}
                 exit={{ y: 30, opacity: 0, transition: { duration: 0.8 } }}
@@ -356,7 +356,7 @@ export default function AIWorkflowVisualization() {
                   <motion.line
                     key={`kb-${i}`}
                     x1="300"
-                    y1="350"
+                    y1="310"
                     x2="300"
                     y2="270"
                     stroke="#22D3EE"
@@ -492,7 +492,7 @@ export default function AIWorkflowVisualization() {
               {[
                 { icon: FileCheck, label: "Report", x: 150, y: 150, bgColor: "bg-gradient-to-br from-blue-400 to-blue-500", delay: 1 },
                 { icon: Database, label: "Database", x: 350, y: 150, bgColor: "bg-gradient-to-br from-purple-400 to-purple-500", delay: 1.3 },
-                { icon: FileText, label: "Document", x: 250, y: 310, bgColor: "bg-gradient-to-br from-green-400 to-green-500", delay: 1.6 },
+                { icon: FileText, label: "Document", x: 250, y: 280, bgColor: "bg-gradient-to-br from-green-400 to-green-500", delay: 1.6 },
               ].map((output, i) => {
                 const Icon = output.icon;
                 return (
@@ -528,7 +528,7 @@ export default function AIWorkflowVisualization() {
                 {[
                   [300, 250, 150, 150],
                   [300, 250, 350, 150],
-                  [300, 250, 250, 310],
+                  [300, 250, 250, 280],
                 ].map((line, i) => (
                   <motion.line
                     key={`gen-line-${i}`}
