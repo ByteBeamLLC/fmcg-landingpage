@@ -184,7 +184,7 @@ export default function Hero() {
               Beyond Buzz. Real Impact.
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              Turn Any Product Label Into GCC-Compliant Labels
+              Turn Any <span className="bg-gradient-to-r from-black to-blue-900 bg-clip-text text-transparent">Product Label</span> Into GCC-Compliant Labels
             </h1>
             <p className="text-xl mb-8 text-white/90 leading-relaxed">
               AI extracts data, translates to Arabic, validates regulations, and creates compliant labels in minutes.
@@ -376,9 +376,8 @@ export default function Hero() {
                         {/* Text */}
                         <div className="flex-1">
                           <div className={`
-                            font-bold mb-1
+                            font-bold text-white mb-1
                             ${isActive ? 'text-2xl' : 'text-base'}
-                            ${step.id === 0 ? 'bg-gradient-to-r from-black to-blue-900 bg-clip-text text-transparent' : 'text-white'}
                             transition-all duration-700
                           `}>
                             {step.title}
