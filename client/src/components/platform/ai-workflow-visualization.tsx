@@ -296,7 +296,7 @@ export default function AIWorkflowVisualization() {
 
               {/* Web source - top */}
               <motion.div
-                className="absolute top-20 left-1/2 -translate-x-1/2"
+                className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2"
                 initial={{ y: -50, opacity: 0, scale: 0.5 }}
                 animate={{ y: 0, opacity: 1, scale: 1 }}
                 exit={{ y: -30, opacity: 0, transition: { duration: 0.8 } }}
@@ -310,7 +310,7 @@ export default function AIWorkflowVisualization() {
 
               {/* Internal Knowledge - bottom */}
               <motion.div
-                className="absolute bottom-20 left-1/2 -translate-x-1/2"
+                className="absolute top-3/4 left-1/2 -translate-x-1/2 -translate-y-1/2"
                 initial={{ y: 50, opacity: 0, scale: 0.5 }}
                 animate={{ y: 0, opacity: 1, scale: 1 }}
                 exit={{ y: 30, opacity: 0, transition: { duration: 0.8 } }}
@@ -329,7 +329,7 @@ export default function AIWorkflowVisualization() {
                   <motion.line
                     key={`web-${i}`}
                     x1="300"
-                    y1="140"
+                    y1="125"
                     x2="300"
                     y2="230"
                     stroke="#34D399"
@@ -354,7 +354,7 @@ export default function AIWorkflowVisualization() {
                   <motion.line
                     key={`kb-${i}`}
                     x1="300"
-                    y1="360"
+                    y1="375"
                     x2="300"
                     y2="270"
                     stroke="#22D3EE"
@@ -488,9 +488,9 @@ export default function AIWorkflowVisualization() {
 
               {/* Outputs generating */}
               {[
-                { icon: FileCheck, label: "Report", x: 100, y: 180, bgColor: "bg-gradient-to-br from-blue-400 to-blue-500", delay: 1 },
-                { icon: Database, label: "Database", x: 400, y: 180, bgColor: "bg-gradient-to-br from-purple-400 to-purple-500", delay: 1.3 },
-                { icon: FileText, label: "Document", x: 250, y: 340, bgColor: "bg-gradient-to-br from-green-400 to-green-500", delay: 1.6 },
+                { icon: FileCheck, label: "Report", x: 120, y: 160, bgColor: "bg-gradient-to-br from-blue-400 to-blue-500", delay: 1 },
+                { icon: Database, label: "Database", x: 380, y: 160, bgColor: "bg-gradient-to-br from-purple-400 to-purple-500", delay: 1.3 },
+                { icon: FileText, label: "Document", x: 250, y: 320, bgColor: "bg-gradient-to-br from-green-400 to-green-500", delay: 1.6 },
               ].map((output, i) => {
                 const Icon = output.icon;
                 return (
@@ -524,9 +524,9 @@ export default function AIWorkflowVisualization() {
               {/* Generation lines */}
               <svg className="absolute inset-0 w-full h-full" viewBox="0 0 600 500">
                 {[
-                  [300, 250, 100, 180],
-                  [300, 250, 400, 180],
-                  [300, 250, 250, 340],
+                  [300, 250, 120, 160],
+                  [300, 250, 380, 160],
+                  [300, 250, 250, 320],
                 ].map((line, i) => (
                   <motion.line
                     key={`gen-line-${i}`}
