@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { CloudUpload, Bot, FileCheck } from "lucide-react";
+import { CloudUpload, Bot, FileCheck, FileText, Image, FileSpreadsheet } from "lucide-react";
 
 const steps = [
   {
@@ -46,6 +46,217 @@ const steps = [
   },
 ];
 
+function UploadAnimation() {
+  const files = [
+    { icon: FileText, name: "product-label.pdf", delay: 0 },
+    { icon: Image, name: "packaging.jpg", delay: 1 },
+    { icon: FileSpreadsheet, name: "ingredients.xlsx", delay: 2 },
+  ];
+
+  return (
+    <div className="relative h-full flex flex-col items-center justify-center">
+      <motion.div
+        animate={{ 
+          y: [0, -12, 0],
+        }}
+        transition={{ 
+          duration: 3, 
+          repeat: Infinity, 
+          ease: "easeInOut",
+        }}
+      >
+        <CloudUpload size={96} className="mx-auto mb-6 text-primary" />
+      </motion.div>
+      <div className="text-2xl font-bold mb-4">Bulk Upload Interface</div>
+      <div className="text-muted-foreground mb-6">Drag & drop 1-1000 SKUs</div>
+      
+      <div className="space-y-3 w-full max-w-xs">
+        {files.map((file, index) => (
+          <div
+            key={index}
+            className="flex items-center gap-3 bg-white/50 dark:bg-white/10 rounded-lg p-3"
+          >
+            <file.icon size={24} className="text-primary flex-shrink-0" />
+            <div className="flex-1 min-w-0">
+              <div className="text-sm font-medium truncate">{file.name}</div>
+              <div className="relative h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full mt-1 overflow-hidden">
+                <motion.div
+                  animate={{ 
+                    width: ["0%", "100%", "100%", "0%"],
+                  }}
+                  transition={{
+                    duration: 6,
+                    delay: file.delay,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    times: [0, 0.4, 0.6, 1],
+                  }}
+                  className="h-full bg-primary rounded-full"
+                />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function AIProcessingAnimation() {
+  const processingSteps = [
+    { label: "Extracting", color: "bg-blue-500", delay: 0 },
+    { label: "Translating", color: "bg-purple-500", delay: 2 },
+    { label: "Calculating", color: "bg-orange-500", delay: 4 },
+    { label: "Validating", color: "bg-green-500", delay: 6 },
+  ];
+
+  return (
+    <div className="relative h-full flex flex-col items-center justify-center">
+      <motion.div
+        animate={{ 
+          rotate: [0, 5, -5, 0],
+        }}
+        transition={{ 
+          duration: 4, 
+          repeat: Infinity, 
+          ease: "easeInOut",
+        }}
+      >
+        <Bot size={96} className="mx-auto mb-6" />
+      </motion.div>
+      <div className="text-2xl font-bold mb-6">AI Agent Processing</div>
+      
+      <div className="flex flex-wrap justify-center gap-2 mb-6">
+        {processingSteps.map((step, index) => (
+          <motion.div
+            key={index}
+            animate={{
+              scale: [1, 1, 1.1, 1.1, 1, 1, 1, 1],
+              opacity: [0.4, 0.4, 1, 1, 0.4, 0.4, 0.4, 0.4],
+            }}
+            transition={{
+              duration: 8,
+              delay: step.delay,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="relative overflow-hidden"
+          >
+            <motion.div
+              animate={{
+                backgroundColor: [
+                  "rgba(255,255,255,0.2)",
+                  "rgba(255,255,255,0.2)",
+                  step.color === "bg-blue-500" ? "rgb(59, 130, 246)" :
+                  step.color === "bg-purple-500" ? "rgb(168, 85, 247)" :
+                  step.color === "bg-orange-500" ? "rgb(249, 115, 22)" :
+                  "rgb(34, 197, 94)",
+                  step.color === "bg-blue-500" ? "rgb(59, 130, 246)" :
+                  step.color === "bg-purple-500" ? "rgb(168, 85, 247)" :
+                  step.color === "bg-orange-500" ? "rgb(249, 115, 22)" :
+                  "rgb(34, 197, 94)",
+                  "rgba(255,255,255,0.2)",
+                  "rgba(255,255,255,0.2)",
+                  "rgba(255,255,255,0.2)",
+                  "rgba(255,255,255,0.2)",
+                ],
+              }}
+              transition={{
+                duration: 8,
+                delay: step.delay,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="px-4 py-2 text-white rounded-full text-sm font-semibold"
+            >
+              {step.label}...
+            </motion.div>
+          </motion.div>
+        ))}
+      </div>
+
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ 
+          duration: 2, 
+          repeat: Infinity, 
+          ease: "linear",
+        }}
+        className="w-16 h-16 border-4 border-white/20 border-t-white rounded-full"
+      />
+    </div>
+  );
+}
+
+function ReviewAnimation() {
+  return (
+    <div className="relative h-full flex flex-col items-center justify-center">
+      <motion.div
+        animate={{ 
+          scale: [1, 1.05, 1],
+        }}
+        transition={{ 
+          duration: 3, 
+          repeat: Infinity, 
+          ease: "easeInOut",
+        }}
+      >
+        <FileCheck size={96} className="mx-auto mb-6 text-primary" />
+      </motion.div>
+      <div className="text-2xl font-bold mb-6">Ready for Submission</div>
+      
+      <div className="space-y-4 w-full max-w-sm">
+        <div className="bg-white/50 dark:bg-white/10 rounded-lg p-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <FileText className="text-primary" size={24} />
+              <span className="font-medium">Submission Forms</span>
+            </div>
+            <motion.div
+              animate={{
+                scale: [0, 0, 1, 1, 1, 1, 0, 0],
+                opacity: [0, 0, 1, 1, 1, 1, 0, 0],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="px-3 py-1 bg-green-500 text-white rounded-full text-sm font-semibold"
+            >
+              ✓ Generated
+            </motion.div>
+          </div>
+        </div>
+
+        <div className="bg-white/50 dark:bg-white/10 rounded-lg p-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <Image className="text-primary" size={24} />
+              <span className="font-medium">Market Labels</span>
+            </div>
+            <motion.div
+              animate={{
+                scale: [0, 0, 0, 0, 1, 1, 1, 0],
+                opacity: [0, 0, 0, 0, 1, 1, 1, 0],
+              }}
+              transition={{
+                duration: 8,
+                delay: 1,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="px-3 py-1 bg-green-500 text-white rounded-full text-sm font-semibold"
+            >
+              ✓ Created
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function HowItWorks() {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -53,7 +264,7 @@ export default function HowItWorks() {
   });
 
   return (
-    <section id="how-it-works" className="section-padding bg-white">
+    <section id="how-it-works" className="section-padding bg-white dark:bg-gray-900">
       <div className="container-custom">
         <motion.div
           ref={ref}
@@ -81,33 +292,10 @@ export default function HowItWorks() {
               data-testid={`how-it-works-step-${index}`}
             >
               <div className={index % 2 === 0 ? "md:order-2" : ""}>
-                <div className={`${step.iconBg} rounded-2xl p-8 flex items-center justify-center h-96`}>
-                  <div className="text-center">
-                    <step.icon size={96} className="mx-auto mb-4" />
-                    <div className="text-2xl font-bold">
-                      {step.number === 1 && "Bulk Upload Interface"}
-                      {step.number === 2 && "AI Agent Processing"}
-                      {step.number === 3 && "Ready for Submission"}
-                    </div>
-                    {step.number === 1 && <div className="text-muted-foreground mt-2">Drag & drop 1-1000 SKUs</div>}
-                    {step.number === 2 && (
-                      <div className="mt-4 flex justify-center gap-2">
-                        <span className="px-3 py-1 bg-white/20 rounded-full text-sm">Extracting...</span>
-                        <span className="px-3 py-1 bg-white/20 rounded-full text-sm">Translating...</span>
-                        <span className="px-3 py-1 bg-white/20 rounded-full text-sm">Validating...</span>
-                      </div>
-                    )}
-                    {step.number === 3 && (
-                      <div className="mt-4 flex justify-center gap-2">
-                        <span className="px-3 py-1 bg-primary text-white rounded-full text-sm font-semibold">
-                          ✓ Forms Generated
-                        </span>
-                        <span className="px-3 py-1 bg-primary text-white rounded-full text-sm font-semibold">
-                          ✓ Labels Created
-                        </span>
-                      </div>
-                    )}
-                  </div>
+                <div className={`${step.iconBg} rounded-2xl p-8 flex items-center justify-center h-96 overflow-hidden`}>
+                  {step.number === 1 && <UploadAnimation />}
+                  {step.number === 2 && <AIProcessingAnimation />}
+                  {step.number === 3 && <ReviewAnimation />}
                 </div>
               </div>
               <div className={index % 2 === 0 ? "md:order-1" : ""}>
