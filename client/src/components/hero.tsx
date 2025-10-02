@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 
 export default function Hero() {
   const [currentStep, setCurrentStep] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -72,13 +73,34 @@ export default function Hero() {
     }
   ];
 
+  // Main step rotation interval (3 seconds)
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentStep((prev) => (prev + 1) % steps.length);
+      setProgress(0); // Reset progress when step changes
     }, 3000);
 
     return () => clearInterval(interval);
   }, []);
+
+  // Progress bar animation (0 to 100 over 3 seconds)
+  useEffect(() => {
+    setProgress(0);
+    const startTime = Date.now();
+    const duration = 3000;
+
+    const progressInterval = setInterval(() => {
+      const elapsed = Date.now() - startTime;
+      const newProgress = Math.min((elapsed / duration) * 100, 100);
+      setProgress(newProgress);
+
+      if (newProgress >= 100) {
+        clearInterval(progressInterval);
+      }
+    }, 16); // ~60fps
+
+    return () => clearInterval(progressInterval);
+  }, [currentStep]);
 
   // Calculate position for each step in the carousel
   const getStepPosition = (index: number) => {
@@ -98,44 +120,48 @@ export default function Hero() {
     const absPos = Math.abs(position);
     
     if (position === 0) {
-      // Active step - center, large
+      // Active step - center, much larger
       return {
-        scale: 1,
+        scale: 1.3,
         opacity: 1,
-        translateX: '0%',
+        translateY: '0%',
         translateZ: 0,
-        rotateY: 0,
+        rotateX: 0,
         zIndex: 50,
+        visible: true,
       };
     } else if (absPos === 1) {
       // Adjacent steps - medium size
       return {
-        scale: 0.6,
-        opacity: 0.5,
-        translateX: position > 0 ? '80%' : '-80%',
+        scale: 0.65,
+        opacity: 0.6,
+        translateY: position > 0 ? '110%' : '-110%',
         translateZ: -200,
-        rotateY: position > 0 ? -25 : 25,
+        rotateX: position > 0 ? 20 : -20,
         zIndex: 40,
+        visible: true,
       };
     } else if (absPos === 2) {
-      // Far steps - small
+      // Far steps (2 away) - smaller
       return {
-        scale: 0.35,
-        opacity: 0.25,
-        translateX: position > 0 ? '140%' : '-140%',
+        scale: 0.4,
+        opacity: 0.3,
+        translateY: position > 0 ? '200%' : '-200%',
         translateZ: -350,
-        rotateY: position > 0 ? -35 : 35,
+        rotateX: position > 0 ? 30 : -30,
         zIndex: 30,
+        visible: true,
       };
     } else {
-      // Very far - hidden
+      // Beyond 2 steps - completely hidden
       return {
-        scale: 0.2,
+        scale: 0,
         opacity: 0,
-        translateX: position > 0 ? '180%' : '-180%',
+        translateY: position > 0 ? '300%' : '-300%',
         translateZ: -500,
-        rotateY: position > 0 ? -45 : 45,
-        zIndex: 20,
+        rotateX: 0,
+        zIndex: 0,
+        visible: false,
       };
     }
   };
@@ -194,7 +220,7 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* 3D Carousel Visualization */}
+          {/* 3D Vertical Carousel Visualization */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -217,6 +243,9 @@ export default function Hero() {
                   const isActive = position === 0;
                   const isPast = position < 0;
                   
+                  // Only render if visible (within 2 steps)
+                  if (!style.visible) return null;
+                  
                   return (
                     <motion.div
                       key={step.id}
@@ -224,9 +253,9 @@ export default function Hero() {
                       animate={{
                         scale: style.scale,
                         opacity: style.opacity,
-                        x: style.translateX,
+                        y: style.translateY,
                         z: style.translateZ,
-                        rotateY: style.rotateY,
+                        rotateX: style.rotateX,
                       }}
                       transition={{
                         duration: 0.7,
@@ -237,11 +266,11 @@ export default function Hero() {
                         zIndex: style.zIndex,
                         transformStyle: 'preserve-3d',
                       }}
-                      className="w-80"
+                      className="w-96"
                       data-testid={`step-${step.id}`}
                     >
                       <div className={`
-                        flex flex-col items-center gap-4 p-6 rounded-2xl border-2 
+                        flex items-center gap-4 px-6 py-5 rounded-2xl border-2 
                         ${isActive 
                           ? 'bg-white/20 border-white shadow-2xl backdrop-blur-xl' 
                           : 'bg-white/5 border-white/20 backdrop-blur-sm'
@@ -250,41 +279,30 @@ export default function Hero() {
                       `}>
                         {/* Icon */}
                         <div className={`
-                          flex-shrink-0 rounded-2xl flex items-center justify-center
+                          flex-shrink-0 rounded-xl flex items-center justify-center
                           bg-gradient-to-br ${step.color}
-                          ${isActive ? 'w-24 h-24 shadow-2xl' : 'w-16 h-16'}
+                          ${isActive ? 'w-24 h-24 shadow-2xl' : 'w-14 h-14'}
                           transition-all duration-700
                         `}>
-                          <StepIcon className="text-white" size={isActive ? 48 : 32} />
+                          <StepIcon className="text-white" size={isActive ? 48 : 28} />
                         </div>
                         
                         {/* Text */}
-                        <div className="text-center">
+                        <div className="flex-1">
                           <div className={`
-                            font-bold text-white mb-2
-                            ${isActive ? 'text-2xl' : 'text-lg'}
+                            font-bold text-white mb-1
+                            ${isActive ? 'text-2xl' : 'text-base'}
                             transition-all duration-700
                           `}>
                             {step.title}
                           </div>
                           <div className={`
                             text-white/80
-                            ${isActive ? 'text-base' : 'text-sm'}
+                            ${isActive ? 'text-base' : 'text-xs'}
                             transition-all duration-700
                           `}>
                             {step.description}
                           </div>
-                          
-                          {/* Step Counter for Active */}
-                          {isActive && (
-                            <motion.div
-                              initial={{ opacity: 0, y: -10 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              className="mt-3 text-white/60 text-sm font-semibold"
-                            >
-                              Step {currentStep + 1} of {steps.length}
-                            </motion.div>
-                          )}
                         </div>
 
                         {/* Checkmark for completed */}
@@ -292,7 +310,8 @@ export default function Hero() {
                           <motion.div
                             initial={{ scale: 0, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
-                            className="absolute top-4 right-4"
+                            className="flex-shrink-0"
+                            data-testid={`checkmark-step-${step.id}`}
                           >
                             <CheckCircle className="text-accent" size={24} />
                           </motion.div>
@@ -303,17 +322,36 @@ export default function Hero() {
                 })}
               </div>
 
-              {/* Progress Indicator */}
-              <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-[60]">
-                {steps.map((step) => (
-                  <div
-                    key={step.id}
-                    className={`
-                      h-1.5 rounded-full transition-all duration-500
-                      ${currentStep === step.id ? 'w-8 bg-white' : 'w-1.5 bg-white/30'}
-                    `}
-                  />
-                ))}
+              {/* Animated Progress Indicator Dots */}
+              <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-[60]" data-testid="progress-dots-container">
+                {steps.map((step) => {
+                  const isActive = currentStep === step.id;
+                  const isPast = step.id < currentStep;
+                  
+                  return (
+                    <div
+                      key={step.id}
+                      className="relative"
+                      data-testid={`progress-dot-${step.id}`}
+                    >
+                      {/* Background track */}
+                      <div className={`
+                        h-2 rounded-full transition-all duration-500
+                        ${isActive ? 'w-12 bg-white/30' : isPast ? 'w-2 bg-white' : 'w-2 bg-white/30'}
+                      `} />
+                      
+                      {/* Animated fill for active dot */}
+                      {isActive && (
+                        <motion.div
+                          className="absolute top-0 left-0 h-2 bg-white rounded-full"
+                          initial={{ width: '0%' }}
+                          animate={{ width: `${progress}%` }}
+                          transition={{ duration: 0.1 }}
+                        />
+                      )}
+                    </div>
+                  );
+                })}
               </div>
 
               {/* Floating Particles */}
