@@ -1,0 +1,59 @@
+Header & Nav
+	•	Keep transparent over hero.
+	•	Nav links: color:var(--bb-text); hover color:var(--bb-blue-500).
+	•	Primary nav CTA (“Request a Demo”): fill #2782FF, hover #1E6AE6; outline CTA uses white bg with #2782FF text.
+
+Hero
+	•	Background: replace current with
+linear-gradient(135deg, #2782FF 0%, #1E6AE6 55%, #164DB3 100%).
+	•	Headline/body: #FFFFFF on gradient; reduce any bluish drop shadow on text.
+	•	Pill “Beyond Buzz…”: bg #E9F2FF, text #1E6AE6.
+	•	CTAs: Primary = #FFFFFF text #2782FF (on blue gradient this pops); Secondary = outline white with 20% white border; hover flips to #2782FF fill / white text.
+	•	Stats row: numbers #FFFFFF, labels rgba(255,255,255,.75); tiny icons #CFE4FF.
+
+“FMCG Challenges We Solve” (cards grid)
+	•	Background: #F8FAFC (light).
+	•	Switch cards to light for consistency:
+	•	Card bg #FFFFFF, border #E5E7EB, title #0F172A, body #475569.
+	•	Icons/section glyphs #2782FF.
+	•	The small status chips (“Automated validation”) use check icon #22C55E; chip text #0F172A on #ECFDF5 (10% tint of green).
+	•	If you prefer keeping dark cards, flip to dark tokens: bg:var(--bb-card-dark), text:var(--bb-text-dark), icon:#5AA0FF, border:var(--bb-border-dark).
+
+“Industry-Specific Solutions”
+	•	Section bg: #0B1220 (dark) for contrast.
+	•	Three feature cards stay white with soft gradient header bars:
+	•	F&B: top gradient #ECFDF5 → #FFFFFF, icon #22C55E.
+	•	Cosmetics: #E9F2FF → #FFFFFF, icon #2782FF.
+	•	General FMCG: #F1F5F9 → #FFFFFF, icon #94A3B8.
+	•	Filter pills: active = #2782FF (white text); inactive = #E9F2FF (text #1E6AE6).
+
+“How It Works”
+	•	Make all step tiles white cards on #F8FAFC (your step 1 tile is dark—lighten it).
+	•	Step numerals: small circular badge filled #2782FF with white text.
+	•	Bullet checks #22C55E; do not use orange here (reserve for promos/alerts).
+
+“Core Capabilities”
+	•	Keep the dark band: bg #0B1220.
+	•	Cards: white with subtle border #E5E7EB; icons #2782FF; headings #0F172A; body #475569.
+	•	Optional alt: if you want “glassy” look on dark, use bg:rgba(255,255,255,.04), border:var(--bb-border-dark), text:var(--bb-text-dark).
+
+“Selected Partners and Clients”
+	•	Section bg: stay dark #0B1220.
+	•	Partner tiles: #111827 with border #1F2937; labels and captions #94A3B8; hover outline #2782FF.
+	•	KPI pills: bg #22C55E, text #FFFFFF; sublabels #94A3B8.
+	•	Testimonial card: #FFFFFF with blue quote mark #2782FF; shadow only (no thick border).
+
+Final CTA Band
+	•	Reuse hero gradient.
+	•	Single primary button: #FFFFFF text #2782FF, hover invert to #2782FF / white.
+	•	Secondary links (email/phone/site): #E9F2FF → hover #FFFFFF.
+
+Footer
+	•	Background: #F1F5F9 (lighter than current gray).
+	•	Column headers #0F172A, links #475569 → hover #2782FF.
+	•	Divider lines #E5E7EB; copyright/microtext #64748B.
+
+Global “don’ts” to keep the system tight
+	•	Use citrus #F59E0B only for promo badges/ribbons—not for icons, body text, or bullets.
+	•	Use berry #E11D48 only for destructive/error or limited promo highlights.
+	•	Avoid mixing dark cards on light sections unless it’s a deliberate “band”—either flip the section bg to #0B1220 or keep all cards white.
