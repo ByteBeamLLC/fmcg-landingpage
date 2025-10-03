@@ -132,9 +132,18 @@ The storage interface abstraction allows development to proceed with in-memory s
 - Platform-agnostic Node.js bundle output
 - Static asset serving with Vite middleware in development
 
+**SEO Implementation:**
+- Custom SEO component (`client/src/components/SEO.tsx`) for dynamic metadata management
+- Automatically sets title, meta description, Open Graph tags, Twitter Card tags, and canonical URL
+- Dynamically computes URLs using window.location.href when not explicitly provided
+- Each page has unique, optimized metadata tailored to its content
+- Complete metadata coverage across all pages including 404 and fallback routes
+- No hardcoded production URLs - all URLs computed dynamically for environment flexibility
+
 **Key Design Decisions:**
 1. **Monorepo Structure:** Shared schema between client and server prevents type drift and enables end-to-end type safety
 2. **Storage Abstraction:** Interface-based design allows switching between in-memory and database implementations without code changes
 3. **Component Library:** shadcn/ui provides owned, customizable components rather than external dependencies
 4. **Build Strategy:** Separate bundling for client (Vite) and server (esbuild) optimizes for their respective runtime environments
 5. **Static Assets:** Assets stored in `attached_assets` directory with Vite alias for consistent imports
+6. **SEO Strategy:** Centralized SEO component with dynamic URL computation ensures consistent, maintainable metadata across all pages
