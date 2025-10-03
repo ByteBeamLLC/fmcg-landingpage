@@ -87,17 +87,27 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-bold mb-4">Head Office</h4>
-            <div className="flex items-start gap-2 text-muted-foreground">
-              <MapPin size={16} className="mt-1" />
-              <div>
-                <p className="text-sm">
-                  20 Wenlock Road
-                  <br />
-                  London, England
-                  <br />
-                  N1 7GU
-                </p>
+            <h4 className="font-bold mb-4">Offices</h4>
+            <div className="space-y-4">
+              <div className="flex items-start gap-2 text-muted-foreground">
+                <MapPin size={16} className="mt-1 flex-shrink-0" />
+                <div>
+                  <p className="text-sm">
+                    20 Wenlock Road
+                    <br />
+                    London, England
+                    <br />
+                    N1 7GU
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start gap-2 text-muted-foreground">
+                <MapPin size={16} className="mt-1 flex-shrink-0" />
+                <div>
+                  <p className="text-sm">
+                    St, Bechara El Khoury & Fouad Chehab Avenue, Nassif El Yazaji St Street, Syriac Patriarchate, Khalil Sarkis, Beirut
+                  </p>
+                </div>
               </div>
             </div>
           </div>
