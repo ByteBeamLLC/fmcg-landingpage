@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, Package, FileText, Languages, Calculator, Eye, CheckCircle, Radio, Zap } from "lucide-react";
 import { useState, useEffect } from "react";
 import beverageImg from "@assets/beverage_1759397164769.png";
@@ -11,6 +11,17 @@ import detergentImg from "@assets/cleaning-2_1759397164769.png";
 export default function Hero() {
   const [currentStep, setCurrentStep] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [currentCategory, setCurrentCategory] = useState(0);
+
+  const categories = [
+    "Food",
+    "Beverage",
+    "Cosmetics",
+    "Personal Care",
+    "Pharma",
+    "House Hold",
+    "Consumer Goods"
+  ];
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -83,6 +94,15 @@ export default function Hero() {
     const interval = setInterval(() => {
       setCurrentStep((prev) => (prev + 1) % steps.length);
       setProgress(0); // Reset progress when step changes
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Category rotation interval (3 seconds)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentCategory((prev) => (prev + 1) % categories.length);
     }, 3000);
 
     return () => clearInterval(interval);
@@ -184,7 +204,24 @@ export default function Hero() {
               Beyond Buzz. Real Impact.
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              Turn Any <span className="bg-gradient-to-r from-white via-blue-100 to-sky-300 bg-clip-text text-transparent">Product Label</span> Into GCC-Compliant Labels
+              Turn Imported<br />
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={currentCategory}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                  className="inline-block bg-gradient-to-r from-white via-blue-100 to-sky-300 bg-clip-text text-transparent"
+                  data-testid={`category-${categories[currentCategory].toLowerCase().replace(/\s+/g, '-')}`}
+                >
+                  {categories[currentCategory]}
+                </motion.span>
+              </AnimatePresence>
+              <br />
+              Labels Into<br />
+              GCC-Compliant<br />
+              Labels
             </h1>
             <p className="text-xl mb-8 text-white/90 leading-relaxed">
               AI extracts data, translates to Arabic, validates regulations, and creates compliant labels in minutes.
