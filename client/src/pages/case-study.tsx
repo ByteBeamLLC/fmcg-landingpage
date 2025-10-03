@@ -213,7 +213,10 @@ export default function CaseStudy() {
       <div className="min-h-screen flex items-center justify-center">
         <SEO
           title="Case Study Not Found | ByteBeam"
-          description="The case study you're looking for is not available."
+          description="The case study you're looking for is not available. Explore other ByteBeam customer success stories and AI automation solutions."
+          ogTitle="Case Study Not Found | ByteBeam"
+          ogDescription="The case study you're looking for is not available. Explore ByteBeam's AI automation customer success stories."
+          keywords="case study, customer story, ByteBeam, AI automation"
         />
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Case Study Not Found</h1>

@@ -8,6 +8,9 @@ export default function NotFound() {
       <SEO
         title="Page Not Found | ByteBeam"
         description="The page you're looking for doesn't exist. Return to ByteBeam's homepage to explore our AI automation solutions for document-heavy workflows."
+        ogTitle="Page Not Found | ByteBeam"
+        ogDescription="The page you're looking for doesn't exist. Explore ByteBeam's AI automation solutions for document-heavy workflows."
+        keywords="404, page not found, ByteBeam"
       />
       <Card className="w-full max-w-md mx-4">
         <CardContent className="pt-6">
