@@ -19,7 +19,6 @@ export default function Platform() {
         ogTitle="ByteBeam | AI Agent Platform for Document-Heavy Workflows"
         ogDescription="Automate document-heavy, analysis-intensive processes with intelligent AI agents. From compliance to data extraction—built for experts who need reliable automation."
         keywords="AI agents, document automation, knowledge work automation, compliance automation, AI workflow platform, intelligent document processing"
-        ogUrl="https://bytebeam.co"
       />
       <Navigation />
       <PlatformHero />

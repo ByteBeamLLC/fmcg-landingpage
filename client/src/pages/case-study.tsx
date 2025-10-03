@@ -239,7 +239,6 @@ export default function CaseStudy() {
         ogTitle={`${caseStudy.company} Success Story | AI-Powered Label Compliance Automation`}
         ogDescription={`${caseStudy.tagline}. Discover how ${caseStudy.company} transformed their manual compliance workflow with ByteBeam's AI automation platform.`}
         keywords={`${caseStudy.company} case study, FMCG label automation, compliance automation success story, GCC regulatory compliance, AI label processing, ByteBeam customer story`}
-        ogUrl={`https://bytebeam.co/case-study/${caseStudy.id}`}
       />
       <Navigation />
       

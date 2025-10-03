@@ -18,7 +18,6 @@ export default function Home() {
         ogTitle="AI-Powered FMCG Label Compliance & Localization for GCC Markets"
         ogDescription="Automate regional approvals for FMCG products. Extract, translate, and validate against local regulations—bringing hundreds of new SKUs to market faster."
         keywords="FMCG label compliance, GCC product approval, label localization, Arabic translation, halal certification, nutrition labeling, regulatory compliance, food label automation"
-        ogUrl="https://bytebeam.co/fmcg-label-compliance"
       />
       <Navigation />
       <Hero />
