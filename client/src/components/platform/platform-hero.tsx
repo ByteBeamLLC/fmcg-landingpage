@@ -45,7 +45,7 @@ export default function PlatformHero() {
           >
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight" data-testid="hero-title">
               Automate work<br />
-              that takes{" "}
+              that takes<br />
               <AnimatePresence mode="wait">
                 <motion.span
                   key={currentIndustry}
@@ -57,7 +57,8 @@ export default function PlatformHero() {
                 >
                   {industries[currentIndustry]}
                 </motion.span>
-              </AnimatePresence>{" "}
+              </AnimatePresence>
+              <br />
               experts hours
             </h1>
             
