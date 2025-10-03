@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "wouter";
 import bytebeamLogo from "@assets/bytebeam_logo_1759326269799.png";
@@ -8,7 +8,6 @@ import bytebeamLogo from "@assets/bytebeam_logo_1759326269799.png";
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [solutionsOpen, setSolutionsOpen] = useState(false);
   const [location] = useLocation();
 
   useEffect(() => {
@@ -36,73 +35,33 @@ export default function Navigation() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/95 backdrop-blur-lg shadow-sm"
-          : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-lg border-b border-white/60 ${
+        isScrolled ? "shadow-sm" : ""
       }`}
     >
       <div className="container-custom">
         <div className="flex items-center justify-between py-4">
-          <Link href="/" className="flex items-center gap-3">
-            <img 
-              src={bytebeamLogo} 
-              alt="ByteBeam Logo" 
-              className={`h-8 transition-all duration-300 ${
-                isScrolled ? "" : "brightness-0 invert"
-              }`}
-              data-testid="logo-bytebeam" 
+          <Link href="/platform" className="flex items-center gap-3" data-testid="logo-bytebeam">
+            <img
+              src={bytebeamLogo}
+              alt="ByteBeam Logo"
+              className="h-8 w-auto"
             />
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            <div className="relative">
-              <button
-                onMouseEnter={() => setSolutionsOpen(true)}
-                onMouseLeave={() => setSolutionsOpen(false)}
-                className={`transition-colors font-medium flex items-center gap-1 ${
-                  isScrolled 
-                    ? "text-foreground hover:text-primary" 
-                    : "text-white hover:text-white/80"
-                }`}
-                data-testid="nav-link-solutions"
-              >
-                Solutions
-                <ChevronDown className="w-4 h-4" />
-              </button>
-              
-              <AnimatePresence>
-                {solutionsOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    onMouseEnter={() => setSolutionsOpen(true)}
-                    onMouseLeave={() => setSolutionsOpen(false)}
-                    className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-border overflow-hidden"
-                    data-testid="solutions-dropdown"
-                  >
-                    <Link href="/platform" className="block px-4 py-3 hover:bg-muted transition-colors" data-testid="nav-link-platform">
-                      <div className="font-semibold text-foreground">AI Platform</div>
-                      <div className="text-sm text-muted-foreground">Custom agents for knowledge work</div>
-                    </Link>
-                    <Link href="/" className="block px-4 py-3 hover:bg-muted transition-colors" data-testid="nav-link-fmcg">
-                      <div className="font-semibold text-foreground">FMCG Compliance</div>
-                      <div className="text-sm text-muted-foreground">Import packaging automation</div>
-                    </Link>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+            <Link
+              href="/"
+              className="transition-colors font-medium text-foreground hover:text-primary"
+              data-testid="nav-link-fmcg"
+            >
+              FMCG Compliance
+            </Link>
 
             <Link 
               href="/about"
-              className={`transition-colors font-medium ${
-                isScrolled 
-                  ? "text-foreground hover:text-primary" 
-                  : "text-white hover:text-white/80"
-              }`}
+              className="transition-colors font-medium text-foreground hover:text-primary"
               data-testid="nav-link-about"
             >
               About
@@ -119,9 +78,7 @@ export default function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
-            className={`md:hidden transition-colors ${
-              isScrolled ? "text-foreground" : "text-white"
-            }`}
+            className="md:hidden transition-colors text-foreground"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             data-testid="button-mobile-menu"
           >
@@ -140,25 +97,14 @@ export default function Navigation() {
             className="md:hidden bg-white border-t border-border"
           >
             <div className="container-custom py-4 space-y-4">
-              <div className="space-y-2">
-                <div className="font-semibold text-sm text-muted-foreground px-2">Solutions</div>
-                <Link 
-                  href="/platform"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2 px-2"
-                  data-testid="mobile-nav-link-platform"
-                >
-                  AI Platform
-                </Link>
-                <Link 
-                  href="/"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2 px-2"
-                  data-testid="mobile-nav-link-fmcg"
-                >
-                  FMCG Compliance
-                </Link>
-              </div>
+              <Link 
+                href="/"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2 px-2"
+                data-testid="mobile-nav-link-fmcg"
+              >
+                FMCG Compliance
+              </Link>
               <Link 
                 href="/about"
                 onClick={() => setIsMobileMenuOpen(false)}

@@ -199,7 +199,7 @@ export default function PlatformApproach() {
                               <phase.icon className={`${phase.iconColor} w-8 h-8 md:w-10 md:h-10`} />
                             </div>
                             <div className="text-3xl md:text-4xl font-bold text-primary">
-                              {phase.number}
+                              {/* {phase.number} */}
                             </div>
                           </div>
 
