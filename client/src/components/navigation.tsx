@@ -41,7 +41,7 @@ export default function Navigation() {
     >
       <div className="container-custom">
         <div className="flex items-center justify-between py-4">
-          <Link href="/platform" className="flex items-center gap-3" data-testid="logo-bytebeam">
+          <Link href="/" className="flex items-center gap-3" data-testid="logo-bytebeam">
             <img
               src={bytebeamLogo}
               alt="ByteBeam Logo"
@@ -52,7 +52,7 @@ export default function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             <Link
-              href="/"
+              href="/fmcg-label-compliance"
               className="transition-colors font-medium text-foreground hover:text-primary"
               data-testid="nav-link-fmcg"
             >
@@ -98,7 +98,7 @@ export default function Navigation() {
           >
             <div className="container-custom py-4 space-y-4">
               <Link 
-                href="/"
+                href="/fmcg-label-compliance"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2 px-2"
                 data-testid="mobile-nav-link-fmcg"

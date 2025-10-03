@@ -13,8 +13,8 @@ import NotFound from "@/pages/not-found";
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/platform" component={Platform} />
+      <Route path="/" component={Platform} />
+      <Route path="/fmcg-label-compliance" component={Home} />
       <Route path="/about" component={About} />
       <Route path="/case-study/:id" component={CaseStudy} />
       <Route component={NotFound} />
