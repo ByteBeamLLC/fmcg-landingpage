@@ -190,7 +190,7 @@ export default function Hero() {
               AI extracts data, translates to Arabic, validates regulations, and creates compliant labels in minutes.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button
+              {/* <Button
                 onClick={() => scrollToSection("contact")}
                 className="bg-white text-primary hover:bg-gray-100 dark:bg-white dark:text-primary dark:hover:bg-gray-100 animate-pulse"
                 size="lg"
@@ -207,7 +207,7 @@ export default function Hero() {
               >
                 <Zap className="mr-2 h-5 w-5" />
                 See How It Works
-              </Button>
+              </Button> */}
             </div>
             <div className="mt-12 flex flex-wrap gap-8">
               <div>

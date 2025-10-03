@@ -98,4 +98,23 @@
     transform-style: preserve-3d;
     will-change: transform;
   }
+
+  .dynamic-gradient {
+    background-size: 200% 200%;
+    animation: hero-gradient-shift 18s ease-in-out infinite alternate;
+  }
+}
+@keyframes hero-gradient-shift {
+  0% {
+    background-image: linear-gradient(135deg, rgba(39,130,255,0.18) 0%, rgba(30,106,230,0.12) 45%, rgba(22,77,179,0.16) 100%);
+    background-position: 0% 0%;
+  }
+  50% {
+    background-image: linear-gradient(135deg, rgba(74,222,128,0.18) 0%, rgba(96,165,250,0.16) 50%, rgba(147,197,253,0.2) 100%);
+    background-position: 100% 50%;
+  }
+  100% {
+    background-image: linear-gradient(135deg, rgba(56,189,248,0.2) 0%, rgba(147,197,253,0.16) 40%, rgba(129,140,248,0.2) 100%);
+    background-position: 0% 100%;
+  }
 }

@@ -1,9 +1,17 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { AlertCircle } from "lucide-react";
+import SEO from "@/components/SEO";
 
 export default function NotFound() {
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-gray-50">
+      <SEO
+        title="Page Not Found | ByteBeam"
+        description="The page you're looking for doesn't exist. Return to ByteBeam's homepage to explore our AI automation solutions for document-heavy workflows."
+        ogTitle="Page Not Found | ByteBeam"
+        ogDescription="The page you're looking for doesn't exist. Explore ByteBeam's AI automation solutions for document-heavy workflows."
+        keywords="404, page not found, ByteBeam"
+      />
       <Card className="w-full max-w-md mx-4">
         <CardContent className="pt-6">
           <div className="flex mb-4 gap-2">

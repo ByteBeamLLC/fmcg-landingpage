@@ -7,6 +7,7 @@ import Footer from "@/components/footer";
 import takhleesLogo from "@assets/takhlees_logo_1759326324559.webp";
 import carrefourLogo from "@assets/carrefour_1759413703784.png";
 import infoquestLogo from "@assets/FinalLogoB-1024x141_1759326348970.png";
+import SEO from "@/components/SEO";
 
 const caseStudies = {
   takhlees: {
@@ -210,6 +211,13 @@ export default function CaseStudy() {
   if (!params?.id || params.id !== "takhlees") {
     return (
       <div className="min-h-screen flex items-center justify-center">
+        <SEO
+          title="Case Study Not Found | ByteBeam"
+          description="The case study you're looking for is not available. Explore other ByteBeam customer success stories and AI automation solutions."
+          ogTitle="Case Study Not Found | ByteBeam"
+          ogDescription="The case study you're looking for is not available. Explore ByteBeam's AI automation customer success stories."
+          keywords="case study, customer story, ByteBeam, AI automation"
+        />
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Case Study Not Found</h1>
           <p className="text-muted-foreground mb-6">This case study is not available.</p>
@@ -225,6 +233,13 @@ export default function CaseStudy() {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title={`${caseStudy.company} Case Study: Automating 10,000+ Product Labels | ByteBeam`}
+        description={`See how ByteBeam helped ${caseStudy.company} automate label compliance for 10,000+ FMCG products, reducing processing time by 70% while ensuring 100% GCC regulatory compliance.`}
+        ogTitle={`${caseStudy.company} Success Story | AI-Powered Label Compliance Automation`}
+        ogDescription={`${caseStudy.tagline}. Discover how ${caseStudy.company} transformed their manual compliance workflow with ByteBeam's AI automation platform.`}
+        keywords={`${caseStudy.company} case study, FMCG label automation, compliance automation success story, GCC regulatory compliance, AI label processing, ByteBeam customer story`}
+      />
       <Navigation />
       
       {/* Hero Section */}

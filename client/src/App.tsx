@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import ThemeProvider from "@/components/theme-provider";
 import Home from "@/pages/home";
+import Platform from "@/pages/platform";
 import About from "@/pages/about";
 import CaseStudy from "@/pages/case-study";
 import NotFound from "@/pages/not-found";
@@ -12,7 +13,8 @@ import NotFound from "@/pages/not-found";
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={Home} />
+      <Route path="/" component={Platform} />
+      <Route path="/fmcg-label-compliance" component={Home} />
       <Route path="/about" component={About} />
       <Route path="/case-study/:id" component={CaseStudy} />
       <Route component={NotFound} />
