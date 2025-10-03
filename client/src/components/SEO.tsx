@@ -8,6 +8,7 @@ interface SEOProps {
   ogType?: string;
   ogUrl?: string;
   keywords?: string;
+  canonical?: string;
 }
 
 export default function SEO({
@@ -18,8 +19,14 @@ export default function SEO({
   ogType = 'website',
   ogUrl,
   keywords,
+  canonical,
 }: SEOProps) {
   useEffect(() => {
+    const currentUrl = canonical || window.location.href;
+    const finalOgUrl = ogUrl || currentUrl;
+    const finalOgTitle = ogTitle || title;
+    const finalOgDescription = ogDescription || description;
+
     document.title = title;
 
     const updateMetaTag = (name: string, content: string, isProperty = false) => {
@@ -35,24 +42,38 @@ export default function SEO({
       element.setAttribute('content', content);
     };
 
+    const updateLinkTag = (rel: string, href: string) => {
+      let element = document.querySelector(`link[rel="${rel}"]`);
+      
+      if (!element) {
+        element = document.createElement('link');
+        element.setAttribute('rel', rel);
+        document.head.appendChild(element);
+      }
+      
+      element.setAttribute('href', href);
+    };
+
     updateMetaTag('description', description);
     
     if (keywords) {
       updateMetaTag('keywords', keywords);
     }
 
-    updateMetaTag('og:title', ogTitle || title, true);
-    updateMetaTag('og:description', ogDescription || description, true);
+    updateMetaTag('og:title', finalOgTitle, true);
+    updateMetaTag('og:description', finalOgDescription, true);
     updateMetaTag('og:type', ogType, true);
-    
-    if (ogUrl) {
-      updateMetaTag('og:url', ogUrl, true);
-    }
+    updateMetaTag('og:url', finalOgUrl, true);
 
-    updateMetaTag('twitter:card', 'summary_large_image', true);
-    updateMetaTag('twitter:title', ogTitle || title, true);
-    updateMetaTag('twitter:description', ogDescription || description, true);
-  }, [title, description, ogTitle, ogDescription, ogType, ogUrl, keywords]);
+    updateMetaTag('twitter:card', 'summary_large_image');
+    updateMetaTag('twitter:title', finalOgTitle);
+    updateMetaTag('twitter:description', finalOgDescription);
+
+    updateLinkTag('canonical', currentUrl);
+
+    return () => {
+    };
+  }, [title, description, ogTitle, ogDescription, ogType, ogUrl, keywords, canonical]);
 
   return null;
 }
