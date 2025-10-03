@@ -23,10 +23,10 @@ export default function PlatformHero() {
   ];
 
   const trustedLogos = [
-    { id: "carrefour", name: "Carrefour", logo: carrefourLogo },
+    { id: "carrefour", name: "Carrefour", logo: carrefourLogo, className: "max-w-[140px]" },
     { id: "takhlees", name: "Takhlees", logo: takhleesLogo, className: "max-w-[180px]" },
     { id: "infoquest", name: "InfoQuest", logo: infoquestLogo, className: "max-w-[170px]" },
-    { id: "dld", name: "Dubai Land Department", logo: dldLogo, className: "max-w-[110px]" }
+    { id: "dld", name: "Dubai Land Department", logo: dldLogo, className: "max-w-[150px]" }
   ];
 
   const scrollToSection = (id: string) => {
