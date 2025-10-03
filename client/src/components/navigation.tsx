@@ -68,9 +68,9 @@ export default function Navigation() {
                     FMCG Compliance
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild data-testid="dropdown-item-document-grid">
+                <DropdownMenuItem asChild data-testid="dropdown-item-knowledge-extractor">
                   <a href="https://extractor.bytebeam.co" target="_blank" rel="noopener noreferrer" className="w-full cursor-pointer">
-                    Document to Grid
+                    Knowledge Extractor
                   </a>
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -132,9 +132,9 @@ export default function Navigation() {
                   rel="noopener noreferrer"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="block w-full text-left text-foreground/80 hover:text-primary transition-colors py-2 px-6"
-                  data-testid="mobile-nav-link-document-grid"
+                  data-testid="mobile-nav-link-knowledge-extractor"
                 >
-                  Document to Grid
+                  Knowledge Extractor
                 </a>
               </div>
               <Link 
