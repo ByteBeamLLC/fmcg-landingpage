@@ -5,10 +5,10 @@ import { Scale, MapPin, RefreshCw, Users, Shield, Clock } from "lucide-react";
 const painPoints = [
   {
     icon: Scale,
-    title: "Consistent Quality at Scale",
+    title: "Validated Accuracy at Scale",
     description:
-      "Processing hundreds of SKUs manually leads to inconsistent label formats, translation errors, and compliance gaps. Our AI ensures uniform quality across all products.",
-    feature: "Automated validation",
+      "Processing hundreds of SKUs manually leads to inconsistent label formats, translation errors, and compliance gaps. Our validation-first approach ensures decisions are correct the first time.",
+    feature: "99% first-time accuracy",
   },
   {
     icon: MapPin,
@@ -33,10 +33,10 @@ const painPoints = [
   },
   {
     icon: Shield,
-    title: "Continuous Compliance Radar",
+    title: "Configurable Compliance",
     description:
-      "Stay ahead of regulatory changes automatically. Our system monitors compliance requirements and flags affected products for review.",
-    feature: "Always compliant",
+      "Stay ahead of regulatory changes automatically. Configurable for your regulatory obligations and company policies with real-time monitoring.",
+    feature: "100% regulatory coverage",
   },
   {
     icon: Clock,

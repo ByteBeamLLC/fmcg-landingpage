@@ -53,9 +53,9 @@ const capabilities = [
   },
   {
     icon: ClipboardCheck,
-    title: "Ready-to-File Output",
+    title: "Complete Traceability",
     description:
-      "Final deliverables are submission-ready with complete audit trails and compliance documentation.",
+      "Every output is source-linked and reviewable with complete audit trails—providing full transparency for compliance teams.",
   },
 ];
 
@@ -77,7 +77,7 @@ export default function CoreCapabilities() {
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Core Capabilities</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Enterprise-grade automation built for FMCG compliance
+            Production-ready features delivering validated accuracy, configurable compliance, and complete traceability
           </p>
         </motion.div>
 
