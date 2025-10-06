@@ -79,7 +79,7 @@ export default function PlatformHero() {
             </h1>
 
             <p className="text-2xl text-slate-600 mb-10 font-light max-w-3xl mx-auto" data-testid="hero-description">
-              Production-ready AI agents with audit trails you can trust—built for teams that demand accuracy, compliance, and transparency.
+              Production-ready AI agents with audit trails you can trust—built for teams that demand accuracy, compliance, and traceability.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4 mb-10">
