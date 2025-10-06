@@ -224,7 +224,7 @@ export default function Hero() {
               Labels
             </h1>
             <p className="text-xl mb-8 text-white/90 leading-relaxed">
-              AI extracts data, translates to Arabic, validates regulations, and creates compliant labels in minutes.
+              Validated accuracy and complete audit trails for confident regulatory submissions—every time.
             </p>
             <div className="flex flex-wrap gap-4">
               {/* <Button
