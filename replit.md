@@ -15,6 +15,32 @@ Preferred communication style: Simple, everyday language.
 Design preference: Dark theme with abstract, platform-relevant visuals.
 Content strategy: Follow V7 Labs approach - simple headlines, visual storytelling, concrete examples, minimal text. Show, don't tell.
 
+## Strategic Messaging Framework
+
+**Outcome-Focused Positioning:**
+The website messaging emphasizes three core outcomes over features, designed specifically for regulated industries:
+
+1. **Accuracy**: "Our validation-first approach ensures decisions are correct the first time—critical for regulated industries"
+   - Key metric: 99% first-time accuracy
+   - Multi-layer validation checks against regulatory databases
+   - Expert-in-the-loop for critical decisions
+
+2. **Compliance**: "Configurable for your regulatory obligations and company policies"
+   - Key metric: 100% regulatory coverage
+   - Custom rule engines per market/region
+   - Real-time regulatory monitoring and updates
+
+3. **Traceability**: "ByteBeam's AI agents provide full record-keeping, so every output is source-linked and reviewable"
+   - Key metric: 100% audit trail coverage
+   - Complete audit trails for every AI action
+   - Source document linking for full transparency
+
+**Implementation:**
+- Enhanced "Why ByteBeam" section on platform page with detailed three-pillar structure
+- Outcome-focused hero messaging across home and platform pages
+- Refactored pain points and capabilities to speak to outcomes, not just features
+- Consistent terminology usage: "accuracy, compliance, and traceability" throughout the site
+
 ## System Architecture
 
 ### Frontend Architecture
