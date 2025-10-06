@@ -47,8 +47,13 @@ localPort = 39325
 externalPort = 3003
 
 [[ports]]
+<<<<<<< HEAD
 localPort = 40279
 externalPort = 8099
+=======
+localPort = 40371
+externalPort = 8080
+>>>>>>> 1c250925aa028b13f2f4620090a5a15ae32974eb
 
 [[ports]]
 localPort = 41581

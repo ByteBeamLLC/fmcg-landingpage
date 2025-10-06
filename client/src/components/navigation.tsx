@@ -1,9 +1,15 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "wouter";
 import bytebeamLogo from "@assets/bytebeam_logo_1759326269799.png";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -51,13 +57,24 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            <Link
-              href="/fmcg-label-compliance"
-              className="transition-colors font-medium text-foreground hover:text-primary"
-              data-testid="nav-link-fmcg"
-            >
-              FMCG Compliance
-            </Link>
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center gap-1 transition-colors font-medium text-foreground hover:text-primary" data-testid="dropdown-trigger-ai-agents">
+                AI Agents
+                <ChevronDown className="h-4 w-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" data-testid="dropdown-content-ai-agents">
+                <DropdownMenuItem asChild data-testid="dropdown-item-fmcg">
+                  <Link href="/fmcg-label-compliance" className="w-full cursor-pointer">
+                    FMCG Compliance
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild data-testid="dropdown-item-knowledge-extractor">
+                  <a href="https://extractor.bytebeam.co" target="_blank" rel="noopener noreferrer" className="w-full cursor-pointer">
+                    Knowledge Extractor
+                  </a>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
 
             <Link 
               href="/about"
@@ -97,14 +114,29 @@ export default function Navigation() {
             className="md:hidden bg-white border-t border-border"
           >
             <div className="container-custom py-4 space-y-4">
-              <Link 
-                href="/fmcg-label-compliance"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2 px-2"
-                data-testid="mobile-nav-link-fmcg"
-              >
-                FMCG Compliance
-              </Link>
+              <div className="space-y-2">
+                <div className="font-medium text-foreground py-2 px-2" data-testid="mobile-nav-section-ai-agents">
+                  AI Agents
+                </div>
+                <Link 
+                  href="/fmcg-label-compliance"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block w-full text-left text-foreground/80 hover:text-primary transition-colors py-2 px-6"
+                  data-testid="mobile-nav-link-fmcg"
+                >
+                  FMCG Compliance
+                </Link>
+                <a 
+                  href="https://extractor.bytebeam.co"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block w-full text-left text-foreground/80 hover:text-primary transition-colors py-2 px-6"
+                  data-testid="mobile-nav-link-knowledge-extractor"
+                >
+                  Knowledge Extractor
+                </a>
+              </div>
               <Link 
                 href="/about"
                 onClick={() => setIsMobileMenuOpen(false)}
