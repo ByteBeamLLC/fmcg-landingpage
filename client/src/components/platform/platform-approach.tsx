@@ -1,76 +1,110 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Search, Map, Rocket, RefreshCw, ArrowRight } from "lucide-react";
+import { Sparkles, Zap, FileText, MessageSquare, Rocket, TrendingUp, ArrowRight } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState } from "react";
 
 const phases = [
   {
-    id: "discovery",
+    id: "kickoff",
     number: 1,
-    title: "Discovery",
-    shortTitle: "Discovery",
+    title: "Kickoff & Discovery",
+    shortTitle: "Kickoff & Discovery",
     description:
-      "We work closely with your team to understand your process deeply - the inputs, the decisions, the edge cases, and the outputs. We map the entire workflow and identify automation opportunities.",
-    icon: Search,
+      "Start instantly on our self-serve platform—or book a tailored kickoff call. Your choice, your pace. We map your unique workflows, define milestones together, and design a collaborative process that fits your team.",
+    icon: Sparkles,
     iconBg: "bg-blue-500/10",
     iconColor: "text-blue-500",
     features: [
-      "Process mapping and documentation",
-      "Stakeholder interviews with your experts",
-      "Edge case identification",
-      "Integration points assessment",
+      "Instant self-serve platform access",
+      "Optional tailored kickoff call",
+      "Unique workflow mapping",
+      "Joint milestone definition",
     ],
   },
   {
-    id: "build",
+    id: "poc",
     number: 2,
-    title: "Build & Test",
-    shortTitle: "Build & Test",
+    title: "Instant PoC (Self-Serve or Expert-Led)",
+    shortTitle: "Instant PoC",
     description:
-      "We create a phased roadmap for developing your custom AI agent. This includes milestones for testing, validation, and iterative improvements based on real data and feedback from your team.",
-    icon: Map,
+      "Experience real results within days, not weeks—through instant self-serve or guided setups. See how our AI agents work with your actual data and processes immediately.",
+    icon: Zap,
     iconBg: "bg-purple-500/10",
     iconColor: "text-purple-500",
     features: [
-      "Development milestones and timelines",
-      "Test cases based on real scenarios",
-      "Expert validation checkpoints",
-      "Performance benchmarks and success criteria",
+      "Self-serve or expert-guided setup",
+      "Real results within days",
+      "Work with your actual data",
+      "Flexible implementation paths",
     ],
   },
   {
-    id: "deploy",
+    id: "blueprinting",
     number: 3,
-    title: "Deploy",
-    shortTitle: "Deploy",
+    title: "Custom Blueprinting",
+    shortTitle: "Blueprinting",
     description:
-      "Once tested and validated, the AI agent goes live - integrating with your systems, processing documents, and delivering outputs. It runs continuously in the background, learning and improving over time.",
+      "Our agents learn your process, not the other way around. We create a detailed blueprint tailored to your specific requirements, edge cases, and business rules.",
+    icon: FileText,
+    iconBg: "bg-indigo-500/10",
+    iconColor: "text-indigo-500",
+    features: [
+      "Process-first approach",
+      "Detailed custom blueprints",
+      "Edge case documentation",
+      "Business rule mapping",
+    ],
+  },
+  {
+    id: "prototyping",
+    number: 4,
+    title: "Prototyping & Feedback",
+    shortTitle: "Prototyping",
+    description:
+      "Iterative development with continuous feedback loops. Test, refine, and validate with your team to ensure the solution perfectly matches your needs.",
+    icon: MessageSquare,
+    iconBg: "bg-pink-500/10",
+    iconColor: "text-pink-500",
+    features: [
+      "Iterative development cycles",
+      "Continuous feedback integration",
+      "Team validation checkpoints",
+      "Real-world testing scenarios",
+    ],
+  },
+  {
+    id: "deployment",
+    number: 5,
+    title: "Tailored Deployment",
+    shortTitle: "Deployment",
+    description:
+      "Integration-first deployment seamlessly embedded into your existing tools. Deployed in your environment with minimal disruption—fast, secure, and reliable.",
     icon: Rocket,
     iconBg: "bg-green-500/10",
     iconColor: "text-green-500",
     features: [
-      "Seamless integration with existing systems",
-      "Background processing - no manual triggers needed",
-      "Real-time monitoring and alerts",
-      "Audit trails and compliance logging",
+      "Integration-first approach",
+      "Seamless tool embedding",
+      "Minimal disruption deployment",
+      "Fast and secure setup",
     ],
   },
   {
-    id: "improve",
-    number: 4,
-    title: "Improve",
-    shortTitle: "Improve",
+    id: "optimization",
+    number: 6,
+    title: "Ongoing Optimization & Support",
+    shortTitle: "Optimization",
     description:
-      "Your business evolves, and so does the agent. We monitor performance, handle edge cases, and update the agent as your processes change or regulations shift.",
-    icon: RefreshCw,
+      "An ongoing partnership with human-in-the-loop for critical workflows. Continuous feedback loops, performance monitoring, and regular updates as your business evolves.",
+    icon: TrendingUp,
     iconBg: "bg-orange-500/10",
     iconColor: "text-orange-500",
     features: [
-      "Performance monitoring and optimization",
-      "Regular model updates and improvements",
-      "New feature additions as needs evolve",
-      "Regulatory updates and compliance maintenance",
+      "Ongoing partnership model",
+      "Human-in-the-loop for critical workflows",
+      "Continuous feedback loops",
+      "Regular performance updates",
     ],
   },
 ];
@@ -80,7 +114,7 @@ export default function PlatformApproach() {
     triggerOnce: true,
     threshold: 0.1,
   });
-  const [activeTab, setActiveTab] = useState("discovery");
+  const [activeTab, setActiveTab] = useState("kickoff");
 
   return (
     <section id="how-we-work" className="section-padding bg-muted">
@@ -92,9 +126,9 @@ export default function PlatformApproach() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">How We Work With You</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Together: From Discovery to Delivery</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            From understanding your process to building a production-ready AI agent that runs continuously.
+            Our agents learn your process, not the other way around. Choose your path—instant self-serve or expert-guided—and experience real results within days.
           </p>
         </motion.div>
 
@@ -115,7 +149,7 @@ export default function PlatformApproach() {
                 {/* Connecting Line - Desktop */}
                 <div className="hidden md:block absolute top-12 left-0 right-0 h-0.5 bg-border" style={{ width: 'calc(100% - 6rem)', marginLeft: '3rem' }}></div>
                 
-                <TabsList className="w-full bg-transparent h-auto p-0 grid grid-cols-2 md:grid-cols-4 gap-4">
+                <TabsList className="w-full bg-transparent h-auto p-0 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                   {phases.map((phase, index) => {
                     const isActive = activeTab === phase.id;
                     const Icon = phase.icon;
