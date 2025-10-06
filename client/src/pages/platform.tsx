@@ -1,5 +1,6 @@
 import Navigation from "@/components/navigation";
 import PlatformHero from "@/components/platform/platform-hero";
+import WhyByteBeam from "@/components/platform/why-bytebeam";
 import PlatformProblem from "@/components/platform/platform-problem";
 import PlatformApproach from "@/components/platform/platform-approach";
 import PlatformUseCases from "@/components/platform/platform-use-cases";
@@ -22,6 +23,7 @@ export default function Platform() {
       />
       <Navigation />
       <PlatformHero />
+      <WhyByteBeam />
       <PlatformProblem />
       <PlatformApproach />
       <PlatformUseCases />
