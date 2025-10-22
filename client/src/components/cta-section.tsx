@@ -10,7 +10,7 @@ export default function CTASection() {
   });
 
   const handleBookDemo = () => {
-    window.open("https://calendar.app.google/gcPf1yWT3eznR8uc7", "_blank");
+    window.open("https://calendly.com/talal-bytebeam/30min", "_blank");
   };
 
   return (
