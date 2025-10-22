@@ -1,12 +1,20 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link, useLocation } from "wouter";
 import bytebeamLogo from "@assets/bytebeam_logo_1759326269799.png";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [location] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,65 +33,69 @@ export default function Navigation() {
     }
   };
 
-  const navLinks = [
-    { label: "How It Works", id: "how-it-works" },
-    { label: "Capabilities", id: "capabilities" },
-    { label: "Clients", id: "clients" },
-  ];
+  const handleBookDemo = () => {
+    window.open("https://calendar.app.google/gcPf1yWT3eznR8uc7", "_blank");
+  };
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/95 backdrop-blur-lg shadow-sm"
-          : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-lg border-b border-white/60 ${
+        isScrolled ? "shadow-sm" : ""
       }`}
     >
       <div className="container-custom">
         <div className="flex items-center justify-between py-4">
-          <div className="flex items-center gap-3">
-            <img 
-              src={bytebeamLogo} 
-              alt="ByteBeam Logo" 
-              className={`h-8 transition-all duration-300 ${
-                isScrolled ? "" : "brightness-0 invert"
-              }`}
-              data-testid="logo-bytebeam" 
+          <Link href="/" className="flex items-center gap-3" data-testid="logo-bytebeam">
+            <img
+              src={bytebeamLogo}
+              alt="ByteBeam Logo"
+              className="h-8 w-auto"
             />
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => scrollToSection(link.id)}
-                className={`transition-colors font-medium ${
-                  isScrolled 
-                    ? "text-foreground hover:text-primary" 
-                    : "text-white hover:text-white/80"
-                }`}
-                data-testid={`nav-link-${link.id}`}
-              >
-                {link.label}
-              </button>
-            ))}
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center gap-1 transition-colors font-medium text-foreground hover:text-primary" data-testid="dropdown-trigger-ai-agents">
+                AI Agents
+                <ChevronDown className="h-4 w-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" data-testid="dropdown-content-ai-agents">
+                <DropdownMenuItem asChild data-testid="dropdown-item-fmcg">
+                  <Link href="/fmcg-label-compliance" className="w-full cursor-pointer">
+                    FMCG Compliance
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild data-testid="dropdown-item-knowledge-extractor">
+                  <a href="https://extractor.bytebeam.co" target="_blank" rel="noopener noreferrer" className="w-full cursor-pointer">
+                    Knowledge Extractor
+                  </a>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            <Link 
+              href="/about"
+              className="transition-colors font-medium text-foreground hover:text-primary"
+              data-testid="nav-link-about"
+            >
+              About
+            </Link>
+
             <Button
-              onClick={() => scrollToSection("contact")}
+              onClick={handleBookDemo}
               className="bg-primary text-primary-foreground hover:bg-primary/90"
               data-testid="button-request-demo-nav"
             >
-              Request a Demo
+              Book a Demo
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className={`md:hidden transition-colors ${
-              isScrolled ? "text-foreground" : "text-white"
-            }`}
+            className="md:hidden transition-colors text-foreground"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             data-testid="button-mobile-menu"
           >
@@ -102,22 +114,46 @@ export default function Navigation() {
             className="md:hidden bg-white border-t border-border"
           >
             <div className="container-custom py-4 space-y-4">
-              {navLinks.map((link) => (
-                <button
-                  key={link.id}
-                  onClick={() => scrollToSection(link.id)}
-                  className="block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2"
-                  data-testid={`mobile-nav-link-${link.id}`}
+              <div className="space-y-2">
+                <div className="font-medium text-foreground py-2 px-2" data-testid="mobile-nav-section-ai-agents">
+                  AI Agents
+                </div>
+                <Link 
+                  href="/fmcg-label-compliance"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block w-full text-left text-foreground/80 hover:text-primary transition-colors py-2 px-6"
+                  data-testid="mobile-nav-link-fmcg"
                 >
-                  {link.label}
-                </button>
-              ))}
+                  FMCG Compliance
+                </Link>
+                <a 
+                  href="https://extractor.bytebeam.co"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block w-full text-left text-foreground/80 hover:text-primary transition-colors py-2 px-6"
+                  data-testid="mobile-nav-link-knowledge-extractor"
+                >
+                  Knowledge Extractor
+                </a>
+              </div>
+              <Link 
+                href="/about"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2 px-2"
+                data-testid="mobile-nav-link-about"
+              >
+                About
+              </Link>
               <Button
-                onClick={() => scrollToSection("contact")}
+                onClick={() => {
+                  handleBookDemo();
+                  setIsMobileMenuOpen(false);
+                }}
                 className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
                 data-testid="button-request-demo-mobile"
               >
-                Request a Demo
+                Book a Demo
               </Button>
             </div>
           </motion.div>

@@ -13,6 +13,7 @@ The application is built as a full-stack web application with a React-based fron
 
 Preferred communication style: Simple, everyday language.
 Design preference: Dark theme with abstract, platform-relevant visuals.
+Content strategy: Follow V7 Labs approach - simple headlines, visual storytelling, concrete examples, minimal text. Show, don't tell.
 
 ## System Architecture
 
@@ -37,7 +38,12 @@ Design preference: Dark theme with abstract, platform-relevant visuals.
 **Component Structure:**
 - Atomic design pattern with reusable UI components in `/client/src/components/ui`
 - Page-level components for major sections (Hero, Pain Points, Industry Solutions, etc.)
-- Single-page application structure with home page as the primary entry point
+- Multi-page application structure with home page and platform landing page
+- Platform page (`/platform`) features simplified hero section with:
+  - Rotating industry headlines (Healthcare, Insurance, FMCG, Finance)
+  - Interactive 3-step visual workflow showing document processing
+  - Simple, non-technical messaging following V7 Labs content strategy
+  - Animated document files and progress indicators
 - Component composition using Radix UI primitives for accessibility
 
 **State Management:**
@@ -126,9 +132,18 @@ The storage interface abstraction allows development to proceed with in-memory s
 - Platform-agnostic Node.js bundle output
 - Static asset serving with Vite middleware in development
 
+**SEO Implementation:**
+- Custom SEO component (`client/src/components/SEO.tsx`) for dynamic metadata management
+- Automatically sets title, meta description, Open Graph tags, Twitter Card tags, and canonical URL
+- Dynamically computes URLs using window.location.href when not explicitly provided
+- Each page has unique, optimized metadata tailored to its content
+- Complete metadata coverage across all pages including 404 and fallback routes
+- No hardcoded production URLs - all URLs computed dynamically for environment flexibility
+
 **Key Design Decisions:**
 1. **Monorepo Structure:** Shared schema between client and server prevents type drift and enables end-to-end type safety
 2. **Storage Abstraction:** Interface-based design allows switching between in-memory and database implementations without code changes
 3. **Component Library:** shadcn/ui provides owned, customizable components rather than external dependencies
 4. **Build Strategy:** Separate bundling for client (Vite) and server (esbuild) optimizes for their respective runtime environments
 5. **Static Assets:** Assets stored in `attached_assets` directory with Vite alias for consistent imports
+6. **SEO Strategy:** Centralized SEO component with dynamic URL computation ensures consistent, maintainable metadata across all pages

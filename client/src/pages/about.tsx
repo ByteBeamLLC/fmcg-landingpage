@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Zap, Users, Target } from "lucide-react";
 import { Link } from "wouter";
 import bytebeamLogo from "@assets/bytebeam_logo_1759326269799.png";
+import SEO from "@/components/SEO";
 
 export default function About() {
   const [heroRef, heroInView] = useInView({
@@ -27,6 +28,13 @@ export default function About() {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="About ByteBeam | AI-Powered Automation for Knowledge Work"
+        description="Learn how ByteBeam transforms document-heavy, analysis-intensive processes through intelligent automation. Discover our mission, values, and commitment to empowering experts with AI agents."
+        ogTitle="About ByteBeam | Transforming Knowledge Work with AI"
+        ogDescription="We build AI agents that automate complex, repetitive knowledge work—freeing experts to focus on what truly matters. Discover our mission and approach."
+        keywords="ByteBeam, AI automation company, knowledge work automation, document processing AI, compliance automation experts, AI agent platform"
+      />
       {/* Hero Section */}
       <section className="section-padding gradient-overlay text-white">
         <div className="container-custom">
