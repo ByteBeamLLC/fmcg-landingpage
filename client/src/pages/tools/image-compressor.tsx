@@ -25,29 +25,44 @@ import { compressImage } from "@/lib/tools/image-utils";
 
 const FAQS = [
   {
-    question: "How does image compression work?",
+    question: "How do I compress an image online for free?",
     answer:
-      "We use browser-image-compression to reduce image file sizes by optimizing encoding, reducing dimensions, and adjusting quality while maintaining visual fidelity.",
+      "Upload your image (JPG, PNG, or WebP), adjust the quality slider to balance size vs quality, then click 'Compress'. Download your smaller image instantly - no signup needed.",
   },
   {
-    question: "Will compression affect image quality?",
+    question: "Is this image compressor free?",
     answer:
-      "You can control the balance between size and quality using the slider. Lower quality settings result in smaller files but may show some visual degradation.",
+      "Yes! Our image compressor is 100% free with no limits. Compress as many images as you need without registration, watermarks, or hidden fees.",
   },
   {
-    question: "What image formats are supported?",
+    question: "How much can I reduce image file size?",
     answer:
-      "We support JPG, PNG, GIF, and WebP formats. The compressed image will maintain its original format.",
+      "Typical compression reduces image size by 40-80% depending on the original image and quality settings. High-resolution photos see the biggest reductions.",
   },
   {
-    question: "What's the maximum file size?",
+    question: "Will compressing my image reduce quality?",
     answer:
-      "You can compress images up to 20MB in size.",
+      "You control the quality/size balance with the slider. At 70-80% quality, most images look nearly identical to the original but are much smaller.",
   },
   {
-    question: "Is my data secure?",
+    question: "What image formats can I compress?",
     answer:
-      "All compression happens locally in your browser. Your images are never uploaded to any server.",
+      "We support JPG/JPEG, PNG, GIF, and WebP formats. The compressed image keeps its original format.",
+  },
+  {
+    question: "Is it safe to compress images online?",
+    answer:
+      "Completely safe! All compression happens locally in your browser. Your images never leave your device and are never uploaded to any server.",
+  },
+  {
+    question: "How do I reduce image size for email or web?",
+    answer:
+      "Upload your image, set quality to 70-80% for a good balance, and optionally reduce max dimensions. Download the compressed version that's perfect for email or web use.",
+  },
+  {
+    question: "Can I compress images on my phone?",
+    answer:
+      "Yes! Our online image compressor works on any device - iPhone, Android, tablet, or desktop. No app needed.",
   },
 ];
 
@@ -123,10 +138,11 @@ export default function ImageCompressor() {
 
   return (
     <ToolLayout
-      title="Free Image Compressor - Reduce Image Size Online"
-      description="Compress JPG, PNG, and WebP images to reduce file size while maintaining quality. Free, fast, and secure - all processing in your browser."
+      title="Compress Image Online Free - Reduce Image File Size"
+      description="Compress images online for free. Reduce JPG, PNG, WebP file size by up to 80% without losing quality. No signup, instant download, 100% secure."
       category="Image Tools"
-      keywords="image compressor, compress image, reduce image size, image optimizer, compress jpg, compress png"
+      keywords="compress image, image compressor, reduce image size, compress jpg, compress png, image size reducer, make image smaller, compress photo, reduce photo size, image optimizer online free"
+      toolContext="image-compressor"
     >
       <div className="grid lg:grid-cols-2 gap-6">
         {/* Left Column - Upload & Settings */}

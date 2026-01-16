@@ -30,29 +30,44 @@ interface ImageFile {
 
 const FAQS = [
   {
-    question: "What image formats are supported?",
+    question: "How do I convert images to PDF for free?",
     answer:
-      "We support JPG/JPEG and PNG images. Other formats will be automatically converted to PNG before being added to the PDF.",
+      "Upload your images (JPG, PNG), drag to reorder if needed, then click 'Convert to PDF'. Download your PDF instantly - no signup or payment required.",
   },
   {
-    question: "Can I reorder images before creating the PDF?",
+    question: "Is this image to PDF converter free?",
     answer:
-      "Yes! Simply drag and drop the images in the list to arrange them in your desired order before clicking Convert.",
+      "Yes! Our JPG to PDF and PNG to PDF converter is 100% free. No limits, no watermarks, no registration needed.",
   },
   {
-    question: "Is there a limit on the number of images?",
+    question: "Can I combine multiple images into one PDF?",
     answer:
-      "You can add up to 50 images at once, with each image up to 10MB in size.",
+      "Absolutely! Upload multiple images at once and they'll be combined into a single PDF document. Drag and drop to reorder pages before converting.",
   },
   {
-    question: "Will image quality be preserved?",
+    question: "What image formats can I convert to PDF?",
     answer:
-      "Yes, images are embedded at their original resolution. The PDF page size matches each image's dimensions.",
+      "We support JPG/JPEG and PNG images. Other formats are automatically converted to PNG before being added to the PDF.",
   },
   {
-    question: "Is my data secure?",
+    question: "Will my images lose quality when converted to PDF?",
     answer:
-      "All processing happens locally in your browser. Your images are never uploaded to any server.",
+      "No quality loss! Images are embedded at their original resolution. The PDF page size matches each image's dimensions for perfect quality.",
+  },
+  {
+    question: "Is it safe to convert images to PDF online?",
+    answer:
+      "Completely safe! All processing happens locally in your browser. Your images never leave your device and are never uploaded to any server.",
+  },
+  {
+    question: "Can I convert JPG to PDF on my phone?",
+    answer:
+      "Yes! Our online converter works on any device - iPhone, Android, iPad, or desktop. No app installation needed.",
+  },
+  {
+    question: "How many images can I convert at once?",
+    answer:
+      "You can add up to 50 images at once, with each image up to 10MB in size. Combine them all into a single multi-page PDF.",
   },
 ];
 
@@ -127,10 +142,11 @@ export default function ImageToPDF() {
 
   return (
     <ToolLayout
-      title="Free Image to PDF Converter"
-      description="Convert images to PDF documents. Combine multiple JPG, PNG images into a single PDF file. Free, fast, and secure."
+      title="JPG to PDF Converter - Convert Images to PDF Free"
+      description="Convert JPG to PDF online for free. Combine multiple images (JPG, PNG) into one PDF. Drag to reorder. No signup, no watermarks, instant download."
       category="Image Tools"
-      keywords="image to pdf, jpg to pdf, png to pdf, convert images to pdf, image to pdf converter"
+      keywords="jpg to pdf, image to pdf, png to pdf, convert jpg to pdf, convert image to pdf, combine images to pdf, picture to pdf, photo to pdf, jpg to pdf converter free, images to pdf online"
+      toolContext="image-to-pdf"
     >
       <div className="space-y-6">
         {/* Upload Section */}

@@ -56,7 +56,7 @@ const API_BASE = "/api/tools";
  */
 async function callAIEndpoint<T>(
   endpoint: string,
-  data: Record<string, unknown>
+  data: object
 ): Promise<T> {
   const response = await fetch(`${API_BASE}${endpoint}`, {
     method: "POST",

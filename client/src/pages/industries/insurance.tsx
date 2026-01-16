@@ -21,7 +21,7 @@ import { Link } from "wouter";
 
 export default function InsuranceIndustry() {
   const handleBookDemo = () => {
-    window.open("https://calendar.app.google/gcPf1yWT3eznR8uc7", "_blank");
+    window.open("https://calendly.com/talal-bytebeam/bytebeam-discovery-call", "_blank");
   };
 
   return (

@@ -30,34 +30,44 @@ interface PDFFile {
 
 const FAQS = [
   {
-    question: "How does the PDF Merger work?",
+    question: "How do I merge PDF files online for free?",
     answer:
-      "Our PDF Merger combines multiple PDF files into a single document. All processing happens in your browser using pdf-lib, ensuring your files never leave your device.",
+      "Upload your PDF files to our free PDF merger, drag to reorder them, then click 'Merge PDFs'. Your combined PDF will be ready to download instantly. No signup or software installation required.",
   },
   {
-    question: "Is there a limit on the number of PDFs I can merge?",
+    question: "Is this PDF merger completely free?",
     answer:
-      "You can merge up to 20 PDF files at once, with a total combined size limit of 100MB. For most use cases, this is more than sufficient.",
+      "Yes! Our PDF combiner is 100% free with no limits. There's no registration, no watermarks, and no hidden fees. Merge as many PDFs as you need.",
   },
   {
-    question: "Can I reorder the PDFs before merging?",
+    question: "How many PDFs can I combine at once?",
     answer:
-      "Yes! Simply drag and drop the files in the list to arrange them in your desired order before clicking Merge.",
+      "You can merge up to 20 PDF files at once, with a total combined size limit of 100MB. Simply upload all your files and combine them into one document.",
   },
   {
-    question: "Will the merged PDF maintain the original quality?",
+    question: "Can I rearrange PDF pages before merging?",
     answer:
-      "Yes, the merger preserves all content, formatting, images, and links from the original PDFs without any quality loss.",
+      "Yes! Our PDF joiner lets you drag and drop files to reorder them before combining. Arrange your PDFs in exactly the order you want.",
   },
   {
-    question: "Is my data secure?",
+    question: "Will merging PDFs reduce the quality?",
     answer:
-      "Absolutely! All processing happens locally in your browser. Your PDFs are never uploaded to any server, ensuring complete privacy.",
+      "No. Our PDF merger preserves 100% of the original quality including text, images, formatting, links, and bookmarks. There's no compression or quality loss.",
   },
   {
-    question: "What if my PDF is password-protected?",
+    question: "Is it safe to merge PDFs online?",
     answer:
-      "Password-protected PDFs may not merge correctly. Please remove the password protection first using our PDF Unlock tool.",
+      "Absolutely safe! All PDF processing happens locally in your browser. Your files are never uploaded to any server. Once you close the page, all data is deleted.",
+  },
+  {
+    question: "Can I merge PDFs on my phone or tablet?",
+    answer:
+      "Yes! Our online PDF merger works on any device - iPhone, Android, iPad, or desktop. No app installation needed, just open in your browser.",
+  },
+  {
+    question: "How do I combine multiple PDFs into one document?",
+    answer:
+      "1) Click 'Upload PDFs' and select your files. 2) Drag to reorder if needed. 3) Click 'Merge PDFs'. 4) Download your combined PDF. It's that simple!",
   },
 ];
 
@@ -154,10 +164,11 @@ export default function PDFMerger() {
 
   return (
     <ToolLayout
-      title="Free PDF Merger - Combine PDFs Online"
-      description="Merge multiple PDF files into one document for free. Drag and drop to reorder, then combine. No signup required, 100% private."
+      title="Merge PDF Files Online Free - Combine PDFs into One"
+      description="Merge PDF files online for free. Combine multiple PDFs into one document instantly. Drag & drop to reorder. No signup, no watermarks, 100% secure."
       category="PDF Tools"
-      keywords="merge pdf, combine pdf, join pdf, pdf merger online, free pdf combiner, merge pdf files"
+      keywords="merge pdf, combine pdf files, pdf merger online free, join pdf, merge pdf files into one, combine multiple pdfs, pdf combiner, merge pdf online, combine pdf online free, join pdf files, pdf joiner"
+      toolContext="pdf-merger"
     >
       <div className="space-y-6">
         {/* Upload Section */}

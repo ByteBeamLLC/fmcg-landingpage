@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Zap, Users, Target } from "lucide-react";
+import { ArrowRight, Table2, Shield, Eye, FileCheck, Clock, Brain } from "lucide-react";
 import { Link } from "wouter";
 import bytebeamLogo from "@assets/bytebeam_logo_1759326269799.png";
 import SEO from "@/components/SEO";
@@ -12,14 +12,14 @@ const structuredData = [
     "@context": "https://schema.org",
     "@type": "AboutPage",
     "name": "About ByteBeam",
-    "description": "Learn how ByteBeam transforms document-heavy, analysis-intensive processes through intelligent automation.",
+    "description": "ByteBeam allows non-technical subject matter experts to build AI agents using an Excel-like interface. Automate complex document work that requires SME experience and decision-making.",
     "url": "https://bytebeam.co/about",
     "mainEntity": {
       "@type": "Organization",
       "name": "ByteBeam",
       "url": "https://bytebeam.co",
       "logo": "https://bytebeam.co/assets/bytebeam-logo.png",
-      "description": "AI agents built by Subject Matter Experts, not engineers. No code required.",
+      "description": "AI agents built by Subject Matter Experts using an Excel-like interface. No code required.",
       "foundingDate": "2024",
       "areaServed": [
         { "@type": "Country", "name": "United Arab Emirates" },
@@ -55,31 +55,37 @@ export default function About() {
     threshold: 0.1,
   });
 
-  const [missionRef, missionInView] = useInView({
+  const [challengeRef, challengeInView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  const [valuesRef, valuesInView] = useInView({
+  const [solutionRef, solutionInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  const [platformRef, platformInView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
   const handleGetInTouch = () => {
-    window.open("https://calendar.app.google/gcPf1yWT3eznR8uc7", "_blank");
+    window.open("https://calendly.com/talal-bytebeam/bytebeam-discovery-call", "_blank");
   };
 
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="About ByteBeam | AI-Powered Automation for Knowledge Work"
-        description="Learn how ByteBeam transforms document-heavy, analysis-intensive processes through intelligent automation. Discover our mission, values, and commitment to empowering experts with AI agents."
-        ogTitle="About ByteBeam | Transforming Knowledge Work with AI"
-        ogDescription="We build AI agents that automate complex, repetitive knowledge work—freeing experts to focus on what truly matters. Discover our mission and approach."
-        keywords="ByteBeam, AI automation company, knowledge work automation, document processing AI, compliance automation experts, AI agent platform"
+        title="About ByteBeam | AI Agents Built by Subject Matter Experts"
+        description="ByteBeam allows non-technical SMEs to build AI agents using an Excel-like interface. Automate complex document work requiring expert judgment - KYC, risk assessment, compliance reviews."
+        ogTitle="About ByteBeam | Empowering SMEs to Build AI Agents"
+        ogDescription="Build AI agents using an interface you already know. Automate complex document work that requires your SME's experience and decision-making. 85% reduction in processing time."
+        keywords="ByteBeam, AI agent platform, SME automation, Excel-like AI builder, document automation, KYC automation, compliance automation, risk assessment AI"
         canonical="https://bytebeam.co/about"
         structuredData={structuredData}
       />
+      
       {/* Hero Section */}
       <section className="section-padding gradient-overlay text-white">
         <div className="container-custom">
@@ -96,102 +102,190 @@ export default function About() {
               className="h-16 mx-auto mb-8 brightness-0 invert"
               data-testid="about-logo"
             />
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">About ByteBeam</h1>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              We build AI agents that automate complex, repetitive knowledge work - freeing experts to focus on what truly matters.
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">About Bytebeam</h1>
+            <p className="text-xl text-white/90 max-w-3xl mx-auto mb-4">
+              Bytebeam allows non-technical subject matter experts to build AI agents using an interface they already know — <span className="font-semibold">an Excel-like experience</span>.
+            </p>
+            <p className="text-lg text-white/80 max-w-2xl mx-auto">
+              These agents automate complex document work that requires an SME's experience and decision-making. Free up your SME time and let them focus on what matters.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Mission Section */}
-      <section className="section-padding bg-background">
+      {/* Stats Banner */}
+      <section className="py-8 bg-primary">
         <div className="container-custom">
           <motion.div
-            ref={missionRef}
-            initial={{ opacity: 0, y: 30 }}
-            animate={missionInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-12 text-white"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center">Our Mission</h2>
-            <div className="prose prose-lg dark:prose-invert max-w-none">
-              <p className="text-lg text-muted-foreground mb-6">
-                ByteBeam is on a mission to transform knowledge work through intelligent automation. We focus on document-heavy, 
-                analysis-intensive processes that require subject matter expertise - the kind of work that's too complex for simple 
-                automation but too repetitive to be fulfilling for skilled professionals.
-              </p>
-              <p className="text-lg text-muted-foreground mb-6">
-                Our AI agents don't just process information - they understand context, apply regulatory knowledge, and make 
-                informed decisions. This allows businesses to accelerate their operations while maintaining the accuracy and 
-                expertise their customers depend on.
-              </p>
-              <p className="text-lg text-muted-foreground">
-                We believe AI should augment human capability, not replace it. By automating the repetitive aspects of knowledge 
-                work, we enable experts to focus on strategy, innovation, and complex problem-solving.
-              </p>
+            <div className="flex items-center gap-3">
+              <Clock className="w-8 h-8" />
+              <div>
+                <span className="text-4xl md:text-5xl font-bold">85%</span>
+                <span className="text-lg ml-2">reduction in processing time</span>
+              </div>
+            </div>
+            <div className="hidden md:block w-px h-12 bg-white/30" />
+            <div className="flex items-center gap-3">
+              <FileCheck className="w-8 h-8" />
+              <div>
+                <span className="text-4xl md:text-5xl font-bold">10,000+</span>
+                <span className="text-lg ml-2">documents processed</span>
+              </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Values Section */}
+      {/* The Challenge Section */}
+      <section className="section-padding bg-background">
+        <div className="container-custom">
+          <motion.div
+            ref={challengeRef}
+            initial={{ opacity: 0, y: 30 }}
+            animate={challengeInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl mx-auto"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center">The Challenge</h2>
+            <div className="bg-muted/50 border-2 border-border rounded-2xl p-8 md:p-12">
+              <p className="text-lg text-muted-foreground mb-6">
+                Your most experienced people spend their days on document work that requires judgment — <span className="text-foreground font-medium">KYC verification, risk assessment, chargeback decisions, compliance reviews</span>.
+              </p>
+              <p className="text-lg text-muted-foreground mb-6">
+                This work can't be automated with traditional tools because it requires the kind of reasoning only your SMEs possess.
+              </p>
+              <div className="grid md:grid-cols-3 gap-6 mt-8">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-full bg-destructive/10 flex items-center justify-center flex-shrink-0">
+                    <span className="text-destructive text-xl">💰</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">Highly paid specialists buried in repetitive tasks</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-full bg-destructive/10 flex items-center justify-center flex-shrink-0">
+                    <span className="text-destructive text-xl">⚖️</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">Inconsistent decisions across teams</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-full bg-destructive/10 flex items-center justify-center flex-shrink-0">
+                    <span className="text-destructive text-xl">🚪</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">Institutional knowledge that walks out the door when people leave</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* What Bytebeam Does Section */}
       <section className="section-padding bg-muted">
         <div className="container-custom">
           <motion.div
-            ref={valuesRef}
+            ref={solutionRef}
             initial={{ opacity: 0, y: 30 }}
-            animate={valuesInView ? { opacity: 1, y: 0 } : {}}
+            animate={solutionInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
+            className="max-w-5xl mx-auto"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">What Drives Us</h2>
-            <div className="grid md:grid-cols-3 gap-8">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center">What Bytebeam Does</h2>
+            <p className="text-xl text-muted-foreground text-center mb-12 max-w-3xl mx-auto">
+              An AI agent platform that captures your SMEs' decision-making logic and scales it across your operations.
+            </p>
+            
+            <div className="grid md:grid-cols-2 gap-8">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={valuesInView ? { opacity: 1, y: 0 } : {}}
+                initial={{ opacity: 0, x: -20 }}
+                animate={solutionInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="bg-card border-2 border-border rounded-xl p-8 text-center"
-                data-testid="value-card-impact"
+                className="bg-card border-2 border-border rounded-xl p-8"
               >
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Target className="w-8 h-8 text-primary" />
+                <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                  <Table2 className="w-7 h-7 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold mb-4">Real Impact</h3>
+                <h3 className="text-xl font-bold mb-4">Familiar Interface</h3>
                 <p className="text-muted-foreground">
-                  Beyond the buzz. We focus on delivering measurable results that transform how businesses operate.
+                  Using an interface your teams already understand — <span className="text-foreground font-medium">columns, rows, and rules</span> — subject matter experts define how documents should be read, cross-referenced, and evaluated.
                 </p>
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={valuesInView ? { opacity: 1, y: 0 } : {}}
+                initial={{ opacity: 0, x: 20 }}
+                animate={solutionInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="bg-card border-2 border-border rounded-xl p-8 text-center"
-                data-testid="value-card-expertise"
+                className="bg-card border-2 border-border rounded-xl p-8"
               >
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Zap className="w-8 h-8 text-primary" />
+                <div className="w-14 h-14 bg-secondary/10 rounded-xl flex items-center justify-center mb-6">
+                  <Eye className="w-7 h-7 text-secondary" />
                 </div>
-                <h3 className="text-xl font-bold mb-4">Domain Expertise</h3>
+                <h3 className="text-xl font-bold mb-4">Full Audit Trails</h3>
                 <p className="text-muted-foreground">
-                  We build deep understanding of the industries we serve, ensuring our solutions address real-world challenges.
+                  The platform executes your logic consistently, with <span className="text-foreground font-medium">full audit trails and citations back to source documents</span>. Every decision is traceable and explainable.
                 </p>
               </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
+      {/* Platform Section */}
+      <section className="section-padding bg-background">
+        <div className="container-custom">
+          <motion.div
+            ref={platformRef}
+            initial={{ opacity: 0, y: 30 }}
+            animate={platformInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl mx-auto"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center">The Operational Layer for AI</h2>
+            <div className="prose prose-lg dark:prose-invert max-w-none">
+              <p className="text-lg text-muted-foreground mb-6">
+                Bytebeam's platform is the operational layer that makes AI actually work in production. It handles the <span className="text-foreground font-medium">orchestration, governance, and auditability</span> that enterprises require — regardless of which foundation model powers the intelligence underneath.
+              </p>
+              <p className="text-lg text-muted-foreground mb-8">
+                Whether you're building your own LLM, using an existing provider, or planning to switch as better options emerge, Bytebeam provides the infrastructure for non-technical SMEs to <span className="text-foreground font-medium">create, deploy, monitor, and govern AI agents at scale</span>.
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-3 gap-6 mt-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
-                animate={valuesInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="bg-card border-2 border-border rounded-xl p-8 text-center"
-                data-testid="value-card-partnership"
+                animate={platformInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="bg-muted/50 border border-border rounded-xl p-6 text-center"
               >
-                <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Users className="w-8 h-8 text-secondary" />
-                </div>
-                <h3 className="text-xl font-bold mb-4">Partnership</h3>
-                <p className="text-muted-foreground">
-                  We work closely with our clients to understand their unique needs and tailor solutions accordingly.
-                </p>
+                <Brain className="w-8 h-8 text-primary mx-auto mb-4" />
+                <h4 className="font-semibold mb-2">Model Agnostic</h4>
+                <p className="text-sm text-muted-foreground">Works with any LLM provider or your own models</p>
+              </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={platformInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="bg-muted/50 border border-border rounded-xl p-6 text-center"
+              >
+                <Shield className="w-8 h-8 text-primary mx-auto mb-4" />
+                <h4 className="font-semibold mb-2">Enterprise Governance</h4>
+                <p className="text-sm text-muted-foreground">Built-in compliance and security controls</p>
+              </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={platformInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="bg-muted/50 border border-border rounded-xl p-6 text-center"
+              >
+                <FileCheck className="w-8 h-8 text-primary mx-auto mb-4" />
+                <h4 className="font-semibold mb-2">Scale Ready</h4>
+                <p className="text-sm text-muted-foreground">Deploy and monitor agents across your operations</p>
               </motion.div>
             </div>
           </motion.div>
@@ -207,9 +301,9 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Transform Your Workflow?</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Empower Your SMEs?</h2>
             <p className="text-xl mb-8 text-white/90">
-              Let's discuss how ByteBeam can help automate your knowledge work processes.
+              Let your subject matter experts build AI agents that capture their decision-making logic — no engineering required.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button

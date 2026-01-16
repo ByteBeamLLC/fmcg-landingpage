@@ -34,7 +34,7 @@ export default function Navigation() {
   };
 
   const handleBookDemo = () => {
-    window.open("https://calendar.app.google/gcPf1yWT3eznR8uc7", "_blank");
+    window.open("https://calendly.com/talal-bytebeam/bytebeam-discovery-call", "_blank");
   };
 
   return (
@@ -117,7 +117,7 @@ export default function Navigation() {
 
             <Link
               href="/tools"
-              className="hidden transition-colors font-medium text-foreground hover:text-primary"
+              className="transition-colors font-medium text-foreground hover:text-primary"
               data-testid="nav-link-tools"
             >
               Free Tools
@@ -230,7 +230,7 @@ export default function Navigation() {
               <Link
                 href="/tools"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="hidden block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2 px-2"
+                className="block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2 px-2"
                 data-testid="mobile-nav-link-tools"
               >
                 Free Tools

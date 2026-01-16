@@ -200,7 +200,7 @@ export default function BlogLayout({
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
-                onClick={() => window.open("https://calendar.app.google/gcPf1yWT3eznR8uc7", "_blank")}
+                onClick={() => window.open("https://calendly.com/talal-bytebeam/bytebeam-discovery-call", "_blank")}
                 size="lg"
                 className="bg-primary text-primary-foreground"
               >

@@ -28,29 +28,44 @@ type SplitMode = "all" | "range" | "custom";
 
 const FAQS = [
   {
-    question: "How does the PDF Splitter work?",
+    question: "How do I split a PDF into separate pages?",
     answer:
-      "Our PDF Splitter extracts pages from your PDF into separate files. You can split every page into individual PDFs or specify custom page ranges.",
+      "Upload your PDF, choose 'Split All Pages' to extract every page as individual PDFs, or select 'Page Range' to extract specific pages. Download as a ZIP file or single PDF.",
   },
   {
-    question: "Can I split a PDF into specific page ranges?",
+    question: "Is this PDF splitter free?",
     answer:
-      "Yes! You can extract specific page ranges (e.g., 1-5, 10-15) or split every page into individual PDF files.",
+      "Yes! Our PDF splitter is 100% free with no limits. Split as many PDFs as you need without signup, watermarks, or hidden fees.",
   },
   {
-    question: "Is there a page limit?",
+    question: "Can I extract specific pages from a PDF?",
     answer:
-      "You can split PDFs with up to 500 pages. The maximum file size is 25MB.",
+      "Absolutely! Enter a page range (e.g., 1-5 or 3-7) to extract only the pages you need. Perfect for pulling out specific sections from large documents.",
   },
   {
-    question: "How are split files delivered?",
+    question: "How do I separate PDF pages online?",
     answer:
-      "If you split into multiple files, they are packaged into a ZIP archive for easy download. Single range extractions download as a regular PDF.",
+      "1) Upload your PDF file. 2) Choose to split all pages or select a range. 3) Click 'Split PDF'. 4) Download your separated pages as a ZIP or PDF.",
   },
   {
-    question: "Is my PDF data secure?",
+    question: "Is it safe to split PDFs online?",
     answer:
-      "Yes! All processing happens locally in your browser. Your files never leave your device.",
+      "Completely safe! All processing happens locally in your browser. Your PDF never leaves your device and is never uploaded to any server.",
+  },
+  {
+    question: "Can I split large PDF files?",
+    answer:
+      "Yes, you can split PDFs up to 25MB with up to 500 pages. For very large files, this is a great way to break them into manageable chunks.",
+  },
+  {
+    question: "Can I split PDFs on mobile?",
+    answer:
+      "Yes! Our PDF splitter works on any device - iPhone, Android, iPad, or desktop. No app installation needed.",
+  },
+  {
+    question: "What format do split files download in?",
+    answer:
+      "Single page extractions download as PDF. Multiple pages download as a ZIP archive containing individual PDFs for easy organization.",
   },
 ];
 
@@ -155,10 +170,11 @@ export default function PDFSplitter() {
 
   return (
     <ToolLayout
-      title="Free PDF Splitter - Extract Pages Online"
-      description="Split PDF files into individual pages or extract specific page ranges. Free, fast, and secure - all processing happens in your browser."
+      title="Split PDF Online Free - Extract Pages from PDF"
+      description="Split PDF files online for free. Extract pages, separate PDFs into individual files, or select page ranges. No signup, no watermarks, 100% secure."
       category="PDF Tools"
-      keywords="split pdf, extract pdf pages, pdf splitter online, separate pdf pages, free pdf splitter"
+      keywords="split pdf, pdf splitter online free, extract pages from pdf, separate pdf pages, split pdf into pages, pdf page extractor, divide pdf, split pdf file, remove pages from pdf"
+      toolContext="pdf-splitter"
     >
       <div className="grid lg:grid-cols-2 gap-6">
         {/* Left Column - Upload & Settings */}

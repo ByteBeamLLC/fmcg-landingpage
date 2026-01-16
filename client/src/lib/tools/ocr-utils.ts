@@ -1,4 +1,4 @@
-import Tesseract, { RecognizeResult, Worker } from "tesseract.js";
+import Tesseract from "tesseract.js";
 
 export interface OCRProgress {
   status: string;
@@ -52,27 +52,7 @@ export const SUPPORTED_LANGUAGES: Record<OCRLanguage, string> = {
   kor: "Korean",
 };
 
-let workerInstance: Worker | null = null;
-
-/**
- * Initialize the Tesseract worker
- */
-async function getWorker(language: OCRLanguage = "eng"): Promise<Worker> {
-  if (workerInstance) {
-    await workerInstance.terminate();
-  }
-
-  workerInstance = await Tesseract.createWorker(language, 1, {
-    logger: (m) => {
-      // Logger for debugging, can be removed in production
-      if (m.status === "recognizing text") {
-        // Progress can be tracked here
-      }
-    },
-  });
-
-  return workerInstance;
-}
+let workerInstance: Tesseract.Worker | null = null;
 
 /**
  * Perform OCR on an image file
@@ -83,7 +63,7 @@ export async function performOCR(
   onProgress?: (progress: OCRProgress) => void
 ): Promise<OCRResult> {
   const worker = await Tesseract.createWorker(language, 1, {
-    logger: (m) => {
+    logger: (m: any) => {
       if (onProgress) {
         onProgress({
           status: m.status,
@@ -94,21 +74,22 @@ export async function performOCR(
   });
 
   try {
-    const result: RecognizeResult = await worker.recognize(imageFile);
+    const result = await worker.recognize(imageFile);
+    const data = result.data as any;
 
     const ocrResult: OCRResult = {
-      text: result.data.text,
-      confidence: result.data.confidence,
-      words: result.data.words.map((word) => ({
+      text: data.text,
+      confidence: data.confidence,
+      words: (data.words || []).map((word: any) => ({
         text: word.text,
         confidence: word.confidence,
         bbox: word.bbox,
       })),
-      lines: result.data.lines.map((line) => ({
+      lines: (data.lines || []).map((line: any) => ({
         text: line.text,
         confidence: line.confidence,
       })),
-      paragraphs: result.data.paragraphs.map((para) => ({
+      paragraphs: (data.paragraphs || []).map((para: any) => ({
         text: para.text,
         confidence: para.confidence,
       })),

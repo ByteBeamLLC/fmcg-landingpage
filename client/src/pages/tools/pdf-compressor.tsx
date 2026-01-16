@@ -49,34 +49,44 @@ const COMPRESSION_OPTIONS: {
 
 const FAQS = [
   {
-    question: "How does PDF compression work?",
+    question: "How do I compress a PDF file for free?",
     answer:
-      "Our PDF compressor removes unnecessary metadata, optimizes internal structures, and uses object streams to reduce file size while maintaining content quality.",
+      "Upload your PDF to our free compressor, select your compression level (low, medium, or high), and click 'Compress PDF'. Download your smaller PDF instantly - no signup required.",
   },
   {
-    question: "Will compression affect my PDF quality?",
+    question: "Is this PDF compressor free to use?",
     answer:
-      "Text and vector graphics remain unchanged. For PDFs with images, you may notice slight quality reduction at high compression, but text remains crisp and clear.",
+      "Yes! Our PDF compressor is 100% free with no limits. Compress as many PDFs as you need without registration, watermarks, or hidden fees.",
   },
   {
-    question: "What's the maximum file size I can compress?",
+    question: "How much can I reduce my PDF file size?",
     answer:
-      "You can compress PDFs up to 25MB in size. For larger files, consider splitting them first using our PDF Splitter tool.",
+      "Typical compression reduces PDF size by 20-70% depending on content. PDFs with images see the biggest reduction. Already optimized PDFs may see minimal reduction.",
   },
   {
-    question: "Is my PDF data secure?",
+    question: "Will compressing my PDF reduce quality?",
     answer:
-      "Yes! All compression happens locally in your browser. Your files are never uploaded to our servers, ensuring complete privacy.",
+      "Text and vector graphics remain unchanged at all compression levels. Images may have slight quality reduction at high compression, but documents remain clear and readable.",
   },
   {
-    question: "How much can I reduce my PDF size?",
+    question: "Is it safe to compress PDFs online?",
     answer:
-      "Results vary based on the PDF content. PDFs with lots of metadata and non-optimized content can see 20-50% reduction. Already optimized PDFs may show minimal reduction.",
+      "Completely safe! All compression happens locally in your browser. Your files never leave your device and are never uploaded to any server.",
   },
   {
-    question: "Can I compress password-protected PDFs?",
+    question: "Can I compress large PDF files?",
     answer:
-      "If you know the password, you can compress the PDF. Otherwise, use our PDF Unlock tool first to remove password protection.",
+      "You can compress PDFs up to 25MB. For larger files, try splitting them first with our PDF Splitter tool, then compress each part.",
+  },
+  {
+    question: "How do I reduce PDF size for email?",
+    answer:
+      "Upload your PDF, select 'High Compression' for maximum size reduction, then download. Most email services accept PDFs under 25MB, and our compressor can help you achieve that.",
+  },
+  {
+    question: "Can I compress PDFs on my phone?",
+    answer:
+      "Yes! Our online PDF compressor works on any device - iPhone, Android, or tablet. No app needed, just use your browser.",
   },
 ];
 
@@ -157,10 +167,11 @@ export default function PDFCompressor() {
 
   return (
     <ToolLayout
-      title="Free PDF Compressor - Reduce PDF Size Online"
-      description="Compress PDF files to reduce file size while maintaining quality. Free, fast, and secure - all processing happens in your browser."
+      title="Compress PDF Online Free - Reduce PDF File Size"
+      description="Compress PDF files online for free. Reduce PDF size by up to 70% without losing quality. No signup, no watermarks. Fast & secure browser-based compression."
       category="PDF Tools"
-      keywords="compress pdf, reduce pdf size, pdf compressor online, free pdf compression, shrink pdf, pdf size reducer"
+      keywords="compress pdf, reduce pdf size, pdf compressor online free, shrink pdf, compress pdf file, reduce pdf file size, pdf size reducer, make pdf smaller, compress pdf online, pdf compression tool"
+      toolContext="pdf-compressor"
     >
       <div className="grid lg:grid-cols-2 gap-6">
         {/* Left Column - Upload & Settings */}

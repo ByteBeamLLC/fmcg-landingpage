@@ -6,3 +6,5 @@ export { default as DownloadButton } from "./DownloadButton";
 export { default as ToolCard } from "./ToolCard";
 export { default as ToolFAQ } from "./ToolFAQ";
 export { default as RelatedTools } from "./RelatedTools";
+export { ByteBeamValueProp } from "./ByteBeamValueProp";
+export { ContextualUpsell, SuccessUpsellBanner } from "./ContextualUpsell";

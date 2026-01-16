@@ -28,34 +28,44 @@ import {
 
 const FAQS = [
   {
-    question: "How does the Image to Text (OCR) tool work?",
+    question: "How do I convert an image to text?",
     answer:
-      "Our tool uses Tesseract.js, a powerful open-source OCR engine, to analyze images and extract text. The entire process happens in your browser, ensuring your images never leave your device for maximum privacy.",
+      "Simply upload your image (JPG, PNG, or screenshot) to our free image to text converter. Select your language, click 'Extract Text', and the OCR tool will automatically recognize and extract all text from your image. You can then copy or download the extracted text.",
   },
   {
-    question: "What image formats are supported?",
+    question: "Is this image to text converter free?",
     answer:
-      "We support all common image formats including JPG/JPEG, PNG, GIF, BMP, TIFF, and WebP. For best results, use high-resolution images with clear text.",
+      "Yes, our image to text converter is 100% free with no limits. There's no signup required, no watermarks, and no hidden fees. You can convert as many images to text as you need.",
   },
   {
-    question: "Which languages are supported?",
+    question: "What image formats can I convert to text?",
     answer:
-      "We support 12 languages including English, Arabic, French, German, Spanish, Italian, Portuguese, Russian, Chinese (Simplified and Traditional), Japanese, and Korean.",
+      "Our OCR tool supports all common image formats: JPG/JPEG, PNG, GIF, BMP, TIFF, and WebP. You can also extract text from screenshots, scanned documents, photos of receipts, business cards, and handwritten notes.",
   },
   {
-    question: "Is my data secure?",
+    question: "Can I extract text from a photo on my phone?",
     answer:
-      "Yes! All processing happens locally in your browser. Your images are never uploaded to our servers. This client-side approach ensures complete privacy.",
+      "Yes! Our photo to text converter works on any device including iPhone and Android. Simply upload a photo from your camera roll or take a new picture and extract the text instantly.",
   },
   {
-    question: "What can I do with the extracted text?",
+    question: "What languages does the OCR support?",
     answer:
-      "You can copy the text to your clipboard with one click, or download it as a text file. The extracted text is fully editable in the preview area.",
+      "We support 12 languages: English, Arabic, French, German, Spanish, Italian, Portuguese, Russian, Chinese (Simplified and Traditional), Japanese, and Korean. Select your language before extracting for best accuracy.",
   },
   {
-    question: "How can I improve OCR accuracy?",
+    question: "Is my image data secure and private?",
     answer:
-      "For best results: use high-resolution images, ensure good lighting and contrast, keep text straight (not skewed), and select the correct language for your document.",
+      "Absolutely. All OCR processing happens locally in your browser using Tesseract.js. Your images are never uploaded to any server. Once you close the page, all data is gone - ensuring complete privacy.",
+  },
+  {
+    question: "How accurate is the text extraction?",
+    answer:
+      "Our OCR typically achieves 95%+ accuracy on clear, printed text. For best results, use high-resolution images with good lighting, ensure text is not skewed, and select the correct language.",
+  },
+  {
+    question: "Can I extract text from a screenshot?",
+    answer:
+      "Yes! Our screenshot to text feature works perfectly. Take a screenshot on your computer or phone, upload it, and extract all the text instantly. Great for copying text from images, PDFs, or locked documents.",
   },
 ];
 
@@ -142,10 +152,11 @@ export default function ImageToText() {
 
   return (
     <ToolLayout
-      title="Free Image to Text Converter (OCR)"
-      description="Extract text from images instantly using AI-powered OCR. Supports 12 languages including English, Arabic, Chinese, and more. 100% free, no signup required."
+      title="Image to Text Converter - Free Online OCR Tool"
+      description="Convert image to text instantly with our free OCR tool. Extract text from JPG, PNG, screenshots & photos. Supports 12 languages. No signup, 100% private."
       category="OCR & Text Extraction"
-      keywords="image to text, ocr online, extract text from image, photo to text, ocr converter, free ocr, image text extractor"
+      keywords="image to text, photo to text, picture to text, OCR online free, extract text from image, jpg to text, png to text, screenshot to text, image text extractor, convert image to text, free OCR converter, online OCR, text from image"
+      toolContext="image-to-text"
     >
       <div className="grid lg:grid-cols-2 gap-6">
         {/* Left Column - Upload & Settings */}

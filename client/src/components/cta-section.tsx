@@ -10,7 +10,7 @@ export default function CTASection() {
   });
 
   const handleBookDemo = () => {
-    window.open("https://calendly.com/talal-bytebeam/30min", "_blank");
+    window.open("https://calendly.com/talal-bytebeam/bytebeam-discovery-call", "_blank");
   };
 
   return (

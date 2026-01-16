@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { FileText, Copy, Check, ScanText, FilePlus } from "lucide-react";
-import * as pdfjsLib from "pdfjs-dist";
+import { getDocument, GlobalWorkerOptions, version } from "pdfjs-dist";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -15,33 +15,49 @@ import {
 } from "@/components/tools";
 import type { ProcessingState } from "@/components/tools";
 
-// Set up PDF.js worker
-pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
+// Set up PDF.js worker - using unpkg which has all npm versions
+GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${version}/build/pdf.worker.min.mjs`;
 
 const FAQS = [
   {
-    question: "How does PDF to Text extraction work?",
+    question: "How do I convert PDF to text online?",
     answer:
-      "We use PDF.js, a powerful open-source library, to parse the PDF structure and extract all text content while maintaining the reading order.",
+      "Upload your PDF file, click 'Extract Text', and all text content will be extracted instantly. Copy the text to clipboard or download as a TXT file.",
   },
   {
-    question: "Will this work with scanned PDFs?",
+    question: "Is this PDF to text converter free?",
     answer:
-      "This tool extracts embedded text from PDFs. For scanned documents (images), you'll need to use our Image to Text (OCR) tool instead.",
+      "Yes! Our PDF to text extractor is 100% free with no limits. Convert as many PDFs as you need without registration or hidden fees.",
   },
   {
-    question: "Is text formatting preserved?",
+    question: "Can I extract text from scanned PDFs?",
     answer:
-      "Basic text content is extracted, but complex formatting like tables, columns, and special layouts may not be perfectly preserved.",
+      "This tool extracts embedded text from digital PDFs. For scanned documents (image-based PDFs), use our Image to Text (OCR) tool instead.",
   },
   {
-    question: "What's the maximum PDF size?",
-    answer: "You can process PDFs up to 25MB with up to 500 pages.",
+    question: "Does it preserve text formatting?",
+    answer:
+      "The text content and reading order are preserved. Complex formatting like tables and columns may not be perfectly maintained, but all text is extracted.",
   },
   {
-    question: "Is my data secure?",
+    question: "Is my PDF data secure?",
     answer:
-      "Yes! All processing happens locally in your browser. Your files are never uploaded to any server.",
+      "Absolutely secure! All text extraction happens locally in your browser. Your PDF is never uploaded to any server - it stays on your device.",
+  },
+  {
+    question: "Can I extract text from large PDFs?",
+    answer:
+      "Yes, you can extract text from PDFs up to 25MB with up to 500 pages. Processing time depends on the document size.",
+  },
+  {
+    question: "How do I copy text from a PDF?",
+    answer:
+      "Upload your PDF, click 'Extract Text', then use the 'Copy' button to copy all extracted text to your clipboard. You can also download as a TXT file.",
+  },
+  {
+    question: "Can I extract text from PDF on mobile?",
+    answer:
+      "Yes! Our PDF text extractor works on any device - iPhone, Android, tablet, or desktop. No app installation required.",
   },
 ];
 
@@ -90,7 +106,16 @@ export default function PDFToText() {
 
     try {
       const arrayBuffer = await selectedFile.arrayBuffer();
-      const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+
+      // Load PDF with explicit options
+      const loadingTask = getDocument({
+        data: arrayBuffer,
+        useWorkerFetch: false,
+        isEvalSupported: false,
+        useSystemFonts: true,
+      });
+
+      const pdf = await loadingTask.promise;
       const numPages = pdf.numPages;
       setPageCount(numPages);
 
@@ -109,8 +134,9 @@ export default function PDFToText() {
 
       setExtractedText(fullText.trim());
       setStatus("completed");
-    } catch (error) {
+    } catch (error: any) {
       console.error("PDF extraction error:", error);
+      console.error("Error details:", error?.message, error?.name);
       setStatus("error");
     }
   }, [selectedFile]);
@@ -123,10 +149,11 @@ export default function PDFToText() {
 
   return (
     <ToolLayout
-      title="Free PDF to Text Extractor"
-      description="Extract all text content from PDF documents instantly. Copy or download as TXT file. 100% free, no signup required."
+      title="PDF to Text Converter - Extract Text from PDF Free"
+      description="Extract text from PDF online for free. Convert PDF to text instantly, copy to clipboard or download as TXT. No signup, no watermarks, 100% secure."
       category="OCR & Text Extraction"
-      keywords="pdf to text, extract text from pdf, pdf text extractor, convert pdf to text, pdf to txt"
+      keywords="pdf to text, extract text from pdf, pdf to text converter, pdf text extractor, convert pdf to txt, copy text from pdf, pdf to text online free, get text from pdf"
+      toolContext="pdf-to-text"
     >
       <div className="grid lg:grid-cols-2 gap-6">
         {/* Left Column */}
