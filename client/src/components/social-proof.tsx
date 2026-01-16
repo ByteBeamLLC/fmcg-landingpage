@@ -1,14 +1,15 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { User } from "lucide-react";
+import { User, ArrowRight } from "lucide-react";
+import { Link } from "wouter";
 import takhleesLogo from "@assets/takhlees_logo_1759326324559.webp";
 import carrefourLogo from "@assets/carrefour_1759413703784.png";
 import infoquestLogo from "@assets/infoquest-logo-black_1759405455898.png";
 
 const clients = [
-  { id: "takhlees", name: "Takhlees", logo: takhleesLogo, category: "Services Partner" },
-  { id: "carrefour", name: "Carrefour", logo: carrefourLogo, category: "F&B Retailer" },
-  { id: "infoquest", name: "InfoQuest", logo: infoquestLogo, category: "Automation Client" },
+  { id: "takhlees", name: "Takhlees", logo: takhleesLogo, category: "Services Partner", caseStudyUrl: "/case-study/takhlees" },
+  { id: "carrefour", name: "Carrefour", logo: carrefourLogo, category: "F&B Retailer", caseStudyUrl: "/case-study/carrefour" },
+  { id: "infoquest", name: "InfoQuest", logo: infoquestLogo, category: "Automation Client", caseStudyUrl: null },
 ];
 
 export default function SocialProof() {
@@ -20,18 +21,18 @@ export default function SocialProof() {
   const stats = [
     {
       value: "10,000+",
-      label: "Products Processed",
-      sublabel: "Across multiple FMCG categories",
+      label: "Products Localized",
+      sublabel: "Zero translation complaints",
+    },
+    {
+      value: "85%",
+      label: "Time Reduction",
+      sublabel: "From 20 min to 3 min per product",
     },
     {
       value: "70%",
-      label: "Faster Processing",
-      sublabel: "From artwork to submission-ready",
-    },
-    {
-      value: "60%",
-      label: "Knowledge Work Accelerated",
-      sublabel: "Freeing experts for high-value tasks",
+      label: "Faster Research",
+      sublabel: "By encoding tacit expert knowledge",
     },
   ];
 
@@ -58,26 +59,97 @@ export default function SocialProof() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="grid md:grid-cols-3 gap-8 mb-16"
         >
-          {clients.map((client, index) => (
-            <motion.div
-              key={client.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-              className="bg-card border-2 border-border rounded-xl p-8 shadow-lg"
-              data-testid={`client-card-${client.id}`}
-            >
-              <img
-                src={client.logo}
-                alt={`${client.name} Logo`}
-                className={`${client.id === 'carrefour' ? 'h-24 opacity-100' : 'h-16 opacity-70'} mx-auto mb-4 object-contain`}
-                data-testid={`logo-${client.id}`}
-              />
-              <div className="text-center">
-                <div className="text-xs text-muted-foreground">{client.category}</div>
+          {clients.map((client, index) => {
+            const CardContent = (
+              <>
+                <img
+                  src={client.logo}
+                  alt={`${client.name} Logo`}
+                  className={`${client.id === 'carrefour' ? 'h-24 opacity-100' : 'h-16 opacity-70'} mx-auto mb-4 object-contain`}
+                  data-testid={`logo-${client.id}`}
+                />
+                <div className="text-center">
+                  <div className="text-xs text-muted-foreground mb-2">{client.category}</div>
+                  {client.caseStudyUrl && (
+                    <div className="flex items-center justify-center gap-1 text-primary text-sm font-medium group-hover:gap-2 transition-all">
+                      View Case Study <ArrowRight className="w-4 h-4" />
+                    </div>
+                  )}
+                </div>
+              </>
+            );
+
+            return (
+              <motion.div
+                key={client.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                data-testid={`client-card-${client.id}`}
+              >
+                {client.caseStudyUrl ? (
+                  <Link href={client.caseStudyUrl}>
+                    <div className="bg-card border-2 border-border rounded-xl p-8 shadow-lg hover:border-primary/50 hover:shadow-xl transition-all cursor-pointer group">
+                      {CardContent}
+                    </div>
+                  </Link>
+                ) : (
+                  <div className="bg-card border-2 border-border rounded-xl p-8 shadow-lg">
+                    {CardContent}
+                  </div>
+                )}
+              </motion.div>
+            );
+          })}
+        </motion.div>
+
+        {/* Featured Case Studies */}
+        <motion.div
+          id="case-studies"
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mb-16"
+        >
+          <h3 className="text-2xl font-bold text-center mb-8">Featured Case Studies</h3>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Link href="/case-study/carrefour">
+              <div className="bg-card border-2 border-border rounded-xl p-6 shadow-lg hover:border-primary/50 hover:shadow-xl transition-all cursor-pointer group">
+                <div className="flex items-start gap-4">
+                  <div className="bg-primary/10 rounded-lg p-3 flex-shrink-0">
+                    <span className="text-2xl font-bold text-primary">85%</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-lg mb-1 group-hover:text-primary transition-colors">Carrefour Product Localization</h4>
+                    <p className="text-muted-foreground text-sm mb-2">
+                      27-step AI workflow reduced processing from 20 min to 3 min per product. 10,000+ products with zero translation complaints.
+                    </p>
+                    <div className="flex items-center gap-1 text-primary text-sm font-medium group-hover:gap-2 transition-all">
+                      Read Case Study <ArrowRight className="w-4 h-4" />
+                    </div>
+                  </div>
+                </div>
               </div>
-            </motion.div>
-          ))}
+            </Link>
+            <Link href="/case-study/research-copilot">
+              <div className="bg-card border-2 border-border rounded-xl p-6 shadow-lg hover:border-primary/50 hover:shadow-xl transition-all cursor-pointer group">
+                <div className="flex items-start gap-4">
+                  <div className="bg-primary/10 rounded-lg p-3 flex-shrink-0">
+                    <span className="text-2xl font-bold text-primary">70%</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-lg mb-1 group-hover:text-primary transition-colors">Consulting Research Copilot</h4>
+                    <p className="text-muted-foreground text-sm mb-2">
+                      Multi-agent AI system captured tacit expert knowledge that SMEs couldn't articulate. The hardest part of AI isn't the AI—it's surfacing expertise.
+                    </p>
+                    <div className="flex items-center gap-1 text-primary text-sm font-medium group-hover:gap-2 transition-all">
+                      Read Case Study <ArrowRight className="w-4 h-4" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </div>
         </motion.div>
 
         {/* Stats Banner */}

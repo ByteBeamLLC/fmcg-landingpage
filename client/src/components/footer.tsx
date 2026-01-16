@@ -12,7 +12,7 @@ export default function Footer() {
   return (
     <footer className="bg-muted text-foreground py-12 border-t border-border">
       <div className="container-custom">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
+        <div className="grid md:grid-cols-5 gap-8 mb-8">
           <div>
             <img
               src={bytebeamLogo}
@@ -25,43 +25,76 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-bold mb-4">Solutions</h4>
+            <h4 className="font-bold mb-4">Industries</h4>
             <ul className="space-y-2 text-muted-foreground">
               <li>
-                <button
-                  onClick={() => scrollToSection("solutions")}
+                <a
+                  href="/industries/finance"
                   className="hover:text-primary transition-colors"
-                  data-testid="footer-link-trade-compliance"
+                  data-testid="footer-link-finance"
                 >
-                  Trade Compliance
-                </button>
+                  Finance
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection("solutions")}
+                <a
+                  href="/industries/legal"
                   className="hover:text-primary transition-colors"
-                  data-testid="footer-link-label-localization"
+                  data-testid="footer-link-legal"
                 >
-                  Label Localization
-                </button>
+                  Legal
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection("solutions")}
+                <a
+                  href="/industries/insurance"
                   className="hover:text-primary transition-colors"
-                  data-testid="footer-link-food-beverage"
+                  data-testid="footer-link-insurance"
                 >
-                  Food & Beverage
-                </button>
+                  Insurance
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection("solutions")}
+                <a
+                  href="/industries/pharma"
                   className="hover:text-primary transition-colors"
-                  data-testid="footer-link-cosmetics"
+                  data-testid="footer-link-pharma"
                 >
-                  Cosmetics
-                </button>
+                  Pharma
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/industries/fmcg"
+                  className="hover:text-primary transition-colors"
+                  data-testid="footer-link-fmcg"
+                >
+                  FMCG
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/industries/operations"
+                  className="hover:text-primary transition-colors"
+                  data-testid="footer-link-operations"
+                >
+                  Operations
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-bold mb-4">AI Agents</h4>
+            <ul className="space-y-2 text-muted-foreground">
+              <li>
+                <a
+                  href="/solutions/uae-food-label-localization"
+                  className="hover:text-primary transition-colors"
+                  data-testid="footer-link-uae-labels"
+                >
+                  UAE Food Label Localization
+                </a>
               </li>
             </ul>
           </div>

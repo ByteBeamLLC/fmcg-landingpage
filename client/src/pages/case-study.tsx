@@ -80,63 +80,59 @@ const caseStudies = {
     logo: carrefourLogo,
     industry: "Retail & Distribution",
     location: "GCC Markets",
-    tagline: "Accelerating Private Label Product Approvals for Rapid Market Expansion",
-    challenge: "As a leading retailer expanding private label offerings across GCC markets, Carrefour needed to process hundreds of new SKUs monthly for label compliance and regulatory approval. The manual process created bottlenecks that delayed product launches and limited the pace of private label expansion.",
-    solution: "ByteBeam deployed its AI compliance platform to automate the entire label localization and approval workflow, enabling Carrefour to rapidly scale private label offerings while maintaining consistent compliance across all GCC markets.",
+    tagline: "85% Time Reduction in Product Localization Through 27-Step AI Workflow Automation",
+    challenge: "Carrefour faced a massive challenge processing product labels at scale for localization across GCC markets. The manual process took 20 minutes per product with complex requirements spanning extraction, translation, formatting, and compliance checks. With thousands of SKUs to process, the team initially expected zero errors from AI—a mindset that needed to evolve alongside the automation journey.",
+    solution: "ByteBeam built a comprehensive 27-step AI workflow that automated the entire product localization pipeline: from label extraction and Arabic translation to nutritional calculations and compliance validation. The system was designed with human-in-the-loop oversight, allowing one person to review and approve what previously required an entire team.",
     results: [
       {
-        metric: "3,000+",
-        description: "SKUs Processed",
-        detail: "Automated label compliance for thousands of private label products across food, beverages, and household categories."
+        metric: "85%",
+        description: "Time Reduction",
+        detail: "Reduced processing time from 20 minutes to just 3 minutes per product through intelligent automation."
       },
       {
-        metric: "60%",
-        description: "Faster Time-to-Market",
-        detail: "Reduced product approval timeline from months to weeks, accelerating private label launches."
+        metric: "10,000+",
+        description: "Products Processed",
+        detail: "Successfully localized over 10,000 products with zero translation complaints from end customers."
       },
       {
-        metric: "Multi-Market",
-        description: "Regional Coverage",
-        detail: "Unified compliance workflow across multiple GCC countries with country-specific regulations."
+        metric: "27 Steps",
+        description: "Automated Workflow",
+        detail: "Comprehensive pipeline covering extraction, translation, formatting, validation, and compliance checks."
       },
       {
-        metric: "Real-Time",
-        description: "Change Processing",
-        detail: "Handle product reformulations and packaging updates without waiting for bulk operations."
+        metric: "90/10",
+        description: "Automation Model",
+        detail: "90% AI automation with 10% human oversight—one person now does what used to take an entire team."
       }
     ],
     features: [
-      "Bulk artwork upload for hundreds of products",
-      "Multi-market compliance validation (UAE, Saudi Arabia, Kuwait, etc.)",
-      "Private label artwork optimization",
-      "Nutritional panel formatting per country requirements",
-      "Ingredient list translation and validation",
-      "Real-time regulatory rule updates",
-      "Product categorization and certification flagging"
+      "27-step automated localization workflow",
+      "Intelligent label data extraction from any format",
+      "Context-aware Arabic translation with industry terminology",
+      "Automated nutritional panel calculations and formatting",
+      "GCC regulatory compliance validation",
+      "Human-in-the-loop review interface for quality control",
+      "Batch processing for high-volume operations"
     ],
     impact: [
       {
-        title: "Faster Expansion",
-        description: "Accelerated private label portfolio growth with streamlined compliance processes."
+        title: "Expectation Evolution",
+        description: "After ~2,000 products, the client understood and embraced the 90% automation / 10% human oversight model—delivering better results than expecting 100% AI perfection."
       },
       {
-        title: "Market Agility",
-        description: "Quick response to market trends with rapid product launches and reformulations."
+        title: "Team Efficiency",
+        description: "One person now handles the workload that previously required an entire team, freeing resources for strategic work."
       },
       {
-        title: "Brand Consistency",
-        description: "Maintained uniform label quality and branding across all GCC markets."
+        title: "Zero Translation Complaints",
+        description: "Despite processing 10,000+ products, the system achieved zero translation complaints from customers."
       },
       {
-        title: "Operational Efficiency",
-        description: "Freed internal teams to focus on strategic decisions rather than compliance paperwork."
+        title: "Scalable Operations",
+        description: "The workflow scales linearly—processing 1,000 products takes the same effort per product as processing 10."
       }
     ],
-    testimonial: {
-      quote: "ByteBeam's platform transformed our private label compliance workflow. What used to take our team months now takes weeks, allowing us to bring products to market faster than ever.",
-      author: "Private Label Operations Manager",
-      position: "Carrefour GCC"
-    }
+    testimonial: null
   },
   infoquest: {
     id: "infoquest",
@@ -201,14 +197,95 @@ const caseStudies = {
       author: "Operations Director",
       position: "InfoQuest"
     }
+  },
+  "research-copilot": {
+    id: "research-copilot",
+    company: "Consulting Firm",
+    logo: null, // Anonymized case study - no logo
+    industry: "Management Consulting",
+    location: "Global Operations",
+    tagline: "70% Faster Research Turnaround by Encoding Tacit Expert Knowledge into AI Agents",
+    challenge: "A client in the consulting space faced a fundamental challenge: extracting knowledge from subject matter experts who don't consciously know what they know. The 'unspoken methodology' that experts apply automatically across research phases was hard to capture. Every handoff between SME and developer meant lost nuance, and traditional automation couldn't encode the implicit decision-making that made these experts valuable.",
+    solution: "ByteBeam built a multi-agent research copilot that worked alongside the SME to surface and encode their tacit expertise into the system. Rather than asking experts to document their methodology (which rarely captures the real logic), the system observed patterns and learned the implicit rules that experts apply automatically. The key insight: the hardest part of AI agents isn't the AI—it's surfacing the tacit expertise that experts apply automatically.",
+    results: [
+      {
+        metric: "70%",
+        description: "Faster Turnaround",
+        detail: "Research deliverables completed 70% faster by encoding expert methodology into the AI system."
+      },
+      {
+        metric: "Tacit",
+        description: "Knowledge Captured",
+        detail: "Successfully encoded the 'unspoken methodology' that experts couldn't articulate but applied consistently."
+      },
+      {
+        metric: "Multi-Agent",
+        description: "Architecture",
+        detail: "Purpose-built agent system where each agent handles a specific research phase with encoded expertise."
+      },
+      {
+        metric: "Zero",
+        description: "Lost Nuance",
+        detail: "Eliminated knowledge loss from SME-developer handoffs by having AI learn directly from expert behavior."
+      }
+    ],
+    features: [
+      "Multi-agent research workflow architecture",
+      "Tacit knowledge extraction through behavioral observation",
+      "Phase-specific agents mirroring expert decision patterns",
+      "Adaptive methodology encoding without explicit documentation",
+      "Quality validation against expert-level outputs",
+      "Continuous learning from expert corrections",
+      "Seamless handoff between automated and human phases"
+    ],
+    impact: [
+      {
+        title: "Knowledge Preservation",
+        description: "Captured institutional knowledge that would otherwise remain locked in individual experts' heads."
+      },
+      {
+        title: "Scalable Expertise",
+        description: "Junior team members can now produce expert-level research with AI guidance encoding senior methodology."
+      },
+      {
+        title: "Faster Onboarding",
+        description: "New consultants become productive faster by learning from the AI system that embodies best practices."
+      },
+      {
+        title: "Consistent Quality",
+        description: "Research outputs maintain consistent quality regardless of which team member is assigned."
+      }
+    ],
+    testimonial: null
+  }
+};
+
+// SEO keywords for each case study
+const caseStudySEO: Record<string, { keywords: string; titleSuffix: string }> = {
+  takhlees: {
+    keywords: "FMCG label automation case study, GCC regulatory compliance, no-code document automation success story, label localization automation, Arabic translation automation",
+    titleSuffix: "10,000+ Product Labels Automated"
+  },
+  carrefour: {
+    keywords: "product localization automation, retail document automation case study, no-code AI workflow, 85% time reduction automation, GCC product compliance",
+    titleSuffix: "85% Time Reduction in Product Localization"
+  },
+  "research-copilot": {
+    keywords: "AI research automation, tacit knowledge capture, consulting automation case study, multi-agent AI system, expert knowledge encoding, no-code AI agents",
+    titleSuffix: "70% Faster Research with AI Knowledge Capture"
+  },
+  infoquest: {
+    keywords: "knowledge process automation, KPO automation case study, document processing automation, workflow automation success story",
+    titleSuffix: "60% Faster Knowledge Work"
   }
 };
 
 export default function CaseStudy() {
   const [, params] = useRoute("/case-study/:id");
-  
-  // Only allow Takhlees case study to be viewed
-  if (!params?.id || params.id !== "takhlees") {
+
+  const validIds = ["takhlees", "carrefour", "research-copilot"];
+
+  if (!params?.id || !validIds.includes(params.id)) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <SEO
@@ -228,17 +305,63 @@ export default function CaseStudy() {
       </div>
     );
   }
-  
-  const caseStudy = caseStudies.takhlees;
+
+  const caseStudy = caseStudies[params.id as keyof typeof caseStudies];
+  const seoData = caseStudySEO[params.id] || caseStudySEO.takhlees;
 
   return (
     <div className="min-h-screen">
       <SEO
-        title={`${caseStudy.company} Case Study: Automating 10,000+ Product Labels | ByteBeam`}
-        description={`See how ByteBeam helped ${caseStudy.company} automate label compliance for 10,000+ FMCG products, reducing processing time by 70% while ensuring 100% GCC regulatory compliance.`}
-        ogTitle={`${caseStudy.company} Success Story | AI-Powered Label Compliance Automation`}
-        ogDescription={`${caseStudy.tagline}. Discover how ${caseStudy.company} transformed their manual compliance workflow with ByteBeam's AI automation platform.`}
-        keywords={`${caseStudy.company} case study, FMCG label automation, compliance automation success story, GCC regulatory compliance, AI label processing, ByteBeam customer story`}
+        title={`${caseStudy.company} Case Study: ${seoData.titleSuffix} | ByteBeam`}
+        description={`See how ByteBeam helped ${caseStudy.company} with no-code AI automation. ${caseStudy.tagline}. Book a demo to achieve similar results.`}
+        ogTitle={`${caseStudy.company} Success Story | No-Code AI Automation`}
+        ogDescription={`${caseStudy.tagline}. Discover how ${caseStudy.company} transformed their workflow with ByteBeam's no-code AI automation platform.`}
+        keywords={`${caseStudy.company} case study, ${seoData.keywords}, ByteBeam customer story, no-code automation`}
+        structuredData={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": `${caseStudy.company} Case Study: ${seoData.titleSuffix}`,
+            "description": caseStudy.tagline,
+            "author": {
+              "@type": "Organization",
+              "name": "ByteBeam"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "ByteBeam",
+              "url": "https://bytebeam.co"
+            },
+            "about": {
+              "@type": "Thing",
+              "name": "AI Document Automation"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://bytebeam.co"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Case Studies",
+                "item": "https://bytebeam.co/case-studies"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": caseStudy.company,
+                "item": `https://bytebeam.co/case-study/${caseStudy.id}`
+              }
+            ]
+          }
+        ]}
       />
       <Navigation />
       
@@ -275,12 +398,19 @@ export default function CaseStudy() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="bg-white rounded-2xl p-12 flex items-center justify-center"
             >
-              <img 
-                src={caseStudy.logo} 
-                alt={`${caseStudy.company} Logo`} 
-                className="max-w-full max-h-32 object-contain"
-                data-testid="company-logo"
-              />
+              {caseStudy.logo ? (
+                <img
+                  src={caseStudy.logo}
+                  alt={`${caseStudy.company} Logo`}
+                  className="max-w-full max-h-32 object-contain"
+                  data-testid="company-logo"
+                />
+              ) : (
+                <div className="text-center" data-testid="company-logo">
+                  <div className="text-4xl font-bold text-primary mb-2">{caseStudy.company}</div>
+                  <div className="text-muted-foreground text-sm">Case Study</div>
+                </div>
+              )}
             </motion.div>
           </div>
         </div>
@@ -362,21 +492,23 @@ export default function CaseStudy() {
             </div>
           </div>
 
-          {/* Testimonial */}
-          <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-12 relative">
-            <div className="absolute top-8 left-8 text-primary text-6xl opacity-20">
-              "
+          {/* Testimonial - only show if available */}
+          {caseStudy.testimonial && (
+            <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-12 relative">
+              <div className="absolute top-8 left-8 text-primary text-6xl opacity-20">
+                "
+              </div>
+              <blockquote className="relative z-10 text-center max-w-4xl mx-auto">
+                <p className="text-2xl text-foreground mb-8 italic leading-relaxed">
+                  {caseStudy.testimonial.quote}
+                </p>
+                <footer>
+                  <div className="font-bold text-lg">{caseStudy.testimonial.author}</div>
+                  <div className="text-muted-foreground">{caseStudy.testimonial.position}</div>
+                </footer>
+              </blockquote>
             </div>
-            <blockquote className="relative z-10 text-center max-w-4xl mx-auto">
-              <p className="text-2xl text-foreground mb-8 italic leading-relaxed">
-                {caseStudy.testimonial.quote}
-              </p>
-              <footer>
-                <div className="font-bold text-lg">{caseStudy.testimonial.author}</div>
-                <div className="text-muted-foreground">{caseStudy.testimonial.position}</div>
-              </footer>
-            </blockquote>
-          </div>
+          )}
         </div>
       </section>
 

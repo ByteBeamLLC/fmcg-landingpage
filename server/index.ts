@@ -1,6 +1,8 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import path from "path";
+import fs from "fs";
 
 const app = express();
 
@@ -46,6 +48,29 @@ app.use((req, res, next) => {
   next();
 });
 
+// Serve robots.txt
+app.get('/robots.txt', (_req: Request, res: Response) => {
+  const robotsPath = path.join(__dirname, '../client/public/robots.txt');
+  if (fs.existsSync(robotsPath)) {
+    res.type('text/plain');
+    res.sendFile(robotsPath);
+  } else {
+    res.type('text/plain');
+    res.send(`User-agent: *\nAllow: /\nSitemap: https://bytebeam.co/sitemap.xml`);
+  }
+});
+
+// Serve sitemap.xml
+app.get('/sitemap.xml', (_req: Request, res: Response) => {
+  const sitemapPath = path.join(__dirname, '../client/public/sitemap.xml');
+  if (fs.existsSync(sitemapPath)) {
+    res.type('application/xml');
+    res.sendFile(sitemapPath);
+  } else {
+    res.status(404).send('Sitemap not found');
+  }
+});
+
 (async () => {
   const server = await registerRoutes(app);
 
@@ -71,11 +96,7 @@ app.use((req, res, next) => {
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
   const port = parseInt(process.env.PORT || '5000', 10);
-  server.listen({
-    port,
-    host: "0.0.0.0",
-    reusePort: true,
-  }, () => {
+  server.listen(port, "0.0.0.0", () => {
     log(`serving on port ${port}`);
   });
 })();

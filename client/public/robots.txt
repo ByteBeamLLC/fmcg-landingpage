@@ -1,0 +1,9 @@
+# ByteBeam Robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://bytebeam.co/sitemap.xml
+
+# Crawl-delay (optional, for politeness)
+Crawl-delay: 1

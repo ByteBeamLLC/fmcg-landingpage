@@ -58,25 +58,59 @@ export default function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center gap-1 transition-colors font-medium text-foreground hover:text-primary" data-testid="dropdown-trigger-ai-agents">
+              <DropdownMenuTrigger className="flex items-center gap-1 transition-colors font-medium text-foreground hover:text-primary" data-testid="dropdown-trigger-solutions">
                 AI Agents
-                <ChevronDown className="h-4 w-4" />
+                <ChevronDown className="size-4" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" data-testid="dropdown-content-ai-agents">
-                <DropdownMenuItem asChild data-testid="dropdown-item-fmcg">
-                  <Link href="/fmcg-label-compliance" className="w-full cursor-pointer">
-                    FMCG Compliance
+              <DropdownMenuContent align="start" data-testid="dropdown-content-solutions">
+                <DropdownMenuItem asChild>
+                  <Link href="/solutions/uae-food-label-localization" className="w-full cursor-pointer">
+                    UAE Food Label Localization
                   </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild data-testid="dropdown-item-knowledge-extractor">
-                  <a href="https://extractor.bytebeam.co" target="_blank" rel="noopener noreferrer" className="w-full cursor-pointer">
-                    Knowledge Extractor
-                  </a>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
-            <Link 
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center gap-1 transition-colors font-medium text-foreground hover:text-primary" data-testid="dropdown-trigger-industries">
+                Industries
+                <ChevronDown className="size-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" data-testid="dropdown-content-industries">
+                <DropdownMenuItem asChild>
+                  <Link href="/industries/fmcg" className="w-full cursor-pointer">
+                    FMCG
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/industries/pharma" className="w-full cursor-pointer">
+                    Pharma
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/industries/finance" className="w-full cursor-pointer">
+                    Finance
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/industries/legal" className="w-full cursor-pointer">
+                    Legal
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/industries/insurance" className="w-full cursor-pointer">
+                    Insurance
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/industries/operations" className="w-full cursor-pointer">
+                    Operations
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            <Link
               href="/about"
               className="transition-colors font-medium text-foreground hover:text-primary"
               data-testid="nav-link-about"
@@ -115,29 +149,65 @@ export default function Navigation() {
           >
             <div className="container-custom py-4 space-y-4">
               <div className="space-y-2">
-                <div className="font-medium text-foreground py-2 px-2" data-testid="mobile-nav-section-ai-agents">
+                <div className="font-medium text-foreground py-2 px-2">
                   AI Agents
                 </div>
-                <Link 
-                  href="/fmcg-label-compliance"
+                <Link
+                  href="/solutions/uae-food-label-localization"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="block w-full text-left text-foreground/80 hover:text-primary transition-colors py-2 px-6"
-                  data-testid="mobile-nav-link-fmcg"
                 >
-                  FMCG Compliance
+                  UAE Food Label Localization
                 </Link>
-                <a 
-                  href="https://extractor.bytebeam.co"
-                  target="_blank"
-                  rel="noopener noreferrer"
+              </div>
+              <div className="space-y-2">
+                <div className="font-medium text-foreground py-2 px-2">
+                  Industries
+                </div>
+                <Link
+                  href="/industries/fmcg"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="block w-full text-left text-foreground/80 hover:text-primary transition-colors py-2 px-6"
-                  data-testid="mobile-nav-link-knowledge-extractor"
                 >
-                  Knowledge Extractor
-                </a>
+                  FMCG
+                </Link>
+                <Link
+                  href="/industries/pharma"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block w-full text-left text-foreground/80 hover:text-primary transition-colors py-2 px-6"
+                >
+                  Pharma
+                </Link>
+                <Link
+                  href="/industries/finance"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block w-full text-left text-foreground/80 hover:text-primary transition-colors py-2 px-6"
+                >
+                  Finance
+                </Link>
+                <Link
+                  href="/industries/legal"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block w-full text-left text-foreground/80 hover:text-primary transition-colors py-2 px-6"
+                >
+                  Legal
+                </Link>
+                <Link
+                  href="/industries/insurance"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block w-full text-left text-foreground/80 hover:text-primary transition-colors py-2 px-6"
+                >
+                  Insurance
+                </Link>
+                <Link
+                  href="/industries/operations"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block w-full text-left text-foreground/80 hover:text-primary transition-colors py-2 px-6"
+                >
+                  Operations
+                </Link>
               </div>
-              <Link 
+              <Link
                 href="/about"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2 px-2"

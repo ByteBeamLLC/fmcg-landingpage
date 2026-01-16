@@ -59,28 +59,35 @@ export default function PlatformHero() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
+            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-6 uppercase tracking-wider">
+              No Code Required
+            </div>
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight" data-testid="hero-title">
-              Automate work<br />
-              that takes<br />
+              Build AI Agents<br />
+              Like Building a<br />
+              <span className="text-primary drop-shadow-[0_0_12px_rgba(15,91,216,0.2)]">Spreadsheet</span>
+            </h1>
+
+            <p className="text-2xl text-slate-600 mb-4 font-light max-w-3xl mx-auto" data-testid="hero-description">
+              No coding required. If you can use Excel, you can build AI agents that automate document work in minutes.
+            </p>
+
+            <div className="text-xl text-slate-500 mb-10">
+              Perfect for{" "}
               <AnimatePresence mode="wait">
                 <motion.span
                   key={currentIndustry}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5 }}
-                  className="inline-block text-primary font-semibold drop-shadow-[0_0_12px_rgba(15,91,216,0.2)]"
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.4 }}
+                  className="inline-block text-primary font-medium"
                 >
                   {industries[currentIndustry]}
                 </motion.span>
               </AnimatePresence>
-              <br />
-              experts hours
-            </h1>
-
-            <p className="text-2xl text-slate-600 mb-10 font-light max-w-3xl mx-auto" data-testid="hero-description">
-              Your experts spend hours on paperwork. Our AI finishes it in minutes.
-            </p>
+              {" "}teams
+            </div>
 
             <div className="flex flex-wrap justify-center gap-4 mb-10">
               <Button
@@ -113,8 +120,8 @@ export default function PlatformHero() {
                 <div className="text-sm text-slate-500">Accurate</div>
               </div>
               <div data-testid="stat-custom">
-                <div className="text-4xl font-bold mb-1">Custom</div>
-                <div className="text-sm text-slate-500">Built for You</div>
+                <div className="text-4xl font-bold mb-1">Zero</div>
+                <div className="text-sm text-slate-500">Coding Needed</div>
               </div>
             </div>
 

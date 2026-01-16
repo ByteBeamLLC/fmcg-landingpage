@@ -1,5 +1,11 @@
 import { useEffect } from 'react';
 
+interface StructuredData {
+  "@context": string;
+  "@type": string;
+  [key: string]: unknown;
+}
+
 interface SEOProps {
   title: string;
   description: string;
@@ -7,8 +13,10 @@ interface SEOProps {
   ogDescription?: string;
   ogType?: string;
   ogUrl?: string;
+  ogImage?: string;
   keywords?: string;
   canonical?: string;
+  structuredData?: StructuredData | StructuredData[];
 }
 
 export default function SEO({
@@ -18,8 +26,10 @@ export default function SEO({
   ogDescription,
   ogType = 'website',
   ogUrl,
+  ogImage,
   keywords,
   canonical,
+  structuredData,
 }: SEOProps) {
   useEffect(() => {
     const currentUrl = canonical || window.location.href;
@@ -69,11 +79,37 @@ export default function SEO({
     updateMetaTag('twitter:title', finalOgTitle);
     updateMetaTag('twitter:description', finalOgDescription);
 
+    // Handle ogImage
+    if (ogImage) {
+      updateMetaTag('og:image', ogImage, true);
+      updateMetaTag('twitter:image', ogImage);
+    }
+
     updateLinkTag('canonical', currentUrl);
 
+    // Handle structured data
+    if (structuredData) {
+      // Remove any existing page-level structured data scripts
+      const existingScripts = document.querySelectorAll('script[data-seo-structured-data]');
+      existingScripts.forEach(script => script.remove());
+
+      // Add new structured data
+      const dataArray = Array.isArray(structuredData) ? structuredData : [structuredData];
+      dataArray.forEach((data, index) => {
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.setAttribute('data-seo-structured-data', `page-${index}`);
+        script.textContent = JSON.stringify(data);
+        document.head.appendChild(script);
+      });
+    }
+
     return () => {
+      // Cleanup structured data scripts on unmount
+      const scripts = document.querySelectorAll('script[data-seo-structured-data]');
+      scripts.forEach(script => script.remove());
     };
-  }, [title, description, ogTitle, ogDescription, ogType, ogUrl, keywords, canonical]);
+  }, [title, description, ogTitle, ogDescription, ogType, ogUrl, ogImage, keywords, canonical, structuredData]);
 
   return null;
 }
