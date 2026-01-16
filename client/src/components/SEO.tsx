@@ -79,11 +79,10 @@ export default function SEO({
     updateMetaTag('twitter:title', finalOgTitle);
     updateMetaTag('twitter:description', finalOgDescription);
 
-    // Handle ogImage
-    if (ogImage) {
-      updateMetaTag('og:image', ogImage, true);
-      updateMetaTag('twitter:image', ogImage);
-    }
+    // Handle ogImage with default fallback
+    const finalOgImage = ogImage || 'https://bytebeam.co/og/default.png';
+    updateMetaTag('og:image', finalOgImage, true);
+    updateMetaTag('twitter:image', finalOgImage);
 
     updateLinkTag('canonical', currentUrl);
 

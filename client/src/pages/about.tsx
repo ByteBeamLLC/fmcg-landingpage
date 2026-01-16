@@ -6,6 +6,49 @@ import { Link } from "wouter";
 import bytebeamLogo from "@assets/bytebeam_logo_1759326269799.png";
 import SEO from "@/components/SEO";
 
+// Structured data for About page
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About ByteBeam",
+    "description": "Learn how ByteBeam transforms document-heavy, analysis-intensive processes through intelligent automation.",
+    "url": "https://bytebeam.co/about",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "ByteBeam",
+      "url": "https://bytebeam.co",
+      "logo": "https://bytebeam.co/assets/bytebeam-logo.png",
+      "description": "AI agents built by Subject Matter Experts, not engineers. No code required.",
+      "foundingDate": "2024",
+      "areaServed": [
+        { "@type": "Country", "name": "United Arab Emirates" },
+        { "@type": "Country", "name": "Saudi Arabia" },
+        { "@type": "Country", "name": "United Kingdom" },
+        { "@type": "Country", "name": "Lebanon" }
+      ],
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "20 Wenlock Road",
+          "addressLocality": "London",
+          "addressCountry": "United Kingdom",
+          "postalCode": "N1 7GU"
+        }
+      ],
+      "sameAs": []
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://bytebeam.co" },
+      { "@type": "ListItem", "position": 2, "name": "About", "item": "https://bytebeam.co/about" }
+    ]
+  }
+];
+
 export default function About() {
   const [heroRef, heroInView] = useInView({
     triggerOnce: true,
@@ -34,6 +77,8 @@ export default function About() {
         ogTitle="About ByteBeam | Transforming Knowledge Work with AI"
         ogDescription="We build AI agents that automate complex, repetitive knowledge work—freeing experts to focus on what truly matters. Discover our mission and approach."
         keywords="ByteBeam, AI automation company, knowledge work automation, document processing AI, compliance automation experts, AI agent platform"
+        canonical="https://bytebeam.co/about"
+        structuredData={structuredData}
       />
       {/* Hero Section */}
       <section className="section-padding gradient-overlay text-white">
