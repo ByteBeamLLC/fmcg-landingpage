@@ -2,13 +2,6 @@ import { MapPin } from "lucide-react";
 import bytebeamLogo from "@assets/bytebeam_logo_1759326269799.png";
 
 export default function Footer() {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
-
   return (
     <footer className="bg-muted text-foreground py-12 border-t border-border">
       <div className="container-custom">
@@ -20,8 +13,7 @@ export default function Footer() {
               className="h-8 mb-4"
               data-testid="footer-logo"
             />
-            <p className="text-muted-foreground mb-4">AI agents for automating complex, repetitive knowledge work.</p>
-            <p className="text-sm text-muted-foreground">Beyond Buzz. Real Impact.</p>
+            <p className="text-muted-foreground mb-4">AI agents built by Subject Matter Experts, not engineers. No code required.</p>
           </div>
 
           <div>
@@ -117,13 +109,13 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection("case-studies")}
+                <a
+                  href="/#case-studies"
                   className="hover:text-primary transition-colors"
                   data-testid="footer-link-case-studies"
                 >
                   Case Studies
-                </button>
+                </a>
               </li>
             </ul>
           </div>
