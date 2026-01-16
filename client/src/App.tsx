@@ -16,6 +16,7 @@ import LegalIndustry from "@/pages/industries/legal";
 import InsuranceIndustry from "@/pages/industries/insurance";
 import OperationsIndustry from "@/pages/industries/operations";
 import UAEFoodLabelLocalization from "@/pages/solutions/uae-food-label-localization";
+import SaudiPharmaGapAnalysis from "@/pages/solutions/saudi-pharma-gap-analysis";
 
 function Router() {
   return (
@@ -34,6 +35,10 @@ function Router() {
       <Route path="/uae-food-label-localization" component={UAEFoodLabelLocalization} />
       <Route path="/food-label-localization-uae" component={UAEFoodLabelLocalization} />
       <Route path="/dubai-food-label-compliance" component={UAEFoodLabelLocalization} />
+      <Route path="/solutions/saudi-pharma-gap-analysis" component={SaudiPharmaGapAnalysis} />
+      <Route path="/sfda-dossier-gap-analysis" component={SaudiPharmaGapAnalysis} />
+      <Route path="/saudi-pharma-registration" component={SaudiPharmaGapAnalysis} />
+      <Route path="/sfda-drug-registration" component={SaudiPharmaGapAnalysis} />
       <Route component={NotFound} />
     </Switch>
   );

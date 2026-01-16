@@ -68,6 +68,11 @@ export default function Navigation() {
                     UAE Food Label Localization
                   </Link>
                 </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/solutions/saudi-pharma-gap-analysis" className="w-full cursor-pointer">
+                    Saudi Pharma Gap Analysis
+                  </Link>
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
@@ -158,6 +163,13 @@ export default function Navigation() {
                   className="block w-full text-left text-foreground/80 hover:text-primary transition-colors py-2 px-6"
                 >
                   UAE Food Label Localization
+                </Link>
+                <Link
+                  href="/solutions/saudi-pharma-gap-analysis"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block w-full text-left text-foreground/80 hover:text-primary transition-colors py-2 px-6"
+                >
+                  Saudi Pharma Gap Analysis
                 </Link>
               </div>
               <div className="space-y-2">

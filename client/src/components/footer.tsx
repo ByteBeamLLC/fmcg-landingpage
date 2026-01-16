@@ -96,6 +96,15 @@ export default function Footer() {
                   UAE Food Label Localization
                 </a>
               </li>
+              <li>
+                <a
+                  href="/solutions/saudi-pharma-gap-analysis"
+                  className="hover:text-primary transition-colors"
+                  data-testid="footer-link-saudi-pharma"
+                >
+                  Saudi Pharma Gap Analysis
+                </a>
+              </li>
             </ul>
           </div>
 
