@@ -100,12 +100,47 @@ export default function Footer() {
             </ul>
           </div>
 
+          <div className="hidden">
+            <h4 className="font-bold mb-4">Free Tools</h4>
+            <ul className="space-y-2 text-muted-foreground">
+              <li>
+                <a href="/tools" className="hover:text-primary transition-colors" data-testid="footer-link-tools">
+                  All Tools
+                </a>
+              </li>
+              <li>
+                <a href="/tools/image-to-text" className="hover:text-primary transition-colors">
+                  Image to Text (OCR)
+                </a>
+              </li>
+              <li>
+                <a href="/tools/pdf-merger" className="hover:text-primary transition-colors">
+                  PDF Merger
+                </a>
+              </li>
+              <li>
+                <a href="/tools/pdf-compressor" className="hover:text-primary transition-colors">
+                  PDF Compressor
+                </a>
+              </li>
+            </ul>
+          </div>
+
           <div>
             <h4 className="font-bold mb-4">Company</h4>
             <ul className="space-y-2 text-muted-foreground">
               <li>
                 <a href="/about" className="hover:text-primary transition-colors" data-testid="footer-link-about">
                   About Us
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/blog"
+                  className="hover:text-primary transition-colors"
+                  data-testid="footer-link-blog"
+                >
+                  Blog
                 </a>
               </li>
               <li>

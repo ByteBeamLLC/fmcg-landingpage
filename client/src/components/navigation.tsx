@@ -116,6 +116,14 @@ export default function Navigation() {
             </DropdownMenu>
 
             <Link
+              href="/tools"
+              className="hidden transition-colors font-medium text-foreground hover:text-primary"
+              data-testid="nav-link-tools"
+            >
+              Free Tools
+            </Link>
+
+            <Link
               href="/about"
               className="transition-colors font-medium text-foreground hover:text-primary"
               data-testid="nav-link-about"
@@ -219,6 +227,14 @@ export default function Navigation() {
                   Operations
                 </Link>
               </div>
+              <Link
+                href="/tools"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="hidden block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2 px-2"
+                data-testid="mobile-nav-link-tools"
+              >
+                Free Tools
+              </Link>
               <Link
                 href="/about"
                 onClick={() => setIsMobileMenuOpen(false)}
