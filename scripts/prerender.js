@@ -81,35 +81,51 @@ const ROUTES = [
 ];
 
 /**
+ * Wait for server to be ready by polling the URL
+ */
+async function waitForServer(url, maxAttempts = 30) {
+  for (let i = 0; i < maxAttempts; i++) {
+    try {
+      const response = await fetch(url);
+      if (response.ok) {
+        return true;
+      }
+    } catch {
+      // Server not ready yet
+    }
+    await new Promise(resolve => setTimeout(resolve, 500));
+  }
+  throw new Error(`Server not ready after ${maxAttempts} attempts`);
+}
+
+/**
  * Start a local server to serve the built files
  */
-function startServer() {
-  return new Promise((resolve, reject) => {
-    const server = spawn('npx', ['serve', DIST_DIR, '-l', PORT.toString(), '-s'], {
-      stdio: ['ignore', 'pipe', 'pipe'],
-      shell: true,
-    });
-    
-    server.stdout.on('data', (data) => {
-      const output = data.toString();
-      if (output.includes('Accepting connections') || output.includes('Local:')) {
-        console.log('✓ Server started on port', PORT);
-        resolve(server);
-      }
-    });
-    
-    server.stderr.on('data', (data) => {
-      const error = data.toString();
-      if (!error.includes('WARN')) {
-        console.error('Server error:', error);
-      }
-    });
-    
-    server.on('error', reject);
-    
-    // Timeout fallback
-    setTimeout(() => resolve(server), 3000);
+async function startServer() {
+  const server = spawn('npx', ['serve', DIST_DIR, '-l', PORT.toString(), '-s'], {
+    stdio: ['ignore', 'pipe', 'pipe'],
+    shell: true,
+    detached: false,
   });
+
+  server.stderr.on('data', (data) => {
+    const error = data.toString();
+    if (!error.includes('WARN')) {
+      console.error('Server error:', error);
+    }
+  });
+
+  server.on('error', (err) => {
+    console.error('Failed to start server:', err);
+    process.exit(1);
+  });
+
+  // Wait for server to actually respond
+  console.log('Waiting for server to be ready...');
+  await waitForServer(BASE_URL);
+  console.log('✓ Server started on port', PORT);
+
+  return server;
 }
 
 /**
@@ -187,14 +203,15 @@ async function prerender() {
   let successCount = 0;
   let failCount = 0;
   
-  // Prerender routes in batches for better performance
-  const BATCH_SIZE = 5;
+  // Prerender routes in batches (smaller batch for CI stability)
+  const BATCH_SIZE = 3;
   for (let i = 0; i < ROUTES.length; i += BATCH_SIZE) {
     const batch = ROUTES.slice(i, i + BATCH_SIZE);
+    console.log(`  Processing batch ${Math.floor(i / BATCH_SIZE) + 1}/${Math.ceil(ROUTES.length / BATCH_SIZE)}...`);
     const results = await Promise.all(
       batch.map(route => prerenderRoute(browser, route))
     );
-    
+
     results.forEach(success => {
       if (success) successCount++;
       else failCount++;
