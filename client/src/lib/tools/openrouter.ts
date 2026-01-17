@@ -185,3 +185,37 @@ export async function getRateLimitStatus(): Promise<{
     return null;
   }
 }
+
+/**
+ * Extract data from a bank statement
+ */
+export async function extractBankStatementData(text: string): Promise<AIResponse> {
+  return callAIEndpoint<AIResponse>("/extract-bank-statement", { text });
+}
+
+/**
+ * Analyze an insurance/policy document
+ */
+export async function analyzePolicy(text: string): Promise<AIResponse> {
+  return callAIEndpoint<AIResponse>("/analyze-policy", { text });
+}
+
+/**
+ * Find specific clauses in a contract
+ */
+export async function findContractClauses(
+  text: string,
+  clauseTypes?: string[]
+): Promise<AIResponse> {
+  return callAIEndpoint<AIResponse>("/find-clauses", { text, clauseTypes });
+}
+
+/**
+ * Compare two documents
+ */
+export async function compareDocuments(
+  text1: string,
+  text2: string
+): Promise<AIResponse> {
+  return callAIEndpoint<AIResponse>("/compare-documents", { text1, text2 });
+}

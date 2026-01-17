@@ -8,3 +8,13 @@ export { default as ToolFAQ } from "./ToolFAQ";
 export { default as RelatedTools } from "./RelatedTools";
 export { ByteBeamValueProp } from "./ByteBeamValueProp";
 export { ContextualUpsell, SuccessUpsellBanner } from "./ContextualUpsell";
+export { AgentConversion, AgentCTAButtons } from "./AgentConversion";
+export {
+  HowItWorks,
+  Features,
+  UseCases,
+  WhatYouGet,
+  TechnicalInfo,
+  SupportedFormats,
+  AlternativeMethods,
+} from "./SEOContent";

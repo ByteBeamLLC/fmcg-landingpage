@@ -225,4 +225,151 @@ export function registerToolRoutes(app: Express) {
       });
     }
   });
+
+  // Bank Statement Parser
+  app.post("/api/tools/extract-bank-statement", aiToolsLimiter, async (req: Request, res: Response) => {
+    try {
+      const { text } = req.body;
+
+      if (!text || typeof text !== "string") {
+        return res.status(400).json({ error: "Text is required" });
+      }
+
+      if (text.length > 50000) {
+        return res.status(400).json({ error: "Document too long. Maximum 50,000 characters." });
+      }
+
+      const result = await openRouterService.extractBankStatementData(text);
+
+      try {
+        const jsonData = JSON.parse(result.content);
+        res.json({ ...result, parsedData: jsonData });
+      } catch {
+        res.json(result);
+      }
+    } catch (error) {
+      console.error("Bank statement extraction error:", error);
+      res.status(500).json({
+        error: error instanceof Error ? error.message : "Failed to extract bank statement data",
+      });
+    }
+  });
+
+  // Policy/Insurance Document Analyzer
+  app.post("/api/tools/analyze-policy", aiToolsLimiter, async (req: Request, res: Response) => {
+    try {
+      const { text } = req.body;
+
+      if (!text || typeof text !== "string") {
+        return res.status(400).json({ error: "Text is required" });
+      }
+
+      if (text.length > 100000) {
+        return res.status(400).json({ error: "Document too long. Maximum 100,000 characters." });
+      }
+
+      const result = await openRouterService.analyzePolicy(text);
+      res.json(result);
+    } catch (error) {
+      console.error("Policy analysis error:", error);
+      res.status(500).json({
+        error: error instanceof Error ? error.message : "Failed to analyze policy",
+      });
+    }
+  });
+
+  // Contract Clause Finder
+  app.post("/api/tools/find-clauses", aiToolsLimiter, async (req: Request, res: Response) => {
+    try {
+      const { text, clauseTypes } = req.body;
+
+      if (!text || typeof text !== "string") {
+        return res.status(400).json({ error: "Text is required" });
+      }
+
+      if (text.length > 100000) {
+        return res.status(400).json({ error: "Document too long. Maximum 100,000 characters." });
+      }
+
+      const result = await openRouterService.findContractClauses(text, clauseTypes);
+
+      try {
+        const jsonData = JSON.parse(result.content);
+        res.json({ ...result, parsedData: jsonData });
+      } catch {
+        res.json(result);
+      }
+    } catch (error) {
+      console.error("Clause finder error:", error);
+      res.status(500).json({
+        error: error instanceof Error ? error.message : "Failed to find clauses",
+      });
+    }
+  });
+
+  // Document Comparison
+  app.post("/api/tools/compare-documents", aiToolsLimiter, async (req: Request, res: Response) => {
+    try {
+      const { text1, text2 } = req.body;
+
+      if (!text1 || typeof text1 !== "string") {
+        return res.status(400).json({ error: "First document text is required" });
+      }
+
+      if (!text2 || typeof text2 !== "string") {
+        return res.status(400).json({ error: "Second document text is required" });
+      }
+
+      if (text1.length + text2.length > 100000) {
+        return res.status(400).json({ error: "Documents too long. Combined maximum 100,000 characters." });
+      }
+
+      const result = await openRouterService.compareDocuments(text1, text2);
+      res.json(result);
+    } catch (error) {
+      console.error("Document comparison error:", error);
+      res.status(500).json({
+        error: error instanceof Error ? error.message : "Failed to compare documents",
+      });
+    }
+  });
+
+  // AI File Search
+  app.post("/api/tools/file-search", aiToolsLimiter, async (req: Request, res: Response) => {
+    try {
+      const { query, documents } = req.body;
+
+      if (!query || typeof query !== "string") {
+        return res.status(400).json({ error: "Search query is required" });
+      }
+
+      if (!documents || !Array.isArray(documents) || documents.length === 0) {
+        return res.status(400).json({ error: "At least one document is required" });
+      }
+
+      // Validate documents structure
+      for (const doc of documents) {
+        if (!doc.name || typeof doc.name !== "string") {
+          return res.status(400).json({ error: "Each document must have a name" });
+        }
+        if (!doc.content || typeof doc.content !== "string") {
+          return res.status(400).json({ error: "Each document must have content" });
+        }
+      }
+
+      // Calculate total content size
+      const totalSize = documents.reduce((sum, doc) => sum + doc.content.length, 0);
+      if (totalSize > 200000) {
+        return res.status(400).json({ error: "Total document content too large. Maximum 200,000 characters combined." });
+      }
+
+      const result = await openRouterService.searchDocuments(query, documents);
+      res.json(result);
+    } catch (error) {
+      console.error("File search error:", error);
+      res.status(500).json({
+        error: error instanceof Error ? error.message : "Failed to search documents",
+      });
+    }
+  });
 }

@@ -6,8 +6,7 @@ import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import SEO from "@/components/SEO";
 import { Badge } from "@/components/ui/badge";
-import { ContextualUpsell } from "./ContextualUpsell";
-import { ByteBeamValueProp } from "./ByteBeamValueProp";
+import { AgentConversion } from "./AgentConversion";
 
 type ToolContext =
   | "image-to-text"
@@ -16,7 +15,26 @@ type ToolContext =
   | "pdf-splitter"
   | "pdf-compressor"
   | "image-to-pdf"
-  | "image-compressor";
+  | "image-compressor"
+  | "contract-analyzer"
+  | "contract-clause-finder"
+  | "contract-compare"
+  | "legal-summarizer"
+  | "policy-analyzer"
+  | "document-compare"
+  | "pdf-chat"
+  | "file-search"
+  | "ai-summarizer"
+  | "invoice-parser"
+  | "receipt-scanner"
+  | "bank-statement-parser"
+  | "resume-parser"
+  | "pdf-table-extractor"
+  | "handwriting-to-text"
+  | "pdf-redactor"
+  | "pdf-page-remover"
+  | "pdf-rotate"
+  | "nda-generator";
 
 interface ToolLayoutProps {
   title: string;
@@ -25,9 +43,8 @@ interface ToolLayoutProps {
   keywords?: string;
   children: ReactNode;
   isAIPowered?: boolean;
-  toolContext?: ToolContext;
-  showSidebarUpsell?: boolean;
-  showBottomUpsell?: boolean;
+  toolContext?: ToolContext | string;
+  showAgentConversion?: boolean;
 }
 
 export default function ToolLayout({
@@ -38,15 +55,14 @@ export default function ToolLayout({
   children,
   isAIPowered = false,
   toolContext,
-  showSidebarUpsell = false,
-  showBottomUpsell = true,
+  showAgentConversion = true,
 }: ToolLayoutProps) {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     name: title,
     description: description,
-    applicationCategory: "Utility",
+    applicationCategory: "BusinessApplication",
     operatingSystem: "Any",
     offers: {
       "@type": "Offer",
@@ -60,14 +76,8 @@ export default function ToolLayout({
     },
   };
 
-  // Determine context type for upsell messaging
-  const getContextType = (): "ocr" | "pdf" | "image" | "general" => {
-    if (!toolContext) return "general";
-    if (toolContext.includes("text") || toolContext === "image-to-text") return "ocr";
-    if (toolContext.includes("pdf")) return "pdf";
-    if (toolContext.includes("image")) return "image";
-    return "general";
-  };
+  // Get a short tool name for the agent section
+  const shortToolName = title.replace(/Free |Online | - .*$/gi, "").trim();
 
   return (
     <>
@@ -120,66 +130,43 @@ export default function ToolLayout({
             </p>
           </motion.div>
 
-          {/* Tool Content with Optional Sidebar */}
-          <div className={showSidebarUpsell && toolContext ? "grid lg:grid-cols-4 gap-8" : ""}>
+          {/* Tool Content */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            {children}
+          </motion.div>
+
+          {/* Agent Conversion Section - Under the fold */}
+          {showAgentConversion && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className={showSidebarUpsell && toolContext ? "lg:col-span-3" : ""}
+              transition={{ delay: 0.3 }}
+              className="mt-12 max-w-lg mx-auto"
             >
-              {children}
-            </motion.div>
-
-            {/* Sidebar Upsell */}
-            {showSidebarUpsell && toolContext && (
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3 }}
-                className="hidden lg:block space-y-6"
-              >
-                <ContextualUpsell toolContext={toolContext} trigger="sidebar" />
-
-                {/* Powered by ByteBeam Badge */}
-                <div className="text-center">
-                  <Link href="/" className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors">
-                    <Bot className="size-3" />
-                    Powered by ByteBeam
-                  </Link>
-                </div>
-              </motion.div>
-            )}
-          </div>
-
-          {/* Bottom Upsell Section */}
-          {showBottomUpsell && (
-            <div className="mt-12">
-              <ByteBeamValueProp
-                variant="compact"
-                context={getContextType()}
-              />
-            </div>
-          )}
-
-          {/* Powered by ByteBeam - Mobile/Non-sidebar view */}
-          {!showSidebarUpsell && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="mt-8 text-center"
-            >
-              <Link
-                href="/"
-                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors group"
-              >
-                <Bot className="size-4" />
-                <span>Powered by <span className="font-medium text-foreground group-hover:text-primary">ByteBeam</span></span>
-                <ArrowRight className="size-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-              </Link>
+              <AgentConversion toolName={shortToolName} variant="section" />
             </motion.div>
           )}
+
+          {/* Powered by ByteBeam */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="mt-8 text-center"
+          >
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors group"
+            >
+              <Bot className="size-4" />
+              <span>Powered by <span className="font-medium text-foreground group-hover:text-primary">ByteBeam</span></span>
+              <ArrowRight className="size-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+            </Link>
+          </motion.div>
         </div>
       </main>
 

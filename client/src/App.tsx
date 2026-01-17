@@ -28,6 +28,52 @@ const PDFSplitter = lazy(() => import("@/pages/tools/pdf-splitter"));
 const PDFToText = lazy(() => import("@/pages/tools/pdf-to-text"));
 const ImageToPDF = lazy(() => import("@/pages/tools/image-to-pdf"));
 const ImageCompressor = lazy(() => import("@/pages/tools/image-compressor"));
+const ScreenshotToText = lazy(() => import("@/pages/tools/screenshot-to-text"));
+const PhotoToText = lazy(() => import("@/pages/tools/photo-to-text"));
+const HandwritingToText = lazy(() => import("@/pages/tools/handwriting-to-text"));
+const PDFRotate = lazy(() => import("@/pages/tools/pdf-rotate"));
+const PDFPageRemover = lazy(() => import("@/pages/tools/pdf-page-remover"));
+const ImageResizer = lazy(() => import("@/pages/tools/image-resizer"));
+const ImageConverter = lazy(() => import("@/pages/tools/image-converter"));
+const HeicToJpg = lazy(() => import("@/pages/tools/heic-to-jpg"));
+const WebpConverter = lazy(() => import("@/pages/tools/webp-converter"));
+const CsvToExcel = lazy(() => import("@/pages/tools/csv-to-excel"));
+const ExcelToCsv = lazy(() => import("@/pages/tools/excel-to-csv"));
+const JsonToExcel = lazy(() => import("@/pages/tools/json-to-excel"));
+const ExcelToJson = lazy(() => import("@/pages/tools/excel-to-json"));
+const QRCodeGenerator = lazy(() => import("@/pages/tools/qr-code-generator"));
+const QRCodeReader = lazy(() => import("@/pages/tools/qr-code-reader"));
+
+// AI-Powered Document Tools - Tier 1
+const InvoiceParser = lazy(() => import("@/pages/tools/invoice-parser"));
+const ReceiptScanner = lazy(() => import("@/pages/tools/receipt-scanner"));
+const ResumeParser = lazy(() => import("@/pages/tools/resume-parser"));
+const PDFChat = lazy(() => import("@/pages/tools/pdf-chat"));
+const AISummarizer = lazy(() => import("@/pages/tools/ai-summarizer"));
+const ContractAnalyzer = lazy(() => import("@/pages/tools/contract-analyzer"));
+
+// AI-Powered Document Tools - Tier 2
+const BankStatementParser = lazy(() => import("@/pages/tools/bank-statement-parser"));
+const PolicyAnalyzer = lazy(() => import("@/pages/tools/policy-analyzer"));
+const ContractClauseFinder = lazy(() => import("@/pages/tools/contract-clause-finder"));
+const LegalSummarizer = lazy(() => import("@/pages/tools/legal-summarizer"));
+
+// Document Generators - Tier 3
+const NDAGenerator = lazy(() => import("@/pages/tools/nda-generator"));
+const LeaseGenerator = lazy(() => import("@/pages/tools/lease-generator"));
+const W2Generator = lazy(() => import("@/pages/tools/w2-generator"));
+const Form1099Generator = lazy(() => import("@/pages/tools/1099-generator"));
+
+// Client-Side Extraction Tools - Tier 4
+const PDFTableExtractor = lazy(() => import("@/pages/tools/pdf-table-extractor"));
+const PDFRedactor = lazy(() => import("@/pages/tools/pdf-redactor"));
+
+// Advanced AI Comparison Tools - Tier 5
+const ContractCompare = lazy(() => import("@/pages/tools/contract-compare"));
+const DocumentCompare = lazy(() => import("@/pages/tools/document-compare"));
+
+// Search Tools
+const FileSearch = lazy(() => import("@/pages/tools/file-search"));
 
 // Blog pages - lazy loaded for better performance
 const BlogIndex = lazy(() => import("@/pages/blog/index"));
@@ -80,6 +126,50 @@ function Router() {
         <Route path="/tools/pdf-to-text" component={PDFToText} />
         <Route path="/tools/image-to-pdf" component={ImageToPDF} />
         <Route path="/tools/image-compressor" component={ImageCompressor} />
+        <Route path="/tools/screenshot-to-text" component={ScreenshotToText} />
+        <Route path="/tools/photo-to-text" component={PhotoToText} />
+        <Route path="/tools/handwriting-to-text" component={HandwritingToText} />
+        <Route path="/tools/pdf-rotate" component={PDFRotate} />
+        <Route path="/tools/pdf-page-remover" component={PDFPageRemover} />
+        <Route path="/tools/image-resizer" component={ImageResizer} />
+        <Route path="/tools/image-converter" component={ImageConverter} />
+        <Route path="/tools/heic-to-jpg" component={HeicToJpg} />
+        <Route path="/tools/webp-converter" component={WebpConverter} />
+        <Route path="/tools/csv-to-excel" component={CsvToExcel} />
+        <Route path="/tools/excel-to-csv" component={ExcelToCsv} />
+        <Route path="/tools/json-to-excel" component={JsonToExcel} />
+        <Route path="/tools/excel-to-json" component={ExcelToJson} />
+        <Route path="/tools/qr-code-generator" component={QRCodeGenerator} />
+        <Route path="/tools/qr-code-reader" component={QRCodeReader} />
+
+        {/* AI-Powered Document Tools */}
+        <Route path="/tools/invoice-parser" component={InvoiceParser} />
+        <Route path="/tools/receipt-scanner" component={ReceiptScanner} />
+        <Route path="/tools/resume-parser" component={ResumeParser} />
+        <Route path="/tools/pdf-chat" component={PDFChat} />
+        <Route path="/tools/ai-summarizer" component={AISummarizer} />
+        <Route path="/tools/contract-analyzer" component={ContractAnalyzer} />
+        <Route path="/tools/bank-statement-parser" component={BankStatementParser} />
+        <Route path="/tools/policy-analyzer" component={PolicyAnalyzer} />
+        <Route path="/tools/contract-clause-finder" component={ContractClauseFinder} />
+        <Route path="/tools/legal-summarizer" component={LegalSummarizer} />
+
+        {/* Document Generators */}
+        <Route path="/tools/nda-generator" component={NDAGenerator} />
+        <Route path="/tools/lease-generator" component={LeaseGenerator} />
+        <Route path="/tools/w2-generator" component={W2Generator} />
+        <Route path="/tools/1099-generator" component={Form1099Generator} />
+
+        {/* PDF Tools */}
+        <Route path="/tools/pdf-table-extractor" component={PDFTableExtractor} />
+        <Route path="/tools/pdf-redactor" component={PDFRedactor} />
+
+        {/* Document Comparison */}
+        <Route path="/tools/contract-compare" component={ContractCompare} />
+        <Route path="/tools/document-compare" component={DocumentCompare} />
+
+        {/* Search Tools */}
+        <Route path="/tools/file-search" component={FileSearch} />
 
         {/* Blog Routes */}
         <Route path="/blog" component={BlogIndex} />

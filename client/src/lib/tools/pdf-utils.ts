@@ -1,4 +1,8 @@
 import { PDFDocument, degrees } from "pdf-lib";
+import * as pdfjsLib from "pdfjs-dist";
+
+// Configure PDF.js worker
+pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
 
 /**
  * Merge multiple PDF files into a single PDF
@@ -262,4 +266,25 @@ export async function getPDFMetadata(pdfFile: File): Promise<{
     creationDate: pdf.getCreationDate(),
     modificationDate: pdf.getModificationDate(),
   };
+}
+
+/**
+ * Extract text content from a PDF file using pdf.js
+ */
+export async function extractTextFromPDF(pdfFile: File): Promise<string> {
+  const arrayBuffer = await pdfFile.arrayBuffer();
+  const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+
+  const textParts: string[] = [];
+
+  for (let i = 1; i <= pdf.numPages; i++) {
+    const page = await pdf.getPage(i);
+    const textContent = await page.getTextContent();
+    const pageText = textContent.items
+      .map((item) => ('str' in item ? item.str : ''))
+      .join(' ');
+    textParts.push(pageText);
+  }
+
+  return textParts.join('\n\n');
 }

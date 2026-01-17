@@ -317,3 +317,228 @@ ${documentText}`,
 
   return callOpenRouter(messages);
 }
+
+/**
+ * Extract bank statement data
+ */
+export async function extractBankStatementData(text: string) {
+  const messages: ChatMessage[] = [
+    {
+      role: "system",
+      content: `You are a bank statement data extraction assistant. Extract the following information from the bank statement and return it as a JSON object:
+- accountHolder: string
+- accountNumber: string (last 4 digits only for privacy)
+- bankName: string
+- statementPeriod: { startDate: string, endDate: string }
+- openingBalance: number
+- closingBalance: number
+- currency: string
+- transactions: [{ date: string, description: string, type: "credit" | "debit", amount: number, balance: number }]
+- totalCredits: number
+- totalDebits: number
+- summary: { deposits: number, withdrawals: number, fees: number, interest: number }
+
+If any field is not found, use null or an empty string. Return only the JSON object, no additional text.`,
+    },
+    {
+      role: "user",
+      content: `Extract bank statement data from:\n\n${text}`,
+    },
+  ];
+
+  return callOpenRouter(messages, { temperature: 0.1 });
+}
+
+/**
+ * Analyze insurance/policy document
+ */
+export async function analyzePolicy(text: string) {
+  const messages: ChatMessage[] = [
+    {
+      role: "system",
+      content: `You are a policy document analysis assistant. Analyze the insurance or policy document and provide:
+1. Policy Type (life, health, auto, home, etc.)
+2. Policy Number and Dates (effective date, expiration)
+3. Policyholder Information
+4. Coverage Details (what's covered, limits, deductibles)
+5. Exclusions (what's NOT covered)
+6. Premium Information (amount, frequency, due dates)
+7. Claims Process (how to file, contact info)
+8. Key Terms and Definitions
+9. Riders or Endorsements (additional coverage)
+10. Important Deadlines and Notice Periods
+
+Format your response as a structured analysis with clear sections. Highlight any unusual terms or potential concerns.`,
+    },
+    {
+      role: "user",
+      content: `Analyze this policy document:\n\n${text}`,
+    },
+  ];
+
+  return callOpenRouter(messages, { maxTokens: 3000 });
+}
+
+/**
+ * Find specific clauses in a contract
+ */
+export async function findContractClauses(text: string, clauseTypes?: string[]) {
+  const defaultClauses = [
+    "Confidentiality/NDA",
+    "Non-compete",
+    "Termination",
+    "Indemnification",
+    "Limitation of Liability",
+    "Force Majeure",
+    "Dispute Resolution/Arbitration",
+    "Intellectual Property",
+    "Payment Terms",
+    "Warranty",
+  ];
+
+  const clausesToFind = clauseTypes && clauseTypes.length > 0 ? clauseTypes : defaultClauses;
+
+  const messages: ChatMessage[] = [
+    {
+      role: "system",
+      content: `You are a contract clause finder assistant. Search the contract for the following types of clauses and extract them:
+${clausesToFind.map((c, i) => `${i + 1}. ${c}`).join('\n')}
+
+For each clause found, provide:
+- Clause Type
+- Location (section/paragraph number if available)
+- Exact Text (quote the relevant portion)
+- Plain English Summary
+- Risk Level (Low/Medium/High) with brief explanation
+
+Return the results as a JSON object with this structure:
+{
+  "clausesFound": [
+    {
+      "type": string,
+      "location": string,
+      "exactText": string,
+      "summary": string,
+      "riskLevel": "Low" | "Medium" | "High",
+      "riskExplanation": string
+    }
+  ],
+  "clausesNotFound": [string],
+  "additionalNotes": string
+}
+
+Return only the JSON object, no additional text.`,
+    },
+    {
+      role: "user",
+      content: `Find clauses in this contract:\n\n${text}`,
+    },
+  ];
+
+  return callOpenRouter(messages, { temperature: 0.1, maxTokens: 4000 });
+}
+
+/**
+ * Compare two documents
+ */
+export async function compareDocuments(text1: string, text2: string) {
+  const messages: ChatMessage[] = [
+    {
+      role: "system",
+      content: `You are a document comparison assistant. Compare the two documents and identify:
+
+1. **Key Differences**: Major differences in terms, conditions, or content
+2. **Added Content**: What's in Document 2 that's not in Document 1
+3. **Removed Content**: What's in Document 1 that's not in Document 2
+4. **Modified Sections**: Sections that exist in both but have different wording
+5. **Risk Assessment**: Any changes that could pose risks or concerns
+6. **Summary**: Overall comparison summary with recommendations
+
+Be specific about locations and quote relevant text when possible.
+Format your response with clear sections and bullet points.`,
+    },
+    {
+      role: "user",
+      content: `Compare these two documents:
+
+=== DOCUMENT 1 ===
+${text1}
+
+=== DOCUMENT 2 ===
+${text2}`,
+    },
+  ];
+
+  return callOpenRouter(messages, { maxTokens: 4000 });
+}
+
+/**
+ * AI-powered file search across multiple documents
+ */
+export async function searchDocuments(
+  query: string,
+  documents: { name: string; content: string }[]
+) {
+  const documentList = documents
+    .map((doc, i) => `=== DOCUMENT ${i + 1}: ${doc.name} ===\n${doc.content.slice(0, 15000)}`)
+    .join("\n\n");
+
+  const messages: ChatMessage[] = [
+    {
+      role: "system",
+      content: `You are an intelligent document search assistant. The user has uploaded multiple documents and wants to find specific information.
+
+Your task:
+1. Search through all provided documents for content relevant to the user's query
+2. Understand the MEANING of the query, not just keyword matching
+3. Find related concepts even if exact words don't match
+4. Return results from each document that contains relevant information
+
+Return a JSON object with this exact structure:
+{
+  "summary": "Brief overall summary of what was found across all documents (2-3 sentences)",
+  "results": [
+    {
+      "fileName": "exact filename",
+      "relevance": "High" | "Medium" | "Low",
+      "summary": "Brief summary of relevant content found in this document",
+      "excerpts": ["Direct quote 1 from document", "Direct quote 2 if applicable"]
+    }
+  ]
+}
+
+Guidelines:
+- Only include documents that have relevant content
+- Order results by relevance (High first)
+- Keep excerpts concise but meaningful (1-3 sentences each)
+- Maximum 3 excerpts per document
+- If nothing relevant is found, return empty results array with an appropriate summary
+- Return ONLY valid JSON, no additional text`,
+    },
+    {
+      role: "user",
+      content: `Search Query: "${query}"
+
+Documents to search:
+
+${documentList}`,
+    },
+  ];
+
+  const response = await callOpenRouter(messages, { maxTokens: 3000, temperature: 0.2 });
+
+  // Parse the JSON response
+  try {
+    const parsed = JSON.parse(response.content);
+    return {
+      summary: parsed.summary || "Search completed",
+      results: parsed.results || [],
+    };
+  } catch (e) {
+    // If parsing fails, return a fallback
+    return {
+      summary: response.content,
+      results: [],
+    };
+  }
+}
