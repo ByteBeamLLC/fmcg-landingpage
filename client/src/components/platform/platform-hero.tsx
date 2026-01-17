@@ -5,6 +5,7 @@ import takhleesLogo from "@assets/takhlees_logo_1759326324559.webp";
 import carrefourLogo from "@assets/carrefour_1759413703784.png";
 import infoquestLogo from "@assets/infoquest-logo-black_1759405455898.png";
 import dldLogo from "@assets/dld.png";
+import AutomationDemo from "@/components/automation-demo";
 
 export default function PlatformHero() {
   const [currentIndustry, setCurrentIndustry] = useState(0);
@@ -49,7 +50,7 @@ export default function PlatformHero() {
   }, []);
 
   return (
-    <section className="section-padding pt-32 pb-20 relative overflow-hidden dynamic-gradient text-slate-900">
+    <section className="section-padding pt-32 pb-20 relative overflow-hidden bg-[#fafbfc] text-slate-900">
       <div className="container-custom relative z-10">
         <div className="relative max-w-5xl mx-auto">
           {/* Headline & CTAs */}
@@ -151,12 +152,35 @@ export default function PlatformHero() {
               </div>
             </motion.div>
           </motion.div>
+
+          {/* V7-style Demo Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-16 relative"
+          >
+            {/* Demo Card */}
+            <div className="relative max-w-6xl mx-auto">
+              <div className="bg-white rounded-2xl shadow-[0_8px_60px_-12px_rgba(0,0,0,0.15)] overflow-hidden">
+                <AutomationDemo
+                  autoRotate={true}
+                  rotateInterval={3000}
+                  showSelector={false}
+                />
+              </div>
+
+              {/* Gradient fade at bottom */}
+              <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white/80 to-transparent pointer-events-none rounded-b-2xl" />
+            </div>
+          </motion.div>
         </div>
       </div>
 
-      {/* Background gradients */}
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_30%_50%,rgba(120,119,198,0.15),transparent_55%)]"></div>
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_70%_80%,rgba(74,222,128,0.12),transparent_55%)]"></div>
+      {/* V7-style soft gradient blobs */}
+      <div className="absolute top-0 left-0 w-[600px] h-[600px] pointer-events-none bg-[radial-gradient(circle,rgba(39,130,255,0.12)_0%,transparent_70%)] -translate-x-1/4 -translate-y-1/4"></div>
+      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] pointer-events-none bg-[radial-gradient(circle,rgba(147,197,253,0.15)_0%,transparent_70%)] translate-x-1/4"></div>
+      <div className="absolute bottom-0 left-1/3 w-[700px] h-[500px] pointer-events-none bg-[radial-gradient(ellipse,rgba(39,130,255,0.08)_0%,transparent_70%)] translate-y-1/4"></div>
     </section>
   );
 }

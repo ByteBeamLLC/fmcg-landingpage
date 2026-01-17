@@ -2,6 +2,7 @@ import Navigation from "@/components/navigation";
 import Hero from "@/components/hero";
 import PainPoints from "@/components/pain-points";
 import HowItWorks from "@/components/how-it-works";
+import DemoSection from "@/components/demo-section";
 import CoreCapabilities from "@/components/core-capabilities";
 import SocialProof from "@/components/social-proof";
 import CTASection from "@/components/cta-section";
@@ -23,6 +24,7 @@ export default function Home() {
       <Hero />
       <PainPoints />
       <HowItWorks />
+      <DemoSection />
       <CoreCapabilities />
       <SocialProof />
       <CTASection />

@@ -1,7 +1,7 @@
 import Navigation from "@/components/navigation";
 import PlatformHero from "@/components/platform/platform-hero";
 import PlatformProblem from "@/components/platform/platform-problem";
-import PlatformApproach from "@/components/platform/platform-approach";
+import ScrollSimulation from "@/components/platform/scroll-simulation";
 import PlatformUseCases from "@/components/platform/platform-use-cases";
 import PlatformValue from "@/components/platform/platform-value";
 import SocialProof from "@/components/social-proof";
@@ -112,7 +112,7 @@ export default function Platform() {
       <Navigation />
       <PlatformHero />
       <PlatformProblem />
-      <PlatformApproach />
+      <ScrollSimulation />
       <PlatformUseCases />
       <PlatformValue />
       <SocialProof />
