@@ -8,8 +8,8 @@ const resources = [
   {
     id: "brochure",
     type: "Product Brochure",
-    title: "ByteBeam Platform Overview",
-    description: "Comprehensive guide to ByteBeam's AI compliance automation platform, including features, benefits, and use cases.",
+    title: "ByteBeam Agent Builder Overview",
+    description: "Comprehensive guide to ByteBeam Agent Builder—a table-based AI agent builder for document work. Features, benefits, and use cases.",
     icon: FileText,
     downloadUrl: brochurePdf,
     fileName: "ByteBeam_Product_Brochure.pdf",

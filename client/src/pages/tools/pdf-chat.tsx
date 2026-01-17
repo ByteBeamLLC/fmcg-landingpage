@@ -173,12 +173,12 @@ const FAQS = [
   {
     question: "Is there a limit on questions?",
     answer:
-      "Free users can ask up to 10 questions per hour across all AI tools. For unlimited access, team features, and batch processing, explore ByteBeam's document automation platform.",
+      "Free users can ask up to 10 questions per hour across all AI tools. For unlimited access, team features, and batch processing, explore ByteBeam Agent Builder.",
   },
   {
     question: "Can I chat with multiple PDFs?",
     answer:
-      "Currently, you can chat with one PDF at a time. Upload a new PDF to start a fresh conversation with different content. Multi-document chat is available on the enterprise platform.",
+      "Currently, you can chat with one PDF at a time. Upload a new PDF to start a fresh conversation with different content. Multi-document chat is available in ByteBeam Agent Builder.",
   },
 ];
 

@@ -77,6 +77,7 @@ const FileSearch = lazy(() => import("@/pages/tools/file-search"));
 
 // Blog pages - lazy loaded for better performance
 const BlogIndex = lazy(() => import("@/pages/blog/index"));
+const AutomationPlatformComparisonBlog = lazy(() => import("@/pages/blog/automation-platform-comparison-2026"));
 const UAEFoodLabelingBlog = lazy(() => import("@/pages/blog/uae-food-labeling-requirements-2026"));
 const SFDADrugRegistrationBlog = lazy(() => import("@/pages/blog/sfda-drug-registration-guide-saudi-arabia"));
 const MontajiPortalBlog = lazy(() => import("@/pages/blog/dubai-municipality-montaji-food-registration"));
@@ -173,6 +174,7 @@ function Router() {
 
         {/* Blog Routes */}
         <Route path="/blog" component={BlogIndex} />
+        <Route path="/blog/automation-platform-comparison-2026" component={AutomationPlatformComparisonBlog} />
         <Route path="/blog/uae-food-labeling-requirements-2026" component={UAEFoodLabelingBlog} />
         <Route path="/blog/sfda-drug-registration-guide-saudi-arabia" component={SFDADrugRegistrationBlog} />
         <Route path="/blog/dubai-municipality-montaji-food-registration" component={MontajiPortalBlog} />

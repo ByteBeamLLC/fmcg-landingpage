@@ -180,7 +180,7 @@ const FAQS = [
   {
     question: "Is there a limit on policy analysis?",
     answer:
-      "Free users can analyze up to 10 policies per hour. For unlimited analysis, batch processing, and team features, explore ByteBeam's document automation platform.",
+      "Free users can analyze up to 10 policies per hour. For unlimited analysis, batch processing, and team features, explore ByteBeam Agent Builder.",
   },
 ];
 

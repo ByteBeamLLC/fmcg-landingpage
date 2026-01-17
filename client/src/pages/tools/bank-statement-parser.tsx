@@ -47,7 +47,7 @@ const FAQS = [
   {
     question: "Is there a limit on statement parsing?",
     answer:
-      "Free users can parse up to 10 statements per hour. For unlimited access, sign up for ByteBeam's document processing platform.",
+      "Free users can parse up to 10 statements per hour. For unlimited access, sign up for ByteBeam Agent Builder.",
   },
 ];
 

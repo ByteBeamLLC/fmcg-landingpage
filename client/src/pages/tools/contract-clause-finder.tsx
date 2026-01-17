@@ -171,12 +171,12 @@ const FAQS = [
   {
     question: "Can I search for custom clause types?",
     answer:
-      "Currently, the tool searches for 10 common clause types. For custom clause extraction, explore ByteBeam's enterprise document automation platform.",
+      "Currently, the tool searches for 10 common clause types. For custom clause extraction, explore ByteBeam Agent Builder.",
   },
   {
     question: "Is there a limit on clause finding?",
     answer:
-      "Free users can analyze up to 10 contracts per hour. For unlimited access, sign up for ByteBeam's document processing platform.",
+      "Free users can analyze up to 10 contracts per hour. For unlimited access, sign up for ByteBeam Agent Builder.",
   },
 ];
 

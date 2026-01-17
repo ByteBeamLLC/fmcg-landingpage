@@ -188,7 +188,7 @@ const FAQS = [
   {
     question: "Is there a limit on document summarization?",
     answer:
-      "Free users can summarize up to 10 documents per hour. For unlimited summarization, batch processing, and team features, explore ByteBeam's document automation platform.",
+      "Free users can summarize up to 10 documents per hour. For unlimited summarization, batch processing, and team features, explore ByteBeam Agent Builder.",
   },
 ];
 

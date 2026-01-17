@@ -181,7 +181,7 @@ const FAQS = [
   {
     question: "Is there a limit on how many contracts I can analyze?",
     answer:
-      "Free users can analyze up to 10 contracts per hour. For unlimited analysis, batch processing, and team features, explore ByteBeam's document automation platform.",
+      "Free users can analyze up to 10 contracts per hour. For unlimited analysis, batch processing, and team features, explore ByteBeam Agent Builder.",
   },
 ];
 

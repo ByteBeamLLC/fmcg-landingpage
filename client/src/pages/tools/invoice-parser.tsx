@@ -178,7 +178,7 @@ const FAQS = [
   {
     question: "Is there a limit on invoice parsing?",
     answer:
-      "Free users can parse up to 10 invoices per hour. For unlimited parsing, batch processing, and API access, explore ByteBeam's document automation platform.",
+      "Free users can parse up to 10 invoices per hour. For unlimited parsing, batch processing, and API access, explore ByteBeam Agent Builder.",
   },
 ];
 

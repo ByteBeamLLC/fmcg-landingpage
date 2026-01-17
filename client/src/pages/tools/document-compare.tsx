@@ -182,7 +182,7 @@ const FAQS = [
   {
     question: "Is there a limit on document comparisons?",
     answer:
-      "Free users can compare up to 10 document pairs per hour. For unlimited comparisons, batch processing, and team features, explore ByteBeam's document automation platform.",
+      "Free users can compare up to 10 document pairs per hour. For unlimited comparisons, batch processing, and team features, explore ByteBeam Agent Builder.",
   },
 ];
 

@@ -1,5 +1,4 @@
 import { Bot, Zap, Settings, Send, ArrowRight } from "lucide-react";
-import { Link } from "wouter";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -9,25 +8,25 @@ interface AgentConversionProps {
 }
 
 /**
- * Agent conversion component - shows "What an agent adds" benefits
- * and CTAs to build an agent from this tool
+ * Agent conversion component - shows benefits of ByteBeam Agent Builder
+ * and CTAs to book a demo
  */
 export function AgentConversion({ toolName, variant = "section" }: AgentConversionProps) {
   const agentBenefits = [
     {
       icon: Zap,
-      title: "Runs automatically on new docs",
-      description: "Watch folders, email attachments, or API uploads. No manual work.",
+      title: "Build with tables, not code",
+      description: "Define extraction rules, validation logic, and routing using an Excel-like interface.",
     },
     {
       icon: Settings,
-      title: "Applies your playbook & rules",
-      description: "Custom validation, extraction fields, approval workflows.",
+      title: "Automate at scale",
+      description: "Process thousands of documents automatically. Watch folders, emails, or APIs.",
     },
     {
       icon: Send,
-      title: "Routes outputs to your systems",
-      description: "Email, Slack, Google Drive, your CRM—wherever you need results.",
+      title: "Connect to your systems",
+      description: "Route outputs to email, Slack, Google Drive, ERP, or any system via API.",
     },
   ];
 
@@ -38,17 +37,19 @@ export function AgentConversion({ toolName, variant = "section" }: AgentConversi
           <Bot className="size-5 text-primary shrink-0 mt-0.5" />
           <div className="flex-1 min-w-0">
             <p className="text-sm font-medium text-foreground mb-1">
-              Need to run this on many documents?
+              Need to process hundreds of documents?
             </p>
             <p className="text-xs text-muted-foreground mb-3">
-              Turn this into an automated agent that processes documents 24/7.
+              ByteBeam Agent Builder: Build AI agents using tables—no code required.
             </p>
-            <Link href="/about">
-              <Button size="sm" variant="default">
-                Build an Agent
-                <ArrowRight className="size-3 ml-1" />
-              </Button>
-            </Link>
+            <Button
+              size="sm"
+              variant="default"
+              onClick={() => window.open("https://calendly.com/talal-bytebeam/bytebeam-discovery-call", "_blank")}
+            >
+              Book a Demo
+              <ArrowRight className="size-3 ml-1" />
+            </Button>
           </div>
         </div>
       </div>
@@ -64,10 +65,10 @@ export function AgentConversion({ toolName, variant = "section" }: AgentConversi
           </div>
           <div>
             <h3 className="font-semibold text-foreground">
-              What an Agent Adds
+              ByteBeam Agent Builder
             </h3>
             <p className="text-sm text-muted-foreground">
-              Automate {toolName.toLowerCase()} at scale
+              Build a {toolName.toLowerCase()} agent—no code required
             </p>
           </div>
         </div>
@@ -91,14 +92,16 @@ export function AgentConversion({ toolName, variant = "section" }: AgentConversi
         </div>
 
         <div className="space-y-2">
-          <Link href="/about" className="block">
-            <Button className="w-full" size="lg">
-              <Bot className="size-4 mr-2" />
-              Start from This Agent Template
-            </Button>
-          </Link>
+          <Button
+            className="w-full"
+            size="lg"
+            onClick={() => window.open("https://calendly.com/talal-bytebeam/bytebeam-discovery-call", "_blank")}
+          >
+            <Bot className="size-4 mr-2" />
+            Book a Demo
+          </Button>
           <p className="text-xs text-center text-muted-foreground">
-            No code required. Deploy in minutes.
+            See how SMEs build AI agents using tables.
           </p>
         </div>
       </CardContent>
@@ -117,12 +120,15 @@ interface AgentCTAButtonsProps {
 export function AgentCTAButtons({ onRunOnce, isProcessing }: AgentCTAButtonsProps) {
   return (
     <div className="flex flex-col sm:flex-row gap-3">
-      <Link href="/about" className="flex-1">
-        <Button variant="outline" className="w-full" size="lg">
-          <Bot className="size-4 mr-2" />
-          Turn This Into an Agent
-        </Button>
-      </Link>
+      <Button
+        variant="outline"
+        className="flex-1"
+        size="lg"
+        onClick={() => window.open("https://calendly.com/talal-bytebeam/bytebeam-discovery-call", "_blank")}
+      >
+        <Bot className="size-4 mr-2" />
+        Build as an Agent
+      </Button>
       {onRunOnce && (
         <Button
           onClick={onRunOnce}

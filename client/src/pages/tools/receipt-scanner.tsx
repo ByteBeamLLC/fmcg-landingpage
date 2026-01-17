@@ -179,7 +179,7 @@ const FAQS = [
   {
     question: "Is there a limit on receipt scanning?",
     answer:
-      "Free users can scan up to 10 receipts per hour. For unlimited scanning, batch processing, and API access, explore ByteBeam's document automation platform.",
+      "Free users can scan up to 10 receipts per hour. For unlimited scanning, batch processing, and API access, explore ByteBeam Agent Builder.",
   },
 ];
 

@@ -341,7 +341,7 @@ const INDUSTRY_USE_CASES = [
 const FAQS = [
   {
     question: "Are these document tools really free?",
-    answer: "Yes. All tools can be used for free with reasonable usage limits (typically 10 documents per hour). There's no signup required for basic use. For unlimited processing and automation, you can upgrade to the ByteBeam platform.",
+    answer: "Yes. All tools can be used for free with reasonable usage limits (typically 10 documents per hour). There's no signup required for basic use. For unlimited processing and automation, you can upgrade to ByteBeam Agent Builder.",
   },
   {
     question: "Is my document data secure and private?",
@@ -357,11 +357,11 @@ const FAQS = [
   },
   {
     question: "Can I automate document processing for my business?",
-    answer: "Yes. Any free tool can be converted into an automated AI agent through the ByteBeam platform. Your subject matter experts define the processing rules in a familiar Excel-like interface—no coding required. Agents can watch folders, process email attachments, and route outputs to your systems.",
+    answer: "Yes. Any free tool can be converted into an automated AI agent through ByteBeam Agent Builder. Your subject matter experts define the processing rules using tables—columns for data, rows for documents, rules for logic—no coding required. Agents can watch folders, process email attachments, and route outputs to your systems.",
   },
   {
-    question: "What's the difference between the free tools and ByteBeam agents?",
-    answer: "Free tools process one document at a time, manually. ByteBeam agents automate the entire workflow: they watch for new documents, apply your custom rules automatically, validate outputs, and route results to email, Slack, Google Drive, or your CRM. Agents run 24/7 without manual intervention.",
+    question: "What's the difference between the free tools and ByteBeam Agent Builder?",
+    answer: "Free tools process one document at a time, manually. With ByteBeam Agent Builder, SMEs build agents that automate the entire workflow: they watch for new documents, apply your custom rules automatically, validate outputs, and route results to email, Slack, Google Drive, or your CRM. Agents run 24/7 without manual intervention.",
   },
   {
     question: "Do I need technical skills to use these tools?",
@@ -793,10 +793,9 @@ export default function ToolsDirectory() {
                   Ready to Automate Document Processing?
               </h2>
                 <p className="text-muted-foreground mb-6">
-                Stop running tools manually. ByteBeam agents watch for new documents,
-                apply your rules automatically, and route outputs to your systems—email,
-                  Slack, Drive, or your CRM. Your subject matter experts build the logic
-                  in an Excel-like interface. No engineers required.
+                Stop running tools manually. With ByteBeam Agent Builder, your SMEs build AI agents using tables—not code.
+                Agents watch for new documents, apply your rules automatically, and route outputs to your systems—email,
+                  Slack, Drive, or your CRM.
                 </p>
                 <div className="flex flex-wrap gap-4 justify-center mb-6">
                   <div className="flex items-center gap-2 text-sm">
@@ -819,7 +818,7 @@ export default function ToolsDirectory() {
                   </Button>
                   <Link href="/about">
                   <Button size="lg" variant="outline">
-                      Learn About ByteBeam
+                      Learn About Agent Builder
                     <ArrowRight className="size-4 ml-2" />
                   </Button>
                 </Link>

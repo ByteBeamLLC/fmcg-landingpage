@@ -11,15 +11,15 @@ const structuredData = [
   {
     "@context": "https://schema.org",
     "@type": "AboutPage",
-    "name": "About ByteBeam",
-    "description": "ByteBeam allows non-technical subject matter experts to build AI agents using an Excel-like interface. Automate complex document work that requires SME experience and decision-making.",
+    "name": "About ByteBeam Agent Builder",
+    "description": "ByteBeam Agent Builder is a table-based AI agent builder for document work. Non-technical SMEs build AI agents using an Excel-like interface to automate complex document workflows.",
     "url": "https://bytebeam.co/about",
     "mainEntity": {
       "@type": "Organization",
       "name": "ByteBeam",
       "url": "https://bytebeam.co",
       "logo": "https://bytebeam.co/assets/bytebeam-logo.png",
-      "description": "AI agents built by Subject Matter Experts using an Excel-like interface. No code required.",
+      "description": "ByteBeam Agent Builder: Table-based AI agent builder for document work. SMEs build AI agents using an Excel-like interface. No code required.",
       "foundingDate": "2024",
       "areaServed": [
         { "@type": "Country", "name": "United Arab Emirates" },
@@ -77,11 +77,11 @@ export default function About() {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="About ByteBeam | AI Agents Built by Subject Matter Experts"
-        description="ByteBeam allows non-technical SMEs to build AI agents using an Excel-like interface. Automate complex document work requiring expert judgment - KYC, risk assessment, compliance reviews."
-        ogTitle="About ByteBeam | Empowering SMEs to Build AI Agents"
-        ogDescription="Build AI agents using an interface you already know. Automate complex document work that requires your SME's experience and decision-making. 85% reduction in processing time."
-        keywords="ByteBeam, AI agent platform, SME automation, Excel-like AI builder, document automation, KYC automation, compliance automation, risk assessment AI"
+        title="ByteBeam Agent Builder | Table-Based AI Agents for Document Work"
+        description="ByteBeam Agent Builder: A table-based AI agent builder for document work. SMEs build AI agents using an Excel-like interface. Automate KYC, compliance, risk assessment. No code required."
+        ogTitle="ByteBeam Agent Builder | Table-Based AI Agent Builder"
+        ogDescription="Build AI agents using tables, not code. ByteBeam Agent Builder lets SMEs automate complex document work—KYC, compliance, risk assessment—using an Excel-like interface."
+        keywords="ByteBeam Agent Builder, table-based AI agent builder, document work automation, Excel AI builder, SME automation, no-code AI agents, document automation, KYC automation"
         canonical="https://bytebeam.co/about"
         structuredData={structuredData}
       />
@@ -102,12 +102,15 @@ export default function About() {
               className="h-16 mx-auto mb-8 brightness-0 invert"
               data-testid="about-logo"
             />
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">About Bytebeam</h1>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">ByteBeam Agent Builder</h1>
+            <p className="text-2xl text-white/95 max-w-3xl mx-auto mb-4 font-medium">
+              Table-Based AI Agent Builder for Document Work
+            </p>
             <p className="text-xl text-white/90 max-w-3xl mx-auto mb-4">
-              Bytebeam allows non-technical subject matter experts to build AI agents using an interface they already know — <span className="font-semibold">an Excel-like experience</span>.
+              Build AI agents using an interface you already know — <span className="font-semibold">tables, columns, and rules</span>. No code required.
             </p>
             <p className="text-lg text-white/80 max-w-2xl mx-auto">
-              These agents automate complex document work that requires an SME's experience and decision-making. Free up your SME time and let them focus on what matters.
+              Subject matter experts automate complex document work—KYC, compliance, risk assessment—without writing a single line of code.
             </p>
           </motion.div>
         </div>
@@ -194,9 +197,9 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="max-w-5xl mx-auto"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center">What Bytebeam Does</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center">What ByteBeam Agent Builder Does</h2>
             <p className="text-xl text-muted-foreground text-center mb-12 max-w-3xl mx-auto">
-              An AI agent platform that captures your SMEs' decision-making logic and scales it across your operations.
+              A table-based AI agent builder that captures your SMEs' decision-making logic and scales it across your document workflows.
             </p>
             
             <div className="grid md:grid-cols-2 gap-8">
@@ -209,9 +212,9 @@ export default function About() {
                 <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
                   <Table2 className="w-7 h-7 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold mb-4">Familiar Interface</h3>
+                <h3 className="text-xl font-bold mb-4">Table-Based Interface</h3>
                 <p className="text-muted-foreground">
-                  Using an interface your teams already understand — <span className="text-foreground font-medium">columns, rows, and rules</span> — subject matter experts define how documents should be read, cross-referenced, and evaluated.
+                  Build agents using tables—<span className="text-foreground font-medium">columns for data, rows for documents, rules for logic</span>. SMEs define how documents should be read, cross-referenced, and evaluated without writing code.
                 </p>
               </motion.div>
 
@@ -244,13 +247,13 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center">The Operational Layer for AI</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center">Built for Enterprise Document Work</h2>
             <div className="prose prose-lg dark:prose-invert max-w-none">
               <p className="text-lg text-muted-foreground mb-6">
-                Bytebeam's platform is the operational layer that makes AI actually work in production. It handles the <span className="text-foreground font-medium">orchestration, governance, and auditability</span> that enterprises require — regardless of which foundation model powers the intelligence underneath.
+                ByteBeam Agent Builder is the operational layer that makes AI work for document workflows. It handles the <span className="text-foreground font-medium">orchestration, governance, and auditability</span> that enterprises require — regardless of which foundation model powers the intelligence underneath.
               </p>
               <p className="text-lg text-muted-foreground mb-8">
-                Whether you're building your own LLM, using an existing provider, or planning to switch as better options emerge, Bytebeam provides the infrastructure for non-technical SMEs to <span className="text-foreground font-medium">create, deploy, monitor, and govern AI agents at scale</span>.
+                Whether you're building your own LLM, using an existing provider, or planning to switch as better options emerge, ByteBeam Agent Builder provides the infrastructure for non-technical SMEs to <span className="text-foreground font-medium">create, deploy, monitor, and govern AI agents at scale</span>.
               </p>
             </div>
             
@@ -301,9 +304,9 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Empower Your SMEs?</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Build Your First Agent?</h2>
             <p className="text-xl mb-8 text-white/90">
-              Let your subject matter experts build AI agents that capture their decision-making logic — no engineering required.
+              Let your SMEs build AI agents using tables—no code, no engineering required. See ByteBeam Agent Builder in action.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button

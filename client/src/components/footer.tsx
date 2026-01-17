@@ -9,7 +9,7 @@ const organizationSchema = {
   "name": "ByteBeam",
   "url": "https://bytebeam.co",
   "logo": "https://bytebeam.co/bytebeam_logo.png",
-  "description": "AI agents built by Subject Matter Experts for document automation, regulatory compliance, and intelligent document processing across FMCG, pharma, finance, and legal industries.",
+  "description": "ByteBeam Agent Builder: A table-based AI agent builder for document work. SMEs build AI agents using an Excel-like interface to automate KYC, compliance, risk assessment, and document workflows.",
   "foundingDate": "2023",
   "sameAs": [
     "https://www.linkedin.com/company/bytebeam"
@@ -61,7 +61,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-muted-foreground mb-4">
-              AI agents built by Subject Matter Experts, not engineers. No code required.
+              Table-based AI agent builder for document work. SMEs build agents, no code required.
             </p>
           </div>
 

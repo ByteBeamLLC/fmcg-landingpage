@@ -19,13 +19,13 @@ interface ByteBeamValuePropProps {
 const PLATFORM_FEATURES = [
   {
     icon: Bot,
-    title: "AI Agents Built by Experts",
-    description: "Subject matter experts, not just engineers, build our AI agents for accurate, industry-specific results.",
+    title: "Table-Based Agent Builder",
+    description: "SMEs build AI agents using tables—columns for data, rows for documents, rules for logic. No code required.",
   },
   {
     icon: FileCheck,
-    title: "Regulatory Compliance",
-    description: "Automate compliance checks for UAE, Saudi Arabia, and GCC regulations in FMCG and Pharma.",
+    title: "Built for Document Work",
+    description: "Automate KYC, compliance checks, risk assessment, and any document workflow that requires SME judgment.",
   },
   {
     icon: Globe,
@@ -34,8 +34,8 @@ const PLATFORM_FEATURES = [
   },
   {
     icon: Zap,
-    title: "Process Thousands of Documents",
-    description: "Scale from single documents to enterprise batch processing with custom workflows.",
+    title: "Scale Document Processing",
+    description: "Scale from single documents to thousands with automated batch processing and custom workflows.",
   },
   {
     icon: Shield,
@@ -47,23 +47,23 @@ const PLATFORM_FEATURES = [
 const CONTEXT_MESSAGES: Record<string, { headline: string; subtext: string; cta: string }> = {
   ocr: {
     headline: "Need to Process Hundreds of Documents?",
-    subtext: "ByteBeam's AI agents can extract and validate data from thousands of documents automatically, with built-in compliance checking for UAE and Saudi regulations.",
-    cta: "See How ByteBeam Automates OCR at Scale",
+    subtext: "ByteBeam Agent Builder lets SMEs build AI agents that extract and validate data from thousands of documents—using tables, not code.",
+    cta: "See ByteBeam Agent Builder in Action",
   },
   pdf: {
     headline: "Managing Complex Document Workflows?",
-    subtext: "ByteBeam transforms document chaos into automated pipelines. Extract data, validate compliance, and integrate with your existing systems.",
-    cta: "Explore Enterprise Document Processing",
+    subtext: "ByteBeam Agent Builder turns document chaos into automated pipelines. SMEs define extraction rules, validation logic, and routing—all using tables.",
+    cta: "Explore ByteBeam Agent Builder",
   },
   image: {
     headline: "Processing Product Images for Compliance?",
-    subtext: "ByteBeam's food label AI agent automatically extracts, translates, and validates product labels against UAE and GCC regulations.",
-    cta: "Learn About Label Compliance Automation",
+    subtext: "ByteBeam Agent Builder lets compliance teams build AI agents that extract, translate, and validate product labels against UAE and GCC regulations.",
+    cta: "Learn About Label Compliance Agents",
   },
   general: {
-    headline: "Ready to Automate Your Document Workflows?",
-    subtext: "ByteBeam builds AI agents for document automation in FMCG, Pharma, Finance, and Legal industries. No coding required.",
-    cta: "Discover ByteBeam's AI Platform",
+    headline: "Ready to Build Your Own Document Agent?",
+    subtext: "ByteBeam Agent Builder: A table-based AI agent builder for document work. SMEs build agents using tables—no code required.",
+    cta: "Discover ByteBeam Agent Builder",
   },
 };
 
@@ -127,7 +127,7 @@ export function ByteBeamValueProp({ variant = "full", context = "general" }: Byt
       <div className="text-center max-w-3xl mx-auto">
         <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
           <Bot className="size-4" />
-          Powered by ByteBeam
+          Powered by ByteBeam Agent Builder
         </div>
         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
           {contextMessage.headline}
@@ -191,13 +191,13 @@ export function ByteBeamValueProp({ variant = "full", context = "general" }: Byt
             </div>
           </div>
           <div className="space-y-4">
-            <h4 className="font-semibold text-lg">What ByteBeam Does Differently</h4>
+            <h4 className="font-semibold text-lg">Why ByteBeam Agent Builder?</h4>
             <ul className="space-y-3">
               {[
-                "Built by subject matter experts, not just engineers",
+                "Table-based interface—build agents like you build spreadsheets",
+                "SMEs build agents themselves, no engineering required",
                 "Native Arabic language processing",
                 "UAE & Saudi regulatory compliance built-in",
-                "No code required - configure, don't code",
                 "Enterprise-grade security and data residency",
               ].map((item, index) => (
                 <li key={index} className="flex items-start gap-3">

@@ -278,6 +278,13 @@
 
   <!-- Blog Articles -->
   <url>
+    <loc>https://bytebeam.co/blog/automation-platform-comparison-2026</loc>
+    <lastmod>2026-01-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://bytebeam.co/blog/uae-food-labeling-requirements-2026</loc>
     <lastmod>2026-01-16</lastmod>
     <changefreq>monthly</changefreq>

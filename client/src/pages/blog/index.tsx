@@ -17,6 +17,16 @@ interface BlogPost {
 
 const blogPosts: BlogPost[] = [
   {
+    slug: "automation-platform-comparison-2026",
+    title: "Automation Platforms Compared (2026): AI Agent Builders vs RPA vs IDP vs Workflow",
+    description: "In 2026, automation is a stack. This guide compares AI agent builders, RPA, IDP, and workflow platforms—plus how non-technical SMEs can build document-work agents.",
+    category: "Automation",
+    industry: "Cross-Industry",
+    readTime: "12 min",
+    date: "2026-01-17",
+    image: "/images/blog/automation-platform-comparison-2026.jpg"
+  },
+  {
     slug: "uae-food-labeling-requirements-2026",
     title: "UAE Food Labeling Requirements 2026: Complete Compliance Guide",
     description: "Master UAE food label compliance in 2026. ESMA regulations, Arabic requirements, NutriMark system, and step-by-step guide for FMCG manufacturers.",
