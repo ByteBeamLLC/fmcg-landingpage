@@ -13,18 +13,12 @@ export const aiToolsLimiter = rateLimit({
   },
   standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
-  keyGenerator: (req) => {
-    // Use X-Forwarded-For if behind a proxy, otherwise use IP
-    return (
-      (req.headers["x-forwarded-for"] as string)?.split(",")[0]?.trim() ||
-      req.ip ||
-      "unknown"
-    );
-  },
+  // Use default keyGenerator which handles IPv6 properly
   skip: (req) => {
     // Skip rate limiting for status endpoints
     return req.path === "/api/tools/status" || req.path === "/api/tools/rate-limit-status";
   },
+  validate: { xForwardedForHeader: false }, // Disable IPv6 validation warning
 });
 
 /**
@@ -40,23 +34,15 @@ export const generalToolsLimiter = rateLimit({
   },
   standardHeaders: true,
   legacyHeaders: false,
-  keyGenerator: (req) => {
-    return (
-      (req.headers["x-forwarded-for"] as string)?.split(",")[0]?.trim() ||
-      req.ip ||
-      "unknown"
-    );
-  },
+  // Use default keyGenerator which handles IPv6 properly
+  validate: { xForwardedForHeader: false }, // Disable IPv6 validation warning
 });
 
 /**
  * Store for tracking rate limit info (used by status endpoint)
  */
 export const getRateLimitInfo = (req: any) => {
-  const key =
-    (req.headers["x-forwarded-for"] as string)?.split(",")[0]?.trim() ||
-    req.ip ||
-    "unknown";
+  const key = req.ip || "unknown";
 
   // Get remaining requests from headers if available
   const remaining = req.rateLimit?.remaining ?? 10;

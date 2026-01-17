@@ -18,6 +18,8 @@ import InsuranceIndustry from "@/pages/industries/insurance";
 import OperationsIndustry from "@/pages/industries/operations";
 import UAEFoodLabelLocalization from "@/pages/solutions/uae-food-label-localization";
 import SaudiPharmaGapAnalysis from "@/pages/solutions/saudi-pharma-gap-analysis";
+import SolutionsIndex from "@/pages/solutions/index";
+import IndustriesIndex from "@/pages/industries/index";
 
 // Tools pages - lazy loaded for better performance
 const ToolsDirectory = lazy(() => import("@/pages/tools/index"));
@@ -103,6 +105,8 @@ function Router() {
         <Route path="/fmcg-label-compliance" component={FMCGIndustry} />
         <Route path="/about" component={About} />
         <Route path="/case-study/:id" component={CaseStudy} />
+        <Route path="/solutions" component={SolutionsIndex} />
+        <Route path="/industries" component={IndustriesIndex} />
         <Route path="/industries/fmcg" component={FMCGIndustry} />
         <Route path="/industries/pharma" component={PharmaIndustry} />
         <Route path="/industries/finance" component={FinanceIndustry} />
