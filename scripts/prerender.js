@@ -118,19 +118,19 @@ function startServer() {
 async function prerenderRoute(browser, route) {
   const page = await browser.newPage();
   const url = `${BASE_URL}${route}`;
-  
+
   try {
-    // Navigate to the page
-    await page.goto(url, { 
-      waitUntil: 'networkidle0',
-      timeout: 30000 
+    // Navigate to the page - use 'domcontentloaded' to avoid hanging on persistent connections
+    await page.goto(url, {
+      waitUntil: 'domcontentloaded',
+      timeout: 15000
     });
-    
+
     // Wait for React to render
-    await page.waitForSelector('#root > *', { timeout: 10000 });
-    
-    // Additional wait for any lazy-loaded content
-    await page.evaluate(() => new Promise(resolve => setTimeout(resolve, 500)));
+    await page.waitForSelector('#root > *', { timeout: 5000 });
+
+    // Brief wait for content to render (reduced from 500ms)
+    await page.evaluate(() => new Promise(resolve => setTimeout(resolve, 200)));
     
     // Get the rendered HTML
     const html = await page.content();
