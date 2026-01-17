@@ -109,7 +109,7 @@ export default function PDFRotate() {
       description="Rotate PDF pages online for free. Turn PDF pages 90°, 180°, or 270°. No signup, no watermarks, instant download."
       category="PDF Tools"
       keywords="rotate pdf, pdf rotator, turn pdf, rotate pdf pages, rotate pdf online free, flip pdf, pdf rotation tool"
-      toolContext="pdf-merger"
+      toolContext="pdf-rotate"
     >
       <div className="grid lg:grid-cols-2 gap-6">
         <div className="space-y-6">

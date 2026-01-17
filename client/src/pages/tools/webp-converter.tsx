@@ -144,7 +144,7 @@ export default function WebpConverter() {
       description="Convert images to WebP or WebP to JPG/PNG online for free. Reduce image file sizes with modern WebP format. No signup, instant download."
       category="Image Tools"
       keywords="webp converter, convert to webp, webp to jpg, webp to png, jpg to webp, png to webp, webp converter online free"
-      toolContext="image-compressor"
+      toolContext="webp-converter"
     >
       <div className="grid lg:grid-cols-2 gap-6">
         <div className="space-y-6">

@@ -196,7 +196,7 @@ export default function ResumeParser() {
       category="AI Document Processing"
       keywords="resume parser, CV parser, extract resume data, parse resume, ATS parser, resume to JSON, free resume parser"
       isAIPowered={true}
-      toolContext="document-extraction"
+      toolContext="resume-parser"
     >
       <div className="grid lg:grid-cols-2 gap-6">
         <div className="space-y-6">

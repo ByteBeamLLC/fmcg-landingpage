@@ -130,7 +130,7 @@ export default function CsvToExcel() {
       description="Convert CSV to Excel online for free. Transform CSV files to Excel spreadsheets (.xlsx) instantly. No signup, no watermarks, works on any device."
       category="Document Conversion"
       keywords="csv to excel, convert csv to xlsx, csv to xlsx converter, csv to spreadsheet, csv to excel online free, convert csv file to excel"
-      toolContext="pdf-merger"
+      toolContext="csv-to-excel"
     >
       <div className="grid lg:grid-cols-2 gap-6">
         <div className="space-y-6">

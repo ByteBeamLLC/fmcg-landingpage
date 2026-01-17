@@ -130,7 +130,7 @@ export default function ExcelToJson() {
       description="Convert Excel to JSON online for free. Transform Excel spreadsheets (.xlsx, .xls) to JSON format instantly. No signup, no watermarks, works on any device."
       category="Document Conversion"
       keywords="excel to json, convert xlsx to json, excel to json converter, xlsx to json, xls to json, convert excel to json online free"
-      toolContext="pdf-merger"
+      toolContext="excel-to-json"
     >
       <div className="grid lg:grid-cols-2 gap-6">
         <div className="space-y-6">

@@ -146,7 +146,7 @@ export default function QRCodeReader() {
       description="Scan and decode QR codes from images online for free. Upload a screenshot or photo of a QR code to read its content instantly. No signup required."
       category="QR & Barcode"
       keywords="qr code reader, scan qr code, qr code scanner, read qr code from image, qr code decoder, scan qr code online free, qr scanner"
-      toolContext="pdf-merger"
+      toolContext="qr-code-reader"
     >
       <div className="grid lg:grid-cols-2 gap-6">
         <div className="space-y-6">

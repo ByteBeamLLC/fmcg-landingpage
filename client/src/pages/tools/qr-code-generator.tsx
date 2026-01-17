@@ -125,7 +125,7 @@ export default function QRCodeGenerator() {
       description="Generate QR codes for free online. Create QR codes for URLs, text, email, phone, WiFi. No signup, instant download, works on any device."
       category="QR & Barcode"
       keywords="qr code generator, create qr code, qr code maker, free qr code generator, qr code online, generate qr code, make qr code"
-      toolContext="pdf-merger"
+      toolContext="qr-code-generator"
     >
       <div className="grid lg:grid-cols-2 gap-6">
         <div className="space-y-6">

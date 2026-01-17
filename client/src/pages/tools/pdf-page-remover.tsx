@@ -144,7 +144,7 @@ export default function PDFPageRemover() {
       description="Delete pages from PDF online for free. Remove unwanted pages from any PDF file. No signup, no watermarks, instant download."
       category="PDF Tools"
       keywords="remove pages from pdf, delete pdf pages, pdf page remover, remove page from pdf online free, delete pages in pdf, pdf page deleter"
-      toolContext="pdf-merger"
+      toolContext="pdf-page-remover"
     >
       <div className="grid lg:grid-cols-2 gap-6">
         <div className="space-y-6">

@@ -129,7 +129,7 @@ export default function PhotoToText() {
       description="Convert photos to text instantly. Extract text from camera photos, documents, signs, receipts. Free OCR tool for iPhone & Android. No signup required."
       category="OCR & Text Extraction"
       keywords="photo to text, extract text from photo, picture to text, camera to text, photo OCR, convert photo to text, text from picture"
-      toolContext="image-to-text"
+      toolContext="photo-to-text"
     >
       <div className="grid lg:grid-cols-2 gap-6">
         <div className="space-y-6">

@@ -157,7 +157,7 @@ export default function ImageConverter() {
       description="Convert images between JPG, PNG, and WebP formats online for free. No signup, no watermarks, instant download. Works on any device."
       category="Image Tools"
       keywords="image converter, convert jpg to png, png to jpg, jpg to webp, image format converter, convert image online free, change image format"
-      toolContext="image-compressor"
+      toolContext="image-converter"
     >
       <div className="grid lg:grid-cols-2 gap-6">
         <div className="space-y-6">

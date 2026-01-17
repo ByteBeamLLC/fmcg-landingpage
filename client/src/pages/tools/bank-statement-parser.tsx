@@ -205,7 +205,7 @@ export default function BankStatementParser() {
       category="AI Document Processing"
       keywords="bank statement parser, extract bank transactions, bank OCR, statement to CSV, bank statement converter, free bank parser"
       isAIPowered={true}
-      toolContext="document-extraction"
+      toolContext="bank-statement-parser"
     >
       <div className="grid lg:grid-cols-2 gap-6">
         <div className="space-y-6">

@@ -121,7 +121,7 @@ export default function HeicToJpg() {
       description="Convert HEIC to JPG online for free. Transform iPhone and iPad photos to JPG format instantly. No signup, no watermarks, works on any device."
       category="Image Tools"
       keywords="heic to jpg, convert heic to jpg, heic converter, iphone photo converter, heic to jpeg, convert heic online free, heif to jpg"
-      toolContext="image-compressor"
+      toolContext="heic-to-jpg"
     >
       <div className="grid lg:grid-cols-2 gap-6">
         <div className="space-y-6">

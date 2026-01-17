@@ -200,7 +200,7 @@ export default function ImageResizer() {
       description="Resize images online for free. Change image dimensions to any size. Supports JPG, PNG, WebP. No signup, no watermarks, instant download."
       category="Image Tools"
       keywords="resize image, image resizer, resize photo, change image size, resize picture online free, resize image dimensions, photo resizer"
-      toolContext="image-compressor"
+      toolContext="image-resizer"
     >
       <div className="grid lg:grid-cols-2 gap-6">
         <div className="space-y-6">

@@ -127,7 +127,7 @@ export default function ExcelToCsv() {
       description="Convert Excel to CSV online for free. Transform Excel spreadsheets (.xlsx, .xls) to CSV format instantly. No signup, no watermarks, works on any device."
       category="Document Conversion"
       keywords="excel to csv, convert xlsx to csv, excel to csv converter, xlsx to csv, xls to csv, convert excel to csv online free"
-      toolContext="pdf-merger"
+      toolContext="excel-to-csv"
     >
       <div className="grid lg:grid-cols-2 gap-6">
         <div className="space-y-6">

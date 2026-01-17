@@ -175,7 +175,7 @@ export default function JsonToExcel() {
       description="Convert JSON to Excel online for free. Transform JSON data to Excel spreadsheets (.xlsx) instantly. No signup, no watermarks, works on any device."
       category="Document Conversion"
       keywords="json to excel, convert json to xlsx, json to spreadsheet, json to excel converter, json to xlsx online free, convert json to excel"
-      toolContext="pdf-merger"
+      toolContext="json-to-excel"
     >
       <div className="grid lg:grid-cols-2 gap-6">
         <div className="space-y-6">

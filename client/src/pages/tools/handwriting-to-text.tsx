@@ -129,7 +129,7 @@ export default function HandwritingToText() {
       description="Convert handwritten notes to text online for free. OCR tool to digitize handwriting from photos or scans. No signup required, works on any device."
       category="OCR & Text Extraction"
       keywords="handwriting to text, convert handwriting to text, handwritten notes to text, handwriting OCR, digitize handwriting, handwriting recognition"
-      toolContext="image-to-text"
+      toolContext="handwriting-to-text"
     >
       <div className="grid lg:grid-cols-2 gap-6">
         <div className="space-y-6">

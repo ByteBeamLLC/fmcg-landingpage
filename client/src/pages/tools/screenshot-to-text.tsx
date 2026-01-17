@@ -139,7 +139,7 @@ export default function ScreenshotToText() {
       description="Extract text from screenshots instantly. Copy text from any screenshot on Windows, Mac, iPhone or Android. Free OCR tool, no signup required."
       category="OCR & Text Extraction"
       keywords="screenshot to text, extract text from screenshot, copy text from screenshot, screenshot OCR, screen capture to text, screenshot text extractor"
-      toolContext="image-to-text"
+      toolContext="screenshot-to-text"
     >
       <div className="grid lg:grid-cols-2 gap-6">
         <div className="space-y-6">

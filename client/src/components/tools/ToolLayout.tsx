@@ -6,7 +6,7 @@ import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import SEO from "@/components/SEO";
 import { Badge } from "@/components/ui/badge";
-import { AgentConversion } from "./AgentConversion";
+import { ToolCTA } from "./ToolCTA";
 
 type ToolContext =
   | "image-to-text"
@@ -139,16 +139,9 @@ export default function ToolLayout({
             {children}
           </motion.div>
 
-          {/* Agent Conversion Section - Under the fold */}
-          {showAgentConversion && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="mt-12 max-w-lg mx-auto"
-            >
-              <AgentConversion toolName={shortToolName} variant="section" />
-            </motion.div>
+          {/* Tool CTA Section - Under the fold */}
+          {showAgentConversion && toolContext && (
+            <ToolCTA toolContext={toolContext} />
           )}
 
           {/* Powered by ByteBeam */}
