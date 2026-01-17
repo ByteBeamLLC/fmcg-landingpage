@@ -246,6 +246,15 @@ export default function Footer() {
               </li>
               <li>
                 <Link
+                  href="/blog"
+                  className="hover:text-primary transition-colors"
+                  data-testid="footer-link-blogs"
+                >
+                  Blogs
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/#case-studies"
                   className="hover:text-primary transition-colors"
                   data-testid="footer-link-case-studies"
