@@ -34,6 +34,16 @@ jobs:
         run: npm run prerender
         timeout-minutes: 10
 
+      - name: Copy Vercel config to output
+        run: |
+          # Copy vercel.json but remove build-specific settings for prebuilt deployment
+          node -e "
+            const config = require('./vercel.json');
+            delete config.buildCommand;
+            delete config.outputDirectory;
+            require('fs').writeFileSync('dist/public/vercel.json', JSON.stringify(config, null, 2));
+          "
+
       - name: Deploy to Vercel (Production)
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         uses: amondnet/vercel-action@v25
