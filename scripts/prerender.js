@@ -257,24 +257,36 @@ async function prerender() {
   
   // Cleanup
   await browser.close();
-  server.kill();
-  
+
+  // Force kill the server process and any children
+  try {
+    server.kill('SIGKILL');
+  } catch {
+    // Ignore kill errors
+  }
+
   console.log(`\n✅ Prerendering complete!`);
   console.log(`   Success: ${successCount}/${ROUTES.length}`);
   if (failCount > 0) {
     console.log(`   Failed: ${failCount}/${ROUTES.length}`);
   }
-  
+
   // Verify homepage has content
   const homepageHtml = await fs.readFile(path.join(DIST_DIR, 'index.html'), 'utf-8');
   const hasContent = homepageHtml.includes('ByteBeam') && homepageHtml.length > 10000;
-  
+
   if (hasContent) {
     console.log('\n✓ Homepage verified: Contains rendered content');
   } else {
     console.log('\n⚠ Warning: Homepage may not have rendered properly');
   }
+
+  // Explicitly exit to ensure process terminates
+  process.exit(failCount > 0 ? 1 : 0);
 }
 
 // Run
-prerender().catch(console.error);
+prerender().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});
