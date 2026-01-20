@@ -102,7 +102,6 @@ function Router() {
     <Suspense fallback={<ToolsLoading />}>
       <Switch>
         <Route path="/" component={Platform} />
-        <Route path="/fmcg-label-compliance" component={FMCGIndustry} />
         <Route path="/about" component={About} />
         <Route path="/case-study/:id" component={CaseStudy} />
         <Route path="/solutions" component={SolutionsIndex} />
@@ -114,13 +113,7 @@ function Router() {
         <Route path="/industries/insurance" component={InsuranceIndustry} />
         <Route path="/industries/operations" component={OperationsIndustry} />
         <Route path="/solutions/uae-food-label-localization" component={UAEFoodLabelLocalization} />
-        <Route path="/uae-food-label-localization" component={UAEFoodLabelLocalization} />
-        <Route path="/food-label-localization-uae" component={UAEFoodLabelLocalization} />
-        <Route path="/dubai-food-label-compliance" component={UAEFoodLabelLocalization} />
         <Route path="/solutions/saudi-pharma-gap-analysis" component={SaudiPharmaGapAnalysis} />
-        <Route path="/sfda-dossier-gap-analysis" component={SaudiPharmaGapAnalysis} />
-        <Route path="/saudi-pharma-registration" component={SaudiPharmaGapAnalysis} />
-        <Route path="/sfda-drug-registration" component={SaudiPharmaGapAnalysis} />
 
         {/* Tools Routes */}
         <Route path="/tools" component={ToolsDirectory} />

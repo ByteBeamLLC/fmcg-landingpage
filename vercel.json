@@ -3,6 +3,43 @@
   "outputDirectory": "dist/public",
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/uae-food-label-localization",
+      "destination": "/solutions/uae-food-label-localization",
+      "statusCode": 301
+    },
+    {
+      "source": "/food-label-localization-uae",
+      "destination": "/solutions/uae-food-label-localization",
+      "statusCode": 301
+    },
+    {
+      "source": "/dubai-food-label-compliance",
+      "destination": "/solutions/uae-food-label-localization",
+      "statusCode": 301
+    },
+    {
+      "source": "/sfda-dossier-gap-analysis",
+      "destination": "/solutions/saudi-pharma-gap-analysis",
+      "statusCode": 301
+    },
+    {
+      "source": "/saudi-pharma-registration",
+      "destination": "/solutions/saudi-pharma-gap-analysis",
+      "statusCode": 301
+    },
+    {
+      "source": "/sfda-drug-registration",
+      "destination": "/solutions/saudi-pharma-gap-analysis",
+      "statusCode": 301
+    },
+    {
+      "source": "/fmcg-label-compliance",
+      "destination": "/industries/fmcg",
+      "statusCode": 301
+    }
+  ],
   "rewrites": [
     {
       "source": "/case-study/:path*",

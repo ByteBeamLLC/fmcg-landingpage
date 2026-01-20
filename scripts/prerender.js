@@ -23,15 +23,15 @@ const ROUTES = [
   // Main pages
   '/',
   '/about',
-  
+
   // Hub pages
   '/solutions',
   '/industries',
-  
+
   // Solution pages
   '/solutions/uae-food-label-localization',
   '/solutions/saudi-pharma-gap-analysis',
-  
+
   // Industry pages
   '/industries/fmcg',
   '/industries/pharma',
@@ -39,10 +39,10 @@ const ROUTES = [
   '/industries/legal',
   '/industries/insurance',
   '/industries/operations',
-  
+
   // Tools directory
   '/tools',
-  
+
   // High-value AI tools (prioritized)
   '/tools/contract-analyzer',
   '/tools/contract-clause-finder',
@@ -56,7 +56,7 @@ const ROUTES = [
   '/tools/receipt-scanner',
   '/tools/bank-statement-parser',
   '/tools/resume-parser',
-  
+
   // PDF & Document tools
   '/tools/pdf-table-extractor',
   '/tools/image-to-text',
@@ -67,7 +67,44 @@ const ROUTES = [
   '/tools/pdf-merger',
   '/tools/pdf-splitter',
   '/tools/image-to-pdf',
-  
+  '/tools/pdf-page-remover',
+  '/tools/pdf-rotate',
+
+  // OCR tools
+  '/tools/screenshot-to-text',
+  '/tools/photo-to-text',
+
+  // Image tools
+  '/tools/image-compressor',
+  '/tools/image-resizer',
+  '/tools/image-converter',
+  '/tools/heic-to-jpg',
+  '/tools/webp-converter',
+
+  // Spreadsheet tools
+  '/tools/csv-to-excel',
+  '/tools/excel-to-csv',
+  '/tools/json-to-excel',
+  '/tools/excel-to-json',
+
+  // QR Code tools
+  '/tools/qr-code-generator',
+  '/tools/qr-code-reader',
+
+  // Document generators
+  '/tools/nda-generator',
+  '/tools/lease-generator',
+  '/tools/w2-generator',
+  '/tools/1099-generator',
+
+  // File search
+  '/tools/file-search',
+
+  // Case studies
+  '/case-study/takhlees',
+  '/case-study/carrefour',
+  '/case-study/research-copilot',
+
   // Blog
   '/blog',
   '/blog/automation-platform-comparison-2026',
