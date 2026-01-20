@@ -34,31 +34,62 @@ jobs:
         run: npm run prerender
         timeout-minutes: 10
 
-      - name: Copy Vercel config to output
+      - name: Prepare Vercel prebuilt output
         run: |
-          # Copy vercel.json but remove build-specific settings for prebuilt deployment
+          # Create Vercel prebuilt output structure
+          mkdir -p .vercel/output/static
+          cp -r dist/public/* .vercel/output/static/
+
+          # Create config.json with routing rules
           node -e "
             const config = require('./vercel.json');
-            delete config.buildCommand;
-            delete config.outputDirectory;
-            require('fs').writeFileSync('dist/public/vercel.json', JSON.stringify(config, null, 2));
+            const outputConfig = {
+              version: 3,
+              routes: []
+            };
+
+            // Add redirects
+            if (config.redirects) {
+              config.redirects.forEach(r => {
+                outputConfig.routes.push({
+                  src: r.source.replace(/:\w+\*/g, '(.*)'),
+                  status: r.statusCode,
+                  headers: { Location: r.destination.replace(/:\w+\*/g, '\$1') }
+                });
+              });
+            }
+
+            // Add rewrites (SPA fallback)
+            if (config.rewrites) {
+              config.rewrites.forEach(r => {
+                if (r.source === '/:path*') {
+                  // SPA catch-all - serve index.html for unmatched routes
+                  outputConfig.routes.push({
+                    src: '/((?!api/).*)',
+                    dest: '/index.html'
+                  });
+                } else if (r.source.includes('/api/')) {
+                  // Skip API rewrites for static deployment
+                }
+              });
+            }
+
+            require('fs').writeFileSync('.vercel/output/config.json', JSON.stringify(outputConfig, null, 2));
           "
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel@latest
 
       - name: Deploy to Vercel (Production)
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          working-directory: ./dist/public
-          vercel-args: '--prod'
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --prod --yes
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
       - name: Deploy to Vercel (Preview)
         if: github.event_name == 'pull_request'
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          working-directory: ./dist/public
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --yes
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
