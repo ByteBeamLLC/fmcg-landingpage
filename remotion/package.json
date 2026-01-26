@@ -1,0 +1,25 @@
+{
+  "name": "bytebeam-video",
+  "version": "1.0.0",
+  "description": "ByteBeam social media ad video",
+  "scripts": {
+    "start": "remotion studio",
+    "build": "remotion render ByteBeamAd out/bytebeam-ad.mp4",
+    "preview": "remotion preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@remotion/cli": "^4.0.407",
+    "@remotion/transitions": "^4.0.407",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "remotion": "^4.0.407"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.9",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^5.9.3"
+  }
+}

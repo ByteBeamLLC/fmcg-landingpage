@@ -128,21 +128,21 @@ export default function BlogLayout({
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="prose prose-lg dark:prose-invert max-w-none
+              className="prose prose-lg dark:prose-invert max-w-none text-foreground
                 prose-headings:font-bold prose-headings:text-foreground
                 prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
                 prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
                 prose-h4:text-xl prose-h4:mt-6 prose-h4:mb-3
-                prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:mb-4
-                prose-li:text-muted-foreground
-                prose-strong:text-foreground
+                prose-p:text-foreground prose-p:leading-relaxed prose-p:mb-4
+                prose-li:text-foreground prose-li:marker:text-foreground
+                prose-strong:text-foreground prose-strong:font-semibold
                 prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-                prose-blockquote:border-l-primary prose-blockquote:bg-muted prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:rounded-r-lg
+                prose-blockquote:border-l-primary prose-blockquote:bg-muted prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:rounded-r-lg prose-blockquote:text-foreground
                 prose-table:border-collapse prose-table:w-full
-                prose-th:bg-muted prose-th:p-3 prose-th:text-left prose-th:border prose-th:border-border
-                prose-td:p-3 prose-td:border prose-td:border-border
-                prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
-                prose-pre:bg-muted prose-pre:p-4 prose-pre:rounded-lg"
+                prose-th:bg-muted prose-th:p-3 prose-th:text-left prose-th:border prose-th:border-border prose-th:text-foreground prose-th:font-semibold
+                prose-td:p-3 prose-td:border prose-td:border-border prose-td:text-foreground
+                prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:text-foreground
+                prose-pre:bg-muted prose-pre:p-4 prose-pre:rounded-lg prose-pre:text-foreground"
             >
               {children}
             </motion.div>

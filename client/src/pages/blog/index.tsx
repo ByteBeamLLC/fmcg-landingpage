@@ -17,6 +17,26 @@ interface BlogPost {
 
 const blogPosts: BlogPost[] = [
   {
+    slug: "arabic-ocr-challenges-solutions-2026",
+    title: "Arabic OCR in 2026: Why It's Still Hard and What Actually Works",
+    description: "Arabic OCR remains 20-30% less accurate than English. Learn why, what solutions actually work (we tested them), and how to design production systems around 80% accuracy.",
+    category: "Automation",
+    industry: "Cross-Industry",
+    readTime: "8 min",
+    date: "2026-01-21",
+    image: "/images/blog/arabic-ocr-complex-document.jpg"
+  },
+  {
+    slug: "agentic-ocr-intelligent-data-extraction-2026",
+    title: "Agentic OCR: How AI Agents Are Revolutionizing Document Data Extraction in 2026",
+    description: "Agentic OCR explained for 2026. Learn how AI agents transform document extraction with adaptive reasoning, when to use it, and what it means for your business.",
+    category: "Automation",
+    industry: "Cross-Industry",
+    readTime: "12 min",
+    date: "2026-01-21",
+    image: "/images/blog/agentic-ocr-data-extraction.jpg"
+  },
+  {
     slug: "automation-platform-comparison-2026",
     title: "Automation Platforms Compared (2026): AI Agent Builders vs RPA vs IDP vs Workflow",
     description: "In 2026, automation is a stack. This guide compares AI agent builders, RPA, IDP, and workflow platforms—plus how non-technical SMEs can build document-work agents.",

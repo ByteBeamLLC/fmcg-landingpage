@@ -9,6 +9,7 @@ import CTASection from "@/components/cta-section";
 import Footer from "@/components/footer";
 import LiveChatWidget from "@/components/live-chat-widget";
 import SEO from "@/components/SEO";
+import ProductHuntBanner from "@/components/product-hunt-banner";
 
 // Homepage structured data schemas
 const homepageStructuredData = [
@@ -99,11 +100,12 @@ const homepageStructuredData = [
 export default function Platform() {
   return (
     <div className="min-h-screen">
+      <ProductHuntBanner />
       <SEO
-        title="No-Code AI Document Automation | Excel-Like Interface | ByteBeam"
-        description="Build AI agents as easily as building a spreadsheet. No coding required. ByteBeam empowers business users to automate document workflows with 99% accuracy."
-        ogTitle="No-Code AI Document Automation | ByteBeam"
-        ogDescription="Build AI agents as easily as building a spreadsheet. No coding required. Turn document work from hours to minutes with 99% accuracy."
+        title="10x Faster Document Processing | No-Code AI Agents | ByteBeam"
+        description="10x faster document processing with 99% accuracy. Build AI agents without developers—if you can use Excel, you can automate complex document workflows."
+        ogTitle="10x Faster Document Processing | ByteBeam"
+        ogDescription="Build AI agents without developers. 10x faster document processing with 99% accuracy. Used by Carrefour and government agencies."
         ogImage="https://bytebeam.co/og/homepage.png"
         keywords="no-code document automation, AI agents for business users, Excel-like automation, spreadsheet AI interface, document workflow automation, document automation without coding"
         canonical="https://bytebeam.co"

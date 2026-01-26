@@ -64,13 +64,13 @@ export default function PlatformHero() {
               No Code Required
             </div>
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight" data-testid="hero-title">
-              Build AI Agents<br />
-              Like Building a<br />
-              <span className="text-primary drop-shadow-[0_0_12px_rgba(15,91,216,0.2)]">Spreadsheet</span>
+              <span className="text-primary drop-shadow-[0_0_12px_rgba(15,91,216,0.2)]">10x Faster</span> Document<br />
+              Processing with<br />
+              99% Accuracy
             </h1>
 
             <p className="text-2xl text-slate-600 mb-4 font-light max-w-3xl mx-auto" data-testid="hero-description">
-              No coding required. If you can use Excel, you can build AI agents that automate document work in minutes.
+              Build AI agents without developers. If you can use Excel, you can automate complex document workflows in hours, not months.
             </p>
 
             <div className="text-xl text-slate-500 mb-10">

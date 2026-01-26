@@ -87,6 +87,8 @@ const GCCDocumentComplianceBlog = lazy(() => import("@/pages/blog/gcc-document-c
 const NoCodeDocumentAutomationBlog = lazy(() => import("@/pages/blog/no-code-document-automation-regulatory-teams-2026"));
 const IDPBusinessGuideBlog = lazy(() => import("@/pages/blog/intelligent-document-processing-business-guide-2026"));
 const InvoiceProcessingBlog = lazy(() => import("@/pages/blog/automating-invoice-processing-2026"));
+const AgenticOCRBlog = lazy(() => import("@/pages/blog/agentic-ocr-intelligent-data-extraction-2026"));
+const ArabicOCRBlog = lazy(() => import("@/pages/blog/arabic-ocr-challenges-solutions-2026"));
 
 // Loading component for lazy-loaded routes
 function ToolsLoading() {
@@ -179,6 +181,8 @@ function Router() {
         <Route path="/blog/no-code-document-automation-regulatory-teams-2026" component={NoCodeDocumentAutomationBlog} />
         <Route path="/blog/intelligent-document-processing-business-guide-2026" component={IDPBusinessGuideBlog} />
         <Route path="/blog/automating-invoice-processing-2026" component={InvoiceProcessingBlog} />
+        <Route path="/blog/agentic-ocr-intelligent-data-extraction-2026" component={AgenticOCRBlog} />
+        <Route path="/blog/arabic-ocr-challenges-solutions-2026" component={ArabicOCRBlog} />
 
         <Route component={NotFound} />
       </Switch>
