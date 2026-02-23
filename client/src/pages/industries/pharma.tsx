@@ -100,10 +100,6 @@ function HeroSection({ onBookDemo }: { onBookDemo: () => void }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="text-white font-bold text-lg mb-4 tracking-wide">
-              Bytebeam
-            </div>
-
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1] tracking-tight">
               AI Platform for<br />
               Pharmaceutical<br />
