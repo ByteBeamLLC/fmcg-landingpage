@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { User, ArrowRight } from "lucide-react";
+import { User, ArrowRight, Quote } from "lucide-react";
 import { Link } from "wouter";
+import { useState, useEffect } from "react";
 import takhleesLogo from "@assets/takhlees_logo_1759326324559.webp";
 import carrefourLogo from "@assets/carrefour_1759413703784.png";
 import infoquestLogo from "@assets/infoquest-logo-black_1759405455898.png";
@@ -12,6 +13,44 @@ const clients = [
   { id: "infoquest", name: "InfoQuest", logo: infoquestLogo, category: "Automation Client", caseStudyUrl: null },
 ];
 
+function AnimatedStat({ value, label, sublabel }: { value: string; label: string; sublabel: string }) {
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.5 });
+  const numericValue = parseInt(value.replace(/[^0-9]/g, ''));
+  const suffix = value.replace(/[0-9,]/g, '');
+  const hasComma = numericValue >= 1000;
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!inView) return;
+    const duration = 2000;
+    const startTime = Date.now();
+    const interval = setInterval(() => {
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.round(eased * numericValue));
+      if (progress >= 1) clearInterval(interval);
+    }, 16);
+    return () => clearInterval(interval);
+  }, [inView, numericValue]);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 30 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6 }}
+      className="bg-card border-2 border-border rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+    >
+      <div className="inline-block bg-primary text-white px-6 py-3 rounded-full font-bold font-display text-3xl mb-4">
+        {hasComma ? count.toLocaleString() : count}{suffix}
+      </div>
+      <div className="text-xl font-bold mb-2">{label}</div>
+      <div className="text-muted-foreground">{sublabel}</div>
+    </motion.div>
+  );
+}
+
 export default function SocialProof() {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -20,7 +59,7 @@ export default function SocialProof() {
 
   const stats = [
     {
-      value: "10,000+",
+      value: "10000+",
       label: "Products Localized",
       sublabel: "Zero translation complaints",
     },
@@ -65,7 +104,7 @@ export default function SocialProof() {
                 <img
                   src={client.logo}
                   alt={`${client.name} Logo`}
-                  className={`${client.id === 'carrefour' ? 'h-24 opacity-100' : 'h-16 opacity-70'} mx-auto mb-4 object-contain`}
+                  className="h-12 mx-auto mb-4 object-contain opacity-70 group-hover:opacity-100 transition-opacity"
                   data-testid={`logo-${client.id}`}
                 />
                 <div className="text-center">
@@ -94,7 +133,7 @@ export default function SocialProof() {
                     </div>
                   </Link>
                 ) : (
-                  <div className="bg-card border-2 border-border rounded-xl p-8 shadow-lg">
+                  <div className="bg-card border-2 border-border rounded-xl p-8 shadow-lg group">
                     {CardContent}
                   </div>
                 )}
@@ -152,23 +191,10 @@ export default function SocialProof() {
           </div>
         </motion.div>
 
-        {/* Stats Banner */}
+        {/* Animated Stats Banner */}
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-              className="bg-card border-2 border-border rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
-              data-testid={`stat-card-${index}`}
-            >
-              <div className="inline-block bg-primary text-white px-6 py-3 rounded-full font-bold font-display text-3xl mb-4">
-                {stat.value}
-              </div>
-              <div className="text-xl font-bold mb-2">{stat.label}</div>
-              <div className="text-muted-foreground">{stat.sublabel}</div>
-            </motion.div>
+            <AnimatedStat key={index} {...stat} />
           ))}
         </div>
 
@@ -181,8 +207,8 @@ export default function SocialProof() {
           className="max-w-4xl mx-auto"
         >
           <div className="bg-white rounded-2xl shadow-2xl p-12 relative" data-testid="testimonial-card">
-            <div className="absolute top-8 left-8 text-primary text-6xl opacity-20">
-              <i className="fas fa-quote-left"></i>
+            <div className="absolute top-8 left-8">
+              <Quote className="text-primary opacity-20" size={60} />
             </div>
             <blockquote className="relative z-10">
               <p className="text-2xl text-foreground mb-8 italic leading-relaxed">

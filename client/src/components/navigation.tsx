@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Calendar } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "wouter";
 import bytebeamLogo from "@assets/bytebeam_logo_1759326269799.png";
@@ -25,17 +25,17 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-      setIsMobileMenuOpen(false);
-    }
-  };
-
   const handleBookDemo = () => {
     window.open("https://calendly.com/talal-bytebeam/bytebeam-discovery-call", "_blank");
   };
+
+  const isActive = (path: string) => location === path;
+  const isActivePrefix = (prefix: string) => location.startsWith(prefix);
+
+  const navLinkClass = (path: string) =>
+    `relative transition-colors font-medium ${
+      isActive(path) ? "text-primary" : "text-foreground hover:text-primary"
+    }`;
 
   return (
     <motion.nav
@@ -58,7 +58,12 @@ export default function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center gap-1 transition-colors font-medium text-foreground hover:text-primary" data-testid="dropdown-trigger-solutions">
+              <DropdownMenuTrigger
+                className={`flex items-center gap-1 transition-colors font-medium ${
+                  isActivePrefix("/solutions") ? "text-primary" : "text-foreground hover:text-primary"
+                }`}
+                data-testid="dropdown-trigger-solutions"
+              >
                 AI Agents
                 <ChevronDown className="size-4" />
               </DropdownMenuTrigger>
@@ -77,7 +82,12 @@ export default function Navigation() {
             </DropdownMenu>
 
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center gap-1 transition-colors font-medium text-foreground hover:text-primary" data-testid="dropdown-trigger-industries">
+              <DropdownMenuTrigger
+                className={`flex items-center gap-1 transition-colors font-medium ${
+                  isActivePrefix("/industries") ? "text-primary" : "text-foreground hover:text-primary"
+                }`}
+                data-testid="dropdown-trigger-industries"
+              >
                 Industries
                 <ChevronDown className="size-4" />
               </DropdownMenuTrigger>
@@ -117,33 +127,52 @@ export default function Navigation() {
 
             <Link
               href="/tools"
-              className="transition-colors font-medium text-foreground hover:text-primary"
+              className={navLinkClass("/tools")}
               data-testid="nav-link-tools"
             >
               Free Tools
+              {isActive("/tools") && (
+                <motion.div
+                  layoutId="nav-indicator"
+                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
+                />
+              )}
             </Link>
 
             <Link
               href="/blog"
-              className="transition-colors font-medium text-foreground hover:text-primary"
+              className={navLinkClass("/blog")}
               data-testid="nav-link-blog"
             >
               Blog
+              {isActive("/blog") && (
+                <motion.div
+                  layoutId="nav-indicator"
+                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
+                />
+              )}
             </Link>
 
             <Link
               href="/about"
-              className="transition-colors font-medium text-foreground hover:text-primary"
+              className={navLinkClass("/about")}
               data-testid="nav-link-about"
             >
               About
+              {isActive("/about") && (
+                <motion.div
+                  layoutId="nav-indicator"
+                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
+                />
+              )}
             </Link>
 
             <Button
               onClick={handleBookDemo}
-              className="bg-primary text-primary-foreground hover:bg-primary/90"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 transition-all duration-300"
               data-testid="button-request-demo-nav"
             >
+              <Calendar className="mr-1.5 h-4 w-4" />
               Book a Demo
             </Button>
           </div>
@@ -163,13 +192,14 @@ export default function Navigation() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t border-border"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="md:hidden bg-white/95 backdrop-blur-xl border-t border-border shadow-xl"
           >
-            <div className="container-custom py-4 space-y-4">
-              <div className="space-y-2">
+            <div className="container-custom py-4 space-y-1">
+              <div className="space-y-1">
                 <div className="font-medium text-foreground py-2 px-2">
                   AI Agents
                 </div>
@@ -188,7 +218,8 @@ export default function Navigation() {
                   Saudi Pharma Gap Analysis
                 </Link>
               </div>
-              <div className="space-y-2">
+              <div className="border-t border-border/50 my-2" />
+              <div className="space-y-1">
                 <div className="font-medium text-foreground py-2 px-2">
                   Industries
                 </div>
@@ -235,6 +266,7 @@ export default function Navigation() {
                   Operations
                 </Link>
               </div>
+              <div className="border-t border-border/50 my-2" />
               <Link
                 href="/tools"
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -259,16 +291,19 @@ export default function Navigation() {
               >
                 About
               </Link>
-              <Button
-                onClick={() => {
-                  handleBookDemo();
-                  setIsMobileMenuOpen(false);
-                }}
-                className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
-                data-testid="button-request-demo-mobile"
-              >
-                Book a Demo
-              </Button>
+              <div className="pt-2">
+                <Button
+                  onClick={() => {
+                    handleBookDemo();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+                  data-testid="button-request-demo-mobile"
+                >
+                  <Calendar className="mr-1.5 h-4 w-4" />
+                  Book a Demo
+                </Button>
+              </div>
             </div>
           </motion.div>
         )}

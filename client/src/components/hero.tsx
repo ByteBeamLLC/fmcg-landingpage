@@ -1,17 +1,55 @@
 import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
 import { Calendar, Package, FileText, Languages, Calculator, Eye, CheckCircle, Radio, Zap } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import beverageImg from "@assets/beverage_1759397164769.png";
 import cleaningSprayImg from "@assets/cleaning-1_1759397164769.png";
 import cosmeticImg from "@assets/cosmetic_1759397164769.png";
 import chipsImg from "@assets/food_1759397164769.png";
 import detergentImg from "@assets/cleaning-2_1759397164769.png";
 
+function useCountUp(end: number, duration: number = 2000) {
+  const [count, setCount] = useState(0);
+  const [hasStarted, setHasStarted] = useState(false);
+
+  const start = useCallback(() => {
+    if (hasStarted) return;
+    setHasStarted(true);
+    const startTime = Date.now();
+    const interval = setInterval(() => {
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.round(eased * end));
+      if (progress >= 1) clearInterval(interval);
+    }, 16);
+  }, [end, duration, hasStarted]);
+
+  return { count, start };
+}
+
 export default function Hero() {
   const [currentStep, setCurrentStep] = useState(0);
-  const [progress, setProgress] = useState(0);
   const [currentCategory, setCurrentCategory] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const progressMV = useMotionValue(0);
+  const progressWidth = useTransform(progressMV, [0, 100], ["0%", "100%"]);
+  const rafRef = useRef<number | null>(null);
+  const progressStartRef = useRef<number>(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const stat1 = useCountUp(10, 2000);
+  const stat2 = useCountUp(70, 2000);
+  const stat3 = useCountUp(60, 2000);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      stat1.start();
+      stat2.start();
+      stat3.start();
+    }, 800);
+    return () => clearTimeout(timer);
+  }, []);
 
   const categories = [
     "Food",
@@ -89,15 +127,41 @@ export default function Hero() {
     }
   ];
 
-  // Main step rotation interval (3 seconds)
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentStep((prev) => (prev + 1) % steps.length);
-      setProgress(0); // Reset progress when step changes
-    }, 3000);
+  const goToStep = useCallback((step: number) => {
+    setCurrentStep(step);
+    progressMV.set(0);
+    progressStartRef.current = performance.now();
+  }, [progressMV]);
 
-    return () => clearInterval(interval);
-  }, []);
+  const nextStep = useCallback(() => {
+    setCurrentStep((prev) => (prev + 1) % steps.length);
+    progressMV.set(0);
+    progressStartRef.current = performance.now();
+  }, [steps.length, progressMV]);
+
+  // Progress bar animation using requestAnimationFrame (zero re-renders)
+  useEffect(() => {
+    const duration = 3000;
+
+    if (isPaused) return; // Don't run RAF loop while paused
+
+    const tick = (now: number) => {
+      const elapsed = now - progressStartRef.current;
+      const pct = Math.min((elapsed / duration) * 100, 100);
+      progressMV.set(pct);
+
+      if (pct >= 100) {
+        nextStep();
+      } else {
+        rafRef.current = requestAnimationFrame(tick);
+      }
+    };
+
+    rafRef.current = requestAnimationFrame(tick);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [currentStep, isPaused, nextStep, progressMV]);
 
   // Category rotation interval (3 seconds)
   useEffect(() => {
@@ -108,24 +172,21 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
 
-  // Progress bar animation (0 to 100 over 3 seconds)
+  // Keyboard navigation for carousel
   useEffect(() => {
-    setProgress(0);
-    const startTime = Date.now();
-    const duration = 3000;
-
-    const progressInterval = setInterval(() => {
-      const elapsed = Date.now() - startTime;
-      const newProgress = Math.min((elapsed / duration) * 100, 100);
-      setProgress(newProgress);
-
-      if (newProgress >= 100) {
-        clearInterval(progressInterval);
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!carouselRef.current?.contains(document.activeElement) && document.activeElement !== carouselRef.current) return;
+      if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+        e.preventDefault();
+        goToStep((currentStep + 1) % steps.length);
+      } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+        e.preventDefault();
+        goToStep((currentStep - 1 + steps.length) % steps.length);
       }
-    }, 16); // ~60fps
-
-    return () => clearInterval(progressInterval);
-  }, [currentStep]);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [currentStep, steps.length, goToStep]);
 
   // Calculate position for each step in the carousel
   const getStepPosition = (index: number) => {
@@ -200,9 +261,18 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-white/20"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400" />
+              </span>
               Beyond Buzz. Real Impact.
-            </div>
+            </motion.div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
               Turn Imported<br />
               <AnimatePresence mode="wait">
@@ -227,47 +297,99 @@ export default function Hero() {
               AI extracts data, translates to Arabic, validates regulations, and creates compliant labels in minutes.
             </p>
             <div className="flex flex-wrap gap-4">
-              {/* <Button
-                onClick={() => scrollToSection("contact")}
-                className="bg-white text-primary hover:bg-gray-100 dark:bg-white dark:text-primary dark:hover:bg-gray-100 animate-pulse"
+              <Button
+                onClick={() => window.open("https://calendly.com/talal-bytebeam/bytebeam-discovery-call", "_blank")}
+                className="bg-white text-primary hover:bg-gray-100 font-semibold shadow-lg shadow-white/20 hover:shadow-xl hover:shadow-white/30 transition-all duration-300"
                 size="lg"
                 data-testid="button-request-demo-hero"
               >
                 <Calendar className="mr-2 h-5 w-5" />
-                Request a Demo
+                Get Your Free Demo
               </Button>
               <Button
                 onClick={() => scrollToSection("how-it-works")}
-                className="bg-white/20 border-2 border-white text-white hover:bg-white hover:text-primary backdrop-blur-sm"
+                className="border-2 border-white/40 text-white hover:bg-white/10 backdrop-blur-sm font-semibold transition-all duration-300 bg-transparent"
                 size="lg"
                 data-testid="button-see-how-it-works"
               >
                 <Zap className="mr-2 h-5 w-5" />
                 See How It Works
-              </Button> */}
+              </Button>
             </div>
-            <div className="mt-12 flex flex-wrap gap-8">
-              <div>
-                <div className="text-4xl font-bold font-display" data-testid="stat-skus-processed">10K+</div>
-                <div className="text-white/80">SKUs Processed</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold font-display" data-testid="stat-faster-processing">70%</div>
-                <div className="text-white/80">Faster Processing</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold font-display" data-testid="stat-knowledge-work">60%</div>
-                <div className="text-white/80">Work Accelerated</div>
-              </div>
+
+            {/* Mobile-only simplified steps indicator */}
+            <div className="md:hidden mt-8 flex justify-center gap-3">
+              {steps.slice(0, 4).map((step, i) => {
+                const StepIcon = step.icon;
+                return (
+                  <motion.div
+                    key={step.id}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 + i * 0.1 }}
+                    className={`w-12 h-12 rounded-xl bg-gradient-to-br ${step.color} flex items-center justify-center`}
+                  >
+                    <StepIcon className="text-white" size={20} />
+                  </motion.div>
+                );
+              })}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8 }}
+                className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center text-white text-sm font-bold"
+              >
+                +3
+              </motion.div>
             </div>
+
+            <motion.div
+              className="mt-12 flex flex-wrap gap-8 items-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
+              <div>
+                <div className="text-4xl font-bold font-display" data-testid="stat-skus-processed">{stat1.count}K+</div>
+                <div className="text-white/80 text-sm">SKUs Processed</div>
+              </div>
+              <div className="w-px h-10 bg-white/20" />
+              <div>
+                <div className="text-4xl font-bold font-display" data-testid="stat-faster-processing">{stat2.count}%</div>
+                <div className="text-white/80 text-sm">Faster Processing</div>
+              </div>
+              <div className="w-px h-10 bg-white/20" />
+              <div>
+                <div className="text-4xl font-bold font-display" data-testid="stat-knowledge-work">{stat3.count}%</div>
+                <div className="text-white/80 text-sm">Work Accelerated</div>
+              </div>
+            </motion.div>
           </motion.div>
 
           {/* 3D Vertical Carousel Visualization */}
           <motion.div
+            ref={carouselRef}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative"
+            className="relative hidden md:block"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => {
+              // Recalculate start time so progress resumes from where it paused
+              progressStartRef.current = performance.now() - (progressMV.get() / 100) * 3000;
+              setIsPaused(false);
+            }}
+            onFocus={() => setIsPaused(true)}
+            onBlur={(e) => {
+              if (!carouselRef.current?.contains(e.relatedTarget as Node)) {
+                progressStartRef.current = performance.now() - (progressMV.get() / 100) * 3000;
+                setIsPaused(false);
+              }
+            }}
+            tabIndex={0}
+            role="region"
+            aria-label="Product compliance workflow steps"
+            aria-roledescription="carousel"
           >
             {/* Floating 3D Product Objects around visualization */}
             <motion.img
@@ -355,9 +477,11 @@ export default function Hero() {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/20 to-primary/20 rounded-3xl backdrop-blur-3xl" />
               
               {/* 3D Carousel Container */}
-              <div 
+              <div
                 className="relative w-full h-full flex items-center justify-center"
                 style={{ perspective: '1200px' }}
+                role="tabpanel"
+                aria-label={`Step ${currentStep + 1}: ${steps[currentStep].title}`}
               >
                 {steps.map((step, index) => {
                   const position = getStepPosition(index);
@@ -365,10 +489,10 @@ export default function Hero() {
                   const StepIcon = step.icon;
                   const isActive = position === 0;
                   const isPast = position < 0;
-                  
+
                   // Only render if visible (within 2 steps)
                   if (!style.visible) return null;
-                  
+
                   return (
                     <motion.div
                       key={step.id}
@@ -381,49 +505,46 @@ export default function Hero() {
                         rotateX: style.rotateX,
                       }}
                       transition={{
-                        duration: 0.7,
-                        ease: [0.34, 1.56, 0.64, 1],
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 28,
+                        mass: 0.8,
                       }}
                       style={{
                         position: 'absolute',
                         zIndex: style.zIndex,
                         transformStyle: 'preserve-3d',
                       }}
-                      className="w-96"
+                      className="w-full max-w-96"
                       data-testid={`step-${step.id}`}
+                      aria-hidden={!isActive}
                     >
                       <div className={`
-                        flex items-center gap-4 px-6 py-5 rounded-2xl border-2 
-                        ${isActive 
-                          ? 'bg-white/20 border-transparent shadow-2xl backdrop-blur-xl' 
+                        flex items-center gap-4 px-6 py-5 rounded-2xl border-2
+                        ${isActive
+                          ? 'bg-white/20 border-transparent shadow-2xl backdrop-blur-xl'
                           : 'bg-white/5 border-white/20 backdrop-blur-sm'
                         }
-                        transition-all duration-700
                       `}>
                         {/* Icon */}
-                        <div className={`
-                          flex-shrink-0 rounded-xl flex items-center justify-center
-                          bg-gradient-to-br ${step.color}
-                          ${isActive ? 'w-24 h-24 shadow-2xl' : 'w-14 h-14'}
-                          transition-all duration-700
-                        `}>
+                        <motion.div
+                          className={`flex-shrink-0 rounded-xl flex items-center justify-center bg-gradient-to-br ${step.color}`}
+                          animate={{
+                            width: isActive ? 96 : 56,
+                            height: isActive ? 96 : 56,
+                          }}
+                          transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                          style={isActive ? { boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)' } : undefined}
+                        >
                           <StepIcon className="text-white" size={isActive ? 48 : 28} />
-                        </div>
-                        
+                        </motion.div>
+
                         {/* Text */}
-                        <div className="flex-1">
-                          <div className={`
-                            font-bold text-white mb-1
-                            ${isActive ? 'text-2xl' : 'text-base'}
-                            transition-all duration-700
-                          `}>
+                        <div className="flex-1 min-w-0">
+                          <div className={`font-bold text-white mb-1 ${isActive ? 'text-2xl' : 'text-base'}`}>
                             {step.title}
                           </div>
-                          <div className={`
-                            text-white/80
-                            ${isActive ? 'text-base' : 'text-xs'}
-                            transition-all duration-700
-                          `}>
+                          <div className={`text-white/80 ${isActive ? 'text-base' : 'text-xs'}`}>
                             {step.description}
                           </div>
                         </div>
@@ -433,6 +554,7 @@ export default function Hero() {
                           <motion.div
                             initial={{ scale: 0, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
+                            transition={{ type: "spring", stiffness: 500, damping: 20 }}
                             className="flex-shrink-0"
                             data-testid={`checkmark-step-${step.id}`}
                           >
@@ -445,34 +567,41 @@ export default function Hero() {
                 })}
               </div>
 
-              {/* Animated Progress Indicator Dots */}
-              <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-[60]" data-testid="progress-dots-container">
+              {/* Animated Progress Indicator Dots - Clickable with accessible touch targets */}
+              <div
+                className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-1 z-[60]"
+                role="tablist"
+                aria-label="Carousel step navigation"
+                data-testid="progress-dots-container"
+              >
                 {steps.map((step) => {
                   const isActive = currentStep === step.id;
                   const isPast = step.id < currentStep;
-                  
+
                   return (
-                    <div
+                    <button
                       key={step.id}
-                      className="relative"
+                      role="tab"
+                      aria-selected={isActive}
+                      aria-label={`Step ${step.id + 1}: ${step.title}`}
+                      onClick={() => goToStep(step.id)}
+                      className="relative flex items-center justify-center min-w-[44px] min-h-[44px] cursor-pointer group"
                       data-testid={`progress-dot-${step.id}`}
                     >
-                      {/* Background track */}
+                      {/* Visible dot / track */}
                       <div className={`
-                        h-2 rounded-full transition-all duration-500
-                        ${isActive ? 'w-12 bg-white/30' : isPast ? 'w-2 bg-white' : 'w-2 bg-white/30'}
-                      `} />
-                      
-                      {/* Animated fill for active dot */}
-                      {isActive && (
-                        <motion.div
-                          className="absolute top-0 left-0 h-2 bg-white rounded-full"
-                          initial={{ width: '0%' }}
-                          animate={{ width: `${progress}%` }}
-                          transition={{ duration: 0.1 }}
-                        />
-                      )}
-                    </div>
+                        h-2 rounded-full transition-all duration-500 relative overflow-hidden
+                        ${isActive ? 'w-12 bg-white/30' : isPast ? 'w-2 bg-white group-hover:bg-white/80' : 'w-2 bg-white/30 group-hover:bg-white/50'}
+                      `}>
+                        {/* Animated fill for active dot - driven by motionValue (zero re-renders) */}
+                        {isActive && (
+                          <motion.div
+                            className="absolute inset-y-0 left-0 bg-white rounded-full"
+                            style={{ width: progressWidth }}
+                          />
+                        )}
+                      </div>
+                    </button>
                   );
                 })}
               </div>
@@ -508,6 +637,22 @@ export default function Hero() {
         </div>
       </div>
 
+      {/* Scroll Indicator */}
+      <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 0.8 }}
+      >
+        <span className="text-white/60 text-xs font-medium tracking-wider uppercase">Scroll</span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2"
+        >
+          <motion.div className="w-1.5 h-1.5 bg-white rounded-full" />
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

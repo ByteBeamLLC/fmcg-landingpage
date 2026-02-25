@@ -1,4 +1,4 @@
-import { MapPin } from "lucide-react";
+import { MapPin, Linkedin } from "lucide-react";
 import { Link } from "wouter";
 import bytebeamLogo from "@assets/bytebeam_logo_1759326269799.png";
 
@@ -47,9 +47,9 @@ export default function Footer() {
       />
 
       <div className="container-custom">
-        <div className="grid md:grid-cols-7 gap-8 mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-8">
           {/* Brand Section */}
-          <div className="md:col-span-1">
+          <div className="col-span-2 md:col-span-3 lg:col-span-2">
             <Link href="/" aria-label="ByteBeam Homepage">
               <img
                 src={bytebeamLogo}
@@ -63,10 +63,21 @@ export default function Footer() {
             <p className="text-muted-foreground mb-4">
               Table-based AI agent builder for document work. SMEs build agents, no code required.
             </p>
+            <div className="flex gap-3">
+              <a
+                href="https://www.linkedin.com/company/bytebeam"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-lg bg-foreground/5 hover:bg-primary/10 flex items-center justify-center text-muted-foreground hover:text-primary transition-all duration-300"
+                aria-label="ByteBeam on LinkedIn"
+              >
+                <Linkedin size={18} />
+              </a>
+            </div>
           </div>
 
           {/* Industries Navigation */}
-          <nav aria-label="Industries" className="md:col-span-1">
+          <nav aria-label="Industries">
             <h4 className="font-bold mb-4">Industries</h4>
             <ul className="space-y-2 text-muted-foreground">
               <li>
@@ -127,7 +138,7 @@ export default function Footer() {
           </nav>
 
           {/* AI Agents Navigation */}
-          <nav aria-label="AI Agents" className="md:col-span-1">
+          <nav aria-label="AI Agents">
             <h4 className="font-bold mb-4">AI Agents</h4>
             <ul className="space-y-2 text-muted-foreground">
               <li>
@@ -152,7 +163,7 @@ export default function Footer() {
           </nav>
 
           {/* Free Tools Navigation */}
-          <nav aria-label="Free Tools" className="md:col-span-1">
+          <nav aria-label="Free Tools">
             <h4 className="font-bold mb-4">Free Tools</h4>
             <ul className="space-y-2 text-muted-foreground">
               <li>
@@ -192,7 +203,7 @@ export default function Footer() {
           </nav>
 
           {/* Resources / Blog Navigation - Important for SEO internal linking */}
-          <nav aria-label="Resources" className="md:col-span-1">
+          <nav aria-label="Resources">
             <h4 className="font-bold mb-4">Resources</h4>
             <ul className="space-y-2 text-muted-foreground">
               <li>
@@ -231,63 +242,49 @@ export default function Footer() {
             </ul>
           </nav>
 
-          {/* Company Navigation */}
-          <nav aria-label="Company" className="md:col-span-1">
-            <h4 className="font-bold mb-4">Company</h4>
-            <ul className="space-y-2 text-muted-foreground">
-              <li>
-                <Link
-                  href="/about"
-                  className="hover:text-primary transition-colors"
-                  data-testid="footer-link-about"
-                >
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/blog"
-                  className="hover:text-primary transition-colors"
-                  data-testid="footer-link-blogs"
-                >
-                  Blogs
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#case-studies"
-                  className="hover:text-primary transition-colors"
-                  data-testid="footer-link-case-studies"
-                >
-                  Case Studies
-                </Link>
-              </li>
-            </ul>
-          </nav>
-
-          {/* Office Locations */}
-          <div className="md:col-span-1">
-            <h4 className="font-bold mb-4">Offices</h4>
-            <address className="not-italic space-y-4">
+          {/* Company & Offices */}
+          <div>
+            <nav aria-label="Company">
+              <h4 className="font-bold mb-4">Company</h4>
+              <ul className="space-y-2 text-muted-foreground mb-6">
+                <li>
+                  <Link
+                    href="/about"
+                    className="hover:text-primary transition-colors"
+                    data-testid="footer-link-about"
+                  >
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/blog"
+                    className="hover:text-primary transition-colors"
+                    data-testid="footer-link-blogs"
+                  >
+                    Blogs
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/#case-studies"
+                    className="hover:text-primary transition-colors"
+                    data-testid="footer-link-case-studies"
+                  >
+                    Case Studies
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+            <h4 className="font-bold mb-3 text-sm">Offices</h4>
+            <address className="not-italic space-y-3">
               <div className="flex items-start gap-2 text-muted-foreground">
-                <MapPin size={16} className="mt-1 flex-shrink-0" aria-hidden="true" />
-                <div>
-                  <p className="text-sm">
-                    20 Wenlock Road
-                    <br />
-                    London, England
-                    <br />
-                    N1 7GU
-                  </p>
-                </div>
+                <MapPin size={14} className="mt-0.5 flex-shrink-0" aria-hidden="true" />
+                <p className="text-xs">London, N1 7GU</p>
               </div>
               <div className="flex items-start gap-2 text-muted-foreground">
-                <MapPin size={16} className="mt-1 flex-shrink-0" aria-hidden="true" />
-                <div>
-                  <p className="text-sm">
-                    St, Bechara El Khoury & Fouad Chehab Avenue, Nassif El Yazaji St Street, Syriac Patriarchate, Khalil Sarkis, Beirut
-                  </p>
-                </div>
+                <MapPin size={14} className="mt-0.5 flex-shrink-0" aria-hidden="true" />
+                <p className="text-xs">Beirut, Lebanon</p>
               </div>
             </address>
           </div>

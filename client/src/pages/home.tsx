@@ -1,5 +1,6 @@
 import Navigation from "@/components/navigation";
 import Hero from "@/components/hero";
+import TrustBar from "@/components/trust-bar";
 import PainPoints from "@/components/pain-points";
 import HowItWorks from "@/components/how-it-works";
 import DemoSection from "@/components/demo-section";
@@ -8,6 +9,7 @@ import SocialProof from "@/components/social-proof";
 import CTASection from "@/components/cta-section";
 import Footer from "@/components/footer";
 import LiveChatWidget from "@/components/live-chat-widget";
+import ScrollProgressBar from "@/components/scroll-progress-bar";
 import SEO from "@/components/SEO";
 
 export default function Home() {
@@ -20,8 +22,10 @@ export default function Home() {
         ogDescription="Automate regional approvals for FMCG products. Extract, translate, and validate against local regulations—bringing hundreds of new SKUs to market faster."
         keywords="FMCG label compliance, GCC product approval, label localization, Arabic translation, halal certification, nutrition labeling, regulatory compliance, food label automation"
       />
+      <ScrollProgressBar />
       <Navigation />
       <Hero />
+      <TrustBar />
       <PainPoints />
       <HowItWorks />
       <DemoSection />

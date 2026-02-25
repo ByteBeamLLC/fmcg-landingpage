@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { CloudUpload, Bot, FileCheck, FileText, Image, FileSpreadsheet } from "lucide-react";
+import { CloudUpload, Bot, FileCheck, FileText, Image, FileSpreadsheet, CheckCircle2 } from "lucide-react";
 
 const steps = [
   {
@@ -279,7 +279,10 @@ export default function HowItWorks() {
           </p>
         </motion.div>
 
-        <div className="space-y-16">
+        <div className="relative space-y-16">
+          {/* Vertical timeline connector - desktop only */}
+          <div className="hidden md:block absolute left-8 top-16 bottom-16 w-0.5 bg-gradient-to-b from-primary via-primary/50 to-primary/20" />
+
           {steps.map((step, index) => (
             <motion.div
               key={index}
@@ -299,7 +302,7 @@ export default function HowItWorks() {
                 </div>
               </div>
               <div className={index % 2 === 0 ? "md:order-1" : ""}>
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-primary/70 text-white flex items-center justify-center text-2xl font-bold font-display mb-6">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-primary/70 text-white flex items-center justify-center text-2xl font-bold font-display mb-6 relative z-10 ring-4 ring-white">
                   {step.number}
                 </div>
                 <h3 className="text-3xl font-bold mb-4">{step.title}</h3>
@@ -307,7 +310,7 @@ export default function HowItWorks() {
                 <ul className="space-y-3">
                   {step.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-3">
-                      <i className="fas fa-check-circle text-primary mt-1"></i>
+                      <CheckCircle2 size={18} className="text-primary mt-0.5 flex-shrink-0" />
                       <span>{feature}</span>
                     </li>
                   ))}

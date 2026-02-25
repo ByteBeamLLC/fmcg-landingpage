@@ -59,6 +59,41 @@ const capabilities = [
   },
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.06,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
+function CapabilityCard({ capability, index }: { capability: typeof capabilities[0]; index: number }) {
+  return (
+    <motion.div
+      variants={itemVariants}
+      whileHover={{ y: -8 }}
+      className="bg-white rounded-2xl p-8 border border-border/80 text-center group hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300"
+      data-testid={`capability-card-${index}`}
+    >
+      <motion.div
+        className="w-20 h-20 bg-primary/5 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/10 transition-colors duration-300"
+        whileHover={{ rotate: [0, -10, 10, -5, 0] }}
+        transition={{ duration: 0.5 }}
+      >
+        <capability.icon className="text-primary group-hover:scale-110 transition-transform duration-300" size={40} />
+      </motion.div>
+      <h3 className="text-lg font-bold mb-3">{capability.title}</h3>
+      <p className="text-muted-foreground text-sm">{capability.description}</p>
+    </motion.div>
+  );
+}
+
 export default function CoreCapabilities() {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -81,24 +116,49 @@ export default function CoreCapabilities() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {capabilities.map((capability, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.05 }}
-              className="bg-white rounded-xl p-8 shadow-lg text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
-              data-testid={`capability-card-${index}`}
-            >
-              <div className="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <capability.icon className="text-primary" size={40} />
-              </div>
-              <h3 className="text-xl font-bold mb-3">{capability.title}</h3>
-              <p className="text-muted-foreground">{capability.description}</p>
-            </motion.div>
-          ))}
+        {/* Data Processing Row */}
+        <div className="mb-4">
+          <motion.h3
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4"
+          >
+            Data Processing
+          </motion.h3>
         </div>
+        <motion.div
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={containerVariants}
+        >
+          {capabilities.slice(0, 4).map((capability, index) => (
+            <CapabilityCard key={index} capability={capability} index={index} />
+          ))}
+        </motion.div>
+
+        {/* Output & Compliance Row */}
+        <div className="mb-4">
+          <motion.h3
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.4, delay: 0.5 }}
+            className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4"
+          >
+            Output & Compliance
+          </motion.h3>
+        </div>
+        <motion.div
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={containerVariants}
+        >
+          {capabilities.slice(4, 8).map((capability, index) => (
+            <CapabilityCard key={index + 4} capability={capability} index={index + 4} />
+          ))}
+        </motion.div>
       </div>
     </section>
   );
