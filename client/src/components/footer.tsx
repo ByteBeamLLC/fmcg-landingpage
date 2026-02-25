@@ -12,7 +12,7 @@ const organizationSchema = {
   "description": "ByteBeam Agent Builder: A table-based AI agent builder for document work. SMEs build AI agents using an Excel-like interface to automate KYC, compliance, risk assessment, and document workflows.",
   "foundingDate": "2023",
   "sameAs": [
-    "https://www.linkedin.com/company/bytebeam"
+    "https://www.linkedin.com/company/byte-beam"
   ],
   "address": [
     {
@@ -65,7 +65,7 @@ export default function Footer() {
             </p>
             <div className="flex gap-3">
               <a
-                href="https://www.linkedin.com/company/bytebeam"
+                href="https://www.linkedin.com/company/byte-beam"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-lg bg-foreground/5 hover:bg-primary/10 flex items-center justify-center text-muted-foreground hover:text-primary transition-all duration-300"
@@ -242,41 +242,44 @@ export default function Footer() {
             </ul>
           </nav>
 
-          {/* Company & Offices */}
+        </div>
+
+        {/* Company & Offices - Same Row */}
+        <div className="grid grid-cols-2 md:grid-cols-2 gap-8 mb-8 max-w-md">
+          <nav aria-label="Company">
+            <h4 className="font-bold mb-4">Company</h4>
+            <ul className="space-y-2 text-muted-foreground">
+              <li>
+                <Link
+                  href="/about"
+                  className="hover:text-primary transition-colors"
+                  data-testid="footer-link-about"
+                >
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/blog"
+                  className="hover:text-primary transition-colors"
+                  data-testid="footer-link-blogs"
+                >
+                  Blogs
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/#case-studies"
+                  className="hover:text-primary transition-colors"
+                  data-testid="footer-link-case-studies"
+                >
+                  Case Studies
+                </Link>
+              </li>
+            </ul>
+          </nav>
           <div>
-            <nav aria-label="Company">
-              <h4 className="font-bold mb-4">Company</h4>
-              <ul className="space-y-2 text-muted-foreground mb-6">
-                <li>
-                  <Link
-                    href="/about"
-                    className="hover:text-primary transition-colors"
-                    data-testid="footer-link-about"
-                  >
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/blog"
-                    className="hover:text-primary transition-colors"
-                    data-testid="footer-link-blogs"
-                  >
-                    Blogs
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/#case-studies"
-                    className="hover:text-primary transition-colors"
-                    data-testid="footer-link-case-studies"
-                  >
-                    Case Studies
-                  </Link>
-                </li>
-              </ul>
-            </nav>
-            <h4 className="font-bold mb-3 text-sm">Offices</h4>
+            <h4 className="font-bold mb-4">Offices</h4>
             <address className="not-italic space-y-3">
               <div className="flex items-start gap-2 text-muted-foreground">
                 <MapPin size={14} className="mt-0.5 flex-shrink-0" aria-hidden="true" />

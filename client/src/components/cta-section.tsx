@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Button } from "@/components/ui/button";
-import { Calendar, Mail, Phone, Globe, CheckCircle2 } from "lucide-react";
+import { Calendar, Mail, Globe, CheckCircle2 } from "lucide-react";
 
 export default function CTASection() {
   const [ref, inView] = useInView({
@@ -14,8 +14,7 @@ export default function CTASection() {
   };
 
   const contactItems = [
-    { icon: Mail, label: "Email", value: "tech@bytebeam.co", href: "mailto:tech@bytebeam.co" },
-    { icon: Phone, label: "Phone", value: "+44 7537 189226", href: "tel:+447537189226" },
+    { icon: Mail, label: "Email", value: "talal@bytebeam.co", href: "mailto:talal@bytebeam.co" },
     { icon: Globe, label: "Website", value: "www.bytebeam.co", href: "https://www.bytebeam.co" },
   ];
 
@@ -62,7 +61,7 @@ export default function CTASection() {
               Book a Demo
             </Button>
             <Button
-              onClick={() => window.location.href = "mailto:tech@bytebeam.co"}
+              onClick={() => window.location.href = "mailto:talal@bytebeam.co"}
               className="border-2 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm text-lg font-semibold bg-transparent"
               size="lg"
             >
@@ -72,7 +71,7 @@ export default function CTASection() {
           </div>
 
           {/* Contact Info Cards */}
-          <div className="grid sm:grid-cols-3 gap-6 max-w-2xl mx-auto">
+          <div className="grid sm:grid-cols-2 gap-6 max-w-md mx-auto">
             {contactItems.map((item) => (
               <a
                 key={item.label}
