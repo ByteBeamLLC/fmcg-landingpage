@@ -48,6 +48,19 @@ app.use((req, res, next) => {
   next();
 });
 
+// Redirect food/nutrition blog posts to RecipeBuilder
+const recipeBuilderRedirects: Record<string, string> = {
+  '/blog/uae-food-labeling-requirements-2026': 'https://recipebuilder.bytebeam.co/blog/uae-food-labeling-requirements-2026',
+  '/blog/dubai-municipality-montaji-food-registration': 'https://recipebuilder.bytebeam.co/blog/dubai-municipality-montaji-food-registration',
+  '/blog/gcc-document-compliance-automation-2026': 'https://recipebuilder.bytebeam.co/blog/gcc-document-compliance-automation-2026',
+};
+
+Object.entries(recipeBuilderRedirects).forEach(([oldPath, newUrl]) => {
+  app.get(oldPath, (_req: Request, res: Response) => {
+    res.redirect(301, newUrl);
+  });
+});
+
 // Serve robots.txt
 app.get('/robots.txt', (_req: Request, res: Response) => {
   const robotsPath = path.join(__dirname, '../client/public/robots.txt');

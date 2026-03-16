@@ -77,6 +77,9 @@ const DocumentCompare = lazy(() => import("@/pages/tools/document-compare"));
 // Search Tools
 const FileSearch = lazy(() => import("@/pages/tools/file-search"));
 
+// Parsli sub-app (parser.bytebeam.co)
+const ParsliApp = lazy(() => import("@/parsli/ParsliApp"));
+
 // Blog pages - lazy loaded for better performance
 const BlogIndex = lazy(() => import("@/pages/blog/index"));
 const AutomationPlatformComparisonBlog = lazy(() => import("@/pages/blog/automation-platform-comparison-2026"));
@@ -183,6 +186,10 @@ function Router() {
         <Route path="/blog/automating-invoice-processing-2026" component={InvoiceProcessingBlog} />
         <Route path="/blog/agentic-ocr-intelligent-data-extraction-2026" component={AgenticOCRBlog} />
         <Route path="/blog/arabic-ocr-challenges-solutions-2026" component={ArabicOCRBlog} />
+
+        {/* Parsli - Document Extraction Platform */}
+        <Route path="/parsli/:rest*" component={ParsliApp} />
+        <Route path="/parsli" component={ParsliApp} />
 
         <Route component={NotFound} />
       </Switch>

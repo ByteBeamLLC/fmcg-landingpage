@@ -17,6 +17,16 @@ interface BlogPost {
 
 const blogPosts: BlogPost[] = [
   {
+    slug: "uae-food-labeling-requirements-2026",
+    title: "UAE Food Labeling Requirements: Complete Compliance Guide 2026",
+    description: "Comprehensive guide to UAE food labeling requirements. Covers ESMA standards, Dubai Municipality Montaji registration, 12 mandatory label elements, Arabic language rules, GSO 2233:2021 nutritional information, allergen declarations, and penalties.",
+    category: "Compliance",
+    industry: "FMCG",
+    readTime: "14 min",
+    date: "2025-11-15",
+    image: "/images/blog/uae-food-labeling-requirements.jpg"
+  },
+  {
     slug: "arabic-ocr-challenges-solutions-2026",
     title: "Arabic OCR in 2026: Why It's Still Hard and What Actually Works",
     description: "Arabic OCR remains 20-30% less accurate than English. Learn why, what solutions actually work (we tested them), and how to design production systems around 80% accuracy.",
@@ -47,16 +57,6 @@ const blogPosts: BlogPost[] = [
     image: "/images/blog/automation-platform-comparison-2026.jpg"
   },
   {
-    slug: "uae-food-labeling-requirements-2026",
-    title: "UAE Food Labeling Requirements 2026: Complete Compliance Guide",
-    description: "Master UAE food label compliance in 2026. ESMA regulations, Arabic requirements, NutriMark system, and step-by-step guide for FMCG manufacturers.",
-    category: "Compliance",
-    industry: "FMCG",
-    readTime: "12 min",
-    date: "2026-01-16",
-    image: "/images/blog/uae-food-labeling-compliance.jpg"
-  },
-  {
     slug: "sfda-drug-registration-guide-saudi-arabia",
     title: "SFDA Drug Registration Guide Saudi Arabia: Complete 2026 Process",
     description: "Navigate SFDA drug registration in Saudi Arabia. Complete guide covering CTD requirements, GMP certification, pricing approval, and timeline for 2026.",
@@ -65,26 +65,6 @@ const blogPosts: BlogPost[] = [
     readTime: "14 min",
     date: "2026-01-16",
     image: "/images/blog/sfda-drug-registration-saudi.jpg"
-  },
-  {
-    slug: "dubai-municipality-montaji-food-registration",
-    title: "Dubai Municipality Montaji Portal: Food Product Registration Guide 2026",
-    description: "Step-by-step Montaji portal guide for food product registration in Dubai. Document requirements, fees, timelines, and approval process for 2026.",
-    category: "Compliance",
-    industry: "FMCG",
-    readTime: "10 min",
-    date: "2026-01-16",
-    image: "/images/blog/montaji-portal-dubai-municipality.jpg"
-  },
-  {
-    slug: "gcc-document-compliance-automation-2026",
-    title: "GCC Document Compliance Automation: Multi-Market Guide 2026",
-    description: "Automate document compliance across UAE, Saudi Arabia, and GCC markets. AI-powered workflows, no-code solutions, and ROI analysis for 2026.",
-    category: "Automation",
-    industry: "Cross-Industry",
-    readTime: "11 min",
-    date: "2026-01-16",
-    image: "/images/blog/gcc-document-compliance-automation.jpg"
   },
   {
     slug: "no-code-document-automation-regulatory-teams-2026",

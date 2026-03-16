@@ -9,13 +9,13 @@
   --card-foreground: hsl(0, 0%, 10%);
   --popover: hsl(0, 0%, 100%);
   --popover-foreground: hsl(0, 0%, 10%);
-  --primary: hsl(214, 100%, 57%);
+  --primary: hsl(216, 85%, 39%);
   --primary-foreground: hsl(0, 0%, 100%);
   --secondary: hsl(0, 0%, 20%);
   --secondary-foreground: hsl(0, 0%, 100%);
   --muted: hsl(0, 0%, 97%);
   --muted-foreground: hsl(0, 0%, 45%);
-  --accent: hsl(214, 100%, 57%);
+  --accent: hsl(216, 85%, 39%);
   --accent-foreground: hsl(0, 0%, 100%);
   --accent-green: hsl(142, 71%, 46%);
   --accent-green-foreground: hsl(0, 0%, 100%);
@@ -23,25 +23,25 @@
   --destructive-foreground: hsl(0, 0%, 100%);
   --border: hsl(0, 0%, 88%);
   --input: hsl(0, 0%, 88%);
-  --ring: hsl(214, 100%, 57%);
-  --chart-1: hsl(214, 100%, 57%);
+  --ring: hsl(216, 85%, 39%);
+  --chart-1: hsl(216, 85%, 39%);
   --chart-2: hsl(0, 0%, 60%);
   --chart-3: hsl(0, 0%, 50%);
   --chart-4: hsl(0, 0%, 40%);
   --chart-5: hsl(0, 0%, 30%);
   --sidebar: hsl(0, 0%, 100%);
   --sidebar-foreground: hsl(0, 0%, 10%);
-  --sidebar-primary: hsl(214, 100%, 57%);
+  --sidebar-primary: hsl(216, 85%, 39%);
   --sidebar-primary-foreground: hsl(0, 0%, 100%);
   --sidebar-accent: hsl(0, 0%, 97%);
-  --sidebar-accent-foreground: hsl(214, 100%, 57%);
+  --sidebar-accent-foreground: hsl(216, 85%, 39%);
   --sidebar-border: hsl(0, 0%, 88%);
-  --sidebar-ring: hsl(214, 100%, 57%);
+  --sidebar-ring: hsl(216, 85%, 39%);
   
-  --bb-blue-500: hsl(214, 100%, 57%);
-  --bb-blue-600: hsl(217, 79%, 51%);
-  --bb-blue-700: hsl(220, 79%, 40%);
-  --bb-blue-50: hsl(214, 100%, 96%);
+  --bb-blue-500: hsl(216, 85%, 39%);
+  --bb-blue-600: hsl(218, 85%, 33%);
+  --bb-blue-700: hsl(220, 85%, 27%);
+  --bb-blue-50: hsl(207, 55%, 90%);
   --bb-text: hsl(0, 0%, 10%);
   --bb-text-muted: hsl(0, 0%, 45%);
   --bb-text-light: hsl(0, 0%, 60%);
@@ -50,7 +50,25 @@
   --bb-border: hsl(0, 0%, 88%);
   --bb-green: hsl(142, 71%, 46%);
   --bb-green-bg: hsl(142, 76%, 95%);
-  
+
+  /* Parsli Brand Colors */
+  --parsli-50: hsl(152, 60%, 95%);
+  --parsli-100: hsl(150, 55%, 88%);
+  --parsli-200: hsl(149, 50%, 76%);
+  --parsli-300: hsl(148, 48%, 62%);
+  --parsli-400: hsl(149, 50%, 48%);
+  --parsli-500: hsl(149, 58%, 38%);
+  --parsli-600: hsl(150, 62%, 30%);
+  --parsli-700: hsl(151, 65%, 24%);
+  --parsli-800: hsl(152, 68%, 18%);
+  --parsli-900: hsl(153, 70%, 12%);
+  --parsli-primary: var(--parsli-500);
+  --parsli-primary-foreground: hsl(0, 0%, 100%);
+  --parsli-accent: hsl(160, 60%, 42%);
+  --parsli-accent-foreground: hsl(0, 0%, 100%);
+  --parsli-surface: hsl(150, 25%, 97%);
+  --parsli-surface-alt: hsl(150, 18%, 94%);
+
   --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-serif: "New York", Georgia, "Times New Roman", serif;
@@ -97,7 +115,7 @@
 
 @layer utilities {
   .gradient-overlay {
-    background: linear-gradient(135deg, #2782FF 0%, #1E6AE6 55%, #164DB3 100%);
+    background: linear-gradient(135deg, #0F52BA 0%, #0B4599 55%, #083A7A 100%);
   }
 
   .section-padding {
@@ -124,6 +142,29 @@
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  /* Parsli utilities */
+  .parsli-gradient {
+    background: linear-gradient(135deg, var(--parsli-500) 0%, var(--parsli-accent) 100%);
+  }
+
+  .parsli-gradient-subtle {
+    background: linear-gradient(135deg, var(--parsli-50) 0%, hsl(160, 25%, 96%) 100%);
+  }
+
+  .parsli-glass {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(16, 185, 129, 0.12);
+  }
+
+  .parsli-glow {
+    box-shadow: 0 0 24px rgba(16, 185, 129, 0.15);
+  }
+
+  .parsli-section-alt {
+    background-color: var(--parsli-surface);
   }
 }
 @keyframes hero-gradient-shift {

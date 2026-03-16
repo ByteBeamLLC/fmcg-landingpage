@@ -417,6 +417,13 @@
 
   <!-- Blog Articles -->
   <url>
+    <loc>https://bytebeam.co/blog/uae-food-labeling-requirements-2026</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
     <loc>https://bytebeam.co/blog/automation-platform-comparison-2026</loc>
     <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
@@ -424,28 +431,7 @@
   </url>
 
   <url>
-    <loc>https://bytebeam.co/blog/uae-food-labeling-requirements-2026</loc>
-    <lastmod>2026-01-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
     <loc>https://bytebeam.co/blog/sfda-drug-registration-guide-saudi-arabia</loc>
-    <lastmod>2026-01-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://bytebeam.co/blog/dubai-municipality-montaji-food-registration</loc>
-    <lastmod>2026-01-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://bytebeam.co/blog/gcc-document-compliance-automation-2026</loc>
     <lastmod>2026-01-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -471,4 +457,105 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- ============================================ -->
+  <!-- Parsli - Document Extraction Platform        -->
+  <!-- parser.bytebeam.co                           -->
+  <!-- ============================================ -->
+
+  <!-- Parsli Core Pages -->
+  <url>
+    <loc>https://parser.bytebeam.co</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://parser.bytebeam.co/pricing</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://parser.bytebeam.co/features</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://parser.bytebeam.co/how-it-works</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://parser.bytebeam.co/email-parser</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://parser.bytebeam.co/pdf-parser</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://parser.bytebeam.co/api</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://parser.bytebeam.co/security</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Parsli Use Cases -->
+  <url><loc>https://parser.bytebeam.co/use-case/invoice-parsing</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/use-case/receipt-parsing</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/use-case/email-to-spreadsheet</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/use-case/lead-capture</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/use-case/order-processing</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/use-case/resume-parsing</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/use-case/real-estate-docs</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/use-case/logistics-shipping</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/use-case/bank-statements</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/use-case/contract-extraction</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Parsli Industries -->
+  <url><loc>https://parser.bytebeam.co/industry/finance</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/industry/real-estate</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/industry/logistics</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/industry/healthcare</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/industry/legal</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/industry/ecommerce</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/industry/hr</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/industry/insurance</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Parsli Integrations -->
+  <url><loc>https://parser.bytebeam.co/integration/gmail</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/integration/outlook</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/integration/zapier</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/integration/make</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/integration/google-sheets</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/integration/excel</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/integration/google-drive</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/integration/dropbox</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/integration/slack</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/integration/webhooks</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/integration/rest-api</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/integration/power-automate</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Parsli Comparisons -->
+  <url><loc>https://parser.bytebeam.co/compare/parseur</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/compare/docparser</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/compare/mailparser</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/compare/nanonets</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/compare/rossum</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/compare/veryfi</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Parsli Document Types -->
+  <url><loc>https://parser.bytebeam.co/document/invoices</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/document/receipts</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/document/emails</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/document/pdfs</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/document/spreadsheets</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/document/bank-statements</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/document/contracts</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://parser.bytebeam.co/document/forms</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>

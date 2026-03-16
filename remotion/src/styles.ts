@@ -1,13 +1,13 @@
 // ByteBeam brand colors and styles
 export const colors = {
-  primary: "#2782FF",
-  primaryDark: "#164DB3",
+  primary: "#0F52BA",
+  primaryDark: "#083A7A",
   accent: "#22C55E",
   dark: "#1a1a1a",
   white: "#ffffff",
   muted: "#f5f5f5",
   mutedForeground: "#6b7280",
-  gradient: "linear-gradient(135deg, #2782FF 0%, #164DB3 100%)",
+  gradient: "linear-gradient(135deg, #0F52BA 0%, #083A7A 100%)",
 
   // Column type colors (from scroll-simulation)
   input: "#3B82F6",      // blue-500

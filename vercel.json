@@ -47,6 +47,11 @@
     },
     {
       "source": "/:path*",
+      "has": [{ "type": "host", "value": "parser.bytebeam.co" }],
+      "destination": "/parsli/:path*"
+    },
+    {
+      "source": "/:path*",
       "destination": "/index.html"
     }
   ],

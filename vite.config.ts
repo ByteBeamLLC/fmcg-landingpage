@@ -107,6 +107,71 @@ export const routesToPrerender = [
   "/case-study/takhlees",
   "/case-study/carrefour",
   "/case-study/research-copilot",
+
+  // Parsli - Document Extraction Platform (parser.bytebeam.co)
+  // Core pages
+  "/parsli",
+  "/parsli/pricing",
+  "/parsli/features",
+  "/parsli/how-it-works",
+  "/parsli/email-parser",
+  "/parsli/pdf-parser",
+  "/parsli/api",
+  "/parsli/security",
+
+  // Use cases
+  "/parsli/use-case/invoice-parsing",
+  "/parsli/use-case/receipt-parsing",
+  "/parsli/use-case/email-to-spreadsheet",
+  "/parsli/use-case/lead-capture",
+  "/parsli/use-case/order-processing",
+  "/parsli/use-case/resume-parsing",
+  "/parsli/use-case/real-estate-docs",
+  "/parsli/use-case/logistics-shipping",
+  "/parsli/use-case/bank-statements",
+  "/parsli/use-case/contract-extraction",
+
+  // Industries
+  "/parsli/industry/finance",
+  "/parsli/industry/real-estate",
+  "/parsli/industry/logistics",
+  "/parsli/industry/healthcare",
+  "/parsli/industry/legal",
+  "/parsli/industry/ecommerce",
+  "/parsli/industry/hr",
+  "/parsli/industry/insurance",
+
+  // Integrations
+  "/parsli/integration/gmail",
+  "/parsli/integration/outlook",
+  "/parsli/integration/zapier",
+  "/parsli/integration/make",
+  "/parsli/integration/google-sheets",
+  "/parsli/integration/excel",
+  "/parsli/integration/google-drive",
+  "/parsli/integration/dropbox",
+  "/parsli/integration/slack",
+  "/parsli/integration/webhooks",
+  "/parsli/integration/rest-api",
+  "/parsli/integration/power-automate",
+
+  // Comparisons
+  "/parsli/compare/parseur",
+  "/parsli/compare/docparser",
+  "/parsli/compare/mailparser",
+  "/parsli/compare/nanonets",
+  "/parsli/compare/rossum",
+  "/parsli/compare/veryfi",
+
+  // Document types
+  "/parsli/document/invoices",
+  "/parsli/document/receipts",
+  "/parsli/document/emails",
+  "/parsli/document/pdfs",
+  "/parsli/document/spreadsheets",
+  "/parsli/document/bank-statements",
+  "/parsli/document/contracts",
+  "/parsli/document/forms",
 ];
 
 export default defineConfig({
