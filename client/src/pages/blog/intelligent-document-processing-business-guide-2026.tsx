@@ -230,7 +230,7 @@ export default function IDPBusinessGuideBlog() {
         <li>Payment terms</li>
       </ul>
 
-      <p>The AI knows where to look based on the document type, but it's flexible enough to handle variations. Vendor A's invoice looks different from Vendor B's—IDP handles both.</p>
+      <p>The AI knows where to look based on the document type, but it's flexible enough to handle variations. Vendor A's invoice looks different from Vendor B's—IDP handles both. If you want to see this in action, <a href="https://parsli.co/use-cases/invoice-parsing" target="_blank" rel="noopener noreferrer">Parsli's invoice parser</a> demonstrates how AI extraction works across different invoice formats.</p>
 
       <h3>Step 5: Validation</h3>
 
@@ -510,23 +510,25 @@ export default function IDPBusinessGuideBlog() {
 
       <p>See how document processing applies to specific compliance challenges:</p>
       <ul>
+        <li><a href="https://parsli.co/guides/what-is-intelligent-document-processing" target="_blank" rel="noopener noreferrer">What is Intelligent Document Processing?</a> – In-depth IDP guide with hands-on examples</li>
+        <li><a href="https://parsli.co/use-cases/intelligent-document-processing" target="_blank" rel="noopener noreferrer">IDP Use Cases</a> – Real-world intelligent document processing workflows</li>
+        <li><a href="https://parsli.co/blog/ocr-vs-ai-document-extraction" target="_blank" rel="noopener noreferrer">OCR vs AI Document Extraction</a> – Detailed comparison of extraction approaches</li>
         <li><Link href="/blog/no-code-document-automation-regulatory-teams-2026">No-Code Document Automation for Regulatory Teams 2026</Link> – Build workflows without IT</li>
         <li><Link href="/blog/gcc-document-compliance-automation-2026">GCC Document Compliance Automation 2026</Link> – Multi-market automation strategies</li>
         <li><Link href="/blog/uae-food-labeling-requirements-2026">UAE Food Labeling Requirements 2026</Link> – Document requirements for food compliance</li>
-        <li><Link href="/blog/automating-invoice-processing-2026">Automating Invoice Processing 2026</Link> – Finance team guide to AP automation</li>
       </ul>
 
       <hr />
 
       <h2>How ByteBeam Makes IDP Accessible</h2>
 
-      <p>ByteBeam's <strong>intelligent document processing</strong> platform is designed for business users who need powerful automation without technical complexity.</p>
+      <p>ByteBeam's <strong>intelligent document processing</strong> platform is designed for business users who need powerful automation without technical complexity. For teams that need to extract data from documents immediately, <a href="https://parsli.co" target="_blank" rel="noopener noreferrer">Parsli</a>—our dedicated document parsing platform—lets you upload invoices, bank statements, receipts, and other documents and get structured data back in seconds.</p>
 
       <p><strong>What makes ByteBeam different:</strong></p>
       <ul>
         <li><strong>Plain-language interface:</strong> Built for compliance and operations teams, not data scientists</li>
         <li><strong>Pre-trained for GCC documents:</strong> Arabic processing and regional document types ready out of the box</li>
-        <li><strong>No-code configuration:</strong> Adjust extraction rules and workflows without developer help</li>
+        <li><strong>No-code configuration:</strong> Adjust extraction rules and workflows without developer help — <a href="https://parsli.co/solutions/no-code-document-parser" target="_blank" rel="noopener noreferrer">try Parsli's no-code document parser</a></li>
         <li><strong>Human-in-the-loop:</strong> Easy review and correction interface for exceptions</li>
         <li><strong>Enterprise security:</strong> SOC 2 compliant with GCC data residency options</li>
       </ul>
@@ -536,6 +538,7 @@ export default function IDPBusinessGuideBlog() {
         <li>Most teams are processing documents within the first week</li>
         <li>Achieve 95%+ accuracy on standard document types</li>
         <li>Reduce manual processing time by 60-70%</li>
+        <li><a href="https://parsli.co/pricing" target="_blank" rel="noopener noreferrer">Free tier available</a> — start parsing documents today</li>
       </ul>
 
       <h2>Conclusion</h2>

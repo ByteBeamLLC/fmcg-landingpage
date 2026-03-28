@@ -137,10 +137,31 @@ export default function Footer() {
             </ul>
           </nav>
 
-          {/* AI Agents Navigation */}
-          <nav aria-label="AI Agents">
-            <h4 className="font-bold mb-4">AI Agents</h4>
+          {/* Products Navigation */}
+          <nav aria-label="Products">
+            <h4 className="font-bold mb-4">Products</h4>
             <ul className="space-y-2 text-muted-foreground">
+              <li>
+                <a
+                  href="https://parsli.co"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors"
+                  data-testid="footer-link-parsli"
+                >
+                  Parsli — Document Parser
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://parsli.co/tools"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors"
+                >
+                  Parsli Free Tools
+                </a>
+              </li>
               <li>
                 <Link
                   href="/solutions/uae-food-label-localization"

@@ -309,7 +309,7 @@ export default function NoCodeDocumentAutomationBlog() {
 
       <p><strong>What to look for:</strong></p>
       <ul>
-        <li>Support for multiple document formats (PDF, Word, Excel, images)</li>
+        <li>Support for multiple document formats (PDF, Word, Excel, images) — platforms like <a href="https://parsli.co" target="_blank" rel="noopener noreferrer">Parsli</a> handle <a href="https://parsli.co/document-types/pdfs" target="_blank" rel="noopener noreferrer">PDFs</a>, <a href="https://parsli.co/document-types/spreadsheets" target="_blank" rel="noopener noreferrer">spreadsheets</a>, and <a href="https://parsli.co/document-types/emails" target="_blank" rel="noopener noreferrer">emails</a> natively</li>
         <li>OCR and data extraction features</li>
         <li>Version control and document history</li>
         <li>Annotation and markup tools</li>
@@ -489,7 +489,7 @@ export default function NoCodeDocumentAutomationBlog() {
 
       <h2>How ByteBeam Empowers Regulatory Citizen Developers</h2>
 
-      <p>ByteBeam's <strong>no-code document automation</strong> platform is built for regulatory and compliance teams who need to move fast without IT dependency.</p>
+      <p>ByteBeam's <strong>no-code document automation</strong> platform is built for regulatory and compliance teams who need to move fast without IT dependency. For the document parsing layer, <a href="https://parsli.co/solutions/no-code-document-parser" target="_blank" rel="noopener noreferrer">Parsli's no-code document parser</a> lets regulatory teams extract data from PDFs, invoices, and forms without writing a single line of code.</p>
 
       <p><strong>Why regulatory teams choose ByteBeam:</strong></p>
       <ul>
@@ -497,7 +497,7 @@ export default function NoCodeDocumentAutomationBlog() {
         <li><strong>Pre-built regulatory templates:</strong> Start with workflows tailored for compliance use cases</li>
         <li><strong>Arabic document processing:</strong> Essential for GCC market compliance</li>
         <li><strong>Enterprise governance:</strong> SOC 2 compliant with complete audit trails</li>
-        <li><strong>Seamless integration:</strong> Connect with existing document management and ERP systems</li>
+        <li><strong>Seamless integration:</strong> Connect with existing document management and ERP systems — integrates with <a href="https://parsli.co/integrations/google-sheets" target="_blank" rel="noopener noreferrer">Google Sheets</a>, <a href="https://parsli.co/integrations/zapier" target="_blank" rel="noopener noreferrer">Zapier</a>, and <a href="https://parsli.co/integrations/make" target="_blank" rel="noopener noreferrer">Make</a></li>
       </ul>
 
       <p><strong>Get started in days, not months:</strong></p>

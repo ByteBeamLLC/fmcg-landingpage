@@ -53,6 +53,14 @@ const FAQS = [
 
 const RELATED_TOOLS = [
   {
+    title: "Parsli Bank Statement Parser",
+    description: "Advanced bank statement extraction with batch processing",
+    href: "https://parsli.co/tools/bank-statement-parser",
+    icon: Landmark,
+    category: "AI Document Processing",
+    isAIPowered: true,
+  },
+  {
     title: "Invoice Parser",
     description: "Extract data from invoices",
     href: "/tools/invoice-parser",

@@ -466,11 +466,11 @@ export default function SFDADrugRegistrationBlog() {
 
       <h2>How ByteBeam Streamlines SFDA Submissions</h2>
 
-      <p>Managing SFDA regulatory submissions involves processing thousands of pages of documentation across multiple CTD modules. ByteBeam's document automation platform helps pharmaceutical regulatory teams streamline this process.</p>
+      <p>Managing SFDA regulatory submissions involves processing thousands of pages of documentation across multiple CTD modules. ByteBeam's document automation platform helps pharmaceutical regulatory teams streamline this process. For document extraction specifically, <a href="https://parsli.co" target="_blank" rel="noopener noreferrer">Parsli</a> can parse regulatory PDFs, certificates, and lab reports into structured data automatically.</p>
 
       <p><strong>Key capabilities:</strong></p>
       <ul>
-        <li><strong>Extract data</strong> from existing regulatory documents automatically</li>
+        <li><strong>Extract data</strong> from existing regulatory documents automatically — <a href="https://parsli.co/use-cases/pdf-data-extraction" target="_blank" rel="noopener noreferrer">try Parsli's PDF data extraction</a></li>
         <li><strong>Auto-format</strong> documentation to SFDA requirements</li>
         <li><strong>Document version control</strong> for eCTD lifecycle management</li>
         <li><strong>Compliance validation</strong> against SFDA checklists</li>

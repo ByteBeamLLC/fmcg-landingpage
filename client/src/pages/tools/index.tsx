@@ -652,6 +652,38 @@ export default function ToolsDirectory() {
             )}
           </motion.div>
 
+          {/* Parsli Cross-Promotion */}
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25 }}
+            className="mt-12"
+          >
+            <a
+              href="https://parsli.co/tools"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+            >
+              <div className="bg-gradient-to-r from-indigo-50 to-violet-50 dark:from-indigo-950/30 dark:to-violet-950/30 border border-indigo-200 dark:border-indigo-800 rounded-xl p-6 hover:shadow-md transition-shadow">
+                <div className="flex flex-col sm:flex-row items-center gap-4">
+                  <div className="p-3 bg-indigo-100 dark:bg-indigo-900/50 rounded-xl shrink-0">
+                    <Zap className="size-6 text-indigo-600 dark:text-indigo-400" />
+                  </div>
+                  <div className="text-center sm:text-left flex-1">
+                    <h3 className="font-semibold text-foreground mb-1">
+                      Need batch document parsing? Try Parsli
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      Parse invoices, bank statements, receipts, and PDFs at scale. Extract structured data with no code — integrates with Google Sheets, Zapier, and Make.
+                    </p>
+                  </div>
+                  <ArrowRight className="size-5 text-indigo-500 shrink-0 hidden sm:block" />
+                </div>
+              </div>
+            </a>
+          </motion.section>
+
           {/* Why AI Document Tools Section */}
           <motion.section
             initial={{ opacity: 0, y: 20 }}

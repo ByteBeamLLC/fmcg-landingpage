@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { LucideIcon, Sparkles, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
@@ -26,8 +27,17 @@ export default function ToolCard({
   isNew = false,
   className,
 }: ToolCardProps) {
+  const isExternal = href.startsWith("http");
+  const Wrapper = isExternal
+    ? ({ children }: { children: ReactNode }) => (
+        <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>
+      )
+    : ({ children }: { children: ReactNode }) => (
+        <Link href={href}>{children}</Link>
+      );
+
   return (
-    <Link href={href}>
+    <Wrapper>
       <motion.div
         whileHover={{ y: -4 }}
         whileTap={{ scale: 0.98 }}
@@ -98,6 +108,6 @@ export default function ToolCard({
           </CardContent>
         </Card>
       </motion.div>
-    </Link>
+    </Wrapper>
   );
 }
