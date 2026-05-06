@@ -11,12 +11,15 @@ declare module 'http' {
     rawBody: unknown
   }
 }
+// 60mb cap supports the SFDA tools' base64 file uploads (up to ~35mb worth
+// of files + JSON overhead). Other endpoints use much smaller payloads.
 app.use(express.json({
+  limit: "60mb",
   verify: (req, _res, buf) => {
     req.rawBody = buf;
   }
 }));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ limit: "60mb", extended: false }));
 
 app.use((req, res, next) => {
   const start = Date.now();

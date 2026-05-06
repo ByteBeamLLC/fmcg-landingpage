@@ -1,6 +1,8 @@
 import type { Express, Request, Response } from "express";
 import { aiToolsLimiter, getRateLimitInfo } from "../middleware/rateLimit";
 import * as openRouterService from "../services/openrouter.service";
+import * as sfdaService from "../services/sfda.service";
+import type { SfdaUploadedFile } from "../services/sfda.service";
 
 /**
  * Register all tool-related API routes
@@ -372,4 +374,109 @@ export function registerToolRoutes(app: Express) {
       });
     }
   });
+
+  // ───────────────────────────────────────────────────────────────────────
+  // SFDA Regulatory Tools
+  //   POST /api/tools/sfda/spc-pil-generator
+  //   POST /api/tools/sfda/spc-pil-arabic-translator
+  //   POST /api/tools/sfda/dossier-gap-analysis
+  // Body: { files: [{ inputId, fileName, mimeType, base64 }, ...] }
+  // ───────────────────────────────────────────────────────────────────────
+
+  function validateSfdaPayload(req: Request, res: Response): SfdaUploadedFile[] | null {
+    if (!sfdaService.isOpenRouterConfigured()) {
+      res.status(503).json({ error: "AI service is not configured on the server." });
+      return null;
+    }
+    const { files } = req.body as { files?: SfdaUploadedFile[] };
+    if (!files || !Array.isArray(files) || files.length === 0) {
+      res.status(400).json({ error: "At least one file is required." });
+      return null;
+    }
+    for (const f of files) {
+      if (!f || typeof f !== "object" || !f.inputId || !f.fileName || !f.base64) {
+        res.status(400).json({ error: "Each file needs inputId, fileName, mimeType, and base64." });
+        return null;
+      }
+    }
+    // Combined payload size cap: ~25 MB worth of base64 across all files
+    const totalBase64 = files.reduce((sum, f) => sum + (f.base64?.length || 0), 0);
+    if (totalBase64 > 35_000_000) {
+      res.status(413).json({ error: "Combined file payload too large." });
+      return null;
+    }
+    return files;
+  }
+
+  app.post(
+    "/api/tools/sfda/spc-pil-generator",
+    aiToolsLimiter,
+    async (req: Request, res: Response) => {
+      try {
+        const files = validateSfdaPayload(req, res);
+        if (!files) return;
+        const required = ["originator_smpc", "originator_pil", "product_data"];
+        const provided = new Set(files.map((f) => f.inputId));
+        const missing = required.filter((id) => !provided.has(id));
+        if (missing.length) {
+          return res.status(400).json({ error: `Missing required inputs: ${missing.join(", ")}` });
+        }
+        const result = await sfdaService.generateSpcPil(files);
+        res.json({ ok: true, ...result });
+      } catch (error) {
+        console.error("[sfda/spc-pil-generator] Error:", error);
+        res.status(500).json({
+          error: error instanceof Error ? error.message : "Processing failed",
+        });
+      }
+    }
+  );
+
+  app.post(
+    "/api/tools/sfda/spc-pil-arabic-translator",
+    aiToolsLimiter,
+    async (req: Request, res: Response) => {
+      try {
+        const files = validateSfdaPayload(req, res);
+        if (!files) return;
+        const required = ["english_smpc", "english_pil"];
+        const provided = new Set(files.map((f) => f.inputId));
+        const missing = required.filter((id) => !provided.has(id));
+        if (missing.length) {
+          return res.status(400).json({ error: `Missing required inputs: ${missing.join(", ")}` });
+        }
+        const result = await sfdaService.translateSpcPilToArabic(files);
+        res.json({ ok: true, ...result });
+      } catch (error) {
+        console.error("[sfda/spc-pil-arabic-translator] Error:", error);
+        res.status(500).json({
+          error: error instanceof Error ? error.message : "Processing failed",
+        });
+      }
+    }
+  );
+
+  app.post(
+    "/api/tools/sfda/dossier-gap-analysis",
+    aiToolsLimiter,
+    async (req: Request, res: Response) => {
+      try {
+        const files = validateSfdaPayload(req, res);
+        if (!files) return;
+        const required = ["english_pil", "arabic_pil", "english_smpc", "product_data"];
+        const provided = new Set(files.map((f) => f.inputId));
+        const missing = required.filter((id) => !provided.has(id));
+        if (missing.length) {
+          return res.status(400).json({ error: `Missing required inputs: ${missing.join(", ")}` });
+        }
+        const result = await sfdaService.runDossierGapAnalysis(files);
+        res.json({ ok: true, ...result });
+      } catch (error) {
+        console.error("[sfda/dossier-gap-analysis] Error:", error);
+        res.status(500).json({
+          error: error instanceof Error ? error.message : "Processing failed",
+        });
+      }
+    }
+  );
 }
