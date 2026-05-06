@@ -80,6 +80,12 @@ const FileSearch = lazy(() => import("@/pages/tools/file-search"));
 // Parsli sub-app (parser.bytebeam.co)
 const ParsliApp = lazy(() => import("@/parsli/ParsliApp"));
 
+// SFDA Regulatory Tools — sales-led license, free preview gated
+const SfdaHub = lazy(() => import("@/pages/sfda/index"));
+const SfdaSpcPilGenerator = lazy(() => import("@/pages/sfda/spc-pil-generator"));
+const SfdaArabicTranslator = lazy(() => import("@/pages/sfda/spc-pil-arabic-translator"));
+const SfdaDossierGapAnalysis = lazy(() => import("@/pages/sfda/dossier-gap-analysis"));
+
 // Blog pages - lazy loaded for better performance
 const BlogIndex = lazy(() => import("@/pages/blog/index"));
 const AutomationPlatformComparisonBlog = lazy(() => import("@/pages/blog/automation-platform-comparison-2026"));
@@ -190,6 +196,12 @@ function Router() {
         {/* Parsli - Document Extraction Platform */}
         <Route path="/parsli/:rest*" component={ParsliApp} />
         <Route path="/parsli" component={ParsliApp} />
+
+        {/* SFDA Regulatory Tools */}
+        <Route path="/sfda" component={SfdaHub} />
+        <Route path="/sfda/spc-pil-generator" component={SfdaSpcPilGenerator} />
+        <Route path="/sfda/spc-pil-arabic-translator" component={SfdaArabicTranslator} />
+        <Route path="/sfda/dossier-gap-analysis" component={SfdaDossierGapAnalysis} />
 
         <Route component={NotFound} />
       </Switch>

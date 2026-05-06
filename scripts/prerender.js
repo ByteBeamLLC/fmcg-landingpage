@@ -115,6 +115,12 @@ const ROUTES = [
   '/blog/no-code-document-automation-regulatory-teams-2026',
   '/blog/intelligent-document-processing-business-guide-2026',
   '/blog/automating-invoice-processing-2026',
+
+  // SFDA Regulatory Tools
+  '/sfda',
+  '/sfda/spc-pil-generator',
+  '/sfda/spc-pil-arabic-translator',
+  '/sfda/dossier-gap-analysis',
 ];
 
 /**
