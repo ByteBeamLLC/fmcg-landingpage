@@ -51,7 +51,7 @@
       "destination": "/parsli/:path*"
     },
     {
-      "source": "/:path*",
+      "source": "/((?!api/|assets/|_next/|.*\\..*).*)",
       "destination": "/index.html"
     }
   ],
