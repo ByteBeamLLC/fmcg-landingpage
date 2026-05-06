@@ -172,6 +172,12 @@ export const routesToPrerender = [
   "/parsli/document/bank-statements",
   "/parsli/document/contracts",
   "/parsli/document/forms",
+
+  // SFDA Regulatory Tools
+  "/sfda",
+  "/sfda/spc-pil-generator",
+  "/sfda/spc-pil-arabic-translator",
+  "/sfda/dossier-gap-analysis",
 ];
 
 export default defineConfig({
