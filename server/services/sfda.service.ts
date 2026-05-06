@@ -8,8 +8,13 @@
  * serverless functions without bundling ~1.6MB of guidance PDFs.
  */
 
-import { pdf as pdfParse } from "pdf-parse";
-import mammoth from "mammoth";
+// Lazy-loaded inside extractFileText so the function cold-start doesn't pay
+// the cost of loading these (and so a parser-load failure doesn't take the
+// whole API down on import).
+type PdfParseModule = (buf: Buffer) => Promise<{ text: string }>;
+type MammothModule = {
+  extractRawText: (opts: { buffer: Buffer }) => Promise<{ value: string }>;
+};
 
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 const OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1";
@@ -105,12 +110,15 @@ async function extractFileText(file: SfdaUploadedFile): Promise<string> {
   const mt = file.mimeType || "";
   if (mt === "application/pdf" || file.fileName.toLowerCase().endsWith(".pdf")) {
     try {
-      // pdf-parse v2 expects ArrayBuffer/TypedArray, not Buffer.
-      const ab = buffer.buffer.slice(
-        buffer.byteOffset,
-        buffer.byteOffset + buffer.byteLength
-      ) as ArrayBuffer;
-      const data = await pdfParse(ab);
+      // pdf-parse v1's index.js has a debug-mode side effect that reads a
+      // test PDF from disk on import — fails inside a Vercel function.
+      // Skip the entry point by loading the inner lib module directly.
+      // @ts-expect-error - pdf-parse has no types for the inner lib path
+      const mod = (await import("pdf-parse/lib/pdf-parse.js")) as
+        | { default: PdfParseModule }
+        | PdfParseModule;
+      const pdfParse = (typeof mod === "function" ? mod : mod.default) as PdfParseModule;
+      const data = await pdfParse(buffer);
       return data.text || "";
     } catch (err) {
       return `[Could not extract PDF text: ${err instanceof Error ? err.message : String(err)}]`;
@@ -121,6 +129,10 @@ async function extractFileText(file: SfdaUploadedFile): Promise<string> {
     file.fileName.toLowerCase().endsWith(".docx")
   ) {
     try {
+      const mammothMod = (await import("mammoth")) as { default: MammothModule } | MammothModule;
+      const mammoth = ("extractRawText" in mammothMod
+        ? mammothMod
+        : mammothMod.default) as MammothModule;
       const result = await mammoth.extractRawText({ buffer });
       return result.value || "";
     } catch (err) {
