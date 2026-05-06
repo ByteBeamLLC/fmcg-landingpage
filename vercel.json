@@ -1,7 +1,6 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist/public",
-  "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
     {
@@ -51,7 +50,7 @@
       "destination": "/parsli/:path*"
     },
     {
-      "source": "/((?!api/|assets/|_next/|.*\\..*).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ],
