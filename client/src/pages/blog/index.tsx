@@ -1,8 +1,12 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Link } from "wouter";
-import { ArrowRight, Calendar, Clock, Tag } from "lucide-react";
+import { ArrowRight, Calendar, Clock, Tag, Sparkles, Wrench } from "lucide-react";
 import SEO from "@/components/SEO";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { SFDA_TOOLS } from "@/lib/sfda/tools";
 
 interface BlogPost {
   slug: string;
@@ -183,6 +187,68 @@ export default function BlogIndex() {
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
               Expert insights on document automation, regulatory compliance, and AI-powered workflows for industries that move the world.
             </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Featured cluster — SFDA toolkit (cross-pillar surface) */}
+      <section className="py-12 lg:py-16 bg-background border-b border-border">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-6xl mx-auto"
+          >
+            <Card className="border-2 border-primary/30 bg-gradient-to-br from-primary/5 via-background to-background overflow-hidden">
+              <CardContent className="p-6 sm:p-8 lg:p-10">
+                <div className="flex flex-col lg:flex-row gap-8 items-start">
+                  <div className="flex-1 min-w-0">
+                    <Badge variant="secondary" className="gap-1.5 mb-4">
+                      <Sparkles className="size-3 text-primary" />
+                      Featured · SFDA toolkit
+                    </Badge>
+                    <h2 className="text-2xl sm:text-3xl font-bold mb-3 leading-tight">
+                      Built for SFDA Module 1.3 labelling work
+                    </h2>
+                    <p className="text-muted-foreground leading-relaxed mb-5">
+                      Three AI agents that replace the mechanical 60–80% of SFDA labelling work — SmPC + PIL generation, Arabic translation with regulator-recognised phrasing, and pre-submission gap analysis. Free first run on each tool, license sold via 30-min walkthrough.
+                    </p>
+                    <div className="grid sm:grid-cols-3 gap-3 mb-6">
+                      {SFDA_TOOLS.map((tool) => (
+                        <Link
+                          key={tool.slug}
+                          href={`/sfda/${tool.slug}`}
+                          className="group block p-3 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/5 transition-colors"
+                        >
+                          <p className="font-semibold text-sm mb-1 inline-flex items-center gap-1.5 group-hover:text-primary transition-colors">
+                            <Wrench className="size-3.5" />
+                            {tool.shortName}
+                          </p>
+                          <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
+                            {tool.outcome}
+                          </p>
+                        </Link>
+                      ))}
+                    </div>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <Button asChild>
+                        <Link href="/sfda">
+                          See the SFDA toolkit
+                          <ArrowRight className="size-4 ml-2" />
+                        </Link>
+                      </Button>
+                      <Button variant="outline" asChild>
+                        <Link href="/blog/sfda-drug-registration-guide-saudi-arabia">
+                          Read the SFDA registration guide
+                        </Link>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </motion.div>
         </div>
       </section>

@@ -1,5 +1,8 @@
 import { Link } from "wouter";
 import BlogLayout from "@/components/BlogLayout";
+import BlogToolsBanner from "@/components/blog/BlogToolsBanner";
+import BlogToolPromo from "@/components/blog/BlogToolPromo";
+import BlogRelatedTools from "@/components/blog/BlogRelatedTools";
 
 const structuredData = [
   {
@@ -53,6 +56,12 @@ export default function SFDADrugRegistrationBlog() {
       <p>
         This comprehensive guide covers the complete SFDA registration process, from initial application through post-approval requirements, helping regulatory affairs professionals navigate Saudi Arabia's pharmaceutical approval system efficiently.
       </p>
+
+      <BlogToolsBanner
+        headline="Skip the manual labelling draft — try the SFDA toolkit free"
+        subline="If you're preparing a Module 1.3 pack, three AI agents replace the mechanical 60–80% of the labelling work: SmPC + PIL generation, Arabic translation, and pre-submission gap analysis."
+        ctaLabel="See the SFDA toolkit"
+      />
 
       <h2>Understanding the SFDA</h2>
 
@@ -256,6 +265,15 @@ export default function SFDADrugRegistrationBlog() {
       </ul>
 
       <p><strong>Timeline:</strong> 180-365 days for standard review</p>
+
+      <BlogToolPromo
+        toolSlug="dossier-gap-analysis"
+        eyebrow="Pre-submission QC"
+        hook="Catch the labelling RFIs before SFDA does"
+      />
+      <p>
+        Labelling (PIL/SPC) is the second-most cited RFI category. Most of those gaps are mechanical — missing sections, English/Arabic drift, terminology that doesn't match SFDA's preferred phrasing — and they're catchable in a structured pre-submission pass. Our <Link href="/sfda/dossier-gap-analysis">Dossier Gap Analysis</Link> agent runs that pass against SFDA Module 1.3 expectations and returns severity-ranked findings before you hit submit.
+      </p>
 
       <h3>Step 6: GMP Inspection</h3>
 
@@ -466,18 +484,16 @@ export default function SFDADrugRegistrationBlog() {
 
       <h2>How ByteBeam Streamlines SFDA Submissions</h2>
 
-      <p>Managing SFDA regulatory submissions involves processing thousands of pages of documentation across multiple CTD modules. ByteBeam's document automation platform helps pharmaceutical regulatory teams streamline this process. For document extraction specifically, <a href="https://parsli.co" target="_blank" rel="noopener noreferrer">Parsli</a> can parse regulatory PDFs, certificates, and lab reports into structured data automatically.</p>
+      <p>SFDA regulatory submissions involve thousands of pages of documentation across multiple CTD modules. The pattern that eats the most senior RA time isn't the strategic work — it's the mechanical labelling cycle: drafting Module 1.3 SmPC + PIL packs from originator dossiers, translating them to compliant Arabic, and running pre-submission QC against SFDA's published expectations.</p>
 
-      <p><strong>Key capabilities:</strong></p>
+      <p>That's exactly the work ByteBeam's SFDA toolkit automates. Three agents, each scoped to a specific step in the submission lifecycle:</p>
       <ul>
-        <li><strong>Extract data</strong> from existing regulatory documents automatically — <a href="https://parsli.co/use-cases/pdf-data-extraction" target="_blank" rel="noopener noreferrer">try Parsli's PDF data extraction</a></li>
-        <li><strong>Auto-format</strong> documentation to SFDA requirements</li>
-        <li><strong>Document version control</strong> for eCTD lifecycle management</li>
-        <li><strong>Compliance validation</strong> against SFDA checklists</li>
-        <li><strong>Arabic document processing</strong> for PIL and labeling review</li>
+        <li><Link href="/sfda/spc-pil-generator"><strong>SmPC & PIL Generator</strong></Link> — produce SFDA-aligned English SmPC and PIL drafts from your originator pack, structured to Module 1.3 + the QRD-derived layout adopted across GCC.</li>
+        <li><Link href="/sfda/spc-pil-arabic-translator"><strong>Arabic SmPC & PIL Translator</strong></Link> — translate the finalised English text into regulatory Arabic with RTL formatting, using SFDA-recognised phrasing (not generic translation that triggers RFIs).</li>
+        <li><Link href="/sfda/dossier-gap-analysis"><strong>Dossier Gap Analysis</strong></Link> — pre-submission completeness sweep. Severity-ranked findings cite the specific SFDA / GCC guidance section that drives each gap.</li>
       </ul>
 
-      <p>ByteBeam enables regulatory affairs teams to reduce document preparation time by up to 60%, allowing faster response to RFIs and accelerating time to market.</p>
+      <p>The output is editable DOCX in every case — your QPPV signs off in the normal review tools. Free first run on each tool, then <a href="https://calendly.com/talal-bytebeam/sfda-discovery" target="_blank" rel="noopener noreferrer">walk through the output with us</a> to license for your team.</p>
 
       <h2>Conclusion</h2>
 
@@ -491,6 +507,12 @@ export default function SFDADrugRegistrationBlog() {
         <li><strong>Establish pharmacovigilance systems</strong> including Saudi QPPV appointment</li>
         <li><strong>Understand pricing requirements</strong> and reference country benchmarks</li>
       </ol>
+
+      <BlogRelatedTools
+        eyebrow="Try the SFDA toolkit"
+        heading="Tools mentioned in this guide"
+        subtitle="Each tool covers one step of the SFDA Module 1.3 labelling workflow. Free first run, audit-trailed, DOCX out."
+      />
 
       <hr />
 
