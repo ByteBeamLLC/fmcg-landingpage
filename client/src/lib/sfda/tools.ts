@@ -422,7 +422,7 @@ export const SFDA_TOOLS: SfdaTool[] = [
     ],
     output: {
       label: "Section-by-section gap report with severity ranking",
-      format: "PDF + on-screen viewer",
+      format: "DOCX",
     },
     features: [
       {

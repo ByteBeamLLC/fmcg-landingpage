@@ -12,6 +12,7 @@ import {
   Copy,
   Check,
   Download,
+  FileText,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -22,6 +23,10 @@ import {
   DEFAULT_FREE_USES,
   type SfdaToolInput,
 } from "@/lib/sfda/tools";
+import {
+  markdownToDocxBlob,
+  triggerDocxDownload,
+} from "@/lib/sfda/markdown-to-docx";
 
 interface UploadedFile {
   inputId: string;
@@ -29,6 +34,13 @@ interface UploadedFile {
 }
 
 type DemoState = "idle" | "processing" | "done" | "blocked" | "error";
+
+interface SfdaDocument {
+  id: string;
+  title: string;
+  markdown: string;
+  rtl?: boolean;
+}
 
 interface SfdaToolDemoProps {
   toolSlug: string;
@@ -75,8 +87,94 @@ function fileToBase64(file: File): Promise<string> {
 }
 
 function endpointForSlug(slug: string): string {
-  // Maps registry slug → server route
   return `/api/tools/sfda/${slug}`;
+}
+
+interface DocumentCardProps {
+  doc: SfdaDocument;
+  toolSlug: string;
+  index: number;
+}
+
+function DocumentCard({ doc, toolSlug, index }: DocumentCardProps) {
+  const [copied, setCopied] = useState(false);
+  const [downloading, setDownloading] = useState(false);
+
+  const handleCopy = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(doc.markdown);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    } catch {
+      // ignore — clipboard may be unavailable
+    }
+  }, [doc.markdown]);
+
+  const handleDownload = useCallback(async () => {
+    setDownloading(true);
+    try {
+      const blob = await markdownToDocxBlob(doc.markdown, {
+        title: doc.title,
+        rtl: doc.rtl,
+      });
+      triggerDocxDownload(blob, `${toolSlug}-${doc.id}.docx`);
+    } catch (err) {
+      console.error("DOCX generation failed:", err);
+    } finally {
+      setDownloading(false);
+    }
+  }, [doc, toolSlug]);
+
+  return (
+    <div className="rounded-xl border bg-card overflow-hidden">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-5 py-4 border-b bg-muted/40">
+        <div className="flex items-center gap-3 min-w-0">
+          <div className="inline-flex items-center justify-center size-9 rounded-lg bg-primary/10 text-primary shrink-0">
+            <FileText className="size-4" />
+          </div>
+          <div className="min-w-0">
+            <p className="text-[10px] font-mono text-muted-foreground/60 uppercase tracking-wider">
+              Document {index + 1}
+            </p>
+            <h4 className="font-semibold text-sm truncate" dir={doc.rtl ? "rtl" : "ltr"}>
+              {doc.title}
+            </h4>
+          </div>
+        </div>
+        <div className="flex items-center gap-2 shrink-0">
+          <Button variant="outline" size="sm" onClick={handleCopy} className="gap-1.5">
+            {copied ? <Check className="size-3.5" /> : <Copy className="size-3.5" />}
+            {copied ? "Copied" : "Copy"}
+          </Button>
+          <Button
+            size="sm"
+            onClick={handleDownload}
+            disabled={downloading}
+            className="gap-1.5"
+          >
+            {downloading ? (
+              <Loader2 className="size-3.5 animate-spin" />
+            ) : (
+              <Download className="size-3.5" />
+            )}
+            .docx
+          </Button>
+        </div>
+      </div>
+      <div
+        className={cn(
+          "prose prose-sm max-w-none p-5 max-h-[420px] overflow-auto",
+          "prose-headings:font-semibold prose-headings:tracking-tight",
+          "prose-h1:text-xl prose-h2:text-lg prose-h3:text-base",
+          "prose-h2:mt-6 prose-h3:mt-4 prose-p:leading-relaxed",
+          "prose-li:my-1 prose-hr:my-5 prose-strong:text-foreground"
+        )}
+        dir={doc.rtl ? "rtl" : "ltr"}
+      >
+        <ReactMarkdown>{doc.markdown}</ReactMarkdown>
+      </div>
+    </div>
+  );
 }
 
 export default function SfdaToolDemo({
@@ -93,9 +191,8 @@ export default function SfdaToolDemo({
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [dragOverId, setDragOverId] = useState<string | null>(null);
   const [usageCount, setUsageCount] = useState(0);
-  const [resultMarkdown, setResultMarkdown] = useState<string>("");
+  const [documents, setDocuments] = useState<SfdaDocument[]>([]);
   const [errorMessage, setErrorMessage] = useState<string>("");
-  const [copied, setCopied] = useState(false);
   const fileRefs = useRef<Record<string, HTMLInputElement | null>>({});
 
   useEffect(() => {
@@ -147,10 +244,9 @@ export default function SfdaToolDemo({
     if (!allRequiredUploaded || state === "processing") return;
     setState("processing");
     setErrorMessage("");
-    setResultMarkdown("");
+    setDocuments([]);
 
     try {
-      // Encode every uploaded file (required + optional) as base64
       const payload = await Promise.all(
         Object.values(files).map(async (uf) => ({
           inputId: uf.inputId,
@@ -178,10 +274,12 @@ export default function SfdaToolDemo({
       }
 
       const data = await resp.json();
-      const md = typeof data?.markdown === "string" ? data.markdown : "";
-      if (!md) throw new Error("Empty response from AI service.");
+      const docs = Array.isArray(data?.documents) ? (data.documents as SfdaDocument[]) : null;
+      if (!docs || docs.length === 0) {
+        throw new Error("Empty response from AI service.");
+      }
 
-      setResultMarkdown(md);
+      setDocuments(docs);
       try {
         const next = usageCount + 1;
         localStorage.setItem(getStorageKey(toolSlug), String(next));
@@ -202,34 +300,10 @@ export default function SfdaToolDemo({
   const handleResetForRetry = useCallback(() => {
     setFiles({});
     setErrors({});
-    setResultMarkdown("");
+    setDocuments([]);
     setErrorMessage("");
     setState(usageCount >= freeUses ? "blocked" : "idle");
   }, [usageCount, freeUses]);
-
-  const handleCopy = useCallback(async () => {
-    if (!resultMarkdown) return;
-    try {
-      await navigator.clipboard.writeText(resultMarkdown);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1800);
-    } catch {
-      // ignore
-    }
-  }, [resultMarkdown]);
-
-  const handleDownload = useCallback(() => {
-    if (!resultMarkdown) return;
-    const blob = new Blob([resultMarkdown], { type: "text/markdown;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `${toolSlug}.md`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  }, [resultMarkdown, toolSlug]);
 
   // ─── Blocked ───
   if (state === "blocked") {
@@ -267,37 +341,32 @@ export default function SfdaToolDemo({
     );
   }
 
-  // ─── Done — show real output ───
+  // ─── Done — render each document in its own card ───
   if (state === "done") {
     return (
       <Card>
         <CardContent className="p-6 sm:p-8">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5 pb-5 border-b">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5">
             <div className="flex items-center gap-3">
               <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 text-primary shrink-0">
                 <CheckCircle2 className="size-5" />
               </div>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wider text-primary">
-                  Preview ready
+                  Preview ready · {documents.length} document{documents.length === 1 ? "" : "s"}
                 </p>
                 <h3 className="text-base font-semibold">{toolName} — output</h3>
               </div>
             </div>
-            <div className="flex items-center gap-2">
-              <Button variant="outline" size="sm" onClick={handleCopy} className="gap-2">
-                {copied ? <Check className="size-4" /> : <Copy className="size-4" />}
-                {copied ? "Copied" : "Copy"}
-              </Button>
-              <Button variant="outline" size="sm" onClick={handleDownload} className="gap-2">
-                <Download className="size-4" />
-                .md
-              </Button>
-            </div>
+            <Button variant="outline" size="sm" onClick={handleResetForRetry}>
+              Done
+            </Button>
           </div>
 
-          <div className="prose prose-sm max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-h2:mt-8 prose-h3:mt-6 prose-p:leading-relaxed prose-li:my-1 prose-hr:my-6 prose-strong:text-foreground bg-muted/30 rounded-lg p-5 sm:p-6 max-h-[600px] overflow-auto border">
-            <ReactMarkdown>{resultMarkdown}</ReactMarkdown>
+          <div className="space-y-4">
+            {documents.map((doc, i) => (
+              <DocumentCard key={doc.id} doc={doc} toolSlug={toolSlug} index={i} />
+            ))}
           </div>
 
           <div className="mt-6 rounded-xl border bg-primary/5 p-5">
@@ -306,24 +375,18 @@ export default function SfdaToolDemo({
               Want this on your full portfolio?
             </h4>
             <p className="text-xs text-muted-foreground leading-relaxed mb-4">
-              The free preview runs the simplified pipeline on one document.
-              The full version integrates the SFDA Module 1.3 template + GCC
-              Guidance v3.1, returns editable {outputFormat}, and runs across
-              your portfolio with QMS integration. Walk through your output
-              with our team and license for your team.
+              The free preview runs the SFDA Module 1.3 + GCC Guidance v3.1
+              pipeline on a single submission. The licensed version runs across
+              your portfolio with QMS integration and full audit trail. Walk
+              through your output with our team and license for your team.
             </p>
-            <div className="flex flex-col sm:flex-row gap-2">
-              <Button size="default" asChild>
-                <a href={BOOK_DEMO_URL} target="_blank" rel="noopener noreferrer">
-                  <CalendarClock className="size-4 mr-2" />
-                  Book a 30-min walkthrough
-                  <ArrowRight className="size-4 ml-2" />
-                </a>
-              </Button>
-              <Button size="default" variant="outline" onClick={handleResetForRetry}>
-                Done
-              </Button>
-            </div>
+            <Button size="default" asChild>
+              <a href={BOOK_DEMO_URL} target="_blank" rel="noopener noreferrer">
+                <CalendarClock className="size-4 mr-2" />
+                Book a 30-min walkthrough
+                <ArrowRight className="size-4 ml-2" />
+              </a>
+            </Button>
             <p className="mt-3 text-[11px] text-muted-foreground">
               {Math.max(0, freeUses - usageCount)} free run
               {freeUses - usageCount === 1 ? "" : "s"} remaining
@@ -465,7 +528,7 @@ export default function SfdaToolDemo({
             {isProcessing ? (
               <span className="inline-flex items-center gap-1.5 text-primary">
                 <Loader2 className="size-3.5 animate-spin" />
-                Running on your documents — typically 30–90 seconds…
+                Running on your documents — typically 30–120 seconds…
               </span>
             ) : allRequiredUploaded ? (
               <span className="inline-flex items-center gap-1.5 text-primary">
@@ -501,7 +564,7 @@ export default function SfdaToolDemo({
 
         <p className="mt-3 text-[11px] text-muted-foreground text-center">
           Files processed in your workspace, not stored externally · One free
-          run per tool
+          run per tool · Output downloadable as DOCX
         </p>
       </CardContent>
     </Card>
