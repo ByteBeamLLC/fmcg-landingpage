@@ -363,7 +363,12 @@ export default function SfdaToolDemo({
             </Button>
           </div>
 
-          <div className="space-y-4">
+          <div
+            className={cn(
+              "grid gap-4",
+              documents.length > 1 ? "grid-cols-1 lg:grid-cols-2" : "grid-cols-1"
+            )}
+          >
             {documents.map((doc, i) => (
               <DocumentCard key={doc.id} doc={doc} toolSlug={toolSlug} index={i} />
             ))}
