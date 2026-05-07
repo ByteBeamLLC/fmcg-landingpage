@@ -8,7 +8,11 @@
  */
 
 import express, { type Request, type Response, type NextFunction } from "express";
-import { registerRoutes } from "../server/routes";
+// Explicit .js extension: the project is ESM ("type":"module") and both
+// `server/routes.ts` (file) and `server/routes/` (directory) exist. Without
+// the extension Node's ESM resolver tries the directory and throws
+// ERR_UNSUPPORTED_DIR_IMPORT in production.
+import { registerRoutes } from "../server/routes.js";
 
 export const config = {
   // Long-running LLM calls for SFDA tools may take 30–120s. Pro tier on
