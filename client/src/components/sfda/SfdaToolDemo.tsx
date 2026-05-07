@@ -354,6 +354,7 @@ export default function SfdaToolDemo({
             "relative left-1/2 -translate-x-1/2 w-screen max-w-7xl px-4 sm:px-6 lg:px-8"
         )}
       >
+      <Card>
         <CardContent className="p-6 sm:p-8">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5">
             <div className="flex items-center gap-3">
