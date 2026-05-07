@@ -3,6 +3,8 @@ import BlogLayout from "@/components/BlogLayout";
 import BlogToolsBanner from "@/components/blog/BlogToolsBanner";
 import BlogToolPromo from "@/components/blog/BlogToolPromo";
 import BlogRelatedTools from "@/components/blog/BlogRelatedTools";
+import BlogKeyTakeaways from "@/components/blog/BlogKeyTakeaways";
+import BlogRelatedPosts from "@/components/blog/BlogRelatedPosts";
 
 const structuredData = [
   {
@@ -56,6 +58,16 @@ export default function SFDADrugRegistrationBlog() {
       <p>
         This comprehensive guide covers the complete SFDA registration process, from initial application through post-approval requirements, helping regulatory affairs professionals navigate Saudi Arabia's pharmaceutical approval system efficiently.
       </p>
+
+      <BlogKeyTakeaways
+        points={[
+          "Standard SFDA registration runs 12–18 months; priority review pathways cut that to 6–9 months for qualifying drugs.",
+          "All applications submit through eSDR in eCTD format; foreign MAHs must appoint a Saudi Authorized Representative (SAR).",
+          "Module 1.3 labelling (SmPC + PIL) and CMC are the two biggest sources of RFIs — pre-submission QC pays for itself.",
+          "Pricing is referenced against 20 international markets; first generic capped at 70% of innovator, with stepped reductions thereafter.",
+          "Registration is valid 5 years; renewal must be filed 180 days before expiry to avoid lapsing.",
+        ]}
+      />
 
       <BlogToolsBanner
         headline="Skip the manual labelling draft — try the SFDA toolkit free"
@@ -471,16 +483,15 @@ export default function SFDADrugRegistrationBlog() {
         <li>Keep SFDA informed of all post-approval changes during registration period</li>
       </ul>
 
-      <h2>Related Resources</h2>
-
-      <p>Expanding into other GCC markets? Explore our related compliance guides:</p>
-      <ul>
-        <li><Link href="/blog/uae-food-labeling-requirements-2026">UAE Food Labeling Requirements 2026</Link> – Complete guide to ESMA compliance and Arabic labeling</li>
-        <li><Link href="/blog/dubai-municipality-montaji-food-registration">Dubai Municipality Montaji Portal Guide</Link> – Food product registration in Dubai</li>
-        <li><Link href="/blog/gcc-document-compliance-automation-2026">GCC Document Compliance Automation</Link> – Multi-market automation strategies</li>
-      </ul>
-
-      <hr />
+      <BlogRelatedPosts
+        slugs={[
+          "no-code-document-automation-regulatory-teams-2026",
+          "arabic-ocr-challenges-solutions-2026",
+          "intelligent-document-processing-business-guide-2026",
+        ]}
+        heading="Related reading for RA teams"
+        subtitle="Adjacent topics if you're operationalising SFDA submissions across a portfolio."
+      />
 
       <h2>How ByteBeam Streamlines SFDA Submissions</h2>
 

@@ -3,6 +3,8 @@ import BlogLayout from "@/components/BlogLayout";
 import BlogToolsBanner from "@/components/blog/BlogToolsBanner";
 import BlogToolPromo from "@/components/blog/BlogToolPromo";
 import BlogRelatedTools from "@/components/blog/BlogRelatedTools";
+import BlogKeyTakeaways from "@/components/blog/BlogKeyTakeaways";
+import BlogRelatedPosts from "@/components/blog/BlogRelatedPosts";
 
 const structuredData = [
   {
@@ -97,6 +99,16 @@ export default function ArabicOCRBlog() {
       <p>
         This guide explains why Arabic OCR is genuinely harder, what solutions we've tested that actually work, and how to design production systems around the reality of 80% accuracy.
       </p>
+
+      <BlogKeyTakeaways
+        points={[
+          "Arabic OCR accuracy lags English by 20–30% on real-world documents — even the best models cap around 80% on complex pages.",
+          "Gemini 3-pro is currently the strongest VLM for Arabic extraction, especially handwriting and mixed bilingual layouts.",
+          "Open-source OCR models can locate Arabic text but rarely transcribe it production-ready — don't bet a workflow on them.",
+          "Design production systems for 80% with confidence-routed human-in-the-loop, not 99% chasing.",
+          "For SFDA / pharma labelling specifically, the bottleneck is regulator-recognised Arabic phrasing, not raw OCR accuracy.",
+        ]}
+      />
 
       <BlogToolsBanner
         headline="Working on Arabic SFDA labelling? OCR isn't your bottleneck — regulatory phrasing is."
@@ -397,13 +409,14 @@ export default function ArabicOCRBlog() {
         subtitle="Purpose-built for Module 1.3 labelling. Regulator-recognised phrasing, RTL formatting, severity-ranked gap reports — DOCX out, audit-trailed."
       />
 
-      <hr />
-
-      <h2>Related reading</h2>
-      <ul>
-        <li><Link href="/blog/sfda-drug-registration-guide-saudi-arabia">SFDA Drug Registration Guide Saudi Arabia: Complete 2026 Process</Link> — what the labelling RFIs actually look like</li>
-        <li><Link href="/blog/no-code-document-automation-regulatory-teams-2026">No-Code Document Automation for Regulatory Teams</Link> — citizen-developer patterns for compliance work</li>
-      </ul>
+      <BlogRelatedPosts
+        slugs={[
+          "sfda-drug-registration-guide-saudi-arabia",
+          "no-code-document-automation-regulatory-teams-2026",
+          "agentic-ocr-intelligent-data-extraction-2026",
+        ]}
+        subtitle="What to read next if you're applying these patterns to GCC regulatory work."
+      />
 
       <hr />
 

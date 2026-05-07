@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import BlogLayout from "@/components/BlogLayout";
+import BlogRelatedPosts from "@/components/blog/BlogRelatedPosts";
 
 const structuredData = [
   {
@@ -572,15 +573,14 @@ Agent Validates and Adapts → Output`}
         Systems will improve continuously from user corrections, new document types, and feedback—without requiring retraining or template updates.
       </p>
 
-      <h2>Related Resources</h2>
-
-      <p>Explore how document automation applies to specific industries and use cases:</p>
-      <ul>
-        <li><Link href="/blog/intelligent-document-processing-business-guide-2026">Intelligent Document Processing Explained</Link> – IDP fundamentals for business users</li>
-        <li><Link href="/blog/no-code-document-automation-regulatory-teams-2026">No-Code Document Automation for Regulatory Teams</Link> – Build workflows without IT</li>
-        <li><Link href="/blog/automating-invoice-processing-2026">Automating Invoice Processing 2026</Link> – Complete guide for finance teams</li>
-        <li><Link href="/blog/gcc-document-compliance-automation-2026">GCC Document Compliance Automation</Link> – Multi-market automation strategies</li>
-      </ul>
+      <BlogRelatedPosts
+        slugs={[
+          "intelligent-document-processing-business-guide-2026",
+          "arabic-ocr-challenges-solutions-2026",
+          "automating-invoice-processing-2026",
+        ]}
+        subtitle="What to read next if you're applying agentic patterns to a specific document workflow."
+      />
 
       <hr />
 

@@ -1,141 +1,175 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Link } from "wouter";
-import { ArrowRight, Calendar, Clock, Tag, Sparkles, Wrench } from "lucide-react";
+import {
+  ArrowRight,
+  Calendar,
+  Clock,
+  Tag,
+  Sparkles,
+  Wrench,
+} from "lucide-react";
 import SEO from "@/components/SEO";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { SFDA_TOOLS } from "@/lib/sfda/tools";
+import {
+  getVisiblePosts,
+  type BlogCategory,
+  type BlogPostMeta,
+} from "@/lib/blog/posts";
 
-interface BlogPost {
-  slug: string;
-  title: string;
-  description: string;
-  category: string;
-  industry: string;
-  readTime: string;
-  date: string;
-  image: string;
-}
+const visiblePosts = getVisiblePosts();
 
-const blogPosts: BlogPost[] = [
+/**
+ * Section order is intentional: top-funnel commercial pillars first
+ * (Regulatory → Compliance → Automation → Industry). Matches the
+ * parsli framework's pillar hierarchy and surfaces the highest-intent
+ * content nearest the page hero.
+ */
+const SECTIONS: { key: BlogCategory; title: string; subtitle: string }[] = [
   {
-    slug: "uae-food-labeling-requirements-2026",
-    title: "UAE Food Labeling Requirements: Complete Compliance Guide 2026",
-    description: "Comprehensive guide to UAE food labeling requirements. Covers ESMA standards, Dubai Municipality Montaji registration, 12 mandatory label elements, Arabic language rules, GSO 2233:2021 nutritional information, allergen declarations, and penalties.",
-    category: "Compliance",
-    industry: "FMCG",
-    readTime: "14 min",
-    date: "2025-11-15",
-    image: "/images/blog/uae-food-labeling-requirements.jpg"
+    key: "Regulatory",
+    title: "Regulatory affairs",
+    subtitle:
+      "Pharma RA, drug registration, and labelling guidance for SFDA, GCC, and beyond.",
   },
   {
-    slug: "arabic-ocr-challenges-solutions-2026",
-    title: "Arabic OCR in 2026: Why It's Still Hard and What Actually Works",
-    description: "Arabic OCR remains 20-30% less accurate than English. Learn why, what solutions actually work (we tested them), and how to design production systems around 80% accuracy.",
-    category: "Automation",
-    industry: "Cross-Industry",
-    readTime: "8 min",
-    date: "2026-01-21",
-    image: "/images/blog/arabic-ocr-complex-document.jpg"
+    key: "Compliance",
+    title: "Compliance & labelling",
+    subtitle:
+      "Food, FMCG, and product compliance — labelling rules, market registration, and audit prep.",
   },
   {
-    slug: "agentic-ocr-intelligent-data-extraction-2026",
-    title: "Agentic OCR: How AI Agents Are Revolutionizing Document Data Extraction in 2026",
-    description: "Agentic OCR explained for 2026. Learn how AI agents transform document extraction with adaptive reasoning, when to use it, and what it means for your business.",
-    category: "Automation",
-    industry: "Cross-Industry",
-    readTime: "12 min",
-    date: "2026-01-21",
-    image: "/images/blog/agentic-ocr-data-extraction.jpg"
+    key: "Automation",
+    title: "Automation & AI",
+    subtitle:
+      "Document AI, no-code workflow patterns, and the tooling stack behind modern compliance teams.",
   },
   {
-    slug: "automation-platform-comparison-2026",
-    title: "Automation Platforms Compared (2026): AI Agent Builders vs RPA vs IDP vs Workflow",
-    description: "In 2026, automation is a stack. This guide compares AI agent builders, RPA, IDP, and workflow platforms—plus how non-technical SMEs can build document-work agents.",
-    category: "Automation",
-    industry: "Cross-Industry",
-    readTime: "12 min",
-    date: "2026-01-17",
-    image: "/images/blog/automation-platform-comparison-2026.jpg"
+    key: "Industry",
+    title: "Industry deep-dives",
+    subtitle: "How specific industries operationalise document automation.",
   },
-  {
-    slug: "sfda-drug-registration-guide-saudi-arabia",
-    title: "SFDA Drug Registration Guide Saudi Arabia: Complete 2026 Process",
-    description: "Navigate SFDA drug registration in Saudi Arabia. Complete guide covering CTD requirements, GMP certification, pricing approval, and timeline for 2026.",
-    category: "Regulatory",
-    industry: "Pharma",
-    readTime: "14 min",
-    date: "2026-01-16",
-    image: "/images/blog/sfda-drug-registration-saudi.jpg"
-  },
-  {
-    slug: "no-code-document-automation-regulatory-teams-2026",
-    title: "No-Code Document Automation for Regulatory Teams: 2026 Guide",
-    description: "Learn how regulatory teams use no-code document automation to build compliance workflows without IT. Citizen developer guide with tools and use cases for 2026.",
-    category: "Automation",
-    industry: "Cross-Industry",
-    readTime: "10 min",
-    date: "2026-01-16",
-    image: "/images/blog/no-code-document-automation-regulatory-team.jpg"
-  },
-  {
-    slug: "intelligent-document-processing-business-guide-2026",
-    title: "Intelligent Document Processing Explained: A Business User's Guide for 2026",
-    description: "IDP explained for 2026. Learn what intelligent document processing is, how it differs from OCR, and how your team can use it—no tech background needed.",
-    category: "Automation",
-    industry: "Cross-Industry",
-    readTime: "9 min",
-    date: "2026-01-16",
-    image: "/images/blog/intelligent-document-processing-business-user.jpg"
-  },
-  {
-    slug: "automating-invoice-processing-2026",
-    title: "Automating Invoice Processing in 2026: The Complete Guide for Finance Teams",
-    description: "Cut invoice processing costs by 80% in 2026. Learn how AI automation reduces manual AP work from $16 to $3 per invoice with step-by-step implementation.",
-    category: "Automation",
-    industry: "Finance",
-    readTime: "11 min",
-    date: "2026-01-16",
-    image: "/images/blog/automating-invoice-processing-dashboard.jpg"
-  }
 ];
 
 const structuredData = [
   {
     "@context": "https://schema.org",
     "@type": "Blog",
-    "name": "ByteBeam Blog",
-    "description": "Expert insights on document automation, regulatory compliance, and AI-powered workflows for FMCG, pharma, finance, and legal industries.",
-    "url": "https://bytebeam.co/blog",
-    "publisher": {
+    name: "ByteBeam Blog",
+    description:
+      "Expert insights on document automation, regulatory compliance, and AI-powered workflows for FMCG, pharma, finance, and legal industries.",
+    url: "https://bytebeam.co/blog",
+    publisher: {
       "@type": "Organization",
-      "name": "ByteBeam",
-      "url": "https://bytebeam.co",
-      "logo": "https://bytebeam.co/assets/bytebeam-logo.png"
+      name: "ByteBeam",
+      url: "https://bytebeam.co",
+      logo: "https://bytebeam.co/assets/bytebeam-logo.png",
     },
-    "blogPost": blogPosts.map(post => ({
+    blogPost: visiblePosts.map((post) => ({
       "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.description,
-      "url": `https://bytebeam.co/blog/${post.slug}`,
-      "datePublished": post.date,
-      "author": {
+      headline: post.title,
+      description: post.description,
+      url: `https://bytebeam.co/blog/${post.slug}`,
+      datePublished: post.date,
+      dateModified: post.updated ?? post.date,
+      author: {
         "@type": "Organization",
-        "name": "ByteBeam Team"
-      }
-    }))
+        name: "ByteBeam Editorial Team",
+      },
+    })),
   },
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://bytebeam.co" },
-      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://bytebeam.co/blog" }
-    ]
-  }
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://bytebeam.co",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: "https://bytebeam.co/blog",
+      },
+    ],
+  },
 ];
+
+function getCategoryColor(category: string) {
+  switch (category) {
+    case "Compliance":
+      return "bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-200";
+    case "Regulatory":
+      return "bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-200";
+    case "Automation":
+      return "bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-200";
+    case "Industry":
+      return "bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-200";
+    default:
+      return "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200";
+  }
+}
+
+function PostCard({ post, index }: { post: BlogPostMeta; index: number }) {
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: Math.min(index * 0.05, 0.3) }}
+      className="bg-card border-2 border-border rounded-xl overflow-hidden hover:shadow-lg hover:border-primary/30 transition-all"
+    >
+      <Link href={`/blog/${post.slug}`}>
+        <div className="aspect-video bg-muted relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+            <span className="text-4xl font-bold text-primary/30">
+              {post.industry}
+            </span>
+          </div>
+        </div>
+        <div className="p-6">
+          <div className="flex items-center gap-2 mb-3">
+            <span
+              className={`px-2 py-1 rounded-full text-xs font-medium ${getCategoryColor(post.category)}`}
+            >
+              {post.category}
+            </span>
+            <span className="text-xs text-muted-foreground flex items-center gap-1">
+              <Tag className="w-3 h-3" />
+              {post.industry}
+            </span>
+          </div>
+          <h2 className="text-lg font-bold mb-2 line-clamp-2 hover:text-primary transition-colors">
+            {post.title}
+          </h2>
+          <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+            {post.description}
+          </p>
+          <div className="flex items-center justify-between text-xs text-muted-foreground">
+            <span className="flex items-center gap-1">
+              <Calendar className="w-3 h-3" />
+              {new Date(post.date).toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "numeric",
+              })}
+            </span>
+            <span className="flex items-center gap-1">
+              <Clock className="w-3 h-3" />
+              {post.readTime}
+            </span>
+          </div>
+        </div>
+      </Link>
+    </motion.article>
+  );
+}
 
 export default function BlogIndex() {
   const [heroRef, heroInView] = useInView({
@@ -143,23 +177,10 @@ export default function BlogIndex() {
     threshold: 0.1,
   });
 
-  const [postsRef, postsInView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const getCategoryColor = (category: string) => {
-    switch (category) {
-      case "Compliance":
-        return "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200";
-      case "Regulatory":
-        return "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200";
-      case "Automation":
-        return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200";
-      default:
-        return "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200";
-    }
-  };
+  const sectionsWithPosts = SECTIONS.map((section) => ({
+    ...section,
+    posts: visiblePosts.filter((p) => p.category === section.key),
+  })).filter((s) => s.posts.length > 0);
 
   return (
     <div className="min-h-screen bg-background">
@@ -183,15 +204,29 @@ export default function BlogIndex() {
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">ByteBeam Blog</h1>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+              ByteBeam Blog
+            </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Expert insights on document automation, regulatory compliance, and AI-powered workflows for industries that move the world.
+              Expert insights on document automation, regulatory compliance,
+              and AI-powered workflows for industries that move the world.
             </p>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
+              {sectionsWithPosts.map((section) => (
+                <a
+                  key={section.key}
+                  href={`#${section.key.toLowerCase()}`}
+                  className="text-xs font-medium px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                >
+                  {section.title}
+                </a>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Featured cluster — SFDA toolkit (cross-pillar surface) */}
+      {/* Featured cluster — SFDA toolkit */}
       <section className="py-12 lg:py-16 bg-background border-b border-border">
         <div className="container-custom">
           <motion.div
@@ -213,7 +248,11 @@ export default function BlogIndex() {
                       Built for SFDA Module 1.3 labelling work
                     </h2>
                     <p className="text-muted-foreground leading-relaxed mb-5">
-                      Three AI agents that replace the mechanical 60–80% of SFDA labelling work — SmPC + PIL generation, Arabic translation with regulator-recognised phrasing, and pre-submission gap analysis. Free first run on each tool, license sold via 30-min walkthrough.
+                      Three AI agents that replace the mechanical 60–80% of
+                      SFDA labelling work — SmPC + PIL generation, Arabic
+                      translation with regulator-recognised phrasing, and
+                      pre-submission gap analysis. Free first run on each
+                      tool, license sold via 30-min walkthrough.
                     </p>
                     <div className="grid sm:grid-cols-3 gap-3 mb-6">
                       {SFDA_TOOLS.map((tool) => (
@@ -253,64 +292,46 @@ export default function BlogIndex() {
         </div>
       </section>
 
-      {/* Blog Posts Grid */}
-      <section className="section-padding bg-background">
+      {/* Category sections */}
+      <section className="py-12 lg:py-16 bg-background">
         <div className="container-custom">
-          <motion.div
-            ref={postsRef}
-            initial={{ opacity: 0, y: 30 }}
-            animate={postsInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {blogPosts.map((post, index) => (
-                <motion.article
-                  key={post.slug}
+          <div className="space-y-16">
+            {sectionsWithPosts.map((section) => (
+              <div
+                key={section.key}
+                id={section.key.toLowerCase()}
+                className="scroll-mt-24"
+              >
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
-                  animate={postsInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-card border-2 border-border rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300"
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="mb-8"
                 >
-                  <Link href={`/blog/${post.slug}`}>
-                    <div className="aspect-video bg-muted relative overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                        <span className="text-4xl font-bold text-primary/30">
-                          {post.industry}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="p-6">
-                      <div className="flex items-center gap-2 mb-3">
-                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${getCategoryColor(post.category)}`}>
-                          {post.category}
-                        </span>
-                        <span className="text-xs text-muted-foreground flex items-center gap-1">
-                          <Tag className="w-3 h-3" />
-                          {post.industry}
-                        </span>
-                      </div>
-                      <h2 className="text-lg font-bold mb-2 line-clamp-2 hover:text-primary transition-colors">
-                        {post.title}
+                  <div className="flex items-baseline justify-between gap-4 flex-wrap">
+                    <div>
+                      <h2 className="text-2xl sm:text-3xl font-bold mb-2">
+                        {section.title}
                       </h2>
-                      <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
-                        {post.description}
+                      <p className="text-muted-foreground max-w-3xl">
+                        {section.subtitle}
                       </p>
-                      <div className="flex items-center justify-between text-xs text-muted-foreground">
-                        <span className="flex items-center gap-1">
-                          <Calendar className="w-3 h-3" />
-                          {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Clock className="w-3 h-3" />
-                          {post.readTime}
-                        </span>
-                      </div>
                     </div>
-                  </Link>
-                </motion.article>
-              ))}
-            </div>
-          </motion.div>
+                    <span className="text-sm text-muted-foreground shrink-0">
+                      {section.posts.length}{" "}
+                      {section.posts.length === 1 ? "article" : "articles"}
+                    </span>
+                  </div>
+                </motion.div>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {section.posts.map((post, i) => (
+                    <PostCard key={post.slug} post={post} index={i} />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -319,20 +340,29 @@ export default function BlogIndex() {
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Automate Your Document Workflows?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Ready to automate your document workflows?
+            </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              See how ByteBeam can transform your compliance and document processing operations.
+              See how ByteBeam can transform your compliance and document
+              processing operations.
             </p>
-            <Link href="/">
-              <a className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors">
-                Explore Our Platform
-                <ArrowRight className="w-5 h-5" />
-              </a>
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Button asChild size="lg">
+                <Link href="/sfda">
+                  Try the SFDA toolkit free
+                  <ArrowRight className="size-4 ml-2" />
+                </Link>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <Link href="/">Explore the platform</Link>
+              </Button>
+            </div>
           </motion.div>
         </div>
       </section>
