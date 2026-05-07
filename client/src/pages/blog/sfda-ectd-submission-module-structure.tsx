@@ -17,7 +17,7 @@ const structuredData = [
     headline:
       "SFDA eCTD Submission Format: Module 1 Regional Requirements & Common RFIs in 2026",
     description:
-      "How SFDA submissions actually work in eCTD: the GCC Module 1 specification, what each module contains, what triggers RFIs, and where in-house teams should focus automation.",
+      "How SFDA submissions work in eCTD: GCC Module 1 specification, module content, what triggers RFIs, and where in-house teams should focus automation.",
     image: "https://bytebeam.co/images/blog/sfda-ectd-modules.jpg",
     author: {
       "@type": "Person",
@@ -71,7 +71,7 @@ export default function SfdaEctdBlog() {
   return (
     <BlogLayout
       title="SFDA eCTD Submission Format: Module 1 Regional Requirements & Common RFIs in 2026"
-      description="How SFDA submissions actually work in eCTD: the GCC Module 1 specification, what each module contains, what triggers RFIs, and where in-house teams should focus automation."
+      description="How SFDA submissions work in eCTD: GCC Module 1 specification, module content, what triggers RFIs, and where in-house teams should focus automation."
       keywords="SFDA eCTD, GCC Module 1 specification, eCTD modules, ICH M4 CTD, ICH M8 eCTD v4.0, SFDA Guidance for Submission v5.0, Module 1.3 SmPC PIL, eCTD format Saudi Arabia, GHC Electronic Gateway"
       canonical="https://bytebeam.co/blog/sfda-ectd-submission-module-structure"
       structuredData={structuredData}
@@ -213,7 +213,7 @@ export default function SfdaEctdBlog() {
       />
 
       <p>
-        ByteBeam ships three single-purpose AI agents for SFDA Module 1.3 work specifically:
+        The <Link href="/sfda">ByteBeam SFDA toolkit</Link> ships three single-purpose AI agents for SFDA Module 1.3 work specifically:
       </p>
 
       <ul>

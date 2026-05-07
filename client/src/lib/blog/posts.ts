@@ -44,7 +44,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
       "SFDA Pharmacovigilance & QPPV Requirements: A Practical Guide for In-House Teams in 2026",
     shortTitle: "SFDA Pharmacovigilance & QPPV Guide",
     description:
-      "What in-house RA/PV teams need to know about SFDA pharmacovigilance: QPPV qualifications, PSSF, ICSR/PSUR/RMP cycles, Saudi-national rules, and where automation actually helps.",
+      "SFDA pharmacovigilance for in-house RA/PV teams: QPPV qualifications, PSSF, ICSR/PSUR/RMP cycles, and where automation actually helps in 2026.",
     category: "Regulatory",
     industry: "Pharma",
     readTime: "14 min",
@@ -57,7 +57,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
       "SFDA Variations Decision Guide: Type IA, IB, II — A Practical Reference for In-House RA Teams",
     shortTitle: "SFDA Variations Decision Guide",
     description:
-      "How SFDA classifies post-approval variations under Guidelines v6.3/v6.4, when to use Type IA / IA(IN) / IB / II, the documentation each requires, and where the work is automatable.",
+      "How SFDA classifies post-approval variations under Guidelines v6.3, when to use Type IA / IA(IN) / IB / II, and where the work is automatable.",
     category: "Regulatory",
     industry: "Pharma",
     readTime: "14 min",
@@ -70,7 +70,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
       "SFDA eCTD Submission Format: Module 1 Regional Requirements & Common RFIs in 2026",
     shortTitle: "SFDA eCTD Submission Format",
     description:
-      "How SFDA submissions actually work in eCTD: the GCC Module 1 specification, what each module contains, what triggers RFIs, and where in-house teams should focus automation.",
+      "How SFDA submissions work in eCTD: GCC Module 1 specification, module content, what triggers RFIs, and where in-house teams should focus automation.",
     category: "Regulatory",
     industry: "Pharma",
     readTime: "14 min",
@@ -83,7 +83,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
       "SFDA Drug Master File (DMF) and Letter of Access: A Practical Guide for API Manufacturers and MAHs",
     shortTitle: "SFDA DMF & Letter of Access Guide",
     description:
-      "How DMFs are submitted to SFDA, how the Letter of Access works, what the restricted and open parts must contain, and where API manufacturers most often lose review time.",
+      "How DMFs are submitted to SFDA, how the Letter of Access works, what the open and restricted parts contain, and where API manufacturers lose review time.",
     category: "Regulatory",
     industry: "Pharma",
     readTime: "13 min",
@@ -96,7 +96,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
       "Impurity Profile for SFDA Drug Submissions: ICH Q3A, Q3B, Q3D, and M7 in Practice",
     shortTitle: "Impurity Profile Guide (ICH Q3 / M7)",
     description:
-      "How to build a defensible impurity profile for SFDA submissions. Reporting, identification, and qualification thresholds under ICH Q3A/B; elemental impurities under Q3D; mutagenic impurities under M7.",
+      "Build a defensible impurity profile for SFDA submissions: ICH Q3A/B thresholds, Q3D elemental impurities, and M7 mutagenic-impurity assessment.",
     category: "Regulatory",
     industry: "Pharma",
     readTime: "14 min",

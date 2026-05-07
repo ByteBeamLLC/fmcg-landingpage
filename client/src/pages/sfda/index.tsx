@@ -8,6 +8,8 @@ import {
   FileCheck2,
   Sparkles,
   CalendarClock,
+  BookOpen,
+  Calendar,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import Navigation from "@/components/navigation";
@@ -17,6 +19,12 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { BOOK_DEMO_URL, SFDA_TOOLS } from "@/lib/sfda/tools";
+import { getVisiblePosts } from "@/lib/blog/posts";
+
+/** Pharma RA blog cluster surfaced on the SFDA hub for cross-pillar link velocity. */
+const PHARMA_INSIGHTS = getVisiblePosts().filter(
+  (post) => post.category === "Regulatory" && post.industry === "Pharma",
+);
 
 const PAGE_URL = "https://bytebeam.co/sfda";
 
@@ -199,6 +207,73 @@ export default function SfdaHubPage() {
               ))}
             </div>
           </section>
+
+          {/* Pharma RA insights — cluster surface from parent hub to leaf blogs */}
+          {PHARMA_INSIGHTS.length > 0 && (
+            <section className="max-w-5xl mx-auto py-16 border-t">
+              <div className="text-center mb-10">
+                <Badge variant="secondary" className="gap-1.5 mb-3">
+                  <BookOpen className="size-3 text-primary" />
+                  Pharma RA Insights
+                </Badge>
+                <h2 className="text-2xl sm:text-3xl font-bold mb-3">
+                  Deep dives on SFDA submission work
+                </h2>
+                <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                  Authoritative guides for in-house RA, PV, and CMC teams —
+                  primary-source cited, framework-aligned, written for
+                  practitioners. Each is a candidate workstream we co-build
+                  agents for.
+                </p>
+              </div>
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                {PHARMA_INSIGHTS.map((post) => (
+                  <Link
+                    key={post.slug}
+                    href={`/blog/${post.slug}`}
+                    className="group block"
+                  >
+                    <Card className="h-full hover:border-primary/40 hover:shadow-md transition-all">
+                      <CardContent className="p-5 flex flex-col h-full">
+                        <Badge variant="secondary" className="self-start mb-3 text-[10px] uppercase tracking-wider">
+                          {post.category}
+                        </Badge>
+                        <h3 className="font-semibold text-base leading-snug mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                          {post.shortTitle ?? post.title}
+                        </h3>
+                        <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3 flex-1">
+                          {post.description}
+                        </p>
+                        <div className="mt-4 pt-3 border-t flex items-center justify-between text-[11px] text-muted-foreground">
+                          <span className="inline-flex items-center gap-1">
+                            <Calendar className="size-3" />
+                            {new Date(post.date).toLocaleDateString("en-US", {
+                              month: "short",
+                              year: "numeric",
+                            })}
+                          </span>
+                          <span className="inline-flex items-center gap-1.5 font-medium text-foreground group-hover:text-primary transition-colors">
+                            <Clock className="size-3" />
+                            {post.readTime}
+                            <ArrowRight className="size-3 group-hover:translate-x-0.5 transition-transform" />
+                          </span>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                ))}
+              </div>
+              <div className="mt-8 text-center">
+                <Link
+                  href="/blog"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline underline-offset-4"
+                >
+                  See all pharma insights
+                  <ArrowRight className="size-3.5" />
+                </Link>
+              </div>
+            </section>
+          )}
 
           {/* Final CTA */}
           <section className="max-w-3xl mx-auto py-16 text-center">

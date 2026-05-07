@@ -15,7 +15,7 @@ const structuredData = [
     headline:
       "Impurity Profile for SFDA Drug Submissions: ICH Q3A, Q3B, Q3D, and M7 in Practice",
     description:
-      "How to build a defensible impurity profile for SFDA submissions. Reporting, identification, and qualification thresholds under ICH Q3A/B; elemental impurities under Q3D; mutagenic impurities under M7.",
+      "Build a defensible impurity profile for SFDA submissions: ICH Q3A/B thresholds, Q3D elemental impurities, and M7 mutagenic-impurity assessment.",
     image: "https://bytebeam.co/images/blog/sfda-impurity-profile-ich-q3.jpg",
     author: {
       "@type": "Person",
@@ -69,7 +69,7 @@ export default function SfdaImpurityProfileBlog() {
   return (
     <BlogLayout
       title="Impurity Profile for SFDA Drug Submissions: ICH Q3A, Q3B, Q3D, and M7 in Practice"
-      description="How to build a defensible impurity profile for SFDA submissions. Reporting, identification, and qualification thresholds under ICH Q3A/B; elemental impurities under Q3D; mutagenic impurities under M7."
+      description="Build a defensible impurity profile for SFDA submissions: ICH Q3A/B thresholds, Q3D elemental impurities, and M7 mutagenic-impurity assessment."
       keywords="ICH Q3A SFDA, ICH Q3B impurities, ICH Q3D elemental impurities, ICH M7 mutagenic impurities, impurity profile drug substance, qualification threshold ICH, nitrosamine impurities SFDA, NDSRI assessment"
       canonical="https://bytebeam.co/blog/sfda-impurity-profile-ich-q3a-q3b-q3d"
       structuredData={structuredData}
@@ -310,7 +310,7 @@ export default function SfdaImpurityProfileBlog() {
       <h2>ByteBeam and SFDA impurity profile automation</h2>
 
       <p>
-        ByteBeam ships single-purpose AI agents for SFDA document work — built around how the customer's team actually operates, not generic copilots. Three are already in production for <strong>Module 1.3 labelling</strong>:
+        ByteBeam's <Link href="/sfda">SFDA RA agents</Link> ship single-purpose AI tooling for SFDA document work — built around how the customer's team actually operates, not generic copilots. Three are already in production for <strong>Module 1.3 labelling</strong>:
       </p>
 
       <ul>

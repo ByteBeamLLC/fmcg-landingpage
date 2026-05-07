@@ -15,7 +15,7 @@ const structuredData = [
     headline:
       "SFDA Drug Master File (DMF) and Letter of Access: A Practical Guide for API Manufacturers and MAHs",
     description:
-      "How DMFs are submitted to SFDA, how the Letter of Access works, what the restricted and open parts must contain, and where API manufacturers most often lose review time.",
+      "How DMFs are submitted to SFDA, how the Letter of Access works, what the open and restricted parts contain, and where API manufacturers lose review time.",
     image: "https://bytebeam.co/images/blog/sfda-drug-master-file.jpg",
     author: {
       "@type": "Person",
@@ -69,7 +69,7 @@ export default function SfdaDmfBlog() {
   return (
     <BlogLayout
       title="SFDA Drug Master File (DMF) and Letter of Access: A Practical Guide for API Manufacturers and MAHs"
-      description="How DMFs are submitted to SFDA, how the Letter of Access works, what the restricted and open parts must contain, and where API manufacturers most often lose review time."
+      description="How DMFs are submitted to SFDA, how the Letter of Access works, what the open and restricted parts contain, and where API manufacturers lose review time."
       keywords="SFDA DMF, SFDA Drug Master File, Letter of Access SFDA, Active Substance Master File ASMF, API regulatory Saudi Arabia, DMF submission Saudi, restricted part DMF, open part DMF"
       canonical="https://bytebeam.co/blog/sfda-drug-master-file-letter-of-access"
       structuredData={structuredData}
@@ -291,7 +291,7 @@ export default function SfdaDmfBlog() {
       <h2>ByteBeam and SFDA DMF / Letter of Access automation</h2>
 
       <p>
-        ByteBeam ships single-purpose AI agents for SFDA document work — built around how the customer's team actually operates, not generic copilots. Three are already in production for <strong>Module 1.3 labelling</strong>:
+        ByteBeam's <Link href="/sfda">SFDA labelling toolkit</Link> ships single-purpose AI agents for SFDA document work — built around how the customer's team actually operates, not generic copilots. Three are already in production for <strong>Module 1.3 labelling</strong>:
       </p>
 
       <ul>

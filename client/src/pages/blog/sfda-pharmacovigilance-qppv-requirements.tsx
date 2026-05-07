@@ -15,7 +15,7 @@ const structuredData = [
     headline:
       "SFDA Pharmacovigilance & QPPV Requirements: A Practical Guide for In-House Teams in 2026",
     description:
-      "What in-house RA/PV teams need to know about SFDA pharmacovigilance: QPPV qualifications, PSSF, ICSR/PSUR/RMP cycles, Saudi-national rules, and where automation actually helps.",
+      "SFDA pharmacovigilance for in-house RA/PV teams: QPPV qualifications, PSSF, ICSR/PSUR/RMP cycles, and where automation actually helps in 2026.",
     image: "https://bytebeam.co/images/blog/sfda-pharmacovigilance-qppv.jpg",
     author: {
       "@type": "Person",
@@ -69,7 +69,7 @@ export default function SfdaPharmacovigilanceQppvBlog() {
   return (
     <BlogLayout
       title="SFDA Pharmacovigilance & QPPV Requirements: A Practical Guide for In-House Teams in 2026"
-      description="What in-house RA/PV teams need to know about SFDA pharmacovigilance: QPPV qualifications, PSSF, ICSR/PSUR/RMP cycles, Saudi-national rules, and where automation actually helps."
+      description="SFDA pharmacovigilance for in-house RA/PV teams: QPPV qualifications, PSSF, ICSR/PSUR/RMP cycles, and where automation actually helps in 2026."
       keywords="SFDA pharmacovigilance, QPPV Saudi Arabia, GVP guideline SFDA, pharmacovigilance Saudi requirements, PSSF SFDA, Saudi Vigilance, ICSR SFDA, PSUR SFDA, RMP SFDA, deputy QPPV Saudi"
       canonical="https://bytebeam.co/blog/sfda-pharmacovigilance-qppv-requirements"
       structuredData={structuredData}
@@ -319,7 +319,7 @@ export default function SfdaPharmacovigilanceQppvBlog() {
       <h2>ByteBeam and SFDA PV automation</h2>
 
       <p>
-        ByteBeam ships single-purpose AI agents for SFDA document work — built around how the customer's team actually operates, not a generic copilot. Three are already in production for SFDA <strong>Module 1.3 labelling</strong>:
+        The <Link href="/sfda">ByteBeam SFDA toolkit</Link> ships single-purpose AI agents for SFDA document work — built around how the customer's team actually operates, not a generic copilot. Three are already in production for SFDA <strong>Module 1.3 labelling</strong>:
       </p>
 
       <ul>
