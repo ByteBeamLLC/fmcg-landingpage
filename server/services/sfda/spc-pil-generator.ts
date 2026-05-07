@@ -6,17 +6,17 @@
  * are unchanged — this is the IP that drives output quality.
  */
 
-import { generateText } from "../../lib/openrouter";
+import { generateText } from "../../lib/openrouter.js";
 import {
   extractTextFromPdf,
   base64ToBuffer,
-} from "../../lib/document/pdf-parser";
+} from "../../lib/document/pdf-parser.js";
 import {
   prepareImageForVision,
   isImageMimeType,
-} from "../../lib/document/image-processor";
-import { getPilGuidelines, getSpcGuidelines } from "../../lib/guidelines";
-import type { SfdaUploadedFile, SfdaToolResult } from "./types";
+} from "../../lib/document/image-processor.js";
+import { getPilGuidelines, getSpcGuidelines } from "../../lib/guidelines/index.js";
+import type { SfdaUploadedFile, SfdaToolResult } from "./types.js";
 
 export async function generateSpcPil(
   files: SfdaUploadedFile[]
@@ -30,7 +30,7 @@ export async function generateSpcPil(
     } else if (isImageMimeType(file.mimeType)) {
       inputTexts[file.inputId] = prepareImageForVision(file.base64, file.mimeType);
     } else if (file.mimeType.includes("wordprocessingml")) {
-      const { extractTextFromDocx } = await import("../../lib/document/docx-parser");
+      const { extractTextFromDocx } = await import("../../lib/document/docx-parser.js");
       inputTexts[file.inputId] = await extractTextFromDocx(buffer);
     }
   }

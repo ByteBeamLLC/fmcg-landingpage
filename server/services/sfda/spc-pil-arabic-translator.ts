@@ -5,18 +5,18 @@
  * Prompts and orchestration are unchanged.
  */
 
-import { generateText } from "../../lib/openrouter";
+import { generateText } from "../../lib/openrouter.js";
 import {
   extractTextFromPdf,
   base64ToBuffer,
-} from "../../lib/document/pdf-parser";
-import { extractTextFromDocx } from "../../lib/document/docx-parser";
+} from "../../lib/document/pdf-parser.js";
+import { extractTextFromDocx } from "../../lib/document/docx-parser.js";
 import {
   getSfdaPilArabicTemplate,
   getGccPilGuidance,
   getSpcGuidelines,
-} from "../../lib/guidelines";
-import type { SfdaUploadedFile, SfdaToolResult } from "./types";
+} from "../../lib/guidelines/index.js";
+import type { SfdaUploadedFile, SfdaToolResult } from "./types.js";
 
 export async function translateSpcPilToArabic(
   files: SfdaUploadedFile[]

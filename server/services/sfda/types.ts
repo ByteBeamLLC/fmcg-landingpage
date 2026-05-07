@@ -14,4 +14,4 @@ export interface SfdaToolResult {
   model: string;
 }
 
-export { isOpenRouterConfigured } from "../../lib/openrouter";
+export { isOpenRouterConfigured } from "../../lib/openrouter.js";

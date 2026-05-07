@@ -1,8 +1,8 @@
 import type { Express, Request, Response } from "express";
-import { aiToolsLimiter, getRateLimitInfo } from "../middleware/rateLimit";
-import * as openRouterService from "../services/openrouter.service";
-import * as sfdaService from "../services/sfda";
-import type { SfdaUploadedFile } from "../services/sfda";
+import { aiToolsLimiter, getRateLimitInfo } from "../middleware/rateLimit.js";
+import * as openRouterService from "../services/openrouter.service.js";
+import * as sfdaService from "../services/sfda/index.js";
+import type { SfdaUploadedFile } from "../services/sfda/index.js";
 
 /**
  * Register all tool-related API routes

@@ -1,8 +1,8 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { storage } from "./storage";
-import { insertLeadSchema } from "@shared/schema";
-import { registerToolRoutes } from "./routes/tools";
+import { storage } from "./storage.js";
+import { insertLeadSchema } from "../shared/schema.js";
+import { registerToolRoutes } from "./routes/tools.js";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Contact form submission endpoint
