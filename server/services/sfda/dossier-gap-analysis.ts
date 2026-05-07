@@ -286,7 +286,13 @@ ${storageConditionsFinal}`;
   });
 
   return {
-    markdown: report,
+    documents: [
+      {
+        id: "gap_analysis_report",
+        title: "SFDA Dossier Gap Analysis Report",
+        markdown: report,
+      },
+    ],
     model:
       process.env.OPENROUTER_SFDA_MODEL ||
       process.env.OPENROUTER_MODEL ||

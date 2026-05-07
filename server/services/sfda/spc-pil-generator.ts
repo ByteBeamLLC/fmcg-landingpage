@@ -322,24 +322,24 @@ Return all extracted information clearly and completely. Do not omit any data po
     maxTokens: 16000,
   });
 
-  const markdown = `# Patient Information Leaflet (English)
-
-${pilEnglish}
-
----
-
-# Summary of Product Characteristics (English)
-
-${spcEnglish}
-
----
-
-## Extracted Drug Data
-
-${extractedData}`;
-
   return {
-    markdown,
+    documents: [
+      {
+        id: "pil_english",
+        title: "Patient Information Leaflet (English)",
+        markdown: pilEnglish,
+      },
+      {
+        id: "spc_english",
+        title: "Summary of Product Characteristics (English)",
+        markdown: spcEnglish,
+      },
+      {
+        id: "extracted_data",
+        title: "Extracted Drug Data",
+        markdown: extractedData,
+      },
+    ],
     model:
       process.env.OPENROUTER_SFDA_MODEL ||
       process.env.OPENROUTER_MODEL ||

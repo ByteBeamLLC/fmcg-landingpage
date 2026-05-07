@@ -234,18 +234,21 @@ OUTPUT INSTRUCTIONS: Start your response directly with the SPC title heading in 
     maxTokens: 16000,
   });
 
-  const markdown = `# نشرة الدواء (Arabic PIL)
-
-${pilArabic}
-
----
-
-# ملخص خصائص المنتج (Arabic SmPC)
-
-${spcArabic}`;
-
   return {
-    markdown,
+    documents: [
+      {
+        id: "pil_arabic",
+        title: "نشرة معلومات المريض (Arabic PIL)",
+        markdown: pilArabic,
+        rtl: true,
+      },
+      {
+        id: "spc_arabic",
+        title: "ملخص خصائص المنتج (Arabic SmPC)",
+        markdown: spcArabic,
+        rtl: true,
+      },
+    ],
     model:
       process.env.OPENROUTER_SFDA_MODEL ||
       process.env.OPENROUTER_MODEL ||
