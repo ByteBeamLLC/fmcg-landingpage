@@ -334,11 +334,6 @@ Return all extracted information clearly and completely. Do not omit any data po
         title: "Summary of Product Characteristics (English)",
         markdown: spcEnglish,
       },
-      {
-        id: "extracted_data",
-        title: "Extracted Drug Data",
-        markdown: extractedData,
-      },
     ],
     model:
       process.env.OPENROUTER_SFDA_MODEL ||
