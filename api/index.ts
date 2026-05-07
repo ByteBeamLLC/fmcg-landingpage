@@ -21,7 +21,19 @@ export const config = {
   maxDuration: 300,
 };
 
+console.log("[api/index] cold start: module loaded");
+
 const app = express();
+
+// Per-request trace log for SFDA endpoints — shows up in Vercel runtime logs
+app.use("/api/tools/sfda", (req, _res, next) => {
+  const files = (req.body as { files?: Array<{ inputId?: string; fileName?: string }> })?.files;
+  const summary = Array.isArray(files)
+    ? files.map((f) => `${f?.inputId}:${f?.fileName}`).join(",")
+    : "(no files)";
+  console.log(`[sfda] ${req.method} ${req.url}  files=[${summary}]`);
+  next();
+});
 
 // Match the local server's body limit so SFDA base64 file uploads pass through.
 app.use(express.json({ limit: "60mb" }));

@@ -12,7 +12,7 @@
 
 import { readFile } from "fs/promises";
 import { join } from "path";
-import { extractTextFromPdf } from "../document/pdf-parser";
+import { extractTextFromPdf } from "../document/pdf-parser.js";
 
 let cachedGuidance: string | null = null;
 let cachedTemplate: string | null = null;

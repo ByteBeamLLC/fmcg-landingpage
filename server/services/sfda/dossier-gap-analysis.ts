@@ -5,14 +5,14 @@
  * tracking). Prompts and orchestration are unchanged.
  */
 
-import { generateText, type Message } from "../../lib/openrouter";
+import { generateText, type Message } from "../../lib/openrouter.js";
 import {
   extractTextFromPdf,
   base64ToBuffer,
-} from "../../lib/document/pdf-parser";
-import { extractTextFromDocx } from "../../lib/document/docx-parser";
-import { getFullTemplate, getFullGuidance } from "../../lib/guidelines";
-import type { SfdaUploadedFile, SfdaToolResult } from "./types";
+} from "../../lib/document/pdf-parser.js";
+import { extractTextFromDocx } from "../../lib/document/docx-parser.js";
+import { getFullTemplate, getFullGuidance } from "../../lib/guidelines/index.js";
+import type { SfdaUploadedFile, SfdaToolResult } from "./types.js";
 
 interface RunGapAnalysisOptions {
   storageConditions?: string;

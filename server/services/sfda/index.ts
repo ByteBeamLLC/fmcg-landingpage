@@ -3,8 +3,8 @@
  * and the shared types so route handlers have a single import surface.
  */
 
-export type { SfdaUploadedFile, SfdaToolResult } from "./types";
-export { isOpenRouterConfigured } from "../../lib/openrouter";
-export { generateSpcPil } from "./spc-pil-generator";
-export { translateSpcPilToArabic } from "./spc-pil-arabic-translator";
-export { runDossierGapAnalysis } from "./dossier-gap-analysis";
+export type { SfdaUploadedFile, SfdaToolResult } from "./types.js";
+export { isOpenRouterConfigured } from "../../lib/openrouter.js";
+export { generateSpcPil } from "./spc-pil-generator.js";
+export { translateSpcPilToArabic } from "./spc-pil-arabic-translator.js";
+export { runDossierGapAnalysis } from "./dossier-gap-analysis.js";
