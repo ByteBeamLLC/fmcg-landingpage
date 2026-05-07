@@ -343,7 +343,17 @@ export default function SfdaToolDemo({
 
   // ─── Done — render each document in its own card ───
   if (state === "done") {
+    // For multi-document outputs, escape the parent's max-w-3xl so cards have
+    // room to breathe side-by-side. CSS trick: w-screen + max-w-7xl + center
+    // via left:50% / -translate-x-1/2 breaks free of any ancestor max-width.
+    const isWide = documents.length > 1;
     return (
+      <div
+        className={cn(
+          isWide &&
+            "relative left-1/2 -translate-x-1/2 w-screen max-w-7xl px-4 sm:px-6 lg:px-8"
+        )}
+      >
       <Card>
         <CardContent className="p-6 sm:p-8">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5">
@@ -399,6 +409,7 @@ export default function SfdaToolDemo({
           </div>
         </CardContent>
       </Card>
+      </div>
     );
   }
 
