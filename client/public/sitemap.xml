@@ -432,7 +432,42 @@
 
   <url>
     <loc>https://bytebeam.co/blog/sfda-drug-registration-guide-saudi-arabia</loc>
-    <lastmod>2026-01-16</lastmod>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://bytebeam.co/blog/sfda-pharmacovigilance-qppv-requirements</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://bytebeam.co/blog/sfda-variations-type-ia-ib-ii-decision-guide</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://bytebeam.co/blog/sfda-ectd-submission-module-structure</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://bytebeam.co/blog/sfda-drug-master-file-letter-of-access</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://bytebeam.co/blog/sfda-impurity-profile-ich-q3a-q3b-q3d</loc>
+    <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

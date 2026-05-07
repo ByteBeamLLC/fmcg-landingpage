@@ -72,9 +72,20 @@ export interface SfdaTool {
   resources?: SfdaToolResource[];
 }
 
-/** Where every "Book a demo" CTA points. Sales-led license conversion. */
+/**
+ * Where every "Book a demo" / "Book a discovery call" CTA points across
+ * the SFDA/pharma surface. Replace with the production Google Calendar
+ * appointment-scheduling URL when ready — this constant is the single
+ * source of truth so swapping is one-line.
+ *
+ * Sales-led license conversion: the booking page collects qualifying
+ * info via Google Calendar's built-in form (name, email, note).
+ */
 export const BOOK_DEMO_URL =
-  "https://calendly.com/talal-bytebeam/sfda-discovery";
+  "https://calendar.app.google/sfda-discovery-bytebeam";
+
+/** Alias for clarity in blog content where we frame as a "discovery call". */
+export const SFDA_BOOKING_URL = BOOK_DEMO_URL;
 
 /** Default number of free runs per tool before the demo gate kicks in. */
 export const DEFAULT_FREE_USES = 1;
