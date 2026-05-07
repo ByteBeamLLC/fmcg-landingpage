@@ -17,6 +17,8 @@ interface BlogLayoutProps {
   industry: string;
   readTime: string;
   date: string;
+  /** ISO date string. When set, shown as "Updated <date>" next to the published date. */
+  updated?: string;
   author: string;
   children: React.ReactNode;
 }
@@ -33,6 +35,7 @@ export default function BlogLayout({
   industry,
   readTime,
   date,
+  updated,
   author,
   children,
 }: BlogLayoutProps) {
@@ -105,16 +108,31 @@ export default function BlogLayout({
 
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">{title}</h1>
 
-            <div className="flex flex-wrap items-center gap-4 text-white/80">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-white/80">
               <span className="flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
-                {new Date(date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                Published {new Date(date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
               </span>
+              {updated && updated !== date && (
+                <span className="flex items-center gap-2">
+                  <span className="size-1 rounded-full bg-white/40" aria-hidden />
+                  Updated {new Date(updated).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                </span>
+              )}
               <span className="flex items-center gap-2">
                 <Clock className="w-4 h-4" />
                 {readTime} read
               </span>
-              <span>By {author}</span>
+              <span className="inline-flex items-center gap-2">
+                <span className="flex size-6 items-center justify-center rounded-full bg-white/15 text-[10px] font-bold uppercase">
+                  {author
+                    .split(" ")
+                    .map((s) => s[0])
+                    .join("")
+                    .slice(0, 2)}
+                </span>
+                By {author}
+              </span>
             </div>
           </motion.div>
         </div>

@@ -42,6 +42,13 @@ export interface SfdaToolFaq {
   a: string;
 }
 
+/** Blog post the tool page links back to (Resources block). */
+export interface SfdaToolResource {
+  slug: string;
+  title: string;
+  hook: string;
+}
+
 export interface SfdaTool {
   slug: string;
   name: string;
@@ -61,6 +68,8 @@ export interface SfdaTool {
   outOfScope: string[];
   personas: SfdaToolPersona[];
   faqs: SfdaToolFaq[];
+  /** Related blog posts (2-3) that drive cross-pillar internal-link velocity. */
+  resources?: SfdaToolResource[];
 }
 
 /** Where every "Book a demo" CTA points. Sales-led license conversion. */
@@ -230,6 +239,18 @@ export const SFDA_TOOLS: SfdaTool[] = [
         a: "Yes. Provide the new product data sheet with the variants and the tool produces correctly populated SmPC fields for each. Multi-strength packs become a single coherent SmPC with the right sections expanded.",
       },
     ],
+    resources: [
+      {
+        slug: "sfda-drug-registration-guide-saudi-arabia",
+        title: "SFDA Drug Registration Guide Saudi Arabia",
+        hook: "Where SmPC + PIL fits in the full Module 1.3 submission lifecycle",
+      },
+      {
+        slug: "no-code-document-automation-regulatory-teams-2026",
+        title: "No-Code Document Automation for Regulatory Teams",
+        hook: "Why purpose-built RA agents beat generic workflow builders",
+      },
+    ],
   },
   {
     slug: "spc-pil-arabic-translator",
@@ -369,6 +390,18 @@ export const SFDA_TOOLS: SfdaTool[] = [
       {
         q: "How long does translation take?",
         a: "Typical SmPC + PIL Arabic translation returns in 5–10 minutes depending on document length. Drafts save automatically to your dashboard.",
+      },
+    ],
+    resources: [
+      {
+        slug: "arabic-ocr-challenges-solutions-2026",
+        title: "Arabic OCR in 2026: Why It's Still Hard and What Actually Works",
+        hook: "Why generic translation fails for SFDA labelling — and what regulator-recognised Arabic looks like",
+      },
+      {
+        slug: "sfda-drug-registration-guide-saudi-arabia",
+        title: "SFDA Drug Registration Guide Saudi Arabia",
+        hook: "Where Arabic PIL fits in the Module 1.3 submission lifecycle",
       },
     ],
   },
@@ -526,6 +559,18 @@ export const SFDA_TOOLS: SfdaTool[] = [
       {
         q: "Can I export the report for my QMS?",
         a: "Yes. Reports export as PDF with citations and severity tags suitable for QMS evidence and inspection-ready records.",
+      },
+    ],
+    resources: [
+      {
+        slug: "sfda-drug-registration-guide-saudi-arabia",
+        title: "SFDA Drug Registration Guide Saudi Arabia",
+        hook: "The full submission process — and where labelling RFIs typically come from",
+      },
+      {
+        slug: "no-code-document-automation-regulatory-teams-2026",
+        title: "No-Code Document Automation for Regulatory Teams",
+        hook: "How RA teams stand up pre-submission QC without IT",
       },
     ],
   },

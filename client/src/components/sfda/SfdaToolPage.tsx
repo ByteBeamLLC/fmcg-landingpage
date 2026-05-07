@@ -4,6 +4,7 @@ import type { LucideIcon } from "lucide-react";
 import {
   ArrowLeft,
   ArrowRight,
+  BookOpen,
   CheckCircle2,
   XCircle,
   Sparkles,
@@ -467,6 +468,46 @@ export default function SfdaToolPage({ tool }: SfdaToolPageProps) {
               </Link>
             </div>
           </section>
+
+          {/* Related reading — cross-pillar internal-link velocity */}
+          {tool.resources && tool.resources.length > 0 && (
+            <section className="mt-16 sm:mt-20">
+              <div className="flex items-center gap-2 mb-6">
+                <BookOpen className="size-5 text-primary" />
+                <h2 className="text-lg font-semibold">Related reading</h2>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {tool.resources.map((resource) => (
+                  <Link
+                    key={resource.slug}
+                    href={`/blog/${resource.slug}`}
+                    className="group block"
+                  >
+                    <Card className="hover:border-primary/40 transition-colors h-full">
+                      <CardContent className="p-5">
+                        <p className="font-semibold text-sm mb-1 inline-flex items-start gap-1.5 group-hover:text-primary transition-colors">
+                          {resource.title}
+                          <ArrowRight className="size-3.5 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 transition-all mt-0.5 shrink-0" />
+                        </p>
+                        <p className="text-xs text-muted-foreground leading-relaxed">
+                          {resource.hook}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                ))}
+              </div>
+              <div className="mt-6">
+                <Link
+                  href="/blog"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline underline-offset-4"
+                >
+                  Read more on the blog
+                  <ArrowRight className="size-3.5" />
+                </Link>
+              </div>
+            </section>
+          )}
         </div>
       </main>
 

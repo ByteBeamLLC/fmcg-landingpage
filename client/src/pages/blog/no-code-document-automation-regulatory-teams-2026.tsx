@@ -1,5 +1,10 @@
 import { Link } from "wouter";
 import BlogLayout from "@/components/BlogLayout";
+import BlogToolsBanner from "@/components/blog/BlogToolsBanner";
+import BlogToolPromo from "@/components/blog/BlogToolPromo";
+import BlogRelatedTools from "@/components/blog/BlogRelatedTools";
+import BlogKeyTakeaways from "@/components/blog/BlogKeyTakeaways";
+import BlogRelatedPosts from "@/components/blog/BlogRelatedPosts";
 
 const structuredData = [
   {
@@ -53,6 +58,23 @@ export default function NoCodeDocumentAutomationBlog() {
       <p>
         For regulatory and compliance teams, <strong>no-code document automation</strong> offers a compelling opportunity: build the workflows you need, when you need them, without waiting months for IT resources. This guide shows regulatory professionals how to leverage no-code platforms to automate document compliance independently.
       </p>
+
+      <BlogKeyTakeaways
+        points={[
+          "Citizen developers (business users building automations) will outnumber pro developers 4:1 by 2026 at large enterprises.",
+          "Regulatory teams are the ideal candidate: process-rich, documentation-heavy, and bottlenecked by IT queues.",
+          "The most useful no-code automation isn't a generic workflow builder — it's a single-purpose agent for the work you repeat.",
+          "Start small: certificate tracking or one submission checklist. Prove ROI, then scale.",
+          "Governance, audit trails, and role-based access aren't optional in regulated workflows — they're the gate.",
+        ]}
+      />
+
+      <BlogToolsBanner
+        headline="Pharma RA team? Three no-code tools, free preview, sales-led license."
+        subline="If your team is doing SFDA Module 1.3 labelling work — SmPC + PIL drafting, Arabic translation, pre-submission gap analysis — these are the citizen-developer tools, not workflow templates."
+        ctaLabel="See the SFDA toolkit"
+        ctaHref="/sfda"
+      />
 
       <h2>What is No-Code Document Automation?</h2>
 
@@ -225,6 +247,12 @@ export default function NoCodeDocumentAutomationBlog() {
 
       <p><strong>Impact:</strong> Submission preparation time cut by 50-70%.</p>
 
+      <BlogToolPromo
+        toolSlug="spc-pil-generator"
+        eyebrow="Concrete example for SFDA RA teams"
+        hook="Generate Module 1.3 SmPC + PIL drafts from your originator pack — no workflow build, no IT ticket"
+      />
+
       <h3>4. Compliance Audit Documentation</h3>
 
       <p><strong>The manual process:</strong></p>
@@ -264,6 +292,10 @@ export default function NoCodeDocumentAutomationBlog() {
       </ul>
 
       <p><strong>Impact:</strong> Label approval cycles reduced by 60%.</p>
+
+      <p>
+        For pharma RA teams specifically, the bottleneck isn't the review workflow — it's producing labelling that survives the review. Bytebeam ships no-code agents purpose-built for SFDA labelling: <Link href="/sfda/spc-pil-arabic-translator">Arabic SmPC & PIL translation with regulator-recognised phrasing</Link>, and <Link href="/sfda/dossier-gap-analysis">pre-submission gap analysis</Link> that catches Module 1.3 drift before SFDA does. No workflow design required.
+      </p>
 
       <h2>Evaluating No-Code Platforms: 6 Critical Criteria</h2>
 
@@ -475,40 +507,34 @@ export default function NoCodeDocumentAutomationBlog() {
 
       <p>The most successful no-code programs position IT as partners who enable business users while maintaining appropriate guardrails.</p>
 
-      <h2>Related Resources</h2>
-
-      <p>Explore how document automation applies to specific GCC regulatory challenges:</p>
-      <ul>
-        <li><Link href="/blog/uae-food-labeling-requirements-2026">UAE Food Labeling Requirements 2026</Link> – Compliance standards requiring document management</li>
-        <li><Link href="/blog/sfda-drug-registration-guide-saudi-arabia">SFDA Drug Registration Guide 2026</Link> – Pharmaceutical documentation workflows</li>
-        <li><Link href="/blog/gcc-document-compliance-automation-2026">GCC Document Compliance Automation 2026</Link> – Multi-market automation strategies</li>
-        <li><Link href="/blog/intelligent-document-processing-business-guide-2026">Intelligent Document Processing Explained</Link> – IDP fundamentals for business users</li>
-      </ul>
-
-      <hr />
+      <BlogRelatedPosts
+        slugs={[
+          "sfda-drug-registration-guide-saudi-arabia",
+          "intelligent-document-processing-business-guide-2026",
+          "uae-food-labeling-requirements-2026",
+        ]}
+        heading="Related reading for compliance teams"
+        subtitle="Adjacent topics if you're building a citizen-developer practice in a regulated industry."
+      />
 
       <h2>How ByteBeam Empowers Regulatory Citizen Developers</h2>
 
-      <p>ByteBeam's <strong>no-code document automation</strong> platform is built for regulatory and compliance teams who need to move fast without IT dependency. For the document parsing layer, <a href="https://parsli.co/solutions/no-code-document-parser" target="_blank" rel="noopener noreferrer">Parsli's no-code document parser</a> lets regulatory teams extract data from PDFs, invoices, and forms without writing a single line of code.</p>
+      <p>The most useful no-code automation isn't a generic workflow builder — it's purpose-built agents for the specific work your team repeats. ByteBeam's SFDA toolkit is exactly that: three single-purpose agents scoped to the labelling work that eats senior RA time on every Saudi submission.</p>
 
-      <p><strong>Why regulatory teams choose ByteBeam:</strong></p>
       <ul>
-        <li><strong>Visual workflow builder:</strong> Drag-and-drop interface designed for non-technical users</li>
-        <li><strong>Pre-built regulatory templates:</strong> Start with workflows tailored for compliance use cases</li>
-        <li><strong>Arabic document processing:</strong> Essential for GCC market compliance</li>
-        <li><strong>Enterprise governance:</strong> SOC 2 compliant with complete audit trails</li>
-        <li><strong>Seamless integration:</strong> Connect with existing document management and ERP systems — integrates with <a href="https://parsli.co/integrations/google-sheets" target="_blank" rel="noopener noreferrer">Google Sheets</a>, <a href="https://parsli.co/integrations/zapier" target="_blank" rel="noopener noreferrer">Zapier</a>, and <a href="https://parsli.co/integrations/make" target="_blank" rel="noopener noreferrer">Make</a></li>
+        <li><Link href="/sfda/spc-pil-generator"><strong>SmPC & PIL Generator</strong></Link> — produce SFDA-aligned English drafts from your originator pack, structured to Module 1.3 + the QRD-derived layout adopted across GCC.</li>
+        <li><Link href="/sfda/spc-pil-arabic-translator"><strong>Arabic SmPC & PIL Translator</strong></Link> — regulator-recognised Arabic with RTL formatting, not generic translation that triggers RFIs.</li>
+        <li><Link href="/sfda/dossier-gap-analysis"><strong>Dossier Gap Analysis</strong></Link> — severity-ranked findings with citations to the SFDA / GCC guidance section that drives each gap.</li>
       </ul>
 
-      <p><strong>Get started in days, not months:</strong></p>
+      <p><strong>Why this fits the no-code pattern:</strong></p>
       <ul>
-        <li>No coding required</li>
-        <li>Self-service onboarding</li>
-        <li>Dedicated success support</li>
-        <li>Pilot programs available</li>
+        <li><strong>Zero workflow design:</strong> upload your inputs, run, get DOCX out — your QPPV signs off in normal Word review.</li>
+        <li><strong>Audit-trailed by default:</strong> every run is retained for inspection-ready records.</li>
+        <li><strong>Free preview, sales-led license:</strong> one free run per tool to see the output on your own document. License sold via 30-min walkthrough — per-team pricing, no self-serve checkout.</li>
       </ul>
 
-      <p>ByteBeam bridges the gap between what regulatory teams need and what IT can deliver—putting automation control in the hands of the people who understand compliance best.</p>
+      <p>ByteBeam bridges the gap between what regulatory teams need and what IT can deliver — putting automation control in the hands of the people who understand compliance best.</p>
 
       <h2>Conclusion</h2>
 
@@ -525,6 +551,12 @@ export default function NoCodeDocumentAutomationBlog() {
       </ol>
 
       <p>The question isn't whether to adopt no-code automation—it's how quickly you can get started.</p>
+
+      <BlogRelatedTools
+        eyebrow="Try the SFDA toolkit"
+        heading="Tools mentioned in this guide"
+        subtitle="Single-purpose agents for SFDA Module 1.3 labelling work. No workflow design, no IT ticket — DOCX out, audit-trailed."
+      />
 
       <hr />
 

@@ -1,5 +1,10 @@
 import { Link } from "wouter";
 import BlogLayout from "@/components/BlogLayout";
+import BlogToolsBanner from "@/components/blog/BlogToolsBanner";
+import BlogToolPromo from "@/components/blog/BlogToolPromo";
+import BlogRelatedTools from "@/components/blog/BlogRelatedTools";
+import BlogKeyTakeaways from "@/components/blog/BlogKeyTakeaways";
+import BlogRelatedPosts from "@/components/blog/BlogRelatedPosts";
 
 const structuredData = [
   {
@@ -94,6 +99,23 @@ export default function ArabicOCRBlog() {
       <p>
         This guide explains why Arabic OCR is genuinely harder, what solutions we've tested that actually work, and how to design production systems around the reality of 80% accuracy.
       </p>
+
+      <BlogKeyTakeaways
+        points={[
+          "Arabic OCR accuracy lags English by 20–30% on real-world documents — even the best models cap around 80% on complex pages.",
+          "Gemini 3-pro is currently the strongest VLM for Arabic extraction, especially handwriting and mixed bilingual layouts.",
+          "Open-source OCR models can locate Arabic text but rarely transcribe it production-ready — don't bet a workflow on them.",
+          "Design production systems for 80% with confidence-routed human-in-the-loop, not 99% chasing.",
+          "For SFDA / pharma labelling specifically, the bottleneck is regulator-recognised Arabic phrasing, not raw OCR accuracy.",
+        ]}
+      />
+
+      <BlogToolsBanner
+        headline="Working on Arabic SFDA labelling? OCR isn't your bottleneck — regulatory phrasing is."
+        subline="If you're translating SmPC and PIL docs into Arabic for SFDA Module 1.3, generic OCR + generic translation triggers RFIs. Bytebeam's SFDA toolkit produces regulator-ready Arabic with RTL formatting — free first run."
+        ctaLabel="See the SFDA Arabic toolkit"
+        ctaHref="/sfda"
+      />
 
       <h2>Why Arabic OCR Is Technically Harder</h2>
 
@@ -359,7 +381,15 @@ export default function ArabicOCRBlog() {
         <li><strong>GCC data residency:</strong> Deployment options for Saudi Arabia's Dammam region</li>
       </ul>
 
-      <p><Link href="/demo">See ByteBeam Arabic Document Processing →</Link></p>
+      <p>For pharma regulatory teams specifically, "Arabic processing" is a different job than OCR — the bottleneck is regulator-recognised phrasing, not character recognition. We ship purpose-built tools for the work SFDA submissions actually require:</p>
+
+      <BlogToolPromo
+        toolSlug="spc-pil-arabic-translator"
+        eyebrow="Regulatory Arabic, not generic"
+        hook="Translate SmPC and PIL into SFDA-recognised Arabic"
+      />
+
+      <p>If you're auditing Arabic that already exists, the <Link href="/sfda/dossier-gap-analysis">Dossier Gap Analysis</Link> tool catches drift between the Arabic PIL and the English source — including missing sections, terminology mismatches, and structural inconsistencies that commonly trigger RFIs.</p>
 
       <h2>Key Takeaways</h2>
 
@@ -371,6 +401,22 @@ export default function ArabicOCRBlog() {
       </ol>
 
       <p>The organizations succeeding with Arabic document processing aren't chasing perfect automation. They're designing systems that combine AI capability with human judgment.</p>
+
+      <BlogRelatedTools
+        slugs={["spc-pil-arabic-translator", "dossier-gap-analysis", "spc-pil-generator"]}
+        eyebrow="Try the SFDA toolkit"
+        heading="SFDA tools for Arabic regulatory work"
+        subtitle="Purpose-built for Module 1.3 labelling. Regulator-recognised phrasing, RTL formatting, severity-ranked gap reports — DOCX out, audit-trailed."
+      />
+
+      <BlogRelatedPosts
+        slugs={[
+          "sfda-drug-registration-guide-saudi-arabia",
+          "no-code-document-automation-regulatory-teams-2026",
+          "agentic-ocr-intelligent-data-extraction-2026",
+        ]}
+        subtitle="What to read next if you're applying these patterns to GCC regulatory work."
+      />
 
       <hr />
 

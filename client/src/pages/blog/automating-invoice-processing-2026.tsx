@@ -1,5 +1,7 @@
 import { Link } from "wouter";
 import BlogLayout from "@/components/BlogLayout";
+import BlogKeyTakeaways from "@/components/blog/BlogKeyTakeaways";
+import BlogRelatedPosts from "@/components/blog/BlogRelatedPosts";
 
 const structuredData = [
   {
@@ -79,6 +81,16 @@ export default function InvoiceProcessingBlog() {
       <p>
         This guide shows finance teams how to <strong>automate invoice processing</strong>—from understanding what's possible to implementing a system that delivers measurable ROI.
       </p>
+
+      <BlogKeyTakeaways
+        points={[
+          "Manual invoice processing costs $12–20 per invoice; automation drops it to $2–3 — an 80% reduction.",
+          "Mid-sized companies (5,000 invoices/year) typically capture $90k+ in annual benefit when they automate the AP cycle.",
+          "Modern AI extraction handles diverse invoice formats without templates — no more per-vendor mapping.",
+          "Best first project: a focused pilot on high-volume, recurring vendors. Prove ROI before scaling.",
+          "300–500% first-year ROI is realistic for companies processing 1,000+ invoices monthly.",
+        ]}
+      />
 
       <h2>The True Cost of Manual Invoice Processing</h2>
 
@@ -550,14 +562,14 @@ export default function InvoiceProcessingBlog() {
         <li>Audit concerns about AP controls</li>
       </ul>
 
-      <h2>Related Resources</h2>
-
-      <p>Explore how document automation applies to other finance and compliance challenges:</p>
-      <ul>
-        <li><Link href="/blog/intelligent-document-processing-business-guide-2026">Intelligent Document Processing Explained</Link> – IDP fundamentals for business users</li>
-        <li><Link href="/blog/no-code-document-automation-regulatory-teams-2026">No-Code Document Automation for Regulatory Teams</Link> – Build workflows without IT</li>
-        <li><Link href="/blog/gcc-document-compliance-automation-2026">GCC Document Compliance Automation</Link> – Multi-market automation strategies</li>
-      </ul>
+      <BlogRelatedPosts
+        slugs={[
+          "intelligent-document-processing-business-guide-2026",
+          "no-code-document-automation-regulatory-teams-2026",
+          "agentic-ocr-intelligent-data-extraction-2026",
+        ]}
+        subtitle="Adjacent topics if you're scoping the broader document automation stack."
+      />
 
       <hr />
 

@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import BlogLayout from "@/components/BlogLayout";
+import BlogRelatedPosts from "@/components/blog/BlogRelatedPosts";
 
 const structuredData = [
   {
@@ -506,17 +507,14 @@ export default function IDPBusinessGuideBlog() {
         <li>Integrate with additional systems</li>
       </ul>
 
-      <h2>Related Resources</h2>
-
-      <p>See how document processing applies to specific compliance challenges:</p>
-      <ul>
-        <li><a href="https://parsli.co/guides/what-is-intelligent-document-processing" target="_blank" rel="noopener noreferrer">What is Intelligent Document Processing?</a> – In-depth IDP guide with hands-on examples</li>
-        <li><a href="https://parsli.co/use-cases/intelligent-document-processing" target="_blank" rel="noopener noreferrer">IDP Use Cases</a> – Real-world intelligent document processing workflows</li>
-        <li><a href="https://parsli.co/blog/ocr-vs-ai-document-extraction" target="_blank" rel="noopener noreferrer">OCR vs AI Document Extraction</a> – Detailed comparison of extraction approaches</li>
-        <li><Link href="/blog/no-code-document-automation-regulatory-teams-2026">No-Code Document Automation for Regulatory Teams 2026</Link> – Build workflows without IT</li>
-        <li><Link href="/blog/gcc-document-compliance-automation-2026">GCC Document Compliance Automation 2026</Link> – Multi-market automation strategies</li>
-        <li><Link href="/blog/uae-food-labeling-requirements-2026">UAE Food Labeling Requirements 2026</Link> – Document requirements for food compliance</li>
-      </ul>
+      <BlogRelatedPosts
+        slugs={[
+          "no-code-document-automation-regulatory-teams-2026",
+          "automating-invoice-processing-2026",
+          "agentic-ocr-intelligent-data-extraction-2026",
+        ]}
+        subtitle="What to read next if you're scoping IDP for your team or industry."
+      />
 
       <hr />
 
