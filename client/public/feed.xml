@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>ByteBeam — SFDA Regulatory Tools</title>
+    <title>ByteBeam SFDA — Tools &amp; Pharma RA Insights</title>
     <link>https://bytebeam.co/sfda</link>
     <atom:link href="https://bytebeam.co/feed.xml" rel="self" type="application/rss+xml" />
-    <description>AI agents for SFDA pharma regulatory work — SmPC and PIL generation, Arabic translation, dossier gap analysis.</description>
+    <description>AI agents for SFDA pharma regulatory work — SmPC and PIL generation, Arabic translation, dossier gap analysis — plus authoritative guides for in-house RA, PV, and CMC teams.</description>
     <language>en-US</language>
+    <lastBuildDate>Thu, 08 May 2026 00:00:00 GMT</lastBuildDate>
     <generator>ByteBeam</generator>
+
+    <!-- SFDA Tools -->
     <item>
       <title>SFDA SmPC &amp; PIL Generator</title>
       <link>https://bytebeam.co/sfda/spc-pil-generator</link>
@@ -27,6 +30,62 @@
       <guid isPermaLink="true">https://bytebeam.co/sfda/dossier-gap-analysis</guid>
       <description>Pre-submission gap analysis for SFDA SmPC and PIL packs. Catches labelling, translation, and section-completeness gaps. Severity-ranked report.</description>
       <category>SFDA Tools</category>
+    </item>
+
+    <!-- Pharma RA Insights — newest first -->
+    <item>
+      <title>SFDA Pharmacovigilance &amp; QPPV Requirements: A Practical Guide for In-House Teams in 2026</title>
+      <link>https://bytebeam.co/blog/sfda-pharmacovigilance-qppv-requirements</link>
+      <guid isPermaLink="true">https://bytebeam.co/blog/sfda-pharmacovigilance-qppv-requirements</guid>
+      <description>SFDA pharmacovigilance for in-house RA/PV teams: QPPV qualifications, PSSF, ICSR/PSUR/RMP cycles, and where automation actually helps in 2026.</description>
+      <author>Talal Bazerbachi</author>
+      <pubDate>Thu, 07 May 2026 00:00:00 GMT</pubDate>
+      <category>Pharma RA Insights</category>
+    </item>
+    <item>
+      <title>SFDA Variations Decision Guide: Type IA, IB, II — A Practical Reference for In-House RA Teams</title>
+      <link>https://bytebeam.co/blog/sfda-variations-type-ia-ib-ii-decision-guide</link>
+      <guid isPermaLink="true">https://bytebeam.co/blog/sfda-variations-type-ia-ib-ii-decision-guide</guid>
+      <description>How SFDA classifies post-approval variations under Guidelines v6.3, when to use Type IA / IA(IN) / IB / II, and where the work is automatable.</description>
+      <author>Talal Bazerbachi</author>
+      <pubDate>Thu, 07 May 2026 00:00:00 GMT</pubDate>
+      <category>Pharma RA Insights</category>
+    </item>
+    <item>
+      <title>SFDA eCTD Submission Format: Module 1 Regional Requirements &amp; Common RFIs in 2026</title>
+      <link>https://bytebeam.co/blog/sfda-ectd-submission-module-structure</link>
+      <guid isPermaLink="true">https://bytebeam.co/blog/sfda-ectd-submission-module-structure</guid>
+      <description>How SFDA submissions work in eCTD: GCC Module 1 specification, module content, what triggers RFIs, and where in-house teams should focus automation.</description>
+      <author>Talal Bazerbachi</author>
+      <pubDate>Thu, 07 May 2026 00:00:00 GMT</pubDate>
+      <category>Pharma RA Insights</category>
+    </item>
+    <item>
+      <title>SFDA Drug Master File (DMF) and Letter of Access: A Practical Guide for API Manufacturers and MAHs</title>
+      <link>https://bytebeam.co/blog/sfda-drug-master-file-letter-of-access</link>
+      <guid isPermaLink="true">https://bytebeam.co/blog/sfda-drug-master-file-letter-of-access</guid>
+      <description>How DMFs are submitted to SFDA, how the Letter of Access works, what the open and restricted parts contain, and where API manufacturers lose review time.</description>
+      <author>Talal Bazerbachi</author>
+      <pubDate>Thu, 07 May 2026 00:00:00 GMT</pubDate>
+      <category>Pharma RA Insights</category>
+    </item>
+    <item>
+      <title>Impurity Profile for SFDA Drug Submissions: ICH Q3A, Q3B, Q3D, and M7 in Practice</title>
+      <link>https://bytebeam.co/blog/sfda-impurity-profile-ich-q3a-q3b-q3d</link>
+      <guid isPermaLink="true">https://bytebeam.co/blog/sfda-impurity-profile-ich-q3a-q3b-q3d</guid>
+      <description>Build a defensible impurity profile for SFDA submissions: ICH Q3A/B thresholds, Q3D elemental impurities, and M7 mutagenic-impurity assessment.</description>
+      <author>Talal Bazerbachi</author>
+      <pubDate>Thu, 07 May 2026 00:00:00 GMT</pubDate>
+      <category>Pharma RA Insights</category>
+    </item>
+    <item>
+      <title>SFDA Drug Registration Guide Saudi Arabia: Complete 2026 Process</title>
+      <link>https://bytebeam.co/blog/sfda-drug-registration-guide-saudi-arabia</link>
+      <guid isPermaLink="true">https://bytebeam.co/blog/sfda-drug-registration-guide-saudi-arabia</guid>
+      <description>Navigate SFDA drug registration in Saudi Arabia. Complete guide covering CTD requirements, GMP certification, pricing approval, and timeline for 2026.</description>
+      <author>Talal Bazerbachi</author>
+      <pubDate>Fri, 16 Jan 2026 00:00:00 GMT</pubDate>
+      <category>Pharma RA Insights</category>
     </item>
   </channel>
 </rss>
