@@ -91,6 +91,11 @@ const BlogIndex = lazy(() => import("@/pages/blog/index"));
 const AutomationPlatformComparisonBlog = lazy(() => import("@/pages/blog/automation-platform-comparison-2026"));
 const UAEFoodLabelingBlog = lazy(() => import("@/pages/blog/uae-food-labeling-requirements-2026"));
 const SFDADrugRegistrationBlog = lazy(() => import("@/pages/blog/sfda-drug-registration-guide-saudi-arabia"));
+const SFDAPharmacovigilanceQppvBlog = lazy(() => import("@/pages/blog/sfda-pharmacovigilance-qppv-requirements"));
+const SFDAVariationsBlog = lazy(() => import("@/pages/blog/sfda-variations-type-ia-ib-ii-decision-guide"));
+const SFDAEctdBlog = lazy(() => import("@/pages/blog/sfda-ectd-submission-module-structure"));
+const SFDADmfBlog = lazy(() => import("@/pages/blog/sfda-drug-master-file-letter-of-access"));
+const SFDAImpurityProfileBlog = lazy(() => import("@/pages/blog/sfda-impurity-profile-ich-q3a-q3b-q3d"));
 const MontajiPortalBlog = lazy(() => import("@/pages/blog/dubai-municipality-montaji-food-registration"));
 const GCCDocumentComplianceBlog = lazy(() => import("@/pages/blog/gcc-document-compliance-automation-2026"));
 const NoCodeDocumentAutomationBlog = lazy(() => import("@/pages/blog/no-code-document-automation-regulatory-teams-2026"));
@@ -185,6 +190,11 @@ function Router() {
         <Route path="/blog/automation-platform-comparison-2026" component={AutomationPlatformComparisonBlog} />
         <Route path="/blog/uae-food-labeling-requirements-2026" component={UAEFoodLabelingBlog} />
         <Route path="/blog/sfda-drug-registration-guide-saudi-arabia" component={SFDADrugRegistrationBlog} />
+        <Route path="/blog/sfda-pharmacovigilance-qppv-requirements" component={SFDAPharmacovigilanceQppvBlog} />
+        <Route path="/blog/sfda-variations-type-ia-ib-ii-decision-guide" component={SFDAVariationsBlog} />
+        <Route path="/blog/sfda-ectd-submission-module-structure" component={SFDAEctdBlog} />
+        <Route path="/blog/sfda-drug-master-file-letter-of-access" component={SFDADmfBlog} />
+        <Route path="/blog/sfda-impurity-profile-ich-q3a-q3b-q3d" component={SFDAImpurityProfileBlog} />
         <Route path="/blog/dubai-municipality-montaji-food-registration" component={MontajiPortalBlog} />
         <Route path="/blog/gcc-document-compliance-automation-2026" component={GCCDocumentComplianceBlog} />
         <Route path="/blog/no-code-document-automation-regulatory-teams-2026" component={NoCodeDocumentAutomationBlog} />

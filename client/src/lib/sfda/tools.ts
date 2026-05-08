@@ -72,9 +72,20 @@ export interface SfdaTool {
   resources?: SfdaToolResource[];
 }
 
-/** Where every "Book a demo" CTA points. Sales-led license conversion. */
+/**
+ * Where every "Book a demo" / "Book a discovery call" CTA points across
+ * the SFDA/pharma surface. Replace with the production Google Calendar
+ * appointment-scheduling URL when ready — this constant is the single
+ * source of truth so swapping is one-line.
+ *
+ * Sales-led license conversion: the booking page collects qualifying
+ * info via Google Calendar's built-in form (name, email, note).
+ */
 export const BOOK_DEMO_URL =
-  "https://calendly.com/talal-bytebeam/sfda-discovery";
+  "https://calendar.app.google/sfda-discovery-bytebeam";
+
+/** Alias for clarity in blog content where we frame as a "discovery call". */
+export const SFDA_BOOKING_URL = BOOK_DEMO_URL;
 
 /** Default number of free runs per tool before the demo gate kicks in. */
 export const DEFAULT_FREE_USES = 1;
@@ -241,14 +252,19 @@ export const SFDA_TOOLS: SfdaTool[] = [
     ],
     resources: [
       {
-        slug: "sfda-drug-registration-guide-saudi-arabia",
-        title: "SFDA Drug Registration Guide Saudi Arabia",
-        hook: "Where SmPC + PIL fits in the full Module 1.3 submission lifecycle",
+        slug: "sfda-ectd-submission-module-structure",
+        title: "SFDA eCTD Submission Format & Module Structure",
+        hook: "Where Module 1.3 SmPC + PIL fits in the full eCTD pack",
       },
       {
-        slug: "no-code-document-automation-regulatory-teams-2026",
-        title: "No-Code Document Automation for Regulatory Teams",
-        hook: "Why purpose-built RA agents beat generic workflow builders",
+        slug: "sfda-drug-registration-guide-saudi-arabia",
+        title: "SFDA Drug Registration Guide Saudi Arabia",
+        hook: "Full submission lifecycle from CTD prep to pricing approval",
+      },
+      {
+        slug: "sfda-variations-type-ia-ib-ii-decision-guide",
+        title: "SFDA Variations Type IA / IB / II Decision Guide",
+        hook: "How variations propagate to Module 1.3 labelling — and back",
       },
     ],
   },
@@ -394,9 +410,14 @@ export const SFDA_TOOLS: SfdaTool[] = [
     ],
     resources: [
       {
+        slug: "sfda-ectd-submission-module-structure",
+        title: "SFDA eCTD Submission Format & Module Structure",
+        hook: "Where Arabic PIL sits in the GCC Module 1 specification",
+      },
+      {
         slug: "arabic-ocr-challenges-solutions-2026",
         title: "Arabic OCR in 2026: Why It's Still Hard and What Actually Works",
-        hook: "Why generic translation fails for SFDA labelling — and what regulator-recognised Arabic looks like",
+        hook: "Why generic translation fails for SFDA labelling",
       },
       {
         slug: "sfda-drug-registration-guide-saudi-arabia",
@@ -563,14 +584,19 @@ export const SFDA_TOOLS: SfdaTool[] = [
     ],
     resources: [
       {
-        slug: "sfda-drug-registration-guide-saudi-arabia",
-        title: "SFDA Drug Registration Guide Saudi Arabia",
-        hook: "The full submission process — and where labelling RFIs typically come from",
+        slug: "sfda-ectd-submission-module-structure",
+        title: "SFDA eCTD Submission Format & Module Structure",
+        hook: "Module 1.3 RFI patterns — and where to focus pre-submission QC",
       },
       {
-        slug: "no-code-document-automation-regulatory-teams-2026",
-        title: "No-Code Document Automation for Regulatory Teams",
-        hook: "How RA teams stand up pre-submission QC without IT",
+        slug: "sfda-pharmacovigilance-qppv-requirements",
+        title: "SFDA Pharmacovigilance & QPPV Requirements",
+        hook: "Gap analysis applies to PSUR / RMP / PSSF too — same pattern, different documents",
+      },
+      {
+        slug: "sfda-variations-type-ia-ib-ii-decision-guide",
+        title: "SFDA Variations Type IA / IB / II Decision Guide",
+        hook: "Pre-submission QC for variation packs — catch labelling drift before SFDA does",
       },
     ],
   },

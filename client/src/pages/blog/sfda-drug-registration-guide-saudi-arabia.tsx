@@ -5,6 +5,7 @@ import BlogToolPromo from "@/components/blog/BlogToolPromo";
 import BlogRelatedTools from "@/components/blog/BlogRelatedTools";
 import BlogKeyTakeaways from "@/components/blog/BlogKeyTakeaways";
 import BlogRelatedPosts from "@/components/blog/BlogRelatedPosts";
+import { SFDA_BOOKING_URL } from "@/lib/sfda/tools";
 
 const PUBLISHED = "2026-01-16";
 const UPDATED = "2026-05-07";
@@ -570,9 +571,9 @@ export default function SFDADrugRegistrationBlog() {
 
       <BlogRelatedPosts
         slugs={[
+          "sfda-pharmacovigilance-qppv-requirements",
+          "sfda-variations-type-ia-ib-ii-decision-guide",
           "no-code-document-automation-regulatory-teams-2026",
-          "arabic-ocr-challenges-solutions-2026",
-          "intelligent-document-processing-business-guide-2026",
         ]}
         heading="Related reading for RA teams"
         subtitle="Adjacent topics if you're operationalising SFDA submissions across a portfolio."
@@ -596,7 +597,7 @@ export default function SFDADrugRegistrationBlog() {
 
       <h3>How licensing works</h3>
 
-      <p>Each tool runs one free preview against your own document, so your team can see the output quality before any commercial conversation. To license for your full portfolio, integrate with your QMS, or run across multiple products, <a href="https://calendly.com/talal-bytebeam/sfda-discovery" target="_blank" rel="noopener noreferrer">walk through the output with us in a 30-minute call</a>. Per-team pricing is discussed on the call — there is no self-serve checkout, and the license is sold sales-led.</p>
+      <p>Each tool runs one free preview against your own document, so your team can see the output quality before any commercial conversation. To license for your full portfolio, integrate with your QMS, or run across multiple products, <a href={SFDA_BOOKING_URL} target="_blank" rel="noopener noreferrer">walk through the output with us in a 30-minute call</a>. Per-team pricing is discussed on the call — there is no self-serve checkout, and the license is sold sales-led.</p>
 
       <h2>The future of AI in SFDA regulatory affairs</h2>
 

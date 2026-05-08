@@ -39,6 +39,71 @@ export interface BlogPostMeta {
 
 export const BLOG_POSTS: BlogPostMeta[] = [
   {
+    slug: "sfda-pharmacovigilance-qppv-requirements",
+    title:
+      "SFDA Pharmacovigilance & QPPV Requirements: A Practical Guide for In-House Teams in 2026",
+    shortTitle: "SFDA Pharmacovigilance & QPPV Guide",
+    description:
+      "SFDA pharmacovigilance for in-house RA/PV teams: QPPV qualifications, PSSF, ICSR/PSUR/RMP cycles, and where automation actually helps in 2026.",
+    category: "Regulatory",
+    industry: "Pharma",
+    readTime: "14 min",
+    date: "2026-05-07",
+    updated: "2026-05-07",
+  },
+  {
+    slug: "sfda-variations-type-ia-ib-ii-decision-guide",
+    title:
+      "SFDA Variations Decision Guide: Type IA, IB, II — A Practical Reference for In-House RA Teams",
+    shortTitle: "SFDA Variations Decision Guide",
+    description:
+      "How SFDA classifies post-approval variations under Guidelines v6.3, when to use Type IA / IA(IN) / IB / II, and where the work is automatable.",
+    category: "Regulatory",
+    industry: "Pharma",
+    readTime: "14 min",
+    date: "2026-05-07",
+    updated: "2026-05-07",
+  },
+  {
+    slug: "sfda-ectd-submission-module-structure",
+    title:
+      "SFDA eCTD Submission Format: Module 1 Regional Requirements & Common RFIs in 2026",
+    shortTitle: "SFDA eCTD Submission Format",
+    description:
+      "How SFDA submissions work in eCTD: GCC Module 1 specification, module content, what triggers RFIs, and where in-house teams should focus automation.",
+    category: "Regulatory",
+    industry: "Pharma",
+    readTime: "14 min",
+    date: "2026-05-07",
+    updated: "2026-05-07",
+  },
+  {
+    slug: "sfda-drug-master-file-letter-of-access",
+    title:
+      "SFDA Drug Master File (DMF) and Letter of Access: A Practical Guide for API Manufacturers and MAHs",
+    shortTitle: "SFDA DMF & Letter of Access Guide",
+    description:
+      "How DMFs are submitted to SFDA, how the Letter of Access works, what the open and restricted parts contain, and where API manufacturers lose review time.",
+    category: "Regulatory",
+    industry: "Pharma",
+    readTime: "13 min",
+    date: "2026-05-07",
+    updated: "2026-05-07",
+  },
+  {
+    slug: "sfda-impurity-profile-ich-q3a-q3b-q3d",
+    title:
+      "Impurity Profile for SFDA Drug Submissions: ICH Q3A, Q3B, Q3D, and M7 in Practice",
+    shortTitle: "Impurity Profile Guide (ICH Q3 / M7)",
+    description:
+      "Build a defensible impurity profile for SFDA submissions: ICH Q3A/B thresholds, Q3D elemental impurities, and M7 mutagenic-impurity assessment.",
+    category: "Regulatory",
+    industry: "Pharma",
+    readTime: "14 min",
+    date: "2026-05-07",
+    updated: "2026-05-07",
+  },
+  {
     slug: "sfda-drug-registration-guide-saudi-arabia",
     title: "SFDA Drug Registration Guide Saudi Arabia: Complete 2026 Process",
     shortTitle: "SFDA Drug Registration Guide",
@@ -46,8 +111,9 @@ export const BLOG_POSTS: BlogPostMeta[] = [
       "Navigate SFDA drug registration in Saudi Arabia. Complete guide covering CTD requirements, GMP certification, pricing approval, and timeline for 2026.",
     category: "Regulatory",
     industry: "Pharma",
-    readTime: "14 min",
+    readTime: "18 min",
     date: "2026-01-16",
+    updated: "2026-05-07",
   },
   {
     slug: "no-code-document-automation-regulatory-teams-2026",
