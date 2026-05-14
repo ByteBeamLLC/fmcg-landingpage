@@ -4,6 +4,7 @@ import { Link } from "wouter";
 import { ArrowLeft, Calendar, Clock, Share2, Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SEO from "@/components/SEO";
+import Navigation from "@/components/navigation";
 
 interface BlogLayoutProps {
   title: string;
@@ -81,8 +82,10 @@ export default function BlogLayout({
         structuredData={structuredData}
       />
 
+      <Navigation />
+
       {/* Hero Section */}
-      <section className="section-padding gradient-overlay text-white">
+      <section className="section-padding gradient-overlay text-white pt-28">
         <div className="container-custom">
           <motion.div
             ref={heroRef}
