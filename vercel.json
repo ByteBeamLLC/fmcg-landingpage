@@ -43,6 +43,21 @@
       "source": "/fmcg-label-compliance",
       "destination": "/industries/fmcg",
       "statusCode": 301
+    },
+    {
+      "source": "/tools/bank-statement-parser",
+      "destination": "https://parsli.co/tools/bank-statement-parser",
+      "statusCode": 301
+    },
+    {
+      "source": "/tools/resume-parser",
+      "destination": "https://parsli.co/tools/resume-parser",
+      "statusCode": 301
+    },
+    {
+      "source": "/tools/screenshot-to-text",
+      "destination": "https://parsli.co/tools/screenshot-to-text",
+      "statusCode": 301
     }
   ],
   "rewrites": [
