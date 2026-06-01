@@ -103,6 +103,9 @@ const IDPBusinessGuideBlog = lazy(() => import("@/pages/blog/intelligent-documen
 const InvoiceProcessingBlog = lazy(() => import("@/pages/blog/automating-invoice-processing-2026"));
 const AgenticOCRBlog = lazy(() => import("@/pages/blog/agentic-ocr-intelligent-data-extraction-2026"));
 const ArabicOCRBlog = lazy(() => import("@/pages/blog/arabic-ocr-challenges-solutions-2026"));
+const ImportBankStatementsQuickBooksBlog = lazy(() => import("@/pages/blog/import-bank-statements-into-quickbooks"));
+const ScanReceiptsQuickBooksBlog = lazy(() => import("@/pages/blog/scan-receipts-into-quickbooks"));
+const ImportInvoicesBillsQuickBooksBlog = lazy(() => import("@/pages/blog/import-invoices-bills-into-quickbooks"));
 
 // Loading component for lazy-loaded routes
 function ToolsLoading() {
@@ -202,6 +205,9 @@ function Router() {
         <Route path="/blog/automating-invoice-processing-2026" component={InvoiceProcessingBlog} />
         <Route path="/blog/agentic-ocr-intelligent-data-extraction-2026" component={AgenticOCRBlog} />
         <Route path="/blog/arabic-ocr-challenges-solutions-2026" component={ArabicOCRBlog} />
+        <Route path="/blog/import-bank-statements-into-quickbooks" component={ImportBankStatementsQuickBooksBlog} />
+        <Route path="/blog/scan-receipts-into-quickbooks" component={ScanReceiptsQuickBooksBlog} />
+        <Route path="/blog/import-invoices-bills-into-quickbooks" component={ImportInvoicesBillsQuickBooksBlog} />
 
         {/* Parsli - Document Extraction Platform */}
         <Route path="/parsli/:rest*" component={ParsliApp} />

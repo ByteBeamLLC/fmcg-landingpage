@@ -39,6 +39,44 @@ export interface BlogPostMeta {
 
 export const BLOG_POSTS: BlogPostMeta[] = [
   {
+    slug: "import-bank-statements-into-quickbooks",
+    title:
+      "How to Import Bank Statements & Transactions into QuickBooks (2026)",
+    shortTitle: "Import Bank Statements into QuickBooks",
+    description:
+      "Every way to get bank statements and transactions into QuickBooks Online and Desktop — bank feeds, the exact CSV/QBO format, and how to convert a PDF statement QuickBooks won't accept.",
+    category: "Automation",
+    industry: "Finance",
+    readTime: "13 min",
+    date: "2026-06-01",
+    updated: "2026-06-01",
+  },
+  {
+    slug: "scan-receipts-into-quickbooks",
+    title:
+      "How to Scan Receipts into QuickBooks (2026): Online, Desktop & Automated",
+    shortTitle: "Scan Receipts into QuickBooks",
+    description:
+      "How to scan receipts into QuickBooks Online with Receipt Capture, the mobile app, or email — what it captures, what it misses, and the faster options when it falls short.",
+    category: "Automation",
+    industry: "Finance",
+    readTime: "12 min",
+    date: "2026-06-01",
+    updated: "2026-06-01",
+  },
+  {
+    slug: "import-invoices-bills-into-quickbooks",
+    title: "How to Import Invoices & Bills into QuickBooks (2026)",
+    shortTitle: "Import Invoices & Bills into QuickBooks",
+    description:
+      "Sales invoices vs vendor bills, and every way to get each into QuickBooks Online and Desktop — Import Data, bill capture OCR, the US bulk-bill limitation, and faster options for scanning vendor invoices.",
+    category: "Automation",
+    industry: "Finance",
+    readTime: "13 min",
+    date: "2026-06-01",
+    updated: "2026-06-01",
+  },
+  {
     slug: "sfda-pharmacovigilance-qppv-requirements",
     title:
       "SFDA Pharmacovigilance & QPPV Requirements: A Practical Guide for In-House Teams in 2026",

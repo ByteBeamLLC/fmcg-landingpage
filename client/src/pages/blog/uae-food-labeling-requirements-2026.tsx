@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { Check } from "lucide-react";
 import BlogLayout from "@/components/BlogLayout";
 
 const structuredData = [
@@ -102,14 +103,21 @@ export default function UAEFoodLabelingBlog() {
       author="ByteBeam Team"
     >
       {/* Key Takeaways Box */}
-      <div className="bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-xl p-6 my-8">
-        <h2 className="text-lg font-bold text-blue-900 dark:text-blue-200 mt-0 mb-3">Key Takeaways</h2>
-        <ul className="space-y-2 mb-0">
-          <li className="text-blue-800 dark:text-blue-300"><strong>12 mandatory label elements</strong> are required on all food products sold in the UAE, in both Arabic and English.</li>
-          <li className="text-blue-800 dark:text-blue-300"><strong>Arabic text must match or exceed</strong> the size of English text, with a minimum character height of 1.6mm.</li>
-          <li className="text-blue-800 dark:text-blue-300"><strong>Nutritional declarations</strong> must follow GSO 2233:2021 standards, listing energy, protein, fat, carbohydrates, sugars, and sodium per 100g/100ml.</li>
-          <li className="text-blue-800 dark:text-blue-300"><strong>Product registration</strong> through Dubai Municipality's Montaji Portal or ADAFSA's FIEMIS system is mandatory before import.</li>
-          <li className="text-blue-800 dark:text-blue-300"><strong>Penalties start at AED 10,000</strong> for technical violations and reach AED 2,000,000+ for serious offenses.</li>
+      <div className="not-prose rounded-xl border border-primary/20 bg-primary/5 p-6 my-8">
+        <h2 className="text-sm font-bold uppercase tracking-wider text-primary mt-0 mb-4">Key Takeaways</h2>
+        <ul className="space-y-3 m-0 list-none pl-0">
+          {[
+            <><strong className="font-semibold text-foreground">12 mandatory label elements</strong> are required on all food products sold in the UAE, in both Arabic and English.</>,
+            <><strong className="font-semibold text-foreground">Arabic text must match or exceed</strong> the size of English text, with a minimum character height of 1.6mm.</>,
+            <><strong className="font-semibold text-foreground">Nutritional declarations</strong> must follow GSO 2233:2021 standards, listing energy, protein, fat, carbohydrates, sugars, and sodium per 100g/100ml.</>,
+            <><strong className="font-semibold text-foreground">Product registration</strong> through Dubai Municipality's Montaji Portal or ADAFSA's FIEMIS system is mandatory before import.</>,
+            <><strong className="font-semibold text-foreground">Penalties start at AED 10,000</strong> for technical violations and reach AED 2,000,000+ for serious offenses.</>,
+          ].map((item, i) => (
+            <li key={i} className="flex gap-3 m-0 text-foreground/90 leading-relaxed">
+              <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+              <span>{item}</span>
+            </li>
+          ))}
         </ul>
       </div>
 
