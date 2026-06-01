@@ -417,6 +417,27 @@
 
   <!-- Blog Articles -->
   <url>
+    <loc>https://bytebeam.co/blog/import-bank-statements-into-quickbooks</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://bytebeam.co/blog/scan-receipts-into-quickbooks</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://bytebeam.co/blog/import-invoices-bills-into-quickbooks</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://bytebeam.co/blog/uae-food-labeling-requirements-2026</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>

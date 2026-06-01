@@ -94,6 +94,9 @@ export const routesToPrerender = [
   
   // Blog
   "/blog",
+  "/blog/import-bank-statements-into-quickbooks",
+  "/blog/scan-receipts-into-quickbooks",
+  "/blog/import-invoices-bills-into-quickbooks",
   "/blog/automation-platform-comparison-2026",
   "/blog/uae-food-labeling-requirements-2026",
   "/blog/sfda-drug-registration-guide-saudi-arabia",

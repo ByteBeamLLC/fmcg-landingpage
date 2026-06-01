@@ -1,10 +1,26 @@
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Link } from "wouter";
-import { ArrowLeft, Calendar, Clock, Share2, Linkedin, Twitter } from "lucide-react";
+import { ArrowLeft, ArrowRight, Calendar, Clock, Share2, Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SEO from "@/components/SEO";
 import Navigation from "@/components/navigation";
+import BlogToc, { type TocItem } from "@/components/BlogToc";
+
+interface SidebarCta {
+  heading: string;
+  buttonText: string;
+  href: string;
+  note?: string;
+}
+
+const DEFAULT_SIDEBAR_CTA: SidebarCta = {
+  heading: "Drowning in compliance paperwork?",
+  buttonText: "Book a demo",
+  href: "https://calendly.com/talal-bytebeam/bytebeam-discovery-call",
+  note: "30-min call · no commitment",
+};
 
 interface BlogLayoutProps {
   title: string;
@@ -21,7 +37,18 @@ interface BlogLayoutProps {
   /** ISO date string. When set, shown as "Updated <date>" next to the published date. */
   updated?: string;
   author: string;
+  /** Optional override for the sticky right-rail CTA. */
+  sidebarCta?: SidebarCta;
   children: React.ReactNode;
+}
+
+function slugify(text: string) {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");
 }
 
 export default function BlogLayout({
@@ -38,12 +65,38 @@ export default function BlogLayout({
   date,
   updated,
   author,
+  sidebarCta = DEFAULT_SIDEBAR_CTA,
   children,
 }: BlogLayoutProps) {
   const [heroRef, heroInView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
+
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [tocItems, setTocItems] = useState<TocItem[]>([]);
+
+  // Derive the table of contents from the rendered h2 headings, assigning a
+  // stable slug id to each so the TOC anchors and scroll-spy can target them.
+  useEffect(() => {
+    const el = contentRef.current;
+    if (!el) return;
+    const seen = new Set<string>();
+    const items = Array.from(el.querySelectorAll("h2"))
+      .filter((h) => !h.closest(".not-prose"))
+      .map((h) => {
+      const text = (h.textContent ?? "").trim();
+      let id = h.id || slugify(text);
+      while (id && seen.has(id)) id = `${id}-1`;
+      if (id) {
+        seen.add(id);
+        h.id = id;
+        h.style.scrollMarginTop = "6rem";
+      }
+      return { id, text };
+    });
+    setTocItems(items.filter((i) => i.id && i.text));
+  }, [children]);
 
   const getCategoryColor = (cat: string) => {
     switch (cat) {
@@ -144,8 +197,18 @@ export default function BlogLayout({
       {/* Content Section */}
       <section className="section-padding bg-background">
         <div className="container-custom">
-          <div className="max-w-4xl mx-auto">
+          <div className="mx-auto max-w-4xl lg:max-w-5xl xl:max-w-[1200px] lg:grid lg:grid-cols-[minmax(0,1fr)_290px] lg:gap-x-10 xl:grid-cols-[230px_minmax(0,1fr)_290px] xl:gap-x-12">
+            {/* Left rail: table of contents (xl and up) */}
+            <aside className="hidden xl:block">
+              <div className="sticky top-24">
+                <BlogToc items={tocItems} />
+              </div>
+            </aside>
+
+            {/* Main column */}
+            <div className="min-w-0">
             <motion.div
+              ref={contentRef}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -202,6 +265,33 @@ export default function BlogLayout({
                 </div>
               </div>
             </motion.div>
+            </div>
+
+            {/* Right rail: sticky CTA (lg and up). TOC nests here below xl. */}
+            <aside className="hidden lg:block">
+              <div className="sticky top-24 space-y-6">
+                <div className="xl:hidden">
+                  <BlogToc items={tocItems} />
+                </div>
+                <div className="rounded-2xl border border-primary/20 bg-primary/5 p-6 text-center">
+                  <p className="text-lg font-bold leading-snug mb-5 text-foreground">
+                    {sidebarCta.heading}
+                  </p>
+                  <Button
+                    onClick={() => window.open(sidebarCta.href, "_blank")}
+                    className="w-full h-12 rounded-full bg-primary text-primary-foreground text-base"
+                  >
+                    {sidebarCta.buttonText}
+                    <ArrowRight className="w-4 h-4 ml-1" />
+                  </Button>
+                  {sidebarCta.note && (
+                    <p className="text-xs text-muted-foreground mt-3 mb-0">
+                      {sidebarCta.note}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </aside>
           </div>
         </div>
       </section>

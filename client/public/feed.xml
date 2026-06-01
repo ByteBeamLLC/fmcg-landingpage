@@ -6,7 +6,7 @@
     <atom:link href="https://bytebeam.co/feed.xml" rel="self" type="application/rss+xml" />
     <description>AI agents for SFDA pharma regulatory work — SmPC and PIL generation, Arabic translation, dossier gap analysis — plus authoritative guides for in-house RA, PV, and CMC teams.</description>
     <language>en-US</language>
-    <lastBuildDate>Thu, 08 May 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jun 2026 00:00:00 GMT</lastBuildDate>
     <generator>ByteBeam</generator>
 
     <!-- SFDA Tools -->
@@ -30,6 +30,35 @@
       <guid isPermaLink="true">https://bytebeam.co/sfda/dossier-gap-analysis</guid>
       <description>Pre-submission gap analysis for SFDA SmPC and PIL packs. Catches labelling, translation, and section-completeness gaps. Severity-ranked report.</description>
       <category>SFDA Tools</category>
+    </item>
+
+    <!-- QuickBooks data-entry automation — newest first -->
+    <item>
+      <title>How to Import Bank Statements &amp; Transactions into QuickBooks (2026)</title>
+      <link>https://bytebeam.co/blog/import-bank-statements-into-quickbooks</link>
+      <guid isPermaLink="true">https://bytebeam.co/blog/import-bank-statements-into-quickbooks</guid>
+      <description>Every way to get bank statements and transactions into QuickBooks Online and Desktop — bank feeds, the exact CSV/QBO format, and how to convert a PDF statement QuickBooks won't accept.</description>
+      <author>Talal Bazerbachi</author>
+      <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
+      <category>Document Automation</category>
+    </item>
+    <item>
+      <title>How to Scan Receipts into QuickBooks (2026): Online, Desktop &amp; Automated</title>
+      <link>https://bytebeam.co/blog/scan-receipts-into-quickbooks</link>
+      <guid isPermaLink="true">https://bytebeam.co/blog/scan-receipts-into-quickbooks</guid>
+      <description>How to scan receipts into QuickBooks Online with Receipt Capture, the mobile app, or email — what it captures, what it misses, and the faster options when it falls short.</description>
+      <author>Talal Bazerbachi</author>
+      <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
+      <category>Document Automation</category>
+    </item>
+    <item>
+      <title>How to Import Invoices &amp; Bills into QuickBooks (2026)</title>
+      <link>https://bytebeam.co/blog/import-invoices-bills-into-quickbooks</link>
+      <guid isPermaLink="true">https://bytebeam.co/blog/import-invoices-bills-into-quickbooks</guid>
+      <description>Sales invoices vs vendor bills, and every way to get each into QuickBooks Online and Desktop — Import Data, bill capture OCR, the US bulk-bill limitation, and faster options for scanning vendor invoices.</description>
+      <author>Talal Bazerbachi</author>
+      <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
+      <category>Document Automation</category>
     </item>
 
     <!-- Pharma RA Insights — newest first -->
