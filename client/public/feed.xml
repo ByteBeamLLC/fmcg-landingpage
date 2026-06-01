@@ -4,6 +4,7 @@
     <title>ByteBeam SFDA — Tools &amp; Pharma RA Insights</title>
     <link>https://bytebeam.co/sfda</link>
     <atom:link href="https://bytebeam.co/feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
     <description>AI agents for SFDA pharma regulatory work — SmPC and PIL generation, Arabic translation, dossier gap analysis — plus authoritative guides for in-house RA, PV, and CMC teams.</description>
     <language>en-US</language>
     <lastBuildDate>Mon, 01 Jun 2026 00:00:00 GMT</lastBuildDate>
