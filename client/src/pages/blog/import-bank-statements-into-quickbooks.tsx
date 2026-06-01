@@ -1,4 +1,3 @@
-import { Link } from "wouter";
 import { ArrowRight, CalendarClock, CheckCircle2, Sparkles } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -397,9 +396,8 @@ export default function ImportBankStatementsQuickBooksBlog() {
         </li>
         <li>
           <strong>Convert the PDF to a QuickBooks-ready CSV.</strong> For a
-          one-off, a free online converter — including our own{" "}
-          <Link href="/tools/bank-statement-parser">bank statement parser</Link>{" "}
-          — can turn a clean, text-based PDF into a CSV in a minute. For scanned
+          one-off, a free online PDF-to-CSV converter can turn a clean,
+          text-based statement into an importable file in a minute. For scanned
           statements or anything you do regularly, a dedicated document parser is
           more reliable (next section).
         </li>
