@@ -58,6 +58,11 @@
       "source": "/tools/screenshot-to-text",
       "destination": "https://parsli.co/tools/screenshot-to-text",
       "statusCode": 301
+    },
+    {
+      "source": "/tools/policy-analyzer",
+      "destination": "https://parsli.co/document-types/insurance-policies",
+      "statusCode": 301
     }
   ],
   "rewrites": [
