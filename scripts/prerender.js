@@ -115,6 +115,9 @@ const ROUTES = [
   '/blog/no-code-document-automation-regulatory-teams-2026',
   '/blog/intelligent-document-processing-business-guide-2026',
   '/blog/automating-invoice-processing-2026',
+  '/blog/import-bank-statements-into-quickbooks',
+  '/blog/scan-receipts-into-quickbooks',
+  '/blog/import-invoices-bills-into-quickbooks',
 
   // SFDA Regulatory Tools
   '/sfda',

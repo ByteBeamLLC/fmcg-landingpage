@@ -63,6 +63,11 @@
       "source": "/tools/policy-analyzer",
       "destination": "https://parsli.co/document-types/insurance-policies",
       "statusCode": 301
+    },
+    {
+      "source": "/industries/insurance",
+      "destination": "https://parsli.co/document-types/insurance-policies",
+      "statusCode": 301
     }
   ],
   "rewrites": [
